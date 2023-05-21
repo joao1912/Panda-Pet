@@ -276,11 +276,11 @@ function adicionaProdutoAoCarrinho(objProduto) {
     let carrinho = pegaCarrinho()
     //Verificar se o produto já existe e adicionar um amais 
     let produtoExistente = carrinho.find(produto => produto.id === objProduto.id)
-    if (produtoExistente == undefined || produtoExistente == null) {
+    if (produtoExistente == undefined || produtoExistente == null) { //vamos ver se é necessario verificar se ja tem no carrinho
         objProduto.quantidade = 1
         carrinho.push(objProduto)
     } else {
-        produtoExistente.quantidade++
+        produtoExistente.quantidade++ //não é para acontecer
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho))
@@ -301,7 +301,7 @@ function adicionaProdutoAoCarrinhoUsandoId(idProduto) {
         produto.quantidade = 1
         carrinho.push(produto)
     } else {
-        produtoExistente.quantidade++
+        produtoExistente.quantidade++ //não necessario
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho))
@@ -323,10 +323,10 @@ function removeProdutoDoCarrinho(idProduto, quantidade = 1, deletaItem = false) 
         carrinho.splice(index, 1)
     } else {
         // Diminuir a quantidade passada pela função
-        carrinho[index].quantidade -= quantidade
+        carrinho[index].quantidade -= quantidade //não necessario
         // Verificar se é menor que 0 para remover o índice da lista
         if (carrinho[index].quantidade < 1) {
-            carrinho.splice(index, 1)
+            carrinho.splice(index, 1) //a quantidade minima sera 1, o produto só podera ser removido apertando o botão excluir
         }
     }
     localStorage.setItem("carrinho", JSON.stringify(carrinho))
@@ -369,7 +369,6 @@ function exibeCarrinho() {
     })
 }
 
-
 exibeCarrinho()
 
 //Função criada para puxar o carrinho sempre que necessário
@@ -389,4 +388,5 @@ function pegaCarrinho() {
 
 function limpaCarrinho() {
     localStorage.removeItem("carrinho")
+    //talvez tenha que exibir o carrinho vazio depois
 }
