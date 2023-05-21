@@ -7,7 +7,7 @@ function enviar() {
 
 async function validaCep(cep) {
 
-    await fetch(`https://cep.awesomeapi.com.br/json/${cep}`)
+    await fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then(response => response.json())
     .then(json => obj_cep = json)
 
