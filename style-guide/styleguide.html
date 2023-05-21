@@ -5,22 +5,203 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section id="menuGuide">
-        <div>
-            <img src="" alt="Logo Panda-Pet">
+        <div id="containerImg">
+            <img src="../imagens/panda_logo.png" alt="Logo Panda-Pet">
         </div>
         <ul>
-            <li>cores</li>
-            <li>botoes</li>
-            <li>tipografia</li>
-            <li>icones</li>
+            <li><a href="#h1StyleGuide">Fontes</a></li>
+            <li><a href="#colors">Cores</a></li>
+            <li><a href="#containerBotoes">Botões</a></li>
+            <li><a href="#containerTipografia">Tipografia</a></li>
+            <li><a href="#containerIcones">Ícones</a></li>
         </ul>
     </section>
-    <section id="ContainerGuide">
+    <section id="containerGuide">
 
+        <h1 id="h1StyleGuide">Style Guide</h1>
+
+        <section id="containerFonts">
+            <h1 id="h1FontFamily">Font-Family</h1>
+            <div class="fonte">
+                <div class="gooper">Gooper</div>
+                <div class="gooper">Panda Pet</div>
+            </div>
+            <div class="fonte">
+                <div>Nunito</div>
+                <div>Panda Pet</div>
+            </div>
+        </section>
+
+
+        <div id="colors"></div>
+        <h1 id="H1Cores">Cores</h1>
+        <section id="circlesAndColors">
+            <div id="color1" class="circle">
+                <p>#645cbb</p>
+            </div>
+            <div id="color2" class="circle">
+                <p>#a084dc</p>
+            </div>
+            <div id="color3" class="circle">
+                <p>#bface2</p>
+            </div>
+            <div id="color4" class="circle">
+                <p>#000000</p>
+            </div>
+            <div id="color5" class="circle">
+                <p>#2e3233</p>
+            </div>
+            <div id="color6" class="circle">
+                <p>#404242</p>
+            </div>
+        </section>
+      
+
+        <section id="containerBotoes">
+            <h1 id="h1Botoes">Botões</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Descrição
+                        </th>
+
+                        <th>
+                            Botão
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Botão arredondado que muda de cor
+                        </td>
+                        <td>
+                            <button id="botaoArredondado">teste</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Botão Transparente
+                        </td>
+                        <td>
+                            <button id="botaoTransparente">teste</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Botão de Escolha
+                        </td>
+
+                        <td>
+                            <div id="botaoEscolha">
+                                <div id="botaoTrocaEscolha"></div>
+                                <div class="ops" id="op1">Sim</div>
+                                <div class="ops" id="op2">Não</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="containerTipografia">
+            <h1 id="h1Tipografia">Tipografia</h1>
+
+            <div>
+                <h1 id="tipografiaH1">TÍTULO 1</h1>
+                <h2>TÍTULO 2</h2>
+                <h3>SUBTITULO 1</h3>
+                <p>Parágrafo</p>
+            </div>
+        </section>
+
+        <section id="containerIcones">
+            <h1 id="h1Icones">Ícones</h1>
+            <div id="iconesGrid">
+                <div class="icon">
+                    <span>Carrinho</span>
+                    <i class="material-symbols-outlined">shopping_cart</i>
+                </div>
+                <div class="icon">
+                    <span>Remover Carrinho</span>
+                    <i class="material-symbols-outlined">remove_shopping_cart</i>
+                </div>
+                <div class="icon">
+                    <span>Localização</span>
+                    <i class="material-symbols-outlined">location_on</i>
+                </div>
+                <div class="icon">
+                    <span>Voltar</span>
+                    <i class="material-symbols-outlined">keyboard_arrow_left</i>
+                </div>
+                <div class="icon">
+                    <span>Home</span>
+                    <i class="material-symbols-outlined">home</i>
+                </div>
+                <div class="icon">
+                    <span>Chave</span>
+                    <i class="material-symbols-outlined">key</i>
+                </div>
+                <div class="icon">
+                    <span>Corfirmar</span>
+                    <i class="material-symbols-outlined">check</i>
+                </div>
+                <div class="icon">
+                    <span>Lado</span>
+                    <i class="material-symbols-outlined">keyboard_arrow_right</i>
+                </div>
+                <div class="icon">
+                    <span>Pessoa</span>
+                    <i class="material-symbols-outlined">person</i>
+                </div>
+                <div class="icon">
+                    <span>Estrela</span>
+                    <i class="material-symbols-outlined">star</i>
+                </div>
+                <div class="icon">
+                    <span>Lupa</span>
+                    <i class="material-symbols-outlined">search</i>
+                </div>
+                <div class="icon">
+                    <span>Pata</span>
+                    <i class="material-symbols-outlined">pets</i>
+                </div>
+                <div class="icon">
+                    <span>Mais</span>
+                    <i class="material-symbols-outlined">add</i>
+                </div>
+                <div class="icon">
+                    <span>Menos</span>
+                    <i class="material-symbols-outlined">remove</i>
+                </div>
+                <div class="icon">
+                    <span>Email</span>
+                    <i class="material-symbols-outlined">mail</i>
+                </div>
+                <div class="icon">
+                    <span>Telefone</span>
+                    <i class="material-symbols-outlined">phone_in_talk</i>
+                </div>
+                <div class="icon">
+                    <span>Grupo</span>
+                    <i class="material-symbols-outlined">diversity_1</i>
+                </div>
+                <div class="icon">
+                    <span>Casa</span>
+                    <i class="material-symbols-outlined">gite</i>
+                </div>
+            </div>
+        </section>
     </section>
     <script src="script.js"></script>
 </body>
