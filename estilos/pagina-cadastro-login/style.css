@@ -276,3 +276,15 @@ input {
     cursor: pointer;
     transform: scale(1.1);
 }
+
+#iconLoginVisibility {
+    position: absolute;
+    top: 54%;
+    left: 87%;
+    font-weight: 500;
+}
+
+#iconLoginVisibility:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

@@ -1,5 +1,7 @@
 import { Error } from "../utils/erros.js"
 
+
+
 let cont = 1
 const botaoTrocarlado = document.querySelectorAll(".btnTroca")
 const botaoFotoPerfil = document.getElementById("containerFotoPerfil")
@@ -7,9 +9,6 @@ const botaoFotoPerfil = document.getElementById("containerFotoPerfil")
 const inptUserNameCadastro = document.getElementById("nomeCadastro")
 const inptPassWordCadastro = document.getElementById("senhaNovaCadastro")
 const inptConfirmCadastro = document.getElementById("confirmarSenhaCadastro")
-
-const inptUserNameLogin = document.getElementById("nomeLogin")
-const inptPassWordLogin = document.getElementById("senhaLogin")
 
 let divFile = document.getElementById("fileFotoPerfil")
 let urlFotoPerfil
@@ -40,6 +39,23 @@ inptConfirmCadastro.addEventListener("keypress", function(){
     containerErro.innerHTML = ""
 })
 
+const inptUserNameLogin = document.getElementById("nomeLogin")
+const inptPassWordLogin = document.getElementById("senhaLogin")
+
+inptUserNameLogin.addEventListener("keypress",function(){
+    const containerErro = document.getElementById("erroLoginConfirm")
+    containerErro.innerHTML = ""
+
+    let icon = document.getElementById("iconLoginVisibility")
+    icon.style.top = "54%"
+})
+
+inptPassWordLogin.addEventListener("keypress",function(){
+    const containerErro = document.getElementById("erroLoginPassWord")
+    containerErro.innerHTML = ""
+
+})
+
 ;[...botaoTrocarlado].forEach( botao => {
 
     botao.addEventListener("click", () => {
@@ -49,6 +65,7 @@ inptConfirmCadastro.addEventListener("keypress", function(){
     
         const telaLogin = document.getElementById("formLogin")
         const telaCadastro = document.getElementById("formCadastro")
+        const iconesVisibility = document.querySelectorAll(".visibility")
     
         if (cont == 1) {
             containerForm.style.marginLeft = "49.8%"
@@ -56,6 +73,10 @@ inptConfirmCadastro.addEventListener("keypress", function(){
             telaCadastro.style.display = "none"
             telaLogin.style.display = "flex"
             botaoTrocarlado[0].setAttribute('disabled','disabled')
+
+            iconesVisibility[2].style.display = "none"
+            setTimeout(function(){iconesVisibility[2].style.display = "inline-block"}, 380)
+
             setTimeout(function(){botaoTrocarlado[0].removeAttribute('disabled')},1000)
             
         } else {
@@ -65,6 +86,15 @@ inptConfirmCadastro.addEventListener("keypress", function(){
             telaCadastro.style.display = "flex"
     
             botaoTrocarlado[1].setAttribute('disabled','disabled')
+
+            iconesVisibility[0].style.display = "none"
+            iconesVisibility[1].style.display = "none"
+
+            setTimeout(function(){
+                iconesVisibility[0].style.display = "inline-block"
+                iconesVisibility[1].style.display = "inline-block"
+            }, 380)
+
             setTimeout(function(){botaoTrocarlado[1].removeAttribute('disabled')},1000)
         }
     
@@ -154,7 +184,7 @@ function detecNumbersAndCaracters(password) {
     let contCaracters = 0
 
     for (let c = 0 ; c < password.length ; c++) {
-        console.log(Number(password[c]))
+    
         if (Number(password[c])) {
 
             contNumbers++
@@ -176,22 +206,22 @@ function saveUser(userName, passWord, firstUser) {
     if (firstUser) {
 
         if (urlFotoPerfil != undefined) {
-            const jsonUsers = JSON.stringify([{nome: userName, senha: passWord, img: urlFotoPerfil}])
+            const jsonUsers = JSON.stringify([{nome: userName, senha: passWord, carrinho: [], online: false, img: urlFotoPerfil}])
             localStorage.setItem("user", jsonUsers)
         } else {
-            const jsonUsers = JSON.stringify([{nome: userName, senha: passWord}])
+            const jsonUsers = JSON.stringify([{nome: userName, senha: passWord, carrinho: [], online: false}])
             localStorage.setItem("user", jsonUsers)
         }
 
     } else {
         if (urlFotoPerfil != undefined) {
-            users.push({nome: userName, senha: passWord, img: urlFotoPerfil})
+            users.push({nome: userName, senha: passWord, carrinho: [], online: false, img: urlFotoPerfil})
             const jsonUsers = JSON.stringify(users)
             localStorage.setItem("user", jsonUsers)
 
         } else {
 
-            users.push({nome: userName, senha: passWord})
+            users.push({nome: userName, senha: passWord, carrinho: [], online: false})
             const jsonUsers = JSON.stringify(users)
             localStorage.setItem("user", jsonUsers)
 
@@ -216,6 +246,9 @@ const iconsVisibility = document.querySelectorAll(".visibility")
                 } else if(icone.id == "iconVisibilityConfirm") {
 
                     inptConfirmCadastro.type = "password"
+
+                } else if (icone.id == "iconLoginVisibility"){
+                    inptPassWordLogin.type = "password"
                 }
 
                 break
@@ -230,9 +263,82 @@ const iconsVisibility = document.querySelectorAll(".visibility")
                 } else if(icone.id == "iconVisibilityConfirm") {
                     
                     inptConfirmCadastro.type = "text"
+
+                } else if (icone.id == "iconLoginVisibility"){
+
+                    inptPassWordLogin.type = "text"
+
                 }
 
                 break
         }
     })
 })
+
+
+const botaoLogar = document.getElementById("btnLogar")
+
+botaoLogar.addEventListener("click", function(){
+    if (inptUserNameLogin.value === "") {
+
+        Error("#userName-vazio#")  
+
+    } else if (inptPassWordLogin.value === "") {
+        
+        Error("#passWord-vazio#")  
+
+    } else if(detecNumbersAndCaracters(inptPassWordLogin.value)) {
+
+        Error("#senha-invalida#")  
+
+    } else if (validaLogin(inptUserNameLogin.value)) {
+
+        Error("#usuario-inexistente#")
+
+    } else {
+
+        login(inptUserNameLogin.value, inptPassWordLogin.value)
+
+    }
+})
+
+function validaLogin(userName) {
+    
+    let users = JSON.parse(localStorage.getItem('user'))
+
+    if (!users) {return true}
+   
+    for (let obj of users) {
+        if (obj.nome === userName) {
+            return false
+        } 
+    }
+
+}
+
+function login(userName, passWord) {
+    
+    let users = JSON.parse(localStorage.getItem('user'))
+    
+    let checkedPassWord = false
+   
+    for (let obj of users) {
+    
+        if (obj.senha === passWord) {
+            users.online = true
+            checkedPassWord = true
+
+            let usersJson = JSON.stringify(users)
+            localStorage.setItem("user", usersJson)
+            window.location.href = "../../index.html"
+        }  
+        
+    }
+
+    if (!checkedPassWord) {
+        
+        Error ("#senha-incorreta#")
+
+    }
+
+}
