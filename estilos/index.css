@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'GooperSemiBold';
+    src: url(../fonts/Gooper-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'GooperBold';
+    src: url(../fonts/Gooper-Bold.ttf);
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: #645CBB;
+    --secondColor: #a084dc;
+    --thirdColor: #bface2;
+
+    --shadowColor1: #000000;
+    --shadowColor2: #2E3233;
+    --shadowColor3: #40424266;
+}
