@@ -1,13 +1,12 @@
 body {
     display: flex;
     flex-direction: column;   
-    background-color: var(--secondColor);
-    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-color: white;
 }
 
 header {
     display: flex;
-    height: 180px;
+    height: 150px;
     background-color: var(--primaryColor);
     flex-wrap: wrap;
     justify-content: space-between;
@@ -16,8 +15,8 @@ header {
 }
 
 header > img {
-    width: 150px;
-    height: 150px;
+    height: 115px;
+    margin-left: 20px;
 }
 
 header #containerBarraDePesquisa {
@@ -68,6 +67,7 @@ header #containerBarraDePesquisa {
     align-items: center;
     margin-right: 20px;
     font-weight: bold;
+    color: white;
 }
 
 #containerIcones span:hover {
@@ -101,14 +101,14 @@ nav span:hover {
     width: 90%;
     max-width: 1400px;
     height: 90vh;
-    background-color: white;
     margin-top: 20px;
     border-radius: 40px;
     margin-bottom: 20px;
-    box-shadow: 1px 1px 5px var(--shadowColor3);
     padding: 30px;
 
     text-align: center;
+    display: grid;
+    grid-template-columns: ;
 }
 
 #containerProdutos h1 {
@@ -126,50 +126,75 @@ nav span:hover {
     align-items: center;
 }
 
-#produto {
+/*produto*/
+
+.produto {
     width: 300px;
     height: 450px;
     background-color: var(--thirdColor);
+    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-size: 270px;
     border-radius: 20px;
     padding: 10px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0px 0px 18px rgba(97, 94, 94, 0.61);
 }
 
-#produto > img {
+.produto > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 97%;
+    background-color: var(--thirdColor);
+}
+
+.produto > div > img {
     width: 90%;
     height: 50%;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-#produto > div {
+.produto > div > div {
     display: flex;
     flex-direction: column;
+    height: 190px;
+    width: 90%;
+    justify-content: space-evenly; 
 }
 
-#produto #titleProd {
+.produto .titleProd {
     min-width: 160px;
     text-align: left;
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-family: "Nunito", Arial, Helvetica, sans-serif;
+    margin-bottom: 23px;
 }
 
-#produto #precoProd {
+.produto .precoProd {
     font-size: 1.3em;
     margin-bottom: 20px;
     font-family: "Nunito", Arial, Helvetica, sans-serif;
+    text-align: left;
 }
 
-#containerBotoes {
+.containerBotoes {
    display: flex;
-   justify-content: space-around; 
+   justify-content: space-between; 
    width: 100%;
+   
 }
 
-button#btnComprar {
+.descricao {
+    width: 100%;
+}
+
+button.btnComprar {
     width: 60%;
     height: 40px;
     border: 0;
@@ -177,7 +202,7 @@ button#btnComprar {
     font-size: 1.3em;
 }
 
-button#btnCarrinho {
+button.btnCarrinho {
     width: 25%;
     border: 0;
     border-radius: 5px;
