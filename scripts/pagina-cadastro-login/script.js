@@ -70,30 +70,33 @@ inptPassWordLogin.addEventListener("keypress",function(){
         if (cont == 1) {
             containerForm.style.marginLeft = "49.8%"
             
-            telaCadastro.style.display = "none"
-            telaLogin.style.display = "flex"
+            telaCadastro.style.display = "flex" 
+            telaLogin.style.display = "none"
             botaoTrocarlado[0].setAttribute('disabled','disabled')
 
-            iconesVisibility[2].style.display = "none"
+            
+
+            iconesVisibility[0].style.display = "none"  //teste
+            iconesVisibility[1].style.display = "none"  //teste
             setTimeout(function(){iconesVisibility[2].style.display = "inline-block"}, 380)
+
+            setTimeout(function(){
+                iconesVisibility[0].style.display = "inline-block"
+                iconesVisibility[1].style.display = "inline-block"
+            }, 380)
 
             setTimeout(function(){botaoTrocarlado[0].removeAttribute('disabled')},1000)
             
         } else {
             containerForm.style.marginRight = "49.8%"
     
-            telaLogin.style.display = "none"
-            telaCadastro.style.display = "flex"
+            telaLogin.style.display = "flex" 
+            telaCadastro.style.display = "none"
     
             botaoTrocarlado[1].setAttribute('disabled','disabled')
 
-            iconesVisibility[0].style.display = "none"
-            iconesVisibility[1].style.display = "none"
-
-            setTimeout(function(){
-                iconesVisibility[0].style.display = "inline-block"
-                iconesVisibility[1].style.display = "inline-block"
-            }, 380)
+            iconesVisibility[2].style.display = "none" //teste 
+            setTimeout(function(){iconesVisibility[2].style.display = "inline-block"}, 380)
 
             setTimeout(function(){botaoTrocarlado[1].removeAttribute('disabled')},1000)
         }

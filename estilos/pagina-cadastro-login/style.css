@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url(../../imagens/pexels-pixabay-39317.jpg);
+    background-size: cover;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
 h2 {
     font-size: 1.1em;
     font-family: 'GooperSemiBold';
@@ -16,6 +29,10 @@ p {
     font-family: 'Nunito' ,Arial, Helvetica, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 #container {
     width: 1075px;
     height: 400px;
@@ -24,17 +41,12 @@ p {
     align-items: center;
     border-radius: 5px;
     justify-content: baseline;
-    color: slategrey;
+    color: white;
 
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-}
-
-body {
-    background-image: url(../../imagens/banner-sem-costura-azul-com-pati.jpg);
-    height: 97vh;
 }
 
 #containerForm {
@@ -67,7 +79,7 @@ body {
 }
 
 #formCadastro {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -157,12 +169,12 @@ button:hover {
     cursor: pointer;
 }
 
-#containerCadastro {
+#containerLogin {
     display: block;
     margin-right: 85px;
 
     position: absolute;
-    left: 11%;
+    left: 6%;
 }
 
 .btnTroca {
@@ -170,8 +182,8 @@ button:hover {
     background-color: transparent;
     height: 45px;
     border-radius: 20px;
-    border: 2px solid slategrey;
-    color: slategrey;
+    border: 2px solid white;
+    color: white;
 }
 
 .btnTroca:hover {
@@ -181,14 +193,14 @@ button:hover {
     transition: background-color 0.5s;
 }
 
-#containerLogin {
+#containerCadastro {
     margin-left: 50px;
     position: absolute;
     left: 51%;
 }
 
 #formLogin {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -226,20 +238,17 @@ input {
     font-weight: normal;
     font-size: 1em;
     
-    position: absolute;
     display: flex;
     width: 50px;
     height: 50px;
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
 
-    top: 92%;
-    left: 10px;
-
-    color: white;
+    color: black;
     justify-content: center;
     align-items: center;
 
+    margin: 0 0 10px 10px;
 }
 
 #btnGoHome:hover {
@@ -256,7 +265,7 @@ input {
 #iconVisibilityPassWord {
     position: absolute;
     top: 38.8%;
-    left: 40%;
+    left: 87%;
     font-weight: 500;
 }
 
@@ -268,7 +277,7 @@ input {
 #iconVisibilityConfirm {
     position: absolute;
     top: 55.5%;
-    left: 40%;
+    left: 87%;
     font-weight: 500;
 }
 
@@ -280,7 +289,7 @@ input {
 #iconLoginVisibility {
     position: absolute;
     top: 54%;
-    left: 87%;
+    left: 40%;
     font-weight: 500;
 }
 
