@@ -108,15 +108,19 @@ nav span:hover {
 
     text-align: center;
     display: grid;
-    grid-template-columns: ;
+
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+   
+    
 }
 
-#containerProdutos h1 {
+h1#h1Produtos {
     font-size: 5em;
     font-family: "GooperBold";
     font-weight: bold;
     color: var(--primaryColor);
-    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .centralizador {
@@ -140,7 +144,7 @@ nav span:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 0px 18px rgba(97, 94, 94, 0.61);
+    box-shadow: 0px 0px 18px rgba(97, 94, 94, 0.519);
 }
 
 .produto > div {
