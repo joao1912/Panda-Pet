@@ -105,13 +105,12 @@ nav span:hover {
     border-radius: 40px;
     margin-bottom: 20px;
     padding: 30px;
-
     text-align: center;
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 40px;
-   
     
 }
 
