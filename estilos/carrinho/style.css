@@ -1,2 +1,12 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-color: #bface2;
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
 
 
