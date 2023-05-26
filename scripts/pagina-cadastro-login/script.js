@@ -167,19 +167,23 @@ botaoCadastrar.addEventListener('click',function(){
     const confirmPassWord = inptConfirmCadastro.value
     
     if (userName == "") {
+        inptUserNameCadastro.focus()
         Error("#userName-vazio#")
        
     } else if (passWord == "") {
+        inptPassWordCadastro.focus()
         Error("#passWord-vazio#")
 
     } else if( detecNumbersAndCaracters(passWord) ) {
-
+        inptPassWordCadastro.focus()
         Error("#senha-invalida#")
 
     } else if (passWord != confirmPassWord) {
+        inptConfirmCadastro.focus()
         Error("#senhas-diferentes#")
 
     } else if (userName == "Admin") {
+        inptUserNameCadastro.focus()
         Error("#Nome-nao-disponivel#")
 
     } else  {
@@ -189,6 +193,7 @@ botaoCadastrar.addEventListener('click',function(){
         })
         
         if (repeatUser != undefined) {
+            inptUserNameCadastro.focus()
             Error("#Nome-nao-disponivel#")
 
         } else {
@@ -292,19 +297,19 @@ const botaoLogar = document.getElementById("btnLogar")
 
 botaoLogar.addEventListener("click", function(){
     if (inptUserNameLogin.value === "") {
-
+        inptUserNameLogin.focus()
         Error("#userName-vazio#")  
 
     } else if (inptPassWordLogin.value === "") {
-        
+        inptPassWordLogin.focus()
         Error("#passWord-vazio#")  
 
     } else if(detecNumbersAndCaracters(inptPassWordLogin.value)) {
-
+        inptPassWordLogin.focus()
         Error("#senha-invalida#")  
 
     } else if (validaUser(inptUserNameLogin.value)) {
-
+        inptUserNameLogin.focus()
         Error("#usuario-inexistente#")
 
     } else {
