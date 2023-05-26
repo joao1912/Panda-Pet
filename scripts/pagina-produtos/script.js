@@ -64,11 +64,12 @@ function setElements(indexProdutos, funcConstructor) {
     for (let c = 0; c < indexProdutos.length ; c++) {
         let index = indexProdutos[c]
         
-        let elemento = funcConstructor(produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
-
-        const containerProdutos = document.getElementById("containerProdutos")
+        if (produtos[index].estoque != 0) {
+            let elemento = funcConstructor(produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
+            const containerProdutos = document.getElementById("containerProdutos")
+            containerProdutos.appendChild(elemento)
+        }
         
-        containerProdutos.appendChild(elemento)
     }
 }
 
