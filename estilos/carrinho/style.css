@@ -3,49 +3,281 @@ html {
 }
 body {
     height: 100%;
-    background-color: #bface2;
+    background-color: white;
     display: flex;
     gap: 30px;
     padding: 40px;
 }
 
-
 #containerCarrinho {
     width: 75%;
     min-height: 300px;
-    background-color: #645CBB;
-    border-radius: 20px;
-    padding: 40px;
-
+    background-color: transparent;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 100px;
+    
 }
 
 #containerFinalizarCompra {
-    width: 20%;
-    height: 200px;
+    width: 28%;
+    height: 225px;
     background-color: #a084dc;
     border-radius: 20px;
     position: fixed;
-    left: 79%;
+    left: 69%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    box-shadow: 0px 0px 5px #40424266;
 }
 
 .produto {
     width: 90%;
     height: 250px;
+    min-height: 225px;
     background-color: #a084dc;
+    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-size: 280px;
     border-radius: 5px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 8px #40424266;
+    padding-right: 15px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .produto img {
-    width: 230px;
-    margin: 10px;
+    width: 180px;
+    height: 180px;
     border-radius: 5px;
+}
+.produto h1 {
+    font-size: 2em;
+    font-family: 'GooperBold';
+    width: 100%;
+}
+
+.descricaoProduto {
+    width: 97%;
+    height: 87%;
+    display: flex;
+    background-color: #a084dc;
+    border-radius: 20px;
+}
+
+
+.descricaoProduto > div {
+    width: 100%;
+    padding: 10px;
+}
+
+.containerQuantidade {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.containerQuantidade input {
+    width: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 0;
+    text-align: center;
+    font-size: 1.2em;
+    cursor: default;
+}
+
+.containerQuantidade input:focus {
+    border-color: #a084dc;
+    outline: #a084dc;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+   
+.containerQuantidade span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    padding-left: 1px;
+}
+
+.containerQuantidade span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+button.btnExcluir {
+    margin-top: 25px;
+    width: 180px;
+    height: 40px;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+    box-shadow: 1px 1px 5px var(--shadowColor3);
+    font-family: 'Nunito';
+}
+@keyframes pulo {
+    0% {
+        transform: rotate(1deg);
+    } 
+
+    5% {
+        transform: rotate(3deg);
+    }
+
+    10% {
+        transform: rotate(5deg);
+    }
+
+    15% {
+        transform: rotate(3deg);
+    }
+
+    30% {
+        transform: rotate(1deg);
+    }
+
+    35% {
+        transform: rotate(0deg);
+    }
+
+    40%{
+        transform: rotate(-1deg);
+    }
+
+    45% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    55% {
+        transform: rotate(-3deg);
+    }
+
+    60% {
+        transform: rotate(-1deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+
+    80%{
+        transform: rotate(1deg);
+    }
+
+    80% {
+        transform: rotate(0deg);
+    }
+    85% {
+        transform: rotate(-1deg);
+    }
+    90% {
+        transform: rotate(-2deg);
+    }
+
+    95% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
+button.btnExcluir:hover, button.btnExcluir:focus {
+    transform: scale(1.1);
+    animation: pulo forwards 0.3s ease-in-out;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+    background-color: var(--primaryColor);
+    color: var(--thirdColor);
+    border-color: var(--thirdColor);
+}
+
+.valorProduto {
+    display: flex;
+    float: right;
+    justify-content: end;
+    align-items: end;
+    font-size: 2em;
+    font-family: 'Nunito';
+}
+
+#containerFinalizarCompra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 2em;
+    font-family: 'Nunito';
+}
+
+#btnFinalizar {
+    width: 180px;
+    height: 40px;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: var(--primaryColor);
+    box-shadow: 1px 1px 5px var(--shadowColor3);
+    font-family: 'Nunito';
+    position: relative;
+    overflow: hidden;
+
+    z-index: 1;
+    cursor: pointer;
+}
+#btnFinalizar:hover, #btnFinalizar:focus {
+    color: white;
+}
+
+#btnFinalizar::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 150%;
+    height: 0%;
+
+    background-color: var(--primaryColor);
+    z-index: -1;
+
+    transition: .7s ease;
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+
+#btnFinalizar:hover::before, #btnFinalizar:focus::before {
+    height: 1000%;
 }
