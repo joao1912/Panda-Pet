@@ -1,0 +1,51 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-color: #bface2;
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+
+#containerCarrinho {
+    width: 75%;
+    min-height: 300px;
+    background-color: #645CBB;
+    border-radius: 20px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+}
+
+#containerFinalizarCompra {
+    width: 20%;
+    height: 200px;
+    background-color: #a084dc;
+    border-radius: 20px;
+    position: fixed;
+    left: 79%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.produto {
+    width: 90%;
+    height: 250px;
+    background-color: #a084dc;
+    border-radius: 5px;
+}
+
+.produto img {
+    width: 230px;
+    margin: 10px;
+    border-radius: 5px;
+}

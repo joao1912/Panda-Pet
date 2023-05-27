@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'GooperSemiBold';
+    src: url(../fonts/Gooper-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'GooperBold';
+    src: url(../fonts/Gooper-Bold.ttf);
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: #645CBB;
+    --secondColor: #a084dc;
+    --thirdColor: #bface2;
+
+    --shadowColor1: #000000;
+    --shadowColor2: #2E3233;
+    --shadowColor3: #40424266;
+}
+
+.botaoTransparente {
+    width: 200px;
+    height: 40px;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+    box-shadow: 1px 1px 5px var(--shadowColor3);
+}
+
+.botaoArrendondado {
+    width: 200px;
+    height: 40px;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1em;
+
+    background-color: white;
+}
+
+.botaoArrendondado:hover {
+    border-color: var(--primaryColor);
+    color: var(--primaryColor);
+    background-color: var(--thirdColor);
+}

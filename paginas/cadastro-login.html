@@ -5,77 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../sweetAlert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/pagina-cadastro-login/style.css">
 </head>
 <body>
     <section id="container">
-        <div id="containerCadastro">
-            <h2>Não Possui Uma Conta?</h2>
-            <p>Clique aqui para cadastrar-se e aproveitar o site!</p>
-            <button class="btnTroca">Trocar</button>
+        <div id="containerLogin">
+            <h2>Ja possui uma conta?</h2>
+            <p>Clique aqui e para logar a sua conta e aproveitar o nosso site!</p>
+            <button class="btnTroca botaoArrendondado">Trocar</button>
         </div>
         <div id="containerForm">
             <section id="formCadastro">
                 <h1>Cadastro</h1>
                 
                 <div class="sub-container-form">
-                    <label for="nomeCadastro">Icon</label>
+                    <label for="nomeCadastro"><i class="material-symbols-outlined">person</i></label>
                     <input type="text" name="" id="nomeCadastro" placeholder="Username">
                 </div>
+
+                <div id="erroCadastroUserName" class="erroContainer"></div>
                
                 <div class="sub-container-form">
-                    <label for="senhaNovaCadastro">Icon</label>
+                    <label for="senhaNovaCadastro"><i class="material-symbols-outlined">key</i></label>
                     <input type="password" id="senhaNovaCadastro" placeholder="Senha">
-                </div>
-               
-                <div class="sub-container-form">
-                    <label for="confirmarSenhaCadastro">Icon</label>
-                    <input type="password"  id="confirmarSenhaCadastro" placeholder="Confirmar Senha">
+                    <span><i class="material-symbols-outlined visibility" id="iconVisibilityPassWord">visibility_off</i></span>
                 </div>
 
+                <div id="erroCadastroPassWord" class="erroContainer"></div>
+               
+                <div class="sub-container-form">
+                    <label for="confirmarSenhaCadastro"><i class="material-symbols-outlined">key</i></label>
+                    <input type="password"  id="confirmarSenhaCadastro" placeholder="Confirmar Senha">
+                    <span><i class="material-symbols-outlined visibility" id="iconVisibilityConfirm">visibility_off</i></span>
+                </div>
+
+                <div id="erroCadastroConfirm" class="erroContainer"></div>
+
                 <div id="containerFotoBotao">
-                    <button id="btnCadastrar">Cadastrar</button>
+                    <button id="btnCadastrar" class="botaoTransparente">Cadastrar</button>
                     <div id="containerFotoPerfil">
                         <img id="fotoPerfil" src="../imagens/perfil-default.jpg" alt="Foto De Perfil">
                         <input type="file" id="fileFotoPerfil" >
                     </div>
                 </div>
-                
-
             </section>
             <section id="formLogin">
                 <h1>logar</h1>
                 
                 <div class="sub-container-form">
-                    <label for="nomeLogin">Icon</label>
+                    <label for="nomeLogin"><i class="material-symbols-outlined">person</i></label>
                     <input type="text" name="" id="nomeLogin" placeholder="Username">
                 </div>
-
+                <div id="erroLoginConfirm" class="erroContainer"></div>
                 <div class="sub-container-form">
-                    <label for="senhaLogin">Icon</label>
+                    <label for="senhaLogin"><i class="material-symbols-outlined">key</i></label>
                     <input type="password" id="senhaLogin" placeholder="Senha">
+                    <span><i class="material-symbols-outlined visibility" id="iconLoginVisibility">visibility_off</i></span>
                 </div>
+                <div id="erroLoginPassWord" class="erroContainer"></div>
 
-                <button id="btnLogar">Logar</button>
+                <button id="btnLogar" class="botaoTransparente">Logar</button>
 
 
             </section>
         </div>
-        <div id="containerLogin">
-            <h2>Ja possui uma conta?</h2>
-            <p>Clique aqui e para logar a sua conta e aproveitar o nosso site!</p>
-            <button class="btnTroca">Trocar</button>
+        <div id="containerCadastro">
+            <h2>Não Possui Uma Conta?</h2>
+            <p>Clique aqui para cadastrar-se e aproveitar o site!</p>
+            <button class="btnTroca botaoArrendondado">Trocar</button>
         </div>
     </section>
 
     <a href="../index.html">
         <button id="btnGoHome" title="Voltar">
-            Icon
+            <i class="material-symbols-outlined">Home</i>
         </button>
     </a>
-  
+    <script type="module" src="../scripts/utils/erros.js"></script>
     <script src="../sweetAlert2/sweetalert2.all.min.js"></script>
-    <script src="../scripts/pagina-cadastro-login/script.js"></script>
+    <script type="module" src="../scripts/pagina-cadastro-login/script.js"></script>
 </body>
 </html>

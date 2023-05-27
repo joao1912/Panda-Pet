@@ -1,0 +1,212 @@
+body {
+    display: flex;
+    flex-direction: column;   
+    background-color: white;
+}
+
+header {
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+header > img {
+    height: 115px;
+    margin-left: 20px;
+}
+
+header #containerBarraDePesquisa {
+    height: 40px;
+    width: 50%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#barraPesquisa {
+    width: 96%;
+    height: 100%;
+    border-radius: 50px;
+    border: 0;
+    padding-left: 30px;
+    display: inline-flex;
+    font-size: 1.5em;
+}
+
+#barraPesquisa:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+#containerBarraDePesquisa span {
+    width: 35px;
+}
+
+#containerBarraDePesquisa span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#containerIcones {
+    display: flex;
+    flex-direction: row;
+}
+
+#containerIcones span {
+    background-color: var(--thirdColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#containerIcones span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: var(--primaryColor);
+}
+
+nav {
+    display: flex;
+    height: 40px;
+    background-color: var(--thirdColor);
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    padding-bottom: 2px;
+}
+
+nav span:hover {
+    color: var(--secondColor);
+    cursor: pointer;
+    transform: scale(1.1) translateX(3px) translateY(-2px);
+    transition: transform 0.3s;
+}
+
+#containerProdutos {
+    width: 90%;
+    max-width: 1400px;
+    height: 90vh;
+    margin-top: 20px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    padding: 30px;
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    
+}
+
+h1#h1Produtos {
+    font-size: 5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    margin-top: 30px;
+}
+
+.centralizador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*produto*/
+
+.produto {
+    width: 300px;
+    height: 450px;
+    background-color: var(--thirdColor);
+    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-size: 270px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 18px rgba(97, 94, 94, 0.519);
+}
+
+.produto > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 97%;
+    background-color: var(--thirdColor);
+}
+
+.produto > div > img {
+    width: 90%;
+    height: 50%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.produto > div > div {
+    display: flex;
+    flex-direction: column;
+    height: 190px;
+    width: 90%;
+    justify-content: space-evenly; 
+}
+
+.produto .titleProd {
+    min-width: 160px;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    margin-bottom: 23px;
+}
+
+.produto .precoProd {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.containerBotoes {
+   display: flex;
+   justify-content: space-between; 
+   width: 100%;
+   
+}
+
+.descricao {
+    width: 100%;
+}
+
+button.btnComprar {
+    width: 60%;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+}
+
+button.btnCarrinho {
+    width: 25%;
+    border: 0;
+    border-radius: 5px;
+}
