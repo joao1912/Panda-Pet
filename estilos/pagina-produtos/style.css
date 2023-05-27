@@ -4,6 +4,8 @@ body {
     background-color: white;
 }
 
+/* -------- ESTILO DO HEADER -------- */
+
 header {
     display: flex;
     height: 150px;
@@ -96,6 +98,8 @@ nav span:hover {
     transform: scale(1.1) translateX(3px) translateY(-2px);
     transition: transform 0.3s;
 }
+                                    
+/* ---------------------------------- */
 
 #containerProdutos {
     width: 90%;
