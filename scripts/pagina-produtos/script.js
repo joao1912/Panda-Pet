@@ -78,6 +78,7 @@ function constructorElements(nome, preco, imagem, descricaoImagem) {
     //botao do carrinho criado
 
     let btnCarrinho = document.createElement("button")
+    btnCarrinho.classList = "btnCarrinho"
     let iconeCarrinho = document.createElement("i")
     iconeCarrinho.classList = "material-symbols-outlined cart"
     let textIconeCarrinho = document.createTextNode("shopping_cart") 
