@@ -187,54 +187,70 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
 
 }
 
+let produtoAdd = false
 function botoesListener() {
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
-    const iconCart = document.querySelectorAll(".imgCart")
    
     ;[...botoesCarrinho].forEach(botao => {
         
         botao.addEventListener("click",function(event){
-            
+        let elemento = event.target
+        let produtoId = botao.value 
+        if (elemento.src === undefined) {
+            elemento = elemento.children[0].children[0]
+        }
+
         if (userID === undefined) {
             window.location.href = "../../paginas/cadastro-login.html" 
         }
+        if (userID === undefined) return
 
-        let produtoId = botao.value 
-        
-        if (botao.textContent === "shopping_cart" && userID != undefined) {
-            event.target.src = "../../imagens/icons/remove_shopping_cart.svg" //inderir essa imagem no botao correto
+        saveOrNotProduct(produtoId, elemento)
+       
+        })
+      
+    })
+}
 
-            let objProduto = {
-                cod: produtoId,
-                quant: 1
-            }
+function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
 
-            users[userID].carrinho.push(objProduto)
+    if (produtoAdd === false) {
+        produtoAdd = true
 
-            let usersJson = JSON.stringify(users)
-            localStorage.setItem("users", usersJson)
-
-        } else if (userID != undefined) {
-
-            event.target.src = "../../imagens/icons/carrinho_add.svg" //inderir essa imagem no botao correto
-            let index = 0
-            let produtoIndex
-            
-            for (let obj of users[userID].carrinho) {
-                
-                if (obj.cod === produtoId) {
-                    produtoIndex = index
-                }
-                index++
-            }
-            users[userID].carrinho.splice(produtoIndex, 1)
-
-            let usersJson = JSON.stringify(users)
-            localStorage.setItem("users", usersJson)
+        imgIcon.src = "../../imagens/icons/remove_shopping_cart.svg" 
+      
+        let objProduto = {
+            cod: produtoId,
+            quant: 1
         }
 
-        })
-    })
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.push(objProduto)
+
+        let usersJson = JSON.stringify(users)
+        localStorage.setItem("users", usersJson)
+
+    } else {
+
+        produtoAdd = false
+        imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
+        
+        let index = 0
+        let produtoIndex 
+        
+        for (let obj of users[userID].carrinho) { 
+            
+            if (obj.cod === produtoId) {
+                produtoIndex = index
+            }
+            index++
+        }
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.splice(produtoIndex, 1)
+
+        let usersJson = JSON.stringify(users)
+        localStorage.setItem("users", usersJson)
+    }
 }
 
     

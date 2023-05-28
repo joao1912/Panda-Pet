@@ -23,19 +23,15 @@ inptUserNameCadastro.addEventListener("keypress", function(){
     containerErro.innerHTML = ""
 
     const icon = document.getElementById("iconVisibilityPassWord")
-    const icon2 = document.getElementById("iconVisibilityConfirm")
-
+    
     icon.style.top = "38.8%"
-    icon2.style.top = "55.5%"
+   
 
 })
 
 inptPassWordCadastro.addEventListener("keypress", function(){
     const containerErro = document.getElementById("erroCadastroPassWord")
     containerErro.innerHTML = ""
-
-    let icon = document.getElementById("iconVisibilityConfirm")
-    icon.style.top = "55.5%"
     
 })
 

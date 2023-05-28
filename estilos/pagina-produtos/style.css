@@ -210,6 +210,7 @@ button.btnComprar {
     border: 0;
     border-radius: 10px;
     font-size: 1.3em;
+    cursor: pointer;
 }
 
 button.btnCarrinho {
@@ -217,6 +218,7 @@ button.btnCarrinho {
     border: 0;
     border-radius: 5px;
     padding-top: 5px;
+    cursor: pointer;
 }
 
 button.btnCarrinho img {
