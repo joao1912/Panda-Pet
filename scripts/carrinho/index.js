@@ -1,259 +1,15 @@
-//Container do carrinho
-let containerCarrinho = document.getElementById("container-carrinho")
+let users = JSON.parse(localStorage.getItem("users")) 
+//[{nome: userName, senha: passWord, carrinho: [ cod: , quant: ], online: false, img: urlFotoPerfil}]
+let userID
 
-
-//Lista dos produtos em um array de objetos
-//P. S: Não me julguem, sou horrível para nomes.
-
-const listaProdutos = [
-    //Categoria: Alimentação
-    {
-        id: 1,
-        nome: "Royal Canin Maxi Adult",
-        descricao: "Ração balanceada para cães adultos de raças grandes, fornecendo os nutrientes essenciais para sua saúde e bem-estar.",
-        imagem: "racao1.jpg",
-        preco: 49.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 2,
-        nome: "Ração Natural para Gatos",
-        descricao: "Ração natural com ingredientes orgânicos para gatos.",
-        imagem: "racao2.jpg",
-        preco: 29.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 3,
-        nome: "Petisco Dental para Cães",
-        descricao: "Petisco saboroso que auxilia na saúde bucal dos cães.",
-        imagem: "petisco1.jpg",
-        preco: 12.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 4,
-        nome: "Purina Pro Plan Focus",
-        descricao: "Ração com fórmula especializada para fornecer nutrição de qualidade, ajudando a manter a saúde e o peso ideal dos cães adultos.",
-        imagem: "racao3.jpg",
-        preco: 59.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 5,
-        nome: "Petisco Orgânico para Gatos",
-        descricao: "Petisco orgânico e livre de conservantes para gatos exigentes.",
-        imagem: "petisco2.jpg",
-        preco: 14.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 6,
-        nome: "Royal Canin Maxi Junior",
-        descricao: "Ração especial para o crescimento saudável de filhotes de cães.",
-        imagem: "racao4.jpg",
-        preco: 39.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 7,
-        nome: "Petisco Vegetariano para Cães",
-        descricao: "Petisco vegetariano e saudável para cães.",
-        imagem: "petisco3.jpg",
-        preco: 8.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 8,
-        nome: "Ração para Gatos Sênior",
-        descricao: "Ração formulada para gatos idosos com necessidades especiais.",
-        imagem: "racao5.jpg",
-        preco: 34.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-    {
-        id: 9,
-        nome: "Golden Formula Frango e Arroz",
-        descricao: "Ração com ingredientes selecionados, como frango e arroz, oferecendo uma nutrição completa e equilibrada para cães adultos.",
-        imagem: "petisco4.jpg",
-        preco: 11.99,
-        quantidade: 0,
-        categoria: "alimentacao"
-    },
-
-    // Categoria: Brinquedos
-    {
-        id: 10,
-        nome: "Bola para Cães",
-        descricao: "Bola resistente e durável para cães se divertirem.",
-        imagem: "bola1.jpg",
-        preco: 14.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 11,
-        nome: "Corda para Cães",
-        descricao: "Corda resistente para cães brincarem e exercitarem a mandíbula.",
-        imagem: "corda1.jpg",
-        preco: 9.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 12,
-        nome: "Arranhador para Gatos",
-        descricao: "Arranhador com poste e plataforma para gatos afiarem as unhas.",
-        imagem: "arranhador1.jpg",
-        preco: 29.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 13,
-        nome: "Bola de Pelúcia para Gatos",
-        descricao: "Bola de pelúcia macia e colorida para gatos se divertirem.",
-        imagem: "bola2.jpg",
-        preco: 6.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 14,
-        nome: "Osso de Borracha para Cães",
-        descricao: "Osso de borracha resistente para cães brincarem e aliviarem o estresse.",
-        imagem: "osso1.jpg",
-        preco: 12.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 15,
-        nome: "Labirinto Interativo para Gatos",
-        descricao: "Labirinto com brinquedos e obstáculos para gatos se entreterem.",
-        imagem: "labirinto1.jpg",
-        preco: 39.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 16,
-        nome: "Bola com Guizo para Gatos",
-        descricao: "Bola com guizo para gatos perseguirem e se divertirem.",
-        imagem: "bola3.jpg",
-        preco: 4.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 17,
-        nome: "Pelúcia com Apito para Cães",
-        descricao: "Pelúcia fofa com apito para cães se divertirem e estimularem o instinto de caça.",
-        imagem: "pelucia1.jpg",
-        preco: 8.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    {
-        id: 18,
-        nome: "Bolinha de Tênis para Cães",
-        descricao: "Bolinha de tênis durável para cães brincarem.",
-        imagem: "bolinha1.jpg",
-        preco: 3.99,
-        quantidade: 0,
-        categoria: "brinquedos"
-    },
-    // Categoria acessórios
-    {
-        id: 19,
-        nome: "Coleira ajustável de nylon",
-        descricao: "Coleira durável e ajustável para passeios com cachorros.",
-        imagem: "coleira1.jpg",
-        preco: 19.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 20,
-        nome: "Guia retrátil",
-        descricao: "Guia de corda retrátil para oferecer mais liberdade de movimento durante os passeios.",
-        imagem: "guia1.jpg",
-        preco: 29.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 21,
-        nome: "Caixa de areia",
-        descricao: "Caixa de areia higiênica para gatos fazerem suas necessidades de forma adequada.",
-        imagem: "caixa_areia1.jpg",
-        preco: 24.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 22,
-        nome: "Cama confortável",
-        descricao: "Cama macia e aconchegante para proporcionar um lugar de descanso ao cachorro.",
-        imagem: "cama1.jpg",
-        preco: 39.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 23,
-        nome: "Comedouro automático",
-        descricao: "Comedouro programável para fornecer alimento automaticamente em horários determinados.",
-        imagem: "comedouro1.jpg",
-        preco: 49.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 24,
-        nome: "Cama aquecida",
-        descricao: "Cama macia e aquecida para proporcionar conforto extra ao gato durante o sono.",
-        imagem: "cama2.jpg",
-        preco: 62.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 25,
-        nome: "Bebedouro automático",
-        descricao: "Bebedouro com sistema de fluxo constante de água fresca para manter seu pet hidratado.",
-        imagem: "bebedouro1.jpg",
-        preco: 45.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 26,
-        nome: "Escova de pelos",
-        descricao: "Escova de pelos com cerdas macias para cuidar da pelagem do seu pet.",
-        imagem: "escova1.jpg",
-        preco: 9.99,
-        quantidade: 0,
-        categoria: "acessorios"
-    },
-    {
-        id: 27,
-        nome: "Transportadora para Gatos",
-        descricao: "Transportadora segura e confortável para transportar seu gato com facilidade.",
-        imagem: "transportadora1.jpg",
-        preco: 49.99,
-        quantidade: 0,
-        categoria: "acessorios"
+for (let obj of users) {
+    if (obj.online) {
+        userID = obj.id
+        break
     }
-]
+}
+
+import { produtos } from "../utils/produtos.js"
 
 
 //Limpar o carrinho para testes
@@ -389,4 +145,106 @@ function pegaCarrinho() {
 function limpaCarrinho() {
     localStorage.removeItem("carrinho")
     //talvez tenha que exibir o carrinho vazio depois
+}
+
+
+
+
+
+function funcConstructorElements(cod) {
+    // div valor do produto
+
+    let divValorProduto = document.createElement("div")
+    divValorProduto.classList = "valorProduto"
+    let preco = document.createTextNode(`R$ ${(produtos[cod].preco).toFixed(2)}`)
+    divValorProduto.appendChild(preco)
+
+    // botao excluir
+
+    let btnExcluir = document.createElement("button")
+    btnExcluir.classList = "btnExcluir"
+    let textBtnExcluir = document.createTextNode("Excluir")
+    btnExcluir.appendChild(textBtnExcluir)
+
+    // span icon add
+
+    let iconAdd = document.createElement("span")
+    iconAdd.classList = "material-symbols-outlined"
+    let textIcon = document.createTextNode("add")
+    iconAdd.appendChild(textIcon)
+
+    // input de quantidade(Read Only)
+
+    let inptQuant = document.createElement("input")
+    inptQuant.type = "number"
+    inptQuant.classList = "inptQuantProduto"
+    inptQuant.value = "1"
+    inptQuant.setAttribute("readonly")
+
+    // span icon remove
+
+    let iconRemove = document.createElement("span")
+    iconRemove.classList = "material-symbols-outlined"
+    let textIconRemove = document.createTextNode("remove")
+    iconRemove.appendChild(textIconRemove)
+
+    // div container quantidade
+
+    let divContainerQuantidade = document.createElement("div")
+    divContainerQuantidade.classList = "containerQuantidade"
+    divContainerQuantidade.appendChild(iconRemove)
+    divContainerQuantidade.appendChild(inptQuant)
+    divContainerQuantidade.appendChild(iconAdd)
+
+    //h1 nome do produto
+
+    let h1Produto = document.createElement("h1")
+    h1Produto.classList = "nomeProduto"
+    let textNomeProduto = document.createTextNode(`${produtos[cod].nome}`)
+    h1Produto.appendChild(textNomeProduto)
+
+    //div container da quantidade, preço, nome, btnExcluir
+
+    let divInterna = document.createElement("div")
+    divInterna.appendChild(h1Produto)
+    divInterna.appendChild(divContainerQuantidade)
+    divInterna.appendChild(btnExcluir)
+
+    //imagem do produto
+
+    let imgProduto = document.createElement("img")
+    imgProduto.src = `../imagens/${produtos[cod].imagem}`  
+    imgProduto.alt = `${produtos[cod].descricaoImagem}`
+
+    //div descrição do produto
+
+    let divDescricaoProduto = document.createElement("div")
+    divDescricaoProduto.classList = "descricaoProduto"
+    divDescricaoProduto.appendChild(imgProduto)
+    divDescricaoProduto.appendChild(divInterna)
+    divDescricaoProduto.appendChild(divValorProduto)
+
+    //div container produto
+
+    let divProduto = document.createElement("div")
+    divProduto.classList = "produto"
+    divProduto.appendChild(divDescricaoProduto)
+    
+    return divProduto
+}
+
+function calcFinalizarCompra(quantidade) {
+    let carrinho = users[userID].carrinho 
+    let quantideDeProdutos = 0
+    let valorTotal = 0
+    const containerTotalValor = document.getElementById("totalValor")
+    const containerQuantProdutos = document.getElementById("quantProdutos")
+
+    for (let obj of carrinho) {
+        quantideDeProdutos++
+        valorTotal += produtos[obj.cod].preco
+    }
+
+    containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
+    containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
 }
