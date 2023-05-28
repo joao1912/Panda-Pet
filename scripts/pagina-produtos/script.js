@@ -1,4 +1,15 @@
 import { produtos } from "../utils/produtos.js"
+let users = JSON.parse(localStorage.getItem("users"))
+let userID
+
+if (users) {
+   for (let obj of users) {
+        if (obj.online) {
+            userID = obj.id
+        }
+    } 
+}
+
 
 const nav = document.querySelector("nav")
 
@@ -65,28 +76,53 @@ function setElements(indexProdutos, funcConstructor) {
         let index = indexProdutos[c]
         
         if (produtos[index].estoque != 0) {
-            let elemento = funcConstructor(produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
+            let elemento = funcConstructor(produtos[index].codigo ,produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
             const containerProdutos = document.getElementById("containerProdutos")
             containerProdutos.appendChild(elemento)
         }
         
     }
+
+    botoesListener()
+    
 }
 
-function constructorElements(nome, preco, imagem, descricaoImagem) {
+function constructorElements(id, nome, preco, imagem, descricaoImagem) {
 
     //botao do carrinho criado
 
     let btnCarrinho = document.createElement("button")
     btnCarrinho.classList = "btnCarrinho"
+    let imgCarrinho = document.createElement("img")
+    imgCarrinho.classList = 'imgCart'
+    imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+    btnCarrinho.value = id
     let iconeCarrinho = document.createElement("i")
-    iconeCarrinho.classList = "material-symbols-outlined cart"
-    let textIconeCarrinho = document.createTextNode("shopping_cart") 
-    iconeCarrinho.appendChild(textIconeCarrinho)
+   
+    if (userID === undefined) {
+        imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+    } else {
+        let carrinho  = users[userID].carrinho
+        
+        if (carrinho.length === 0) {
+            imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+        } else {
+            for (let obj of carrinho) {
+                if (obj.cod === id) {
+                    imgCarrinho.src = "../../imagens/icons/remove_shopping_cart.svg"
+                } else {
+                    imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+                }
+            }
+        }
+    }
+    
+    // iconeCarrinho.appendChild(textIconeCarrinho)
+    iconeCarrinho.appendChild(imgCarrinho)
     btnCarrinho.appendChild(iconeCarrinho)
 
     //botao de compra
-    
+
     let btnComprar = document.createElement("button")
     btnComprar.classList = "btnComprar"
     let textComprar = document.createTextNode("Comprar")
@@ -151,6 +187,54 @@ function constructorElements(nome, preco, imagem, descricaoImagem) {
 
 }
 
+function botoesListener() {
+    const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
+    const iconCart = document.querySelectorAll(".imgCart")
+   
+    ;[...botoesCarrinho].forEach(botao => {
+        
+        botao.addEventListener("click",function(event){
+            
+        if (userID === undefined) {
+            window.location.href = "../../paginas/cadastro-login.html" 
+        }
 
+        let produtoId = botao.value 
+        
+        if (botao.textContent === "shopping_cart" && userID != undefined) {
+            event.target.src = "../../imagens/icons/remove_shopping_cart.svg" //inderir essa imagem no botao correto
 
+            let objProduto = {
+                cod: produtoId,
+                quant: 1
+            }
 
+            users[userID].carrinho.push(objProduto)
+
+            let usersJson = JSON.stringify(users)
+            localStorage.setItem("users", usersJson)
+
+        } else if (userID != undefined) {
+
+            event.target.src = "../../imagens/icons/carrinho_add.svg" //inderir essa imagem no botao correto
+            let index = 0
+            let produtoIndex
+            
+            for (let obj of users[userID].carrinho) {
+                
+                if (obj.cod === produtoId) {
+                    produtoIndex = index
+                }
+                index++
+            }
+            users[userID].carrinho.splice(produtoIndex, 1)
+
+            let usersJson = JSON.stringify(users)
+            localStorage.setItem("users", usersJson)
+        }
+
+        })
+    })
+}
+
+    

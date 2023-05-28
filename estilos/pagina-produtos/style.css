@@ -3,6 +3,9 @@ body {
     flex-direction: column;   
     background-color: white;
 }
+a {
+    text-decoration: none;
+}
 
 /* -------- ESTILO DO HEADER -------- */
 
@@ -213,4 +216,9 @@ button.btnCarrinho {
     width: 25%;
     border: 0;
     border-radius: 5px;
+    padding-top: 5px;
+}
+
+button.btnCarrinho img {
+    width: 30px;
 }
