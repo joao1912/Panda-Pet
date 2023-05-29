@@ -51,14 +51,18 @@ const nav = document.querySelector("nav")
 nav.addEventListener("click",function(event){
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
+    const containerErro404 = document.getElementById("containerErro404")
     let indexProdutos
 
     switch(event.target.id) {
         case "forHome":
+            
             window.location.href = "../../index.html"
             break
 
         case "forAcessorios":
+            containerErro404.style.display = "none"
+
             h1Produtos.textContent = "Acessórios"
             indexProdutos = getIndexCategory("acessorios")
             containerProdutos.innerHTML = ""
@@ -68,6 +72,9 @@ nav.addEventListener("click",function(event){
             break
         
         case "forAlimentacao":
+            containerErro404.style.display = "none"
+
+
             h1Produtos.textContent = "Alimentação"
             indexProdutos = getIndexCategory("alimentacao")
             containerProdutos.innerHTML = ""
@@ -77,6 +84,8 @@ nav.addEventListener("click",function(event){
             break
 
         case "forBrinquedos":
+            containerErro404.style.display = "none"
+
             h1Produtos.textContent = "Brinquedos"
             indexProdutos = getIndexCategory("brinquedos")
             containerProdutos.innerHTML = ""
@@ -86,6 +95,7 @@ nav.addEventListener("click",function(event){
             break
         
         case "forAgendamento":
+        
             //href
             break
     }
