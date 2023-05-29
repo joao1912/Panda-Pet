@@ -10,9 +10,44 @@ if (users) {
     } 
 }
 
+if (userID) {
+
+    if (users[userID].img) {
+        let urlImagem = users[userID].img
+        const fotoPerfil = document.getElementById("fotoPerfil")
+        fotoPerfil.src = urlImagem
+    }
+
+    //fazer a telinha maior com a parte da foto e a opição de deslogar
+    //se não tiver foto ta pra por a foto default como um botao para add
+
+}
+
+
+const iconeDoPerfil = document.getElementById("perfilIcon")
+iconeDoPerfil.addEventListener("click",function(){
+const tabelaPerfil = document.getElementById("containerPerfil")
+
+function redirecionar(){
+    window.location.href = "../../paginas/cadastro-login.html"
+}
+    
+    let visibility = tabelaPerfil.style.display
+
+    if (visibility === "none") {
+        tabelaPerfil.style.display = "flex"
+
+        const botaoLogar = document.getElementById("botaoLogar")
+        botaoLogar.addEventListener("click", redirecionar)
+
+    } else {
+        const botaoLogar = document.getElementById("botaoLogar")
+        botaoLogar.removeEventListener('click', redirecionar)
+        tabelaPerfil.style.display = "none"
+    }
+})
 
 const nav = document.querySelector("nav")
-
 nav.addEventListener("click",function(event){
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
