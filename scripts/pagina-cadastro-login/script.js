@@ -1,4 +1,5 @@
 import { Error } from "../utils/erros.js"
+import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
 
@@ -235,14 +236,12 @@ function saveUser(userName, passWord) {
     if (urlFotoPerfil != undefined) {
 
         users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], online: true, img: urlFotoPerfil})
-        const jsonUsers = JSON.stringify(users)
-        localStorage.setItem("users", jsonUsers)
+        saveLocalStorage(users)
 
     } else {
 
         users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], online: true})
-        const jsonUsers = JSON.stringify(users)
-        localStorage.setItem("users", jsonUsers)
+        saveLocalStorage(users)
 
     }
     
@@ -342,8 +341,7 @@ function login(passWord) {
             users[index].online = true
             checkedPassWord = true
 
-            let usersJson = JSON.stringify(users)
-            localStorage.setItem("users", usersJson)
+            saveLocalStorage(users)
             window.location.href = "../../index.html"
         } 
 

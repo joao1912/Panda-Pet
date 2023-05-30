@@ -1,4 +1,6 @@
 import { produtos } from "../utils/produtos.js"
+import { saveLocalStorage } from "../utils/saveLocalStorage.js"
+
 let users = JSON.parse(localStorage.getItem("users"))
 let userID
 
@@ -30,8 +32,7 @@ if (userID) {
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
         window.location.href = "../../index.html"
-        let userJson = JSON.stringify(users)
-        localStorage.setItem("users", userJson)
+        saveLocalStorage(users)
     })
 
 }
@@ -292,8 +293,7 @@ function saveOrNotProduct(produtoId, imgIcon) {
         users = JSON.parse(localStorage.getItem("users"))
         users[userID].carrinho.push(objProduto)
 
-        let usersJson = JSON.stringify(users)
-        localStorage.setItem("users", usersJson)
+        saveLocalStorage(users)
 
     } else {
      
@@ -312,8 +312,7 @@ function saveOrNotProduct(produtoId, imgIcon) {
         users = JSON.parse(localStorage.getItem("users"))
         users[userID].carrinho.splice(produtoIndex, 1)
 
-        let usersJson = JSON.stringify(users)
-        localStorage.setItem("users", usersJson)
+        saveLocalStorage(users)
     }
 }
 
