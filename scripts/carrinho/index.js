@@ -53,7 +53,7 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
     let index = carrinho.findIndex(produto => produto.codigo === codigoProduto)
 
     if (index == -1) {
-        console.log(`Produto com o id ${idProduto} não encontrado no carrinho.`)
+        console.log(`Produto com o id ${idProduto} não encontrado no carrinho.`) // esta variavel não existe(idProduto)
         return
     }
 
@@ -67,19 +67,22 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
         }
     }
     users[userID].carrinho = carrinho
+    //quando houver alteração no carrinho, salvar no localStorage
 }
 
 
 function exibeCarrinho() {
     let carrinho = pegaCarrinho()
 
-    containerCarrinho.innerHTML = ""
+    containerCarrinho.innerHTML = "" //esta variável não existe(containerCarrinho)
 
     carrinho.forEach((produto) => {
         if (produto == null) {
             alert("Produto nulo")
         }
-        containerCarrinho.appendChild(funcConstructorElements(produto.codigo, produto.quantidade))
+
+        let produto = funcConstructorElements(produto.codigo, produto.quantidade)
+        containerCarrinho.appendChild(produto) //esta variável não existe(containerCarrinho)
 
     })
 }
@@ -94,7 +97,7 @@ function pegaCarrinho() {
         //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
         users[userID].carrinho = []
     }
-    return users[userID].carrinho
+    return carrinho
 }
 
 
