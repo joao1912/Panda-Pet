@@ -1,4 +1,6 @@
-let users = JSON.parse(localStorage.getItem("users")) 
+import { produtos } from "../utils/produtos.js"
+
+let users = JSON.parse(localStorage.getItem("users"))
 //[{nome: userName, senha: passWord, carrinho: [ cod: , quant: ], online: false, img: urlFotoPerfil}]
 let userID
 
@@ -9,65 +11,46 @@ for (let obj of users) {
     }
 }
 
-import { produtos } from "../utils/produtos.js"
-
 
 //Limpar o carrinho para testes
 limpaCarrinho()
 
 
-//Adicionar tudo no carrinho pra testar
-listaProdutos.forEach((produto) => {
-    //adicionaProdutoAoCarrinho(produto)
-})
-adicionaProdutoAoCarrinhoUsandoId(5)
-adicionaProdutoAoCarrinhoUsandoId(6)
-adicionaProdutoAoCarrinhoUsandoId(5)
+adicionaProdutoAoCarrinhoUsandoCodigo(5)
+adicionaProdutoAoCarrinhoUsandoCodigo(6)
+adicionaProdutoAoCarrinhoUsandoCodigo(5)
+//removeProdutoDoCarrinho(5, -1, true)
+//removeProdutoDoCarrinho(6, -1, true)
 
-function adicionaProdutoAoCarrinho(objProduto) {
-    if (objProduto == null) {
-        alert("Produto inválido. [1]")
-        return
-    }
+
+function adicionaProdutoAoCarrinhoUsandoCodigo(codigo) {
     let carrinho = pegaCarrinho()
     //Verificar se o produto já existe e adicionar um amais 
-    let produtoExistente = carrinho.find(produto => produto.id === objProduto.id)
-    if (produtoExistente == undefined || produtoExistente == null) { //vamos ver se é necessario verificar se ja tem no carrinho
-        objProduto.quantidade = 1
-        carrinho.push(objProduto)
-    } else {
-        produtoExistente.quantidade++ //não é para acontecer
-    }
-
-    localStorage.setItem("carrinho", JSON.stringify(carrinho))
-}
-
-
-
-function adicionaProdutoAoCarrinhoUsandoId(idProduto) {
-    let carrinho = pegaCarrinho()
-    //Verificar se o produto já existe e adicionar um amais 
-    let produtoExistente = carrinho.find(produto => produto.id === idProduto)
+    let produtoExistente = carrinho.find(produto => produto.codigo === codigo)
     if (produtoExistente == undefined || produtoExistente == null) {
-        let produto = listaProdutos.find(produto => produto.id === idProduto)
+        let produto = produtos.find(produto => produto.codigo === codigo)
         if (produto == undefined || produto == null) {
-            console.log(`Produto com o id ${idProduto} não encontrado.`)
+            console.log(`Produto com o id ${codigo} não encontrado.`)
             return
         }
-        produto.quantidade = 1
-        carrinho.push(produto)
+        let produtoAdd = {
+            codigo: produto.codigo,
+            quantidade: 1 
+        }
+        carrinho.push(produtoAdd)
     } else {
         produtoExistente.quantidade++ //não necessario
     }
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho))
+    users[userID].carrinho = carrinho
+    localStorage.setItem("users", JSON.stringify(users))
 }
 
 
-function removeProdutoDoCarrinho(idProduto, quantidade = 1, deletaItem = false) {
+function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = false) {
     let carrinho = pegaCarrinho()
     // Obter o índice do produto no carrinho (-1 se não encontrar)
-    let index = carrinho.findIndex(produto => produto.id === idProduto)
+    let index = carrinho.findIndex(produto => produto.codigo === codigoProduto)
 
     if (index == -1) {
         console.log(`Produto com o id ${idProduto} não encontrado no carrinho.`)
@@ -79,49 +62,25 @@ function removeProdutoDoCarrinho(idProduto, quantidade = 1, deletaItem = false) 
         carrinho.splice(index, 1)
     } else {
         // Diminuir a quantidade passada pela função
-        carrinho[index].quantidade -= quantidade //não necessario
-        // Verificar se é menor que 0 para remover o índice da lista
-        if (carrinho[index].quantidade < 1) {
-            carrinho.splice(index, 1) //a quantidade minima sera 1, o produto só podera ser removido apertando o botão excluir
+        if (carrinho[index].quantidade > 1) {
+            carrinho[index].quantidade -= quantidade //não necessario
         }
     }
-    localStorage.setItem("carrinho", JSON.stringify(carrinho))
+    users[userID].carrinho = carrinho
 }
 
 
 function exibeCarrinho() {
     let carrinho = pegaCarrinho()
-    
+
     containerCarrinho.innerHTML = ""
 
     carrinho.forEach((produto) => {
         if (produto == null) {
             alert("Produto nulo")
         }
+        containerCarrinho.appendChild(funcConstructorElements(produto.codigo, produto.quantidade))
 
-        // Criar uma div para cada produto
-        let divProduto = document.createElement("div")
-        divProduto.id = "produto-" + produto.id
-
-        let nome = document.createElement("h3")
-        nome.textContent = produto.nome
-        divProduto.appendChild(nome)
-
-        let preco = document.createElement("p")
-        preco.textContent = "R$ " + produto.preco
-        divProduto.appendChild(preco)
-
-        let imagem = document.createElement("img")
-        imagem.src = produto.imagem
-        divProduto.appendChild(imagem)
-
-        let quantidade = document.createElement("p")
-        quantidade.textContent = "QTD: " + produto.quantidade
-        divProduto.appendChild(quantidade)
-
-        containerCarrinho.appendChild(divProduto)
-
-        containerCarrinho.appendChild(document.createElement("hr"))
     })
 }
 
@@ -129,21 +88,19 @@ exibeCarrinho()
 
 //Função criada para puxar o carrinho sempre que necessário
 function pegaCarrinho() {
-    //Criar o carrinho no localStorage se ele não existir
-    if (!localStorage.getItem("carrinho")) {
-        localStorage.setItem("carrinho", JSON.stringify([]))
-    }
-    let carrinho = JSON.parse(localStorage.getItem("carrinho"))
+    // Verificar se existe o carrinho no usuário atual
+    let carrinho = users[userID].carrinho
     if (carrinho == null) {
         //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
-        carrinho = []
+        users[userID].carrinho = []
     }
-    return carrinho
+    return users[userID].carrinho
 }
 
 
 function limpaCarrinho() {
-    localStorage.removeItem("carrinho")
+    users[userID].carrinho = []
+    localStorage.setItem("users", JSON.stringify(users))
     //talvez tenha que exibir o carrinho vazio depois
 }
 
@@ -151,7 +108,7 @@ function limpaCarrinho() {
 
 
 
-function funcConstructorElements(cod) {
+function funcConstructorElements(cod, quantity) {
     // div valor do produto
 
     let divValorProduto = document.createElement("div")
@@ -178,8 +135,8 @@ function funcConstructorElements(cod) {
     let inptQuant = document.createElement("input")
     inptQuant.type = "number"
     inptQuant.classList = "inptQuantProduto"
-    inptQuant.value = "1"
-    inptQuant.setAttribute("readonly")
+    inptQuant.value = quantity
+    inptQuant.setAttribute("readonly", true)
 
     // span icon remove
 
@@ -213,7 +170,7 @@ function funcConstructorElements(cod) {
     //imagem do produto
 
     let imgProduto = document.createElement("img")
-    imgProduto.src = `../imagens/${produtos[cod].imagem}`  
+    imgProduto.src = `../imagens/${produtos[cod].imagem}`
     imgProduto.alt = `${produtos[cod].descricaoImagem}`
 
     //div descrição do produto
@@ -229,12 +186,12 @@ function funcConstructorElements(cod) {
     let divProduto = document.createElement("div")
     divProduto.classList = "produto"
     divProduto.appendChild(divDescricaoProduto)
-    
+
     return divProduto
 }
 
 function calcFinalizarCompra(quantidade) {
-    let carrinho = users[userID].carrinho 
+    let carrinho = users[userID].carrinho
     let quantideDeProdutos = 0
     let valorTotal = 0
     const containerTotalValor = document.getElementById("totalValor")
