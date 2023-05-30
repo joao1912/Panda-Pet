@@ -62,6 +62,7 @@ nav.addEventListener("click",function(event){
 
         case "forAcessorios":
             containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
 
             h1Produtos.textContent = "Acessórios"
             indexProdutos = getIndexCategory("acessorios")
@@ -73,6 +74,7 @@ nav.addEventListener("click",function(event){
         
         case "forAlimentacao":
             containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
 
 
             h1Produtos.textContent = "Alimentação"
@@ -85,6 +87,7 @@ nav.addEventListener("click",function(event){
 
         case "forBrinquedos":
             containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
 
             h1Produtos.textContent = "Brinquedos"
             indexProdutos = getIndexCategory("brinquedos")
@@ -122,6 +125,7 @@ function setElements(indexProdutos, funcConstructor) {
         
         if (produtos[index].estoque != 0) {
             let elemento = funcConstructor(produtos[index].codigo ,produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
+
             const containerProdutos = document.getElementById("containerProdutos")
             containerProdutos.appendChild(elemento)
         }
@@ -239,18 +243,18 @@ function botoesListener() {
     ;[...botoesCarrinho].forEach(botao => {
         
         botao.addEventListener("click",function(event){
-        let elemento = event.target
-        let produtoId = botao.value 
-        if (elemento.src === undefined) {
-            elemento = elemento.children[0].children[0]
-        }
+            let elemento = event.target
+            let produtoId = botao.value 
+            if (elemento.src === undefined) {
+                elemento = elemento.children[0].children[0]
+            }
 
-        if (userID === undefined) {
-            window.location.href = "../../paginas/cadastro-login.html" 
-        }
-        if (userID === undefined) return
+            if (userID === undefined) {
+                window.location.href = "../../paginas/cadastro-login.html" 
+            }
+            if (userID === undefined) return
 
-        saveOrNotProduct(produtoId, elemento)
+            saveOrNotProduct(produtoId, elemento)
        
         })
       

@@ -170,7 +170,7 @@ nav span:hover {
     padding: 30px;
     text-align: center;
     
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
@@ -195,20 +195,23 @@ h1#h1Produtos {
 #containerErro404 {
     background-image: url(../../imagens/fundoErro.png);
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 15%;
 
     display: flex; /*flex*/
     justify-content: center;
-    align-items: center;
+    
     margin-top: 60px;
+    padding-bottom: 4%;
+
+    
 }
 
 #containerErro404 img {
     width: 40%;
-    margin-top: 85px;
+    margin: 93px;
 }
 
 /*produto*/
