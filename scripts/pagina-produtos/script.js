@@ -16,10 +16,23 @@ if (userID) {
         let urlImagem = users[userID].img
         const fotoPerfil = document.getElementById("fotoPerfil")
         fotoPerfil.src = urlImagem
-    }
+    } 
 
-    //fazer a telinha maior com a parte da foto e a opição de deslogar
-    //se não tiver foto ta pra por a foto default como um botao para add
+    const containerUser = document.getElementById("containerPerfil")
+    containerUser.style.height = "90px"
+    containerUser.style.width = "200px"
+    containerUser.style.marginLeft = "-5px"
+    const botaoLogar = document.getElementById("botaoLogar")
+    const containerUserLogado = document.getElementById("userLogado")
+    botaoLogar.style.display = "none"
+    containerUserLogado.style.display = "flex"
+
+    document.getElementById("botaoSair").addEventListener("click",function sair(){
+        users[userID].online = false
+        window.location.href = "../../index.html"
+        let userJson = JSON.stringify(users)
+        localStorage.setItem("users", userJson)
+    })
 
 }
 

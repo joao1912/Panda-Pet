@@ -84,8 +84,8 @@ header #containerBarraDePesquisa {
 
 #containerPerfil {
     position: absolute;
-    left: 87%;
-    top: 15%;
+    top: 115px;
+    margin-left: 26px;
     background-color: var(--secondColor);
     width: 160px;
     height: 55px;
@@ -101,9 +101,12 @@ header #containerBarraDePesquisa {
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    margin-right: 10px;
+    margin-left: -10px;
+    cursor: pointer;
 }
 
-#containerPerfil button {
+#containerPerfil button#botaoLogar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,9 +122,39 @@ header #containerBarraDePesquisa {
     border-radius: 10px;
 }
 
+#containerPerfil div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3em;
+    font-family: 'GooperSemiBold';
+    color: white;
+}
+
+
 #containerPerfil button > span {
     font-size: 1.3em;
     margin-left: 5px;
+}
+
+#botaoSair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    font-size: 1.2em;
+    font-family: "GooperSemiBold";
+    color: white;
+    background-color: transparent;
+    border: 0;
+    margin-left: 25px;
+} 
+
+#botaoSair:hover {
+    cursor: pointer;
+    color: rgb(233, 227, 227);
 }
 
 #containerPerfil::after {
