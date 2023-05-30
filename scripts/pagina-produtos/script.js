@@ -168,9 +168,10 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
         
         if (carrinho.length === 0) {
             imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+           
         } else {
             for (let obj of carrinho) {
-                if (obj.cod === id) {
+                if (obj.codigo == id) {
                     imgCarrinho.src = "../../imagens/icons/remove_shopping_cart.svg"
                 } else {
                     imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
@@ -178,7 +179,7 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
             }
         }
     }
-    
+   
     // iconeCarrinho.appendChild(textIconeCarrinho)
     iconeCarrinho.appendChild(imgCarrinho)
     btnCarrinho.appendChild(iconeCarrinho)
@@ -249,7 +250,7 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
 
 }
 
-let produtoAdd = false
+
 function botoesListener() {
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
    
@@ -276,14 +277,16 @@ function botoesListener() {
 
 function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
 
-    if (produtoAdd === false) {
-        produtoAdd = true
+    let carrinho = users[userID].carrinho
+    let searchProduto = carrinho.filter( obj => obj.codigo == produtoId)
+    
+    if (searchProduto.length === 0) {
 
         imgIcon.src = "../../imagens/icons/remove_shopping_cart.svg" 
       
         let objProduto = {
-            cod: produtoId,
-            quant: 1
+            codigo: produtoId,
+            quantidade: 1
         }
 
         users = JSON.parse(localStorage.getItem("users"))
@@ -293,8 +296,7 @@ function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
         localStorage.setItem("users", usersJson)
 
     } else {
-
-        produtoAdd = false
+     
         imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
         
         let index = 0
@@ -302,7 +304,7 @@ function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
         
         for (let obj of users[userID].carrinho) { 
             
-            if (obj.cod === produtoId) {
+            if (obj.codigo === produtoId) {
                 produtoIndex = index
             }
             index++
