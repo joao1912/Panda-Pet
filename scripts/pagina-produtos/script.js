@@ -275,7 +275,7 @@ function botoesListener() {
     })
 }
 
-function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
+function saveOrNotProduct(produtoId, imgIcon) { 
 
     let carrinho = users[userID].carrinho
     let searchProduto = carrinho.filter( obj => obj.codigo == produtoId)

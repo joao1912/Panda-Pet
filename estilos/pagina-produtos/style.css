@@ -190,7 +190,35 @@ nav span:hover {
     transform: scale(1.1) translateX(3px) translateY(-2px);
     transition: transform 0.3s;
 }
-                                    
+
+nav span:hover::after, span:hover::before {
+    display: inline-block;
+}
+
+nav span::before {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-10deg);
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+nav span::after {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(10deg);
+    position: absolute;
+    top: 5px;
+}
 /* ---------------------------------- */
 
 #containerProdutos {
