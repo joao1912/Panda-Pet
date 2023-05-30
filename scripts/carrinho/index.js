@@ -81,7 +81,7 @@ function exibeCarrinho() {
             alert("Produto nulo")
         }
 
-        let produto = funcConstructorElements(produto.codigo, produto.quantidade)
+        let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
         containerCarrinho.appendChild(produto) //esta variável não existe(containerCarrinho)
 
     })
