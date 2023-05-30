@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
+    <link rel="shortcut icon" href="../imagens/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/pagina-produtos/style.css">
@@ -19,9 +20,16 @@
         </div>
 
         <div id="containerIcones">
-            <span><i class="material-symbols-outlined">star</i></span>
-            <span><i class="material-symbols-outlined">shopping_cart</i></span>
-            <a href="../paginas/cadastro-login.html"><span><i class="material-symbols-outlined">person</i></span></a>
+            <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
+            <a href="./carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <div id="containerPerfil">
+                <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
+                <div id="userLogado">
+                    <img id="fotoPerfil" src="../imagens/perfil-default.jpg" alt="foto de perfil">
+                    <button id="botaoSair">Sair<span class="material-symbols-outlined">logout</span></button>
+                </div>
+            </div>
         </div>
     </header>
     <nav>
@@ -33,10 +41,14 @@
     </nav>
 
     <div class="centralizador">
-        <h1 id="h1Produtos">Produtos</h1>
+        <h1 id="h1Produtos"></h1>
         <section id="containerProdutos">
             
         </section>
+    </div>
+
+    <div id="containerErro404">
+        <img src="../imagens/erro404.png" alt="erro404">
     </div>
     <script type="module" src="../scripts/pagina-produtos/script.js"></script>
 </body>

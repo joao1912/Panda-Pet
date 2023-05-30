@@ -10,20 +10,73 @@ if (users) {
     } 
 }
 
+if (userID) {
+
+    if (users[userID].img) {
+        let urlImagem = users[userID].img
+        const fotoPerfil = document.getElementById("fotoPerfil")
+        fotoPerfil.src = urlImagem
+    } 
+
+    const containerUser = document.getElementById("containerPerfil")
+    containerUser.style.height = "90px"
+    containerUser.style.width = "200px"
+    containerUser.style.marginLeft = "-5px"
+    const botaoLogar = document.getElementById("botaoLogar")
+    const containerUserLogado = document.getElementById("userLogado")
+    botaoLogar.style.display = "none"
+    containerUserLogado.style.display = "flex"
+
+    document.getElementById("botaoSair").addEventListener("click",function sair(){
+        users[userID].online = false
+        window.location.href = "../../index.html"
+        let userJson = JSON.stringify(users)
+        localStorage.setItem("users", userJson)
+    })
+
+}
+
+
+const iconeDoPerfil = document.getElementById("perfilIcon")
+iconeDoPerfil.addEventListener("click",function(){
+const tabelaPerfil = document.getElementById("containerPerfil")
+
+function redirecionar(){
+    window.location.href = "../../paginas/cadastro-login.html"
+}
+    
+    let visibility = tabelaPerfil.style.display
+
+    if (visibility === "none") {
+        tabelaPerfil.style.display = "flex"
+
+        const botaoLogar = document.getElementById("botaoLogar")
+        botaoLogar.addEventListener("click", redirecionar)
+
+    } else {
+        const botaoLogar = document.getElementById("botaoLogar")
+        botaoLogar.removeEventListener('click', redirecionar)
+        tabelaPerfil.style.display = "none"
+    }
+})
 
 const nav = document.querySelector("nav")
-
 nav.addEventListener("click",function(event){
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
+    const containerErro404 = document.getElementById("containerErro404")
     let indexProdutos
 
     switch(event.target.id) {
         case "forHome":
+            
             window.location.href = "../../index.html"
             break
 
         case "forAcessorios":
+            containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
+
             h1Produtos.textContent = "Acessórios"
             indexProdutos = getIndexCategory("acessorios")
             containerProdutos.innerHTML = ""
@@ -33,6 +86,10 @@ nav.addEventListener("click",function(event){
             break
         
         case "forAlimentacao":
+            containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
+
+
             h1Produtos.textContent = "Alimentação"
             indexProdutos = getIndexCategory("alimentacao")
             containerProdutos.innerHTML = ""
@@ -42,6 +99,9 @@ nav.addEventListener("click",function(event){
             break
 
         case "forBrinquedos":
+            containerErro404.style.display = "none"
+            containerProdutos.style.display = "flex"
+
             h1Produtos.textContent = "Brinquedos"
             indexProdutos = getIndexCategory("brinquedos")
             containerProdutos.innerHTML = ""
@@ -51,6 +111,7 @@ nav.addEventListener("click",function(event){
             break
         
         case "forAgendamento":
+        
             //href
             break
     }
@@ -77,6 +138,7 @@ function setElements(indexProdutos, funcConstructor) {
         
         if (produtos[index].estoque != 0) {
             let elemento = funcConstructor(produtos[index].codigo ,produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
+
             const containerProdutos = document.getElementById("containerProdutos")
             containerProdutos.appendChild(elemento)
         }
@@ -187,54 +249,70 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
 
 }
 
+let produtoAdd = false
 function botoesListener() {
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
-    const iconCart = document.querySelectorAll(".imgCart")
    
     ;[...botoesCarrinho].forEach(botao => {
         
         botao.addEventListener("click",function(event){
-            
-        if (userID === undefined) {
-            window.location.href = "../../paginas/cadastro-login.html" 
-        }
-
-        let produtoId = botao.value 
-        
-        if (botao.textContent === "shopping_cart" && userID != undefined) {
-            event.target.src = "../../imagens/icons/remove_shopping_cart.svg" //inderir essa imagem no botao correto
-
-            let objProduto = {
-                cod: produtoId,
-                quant: 1
+            let elemento = event.target
+            let produtoId = botao.value 
+            if (elemento.src === undefined) {
+                elemento = elemento.children[0].children[0]
             }
 
-            users[userID].carrinho.push(objProduto)
-
-            let usersJson = JSON.stringify(users)
-            localStorage.setItem("users", usersJson)
-
-        } else if (userID != undefined) {
-
-            event.target.src = "../../imagens/icons/carrinho_add.svg" //inderir essa imagem no botao correto
-            let index = 0
-            let produtoIndex
-            
-            for (let obj of users[userID].carrinho) {
-                
-                if (obj.cod === produtoId) {
-                    produtoIndex = index
-                }
-                index++
+            if (userID === undefined) {
+                window.location.href = "../../paginas/cadastro-login.html" 
             }
-            users[userID].carrinho.splice(produtoIndex, 1)
+            if (userID === undefined) return
 
-            let usersJson = JSON.stringify(users)
-            localStorage.setItem("users", usersJson)
-        }
-
+            saveOrNotProduct(produtoId, elemento)
+       
         })
+      
     })
+}
+
+function saveOrNotProduct(produtoId, imgIcon) { //tem que arrumar(ta bugado)
+
+    if (produtoAdd === false) {
+        produtoAdd = true
+
+        imgIcon.src = "../../imagens/icons/remove_shopping_cart.svg" 
+      
+        let objProduto = {
+            cod: produtoId,
+            quant: 1
+        }
+
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.push(objProduto)
+
+        let usersJson = JSON.stringify(users)
+        localStorage.setItem("users", usersJson)
+
+    } else {
+
+        produtoAdd = false
+        imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
+        
+        let index = 0
+        let produtoIndex 
+        
+        for (let obj of users[userID].carrinho) { 
+            
+            if (obj.cod === produtoId) {
+                produtoIndex = index
+            }
+            index++
+        }
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.splice(produtoIndex, 1)
+
+        let usersJson = JSON.stringify(users)
+        localStorage.setItem("users", usersJson)
+    }
 }
 
     
