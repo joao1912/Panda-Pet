@@ -82,7 +82,7 @@ function exibeCarrinho() {
         }
 
         let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
-        containerCarrinho.appendChild(produto) //esta variável não existe(containerCarrinho)
+        containerCarrinho.appendChild(elementoProduto) //esta variável não existe(containerCarrinho)
 
     })
 }
