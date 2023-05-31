@@ -1,19 +1,26 @@
 import { produtos } from "../utils/produtos.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
+import { showProducts } from "../utils/showProducts.js"
+
 
 let users = JSON.parse(localStorage.getItem("users"))
-let userID
+let userID = verifyUserOnline()
 
-if (users) {
-   for (let obj of users) {
-        if (obj.online) {
-            userID = obj.id
-        }
-    } 
+function verifyUserOnline() {
+
+    let userOnline
+    if (users) {
+    for (let obj of users) {
+            if (obj.online) {
+                userOnline = obj.id
+            }
+        } 
+    }
+    return userOnline || undefined
 }
 
-if (userID) {
-
+function setPerfilOnline() {
+    
     if (users[userID].img) {
         let urlImagem = users[userID].img
         const fotoPerfil = document.getElementById("fotoPerfil")
@@ -34,17 +41,21 @@ if (userID) {
         window.location.href = "../../index.html"
         saveLocalStorage(users)
     })
-
+    
 }
 
+if (userID) {
+    setPerfilOnline()
+}
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
-iconeDoPerfil.addEventListener("click",function(){
-const tabelaPerfil = document.getElementById("containerPerfil")
 
-function redirecionar(){
-    window.location.href = "../../paginas/cadastro-login.html"
-}
+iconeDoPerfil.addEventListener("click",function(){
+    const tabelaPerfil = document.getElementById("containerPerfil")
+
+    function redirecionarCadastro(){
+        window.location.href = "../../paginas/cadastro-login.html"
+    }
     
     let visibility = tabelaPerfil.style.display
 
@@ -52,22 +63,18 @@ function redirecionar(){
         tabelaPerfil.style.display = "flex"
 
         const botaoLogar = document.getElementById("botaoLogar")
-        botaoLogar.addEventListener("click", redirecionar)
+        botaoLogar.addEventListener("click", redirecionarCadastro)
 
     } else {
         const botaoLogar = document.getElementById("botaoLogar")
-        botaoLogar.removeEventListener('click', redirecionar)
+        botaoLogar.removeEventListener('click', redirecionarCadastro)
         tabelaPerfil.style.display = "none"
     }
 })
 
 const nav = document.querySelector("nav")
 nav.addEventListener("click",function(event){
-    const h1Produtos = document.getElementById("h1Produtos")
-    const containerProdutos = document.getElementById("containerProdutos")
-    const containerErro404 = document.getElementById("containerErro404")
-    let indexProdutos
-
+   
     switch(event.target.id) {
         case "forHome":
             
@@ -75,39 +82,40 @@ nav.addEventListener("click",function(event){
             break
 
         case "forAcessorios":
-            containerErro404.style.display = "none"
-            containerProdutos.style.display = "flex"
+            if (window.location.pathname == '/paginas/produtos.html') {
 
-            h1Produtos.textContent = "Acessórios"
-            indexProdutos = getIndexCategory("acessorios")
-            containerProdutos.innerHTML = ""
+                showProducts("acessorios")
 
-            setElements(indexProdutos, constructorElements)
-            
+            } else {
+                window.location.href = "../../paginas/produtos.html"
+                document.addEventListener("DOMContentLoaded", showProducts("acessorios"))
+            }   
+
             break
         
         case "forAlimentacao":
-            containerErro404.style.display = "none"
-            containerProdutos.style.display = "flex"
+           
+            if (window.location.pathname == '/paginas/produtos.html') {
 
+                showProducts("alimentos")
 
-            h1Produtos.textContent = "Alimentação"
-            indexProdutos = getIndexCategory("alimentacao")
-            containerProdutos.innerHTML = ""
-
-            setElements(indexProdutos, constructorElements)
+            } else {
+                window.location.href = "../../paginas/produtos.html"
+                document.addEventListener("DOMContentLoaded", showProducts("alimentos"))
+            }
 
             break
 
         case "forBrinquedos":
-            containerErro404.style.display = "none"
-            containerProdutos.style.display = "flex"
+           
+            if (window.location.pathname == '/paginas/produtos.html') {
 
-            h1Produtos.textContent = "Brinquedos"
-            indexProdutos = getIndexCategory("brinquedos")
-            containerProdutos.innerHTML = ""
+                showProducts("brinquedos")
 
-            setElements(indexProdutos, constructorElements)
+            } else {
+                window.location.href = "../../paginas/produtos.html"
+                document.addEventListener("DOMContentLoaded", showProducts("brinquedos"))
+            }
 
             break
         
@@ -118,7 +126,7 @@ nav.addEventListener("click",function(event){
     }
 })
 
-function getIndexCategory(getCategoria) {
+export function getIndexCategory(getCategoria) {
     let indexProd = []
     let index = 0
     for(let obj of produtos) {
@@ -133,7 +141,7 @@ function getIndexCategory(getCategoria) {
     return indexProd
 }
 
-function setElements(indexProdutos, funcConstructor) {
+export function setProductsElements(indexProdutos, funcConstructor) {
     for (let c = 0; c < indexProdutos.length ; c++) {
         let index = indexProdutos[c]
         
@@ -146,11 +154,11 @@ function setElements(indexProdutos, funcConstructor) {
         
     }
 
-    botoesListener()
+    setButtonsListeners()
     
 }
 
-function constructorElements(id, nome, preco, imagem, descricaoImagem) {
+export function constructorProductsElements(id, nome, preco, imagem, descricaoImagem) {
 
     //botao do carrinho criado
 
@@ -252,7 +260,7 @@ function constructorElements(id, nome, preco, imagem, descricaoImagem) {
 }
 
 
-function botoesListener() {
+function setButtonsListeners() {
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
    
     ;[...botoesCarrinho].forEach(botao => {
