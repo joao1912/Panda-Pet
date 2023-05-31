@@ -1,6 +1,6 @@
-import { setProductsElements } from "../pagina-produtos/script.js"
+import { setProductsElements } from "./setProductsElements.js"
 import { constructorProductsElements } from "../pagina-produtos/script.js"
-import { getIndexCategory } from "../pagina-produtos/script.js"
+import { getIndexCategory } from "./getIndexCategory.js"
 
 export function showProducts(categoria) {
     const h1Produtos = document.getElementById("h1Produtos")

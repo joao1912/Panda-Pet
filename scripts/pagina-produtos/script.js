@@ -1,10 +1,9 @@
-import { produtos } from "../utils/produtos.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 import { showProducts } from "../utils/showProducts.js"
 
 
 let users = JSON.parse(localStorage.getItem("users"))
-let userID = verifyUserOnline()
+export let userID = verifyUserOnline()
 
 function verifyUserOnline() {
 
@@ -82,13 +81,14 @@ nav.addEventListener("click",function(event){
             break
 
         case "forAcessorios":
+
             if (window.location.pathname == '/paginas/produtos.html') {
 
                 showProducts("acessorios")
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("acessorios"))
+                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) //não funciona
             }   
 
             break
@@ -101,7 +101,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("alimentos"))
+                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) //não funciona
             }
 
             break
@@ -114,7 +114,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("brinquedos"))
+                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) //não funciona
             }
 
             break
@@ -125,38 +125,6 @@ nav.addEventListener("click",function(event){
             break
     }
 })
-
-export function getIndexCategory(getCategoria) {
-    let indexProd = []
-    let index = 0
-    for(let obj of produtos) {
-        
-        if (obj.categoria === getCategoria) {
-            indexProd.push(index)
-        }
-    
-        index++
-    }
-
-    return indexProd
-}
-
-export function setProductsElements(indexProdutos, funcConstructor) {
-    for (let c = 0; c < indexProdutos.length ; c++) {
-        let index = indexProdutos[c]
-        
-        if (produtos[index].estoque != 0) {
-            let elemento = funcConstructor(produtos[index].codigo ,produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
-
-            const containerProdutos = document.getElementById("containerProdutos")
-            containerProdutos.appendChild(elemento)
-        }
-        
-    }
-
-    setButtonsListeners()
-    
-}
 
 export function constructorProductsElements(id, nome, preco, imagem, descricaoImagem) {
 
@@ -179,17 +147,23 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
             imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
            
         } else {
+
+            let flag = false
             for (let obj of carrinho) {
                 if (obj.codigo == id) {
+                    flag = true
+                }
+
+                if (flag) {
                     imgCarrinho.src = "../../imagens/icons/remove_shopping_cart.svg"
                 } else {
                     imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
                 }
+
             }
         }
     }
    
-    // iconeCarrinho.appendChild(textIconeCarrinho)
     iconeCarrinho.appendChild(imgCarrinho)
     btnCarrinho.appendChild(iconeCarrinho)
 
@@ -260,7 +234,7 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
 }
 
 
-function setButtonsListeners() {
+export function setButtonsCartsListeners() {
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
    
     ;[...botoesCarrinho].forEach(botao => {
@@ -277,14 +251,15 @@ function setButtonsListeners() {
             }
             if (userID === undefined) return
 
-            saveOrNotProduct(produtoId, elemento)
+            saveOrDeleteProduct(produtoId, elemento)
        
         })
       
     })
 }
 
-function saveOrNotProduct(produtoId, imgIcon) { 
+
+function saveOrDeleteProduct(produtoId, imgIcon) { 
 
     let carrinho = users[userID].carrinho
     let searchProduto = carrinho.filter( obj => obj.codigo == produtoId)
@@ -323,5 +298,3 @@ function saveOrNotProduct(produtoId, imgIcon) {
         saveLocalStorage(users)
     }
 }
-
-    
