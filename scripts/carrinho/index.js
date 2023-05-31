@@ -30,12 +30,12 @@ function adicionaProdutoAoCarrinhoUsandoCodigo(codigo) {
     if (produtoExistente == undefined || produtoExistente == null) {
         let produto = produtos.find(produto => produto.codigo === codigo)
         if (produto == undefined || produto == null) {
-            console.log(`Produto com o id ${codigo} não encontrado.`)
+            console.log(`Produto com o código ${codigo} não encontrado.`)
             return
         }
         let produtoAdd = {
             codigo: produto.codigo,
-            quantidade: 1 
+            quantidade: 1
         }
         carrinho.push(produtoAdd)
     } else {
@@ -53,7 +53,7 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
     let index = carrinho.findIndex(produto => produto.codigo === codigoProduto)
 
     if (index == -1) {
-        console.log(`Produto com o id ${idProduto} não encontrado no carrinho.`) // esta variavel não existe(idProduto)
+        console.log(`Produto com o código ${codigoProduto} não encontrado no carrinho.`)
         return
     }
 
@@ -63,7 +63,7 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
     } else {
         // Diminuir a quantidade passada pela função
         if (carrinho[index].quantidade > 1) {
-            carrinho[index].quantidade -= quantidade //não necessario
+            carrinho[index].quantidade -= quantidade
         }
     }
     users[userID].carrinho = carrinho
@@ -73,8 +73,9 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
 
 function exibeCarrinho() {
     let carrinho = pegaCarrinho()
+    let containerCarrinho = document.getElementById("containerCarrinho")
 
-    containerCarrinho.innerHTML = "" //esta variável não existe(containerCarrinho)
+    containerCarrinho.innerHTML = ""
 
     carrinho.forEach((produto) => {
         if (produto == null) {
@@ -82,9 +83,21 @@ function exibeCarrinho() {
         }
 
         let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
-        containerCarrinho.appendChild(elementoProduto) //esta variável não existe(containerCarrinho)
-
+        containerCarrinho.appendChild(elementoProduto)
     })
+
+    const listaProdutos = document.querySelectorAll('.produto')
+
+    produtos.forEach((produto) => {
+        const id = produto.id
+
+        const btnExcluir = produto.querySelector('.btnExcluir')
+        btnExcluir.addEventListener('click', () => {
+            alert(`Clicou no botão 'Excluir' do produto com ID ${id}`)
+        });
+
+
+    });
 }
 
 exibeCarrinho()
@@ -97,7 +110,7 @@ function pegaCarrinho() {
         //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
         users[userID].carrinho = []
     }
-    return carrinho
+    return users[userID].carrinho
 }
 
 
@@ -119,7 +132,6 @@ function funcConstructorElements(cod, quantity) {
     let preco = document.createTextNode(`R$ ${(produtos[cod].preco).toFixed(2)}`)
     divValorProduto.appendChild(preco)
 
-    // botao excluir
 
     let btnExcluir = document.createElement("button")
     btnExcluir.classList = "btnExcluir"
@@ -139,7 +151,7 @@ function funcConstructorElements(cod, quantity) {
     inptQuant.type = "number"
     inptQuant.classList = "inptQuantProduto"
     inptQuant.value = quantity
-    inptQuant.setAttribute("readonly", true)
+    inptQuant.setAttribute("readonly", true) // Alterei essa linha porque tava faltando um parâmetro no setAttribute
 
     // span icon remove
 
@@ -188,6 +200,7 @@ function funcConstructorElements(cod, quantity) {
 
     let divProduto = document.createElement("div")
     divProduto.classList = "produto"
+    divProduto.id = `${produtos[cod].codigo}`;
     divProduto.appendChild(divDescricaoProduto)
 
     return divProduto
