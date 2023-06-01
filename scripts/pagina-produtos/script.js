@@ -22,7 +22,7 @@ function setPerfilOnline() {
     
     if (users[userID].img) {
         let urlImagem = users[userID].img
-        const fotoPerfil = document.getElementById("fotoPerfil")
+        const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
     } 
 
@@ -47,7 +47,7 @@ if (userID) {
     setPerfilOnline()
 
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
-    fotoPerfil.addEventListener("click", trocaFotoPerfil())
+    fotoPerfil.addEventListener("click", trocaFotoPerfil)
 }
 
 function trocaFotoPerfil() {
@@ -56,9 +56,8 @@ function trocaFotoPerfil() {
     fileTrocaFoto.click();
     fileTrocaFoto.addEventListener("change", readImage, false);
     const file = document.getElementById("fotoPerfilOnline")
-    let urlFotoPerfil
 
-    function readImage() {
+    function readImage() { 
         let fr = new FileReader();
         fr.onload = function(event) {
             file.src = event.target.result
@@ -67,13 +66,10 @@ function trocaFotoPerfil() {
         fr.readAsDataURL(this.files[0]);
 
         fr.addEventListener("load",() => {
-            urlFotoPerfil = fr.result
+            users[userID].img = fr.result
+            saveLocalStorage(users)
         })
     }
-
-    users[userID].img = urlFotoPerfil
-    console.log(users[userID].img)
-    saveLocalStorage(users)
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
