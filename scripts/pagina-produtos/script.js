@@ -323,3 +323,41 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
         saveLocalStorage(users)
     }
 }
+
+const barra_pesquisa = document.getElementById("barraPesquisa")
+barra_pesquisa.addEventListener("keyup", barraPesquisa)
+
+function barraPesquisa() {
+    
+    let stringSearch = barra_pesquisa.value
+    stringSearch = stringSearch.trim()
+    let searhProdutos = document.querySelectorAll(".produto")
+
+    if (stringSearch == "") {
+        let arrayProdutos = [...searhProdutos]
+        for (let produto of arrayProdutos) {
+            produto.style.display = "flex"
+        }
+    }
+
+    if (searhProdutos.length == 0) return
+
+   
+
+    ;[...searhProdutos].forEach( produto => {
+
+        let title = produto.children[0].children[1].children[0].children[0].textContent 
+        
+        let exist = title.normalize("NFD")
+        .replace(/[^a-zA-Z\s]/g, "")
+        .toLowerCase()
+        .includes(stringSearch.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")
+        .toLowerCase())
+
+        if (!exist) {
+            produto.style.display = "none"
+        } else {
+            produto.style.display = "flex"
+        }
+    })
+}
