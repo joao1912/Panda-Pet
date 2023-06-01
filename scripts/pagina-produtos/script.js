@@ -45,6 +45,35 @@ function setPerfilOnline() {
 
 if (userID) {
     setPerfilOnline()
+
+    const fotoPerfil = document.getElementById("fotoPerfilOnline")
+    fotoPerfil.addEventListener("click", trocaFotoPerfil())
+}
+
+function trocaFotoPerfil() {
+    const fileTrocaFoto = document.getElementById("inptTrocaFoto")
+
+    fileTrocaFoto.click();
+    fileTrocaFoto.addEventListener("change", readImage, false);
+    const file = document.getElementById("fotoPerfilOnline")
+    let urlFotoPerfil
+
+    function readImage() {
+        let fr = new FileReader();
+        fr.onload = function(event) {
+            file.src = event.target.result
+            
+        };       
+        fr.readAsDataURL(this.files[0]);
+
+        fr.addEventListener("load",() => {
+            urlFotoPerfil = fr.result
+        })
+    }
+
+    users[userID].img = urlFotoPerfil
+    console.log(users[userID].img)
+    saveLocalStorage(users)
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")

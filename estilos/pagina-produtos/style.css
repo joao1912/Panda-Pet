@@ -169,7 +169,11 @@ header #containerBarraDePesquisa {
     border-radius: 5px;
 }
 
-
+#inptTrocaFoto {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
 
 nav {
     display: flex;
