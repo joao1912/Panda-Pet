@@ -5,7 +5,7 @@ import { showProducts } from "../utils/showProducts.js"
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
-let categoryOrNot = localStorage.getItem("category")
+let categoryOrNot = JSON.parse(localStorage.getItem("category")) 
 localStorage.removeItem("category")
 
 function verifyUserOnline() {
