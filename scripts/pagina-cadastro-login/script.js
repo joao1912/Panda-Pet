@@ -1,11 +1,14 @@
 import { Error } from "../utils/erros.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 
-let users = JSON.parse(localStorage.getItem("users"))
+let users = []
 
-if (!users) {
-    let userAdm = JSON.stringify([{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]) 
-    localStorage.setItem('users', userAdm)
+    try {
+    users = JSON.parse(localStorage.getItem("users"))
+    } catch(error) {
+    //let userAdm = JSON.stringify([{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]) 
+    users = [{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]
+    localStorage.setItem('users', JSON.stringify(users))
 }
 
 let cont = 1

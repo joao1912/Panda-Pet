@@ -1,6 +1,7 @@
+import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 import { produtos } from "../utils/produtos.js"
-
 let users = JSON.parse(localStorage.getItem("users"))
+
 //[{nome: userName, senha: passWord, carrinho: [ cod: , quant: ], online: false, img: urlFotoPerfil}]
 let userID
 
@@ -12,18 +13,13 @@ for (let obj of users) {
 }
 
 
-//Limpar o carrinho para testes
-limpaCarrinho()
+// limpaCarrinho()
+// adicionaProdutoAoCarrinho(5)
+// adicionaProdutoAoCarrinho(6)
+// adicionaProdutoAoCarrinho(5)
 
 
-adicionaProdutoAoCarrinhoUsandoCodigo(5)
-adicionaProdutoAoCarrinhoUsandoCodigo(6)
-adicionaProdutoAoCarrinhoUsandoCodigo(5)
-//removeProdutoDoCarrinho(5, -1, true)
-//removeProdutoDoCarrinho(6, -1, true)
-
-
-function adicionaProdutoAoCarrinhoUsandoCodigo(codigo) {
+function adicionaProdutoAoCarrinho(codigo) {
     let carrinho = pegaCarrinho()
     //Verificar se o produto já existe e adicionar um amais 
     let produtoExistente = carrinho.find(produto => produto.codigo === codigo)
@@ -43,7 +39,8 @@ function adicionaProdutoAoCarrinhoUsandoCodigo(codigo) {
     }
 
     users[userID].carrinho = carrinho
-    localStorage.setItem("users", JSON.stringify(users))
+    calcFinalizarCompra()
+    saveLocalStorage(users)
 }
 
 
@@ -67,7 +64,8 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
         }
     }
     users[userID].carrinho = carrinho
-    //quando houver alteração no carrinho, salvar no localStorage
+    saveLocalStorage(users)
+    calcFinalizarCompra()
 }
 
 
@@ -79,25 +77,38 @@ function exibeCarrinho() {
 
     carrinho.forEach((produto) => {
         if (produto == null) {
-            alert("Produto nulo")
+            console.log("Produto nulo no carrinho")
+        } else {
+            let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
+            containerCarrinho.appendChild(elementoProduto)
         }
-
-        let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
-        containerCarrinho.appendChild(elementoProduto)
     })
 
     const listaProdutos = document.querySelectorAll('.produto')
 
-    produtos.forEach((produto) => {
-        const id = produto.id
-
+    listaProdutos.forEach((produto) => {
+        const id = Number(produto.id)
         const btnExcluir = produto.querySelector('.btnExcluir')
+        const btnAdd = produto.querySelector('.btnAdd')
+        const btnRemove = produto.querySelector('.btnRemove')
         btnExcluir.addEventListener('click', () => {
-            alert(`Clicou no botão 'Excluir' do produto com ID ${id}`)
-        });
-
-
-    });
+            removeProdutoDoCarrinho(id, -1, true)
+            produto.remove()
+        })
+        btnAdd.addEventListener('click', () => {
+            adicionaProdutoAoCarrinho(id)
+            let inptQuantProduto = produto.querySelector(".inptQuantProduto")
+            inptQuantProduto.value++
+        })
+        btnRemove.addEventListener('click', () => {
+            removeProdutoDoCarrinho(id, 1)
+            let inptQuantProduto = produto.querySelector(".inptQuantProduto")
+            if (inptQuantProduto.value > 1) {
+                inptQuantProduto.value--
+            }
+        })
+    })
+    calcFinalizarCompra()
 }
 
 exibeCarrinho()
@@ -140,8 +151,8 @@ function funcConstructorElements(cod, quantity) {
 
     // span icon add
 
-    let iconAdd = document.createElement("span")
-    iconAdd.classList = "material-symbols-outlined"
+    let iconAdd = document.createElement("button")
+    iconAdd.classList = "btnAdd"
     let textIcon = document.createTextNode("add")
     iconAdd.appendChild(textIcon)
 
@@ -155,8 +166,8 @@ function funcConstructorElements(cod, quantity) {
 
     // span icon remove
 
-    let iconRemove = document.createElement("span")
-    iconRemove.classList = "material-symbols-outlined"
+    let iconRemove = document.createElement("button")
+    iconRemove.classList = "btnRemove"
     let textIconRemove = document.createTextNode("remove")
     iconRemove.appendChild(textIconRemove)
 
@@ -164,9 +175,9 @@ function funcConstructorElements(cod, quantity) {
 
     let divContainerQuantidade = document.createElement("div")
     divContainerQuantidade.classList = "containerQuantidade"
-    divContainerQuantidade.appendChild(iconRemove)
-    divContainerQuantidade.appendChild(inptQuant)
     divContainerQuantidade.appendChild(iconAdd)
+    divContainerQuantidade.appendChild(inptQuant)
+    divContainerQuantidade.appendChild(iconRemove)
 
     //h1 nome do produto
 
@@ -206,17 +217,17 @@ function funcConstructorElements(cod, quantity) {
     return divProduto
 }
 
-function calcFinalizarCompra(quantidade) {
+function calcFinalizarCompra() {
     let carrinho = users[userID].carrinho
     let quantideDeProdutos = 0
     let valorTotal = 0
     const containerTotalValor = document.getElementById("totalValor")
     const containerQuantProdutos = document.getElementById("quantProdutos")
 
-    for (let obj of carrinho) {
+    carrinho.forEach((obj) => {
         quantideDeProdutos++
-        valorTotal += produtos[obj.cod].preco
-    }
+        valorTotal += obj.quantidade*produtos[obj.codigo].preco
+    });
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
     containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
