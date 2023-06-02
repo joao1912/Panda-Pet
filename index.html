@@ -5,14 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="estilos/index.css">
     <link rel="stylesheet" href="estilos/pagina-inicial/style.css">
+    
 </head>
 <body>
-    <h1>pagina inicial aqui, só pra saber kkk</h1>
+    <header>
+        <img src="./imagens/1.png" alt="Logo Panda Pet">
 
-    <button>
-        teste
-    </button>
-    <script src="scripts/pagina-inicial/index.js"></script>
+        <div id="containerBarraDePesquisa">
+            <input type="text" id="barraPesquisa" placeholder="Pesquise">
+            <span><i class="material-symbols-outlined">search</i></span>
+        </div>
+
+        <div id="containerIcones">
+            <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
+            <a href="paginas/carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <div id="containerPerfil">
+                <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
+                <div id="userLogado">
+                    <img id="fotoPerfilOnline" src="./imagens/perfil-default.jpg" alt="foto de perfil">
+                    <input type="file" id="inptTrocaFoto">
+                    <button id="botaoSair">Sair<span class="material-symbols-outlined">logout</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <span id="forHome">
+            Home
+        </span>
+
+        <span id="forAcessorios">
+            Acessórios
+        </span>
+
+        <span id="forAlimentacao">
+            Alimentação
+        </span>
+
+        <span id="forBrinquedos">
+            Brinquedos
+        </span>
+
+        <span id="forAgendamento">
+            Agendamento
+        </span>
+
+    </nav>
+
+      <h2 class="carrossel">Promoções</h2>
+      <div id="container">
+        <div><img src="imagens/carrossel/brinq50.png" alt="js" /></div>
+        <div><img src="imagens/carrossel/playground.png" alt="java" /></div>
+        <div><img src="imagens/carrossel/shampoo.png" alt="python"/></div>
+      </div>
+
+
+      <h2 class="carrossel">Mais vendidos</h2>
+
+    <script type="module" src="scripts/pagina-inicial/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

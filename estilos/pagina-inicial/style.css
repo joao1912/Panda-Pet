@@ -1,0 +1,245 @@
+header {
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+header > img {
+    height: 115px;
+    margin-left: 20px;
+}
+
+header #containerBarraDePesquisa {
+    height: 40px;
+    width: 50%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#barraPesquisa {
+    width: 96%;
+    height: 100%;
+    border-radius: 50px;
+    border: 0;
+    padding-left: 30px;
+    display: inline-flex;
+    font-size: 1.5em;
+    font-family: "Nunito";
+}
+
+#barraPesquisa:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+#containerBarraDePesquisa span {
+    width: 35px;
+}
+
+#containerBarraDePesquisa span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#containerIcones {
+    display: flex;
+    flex-direction: row;
+}
+
+#containerIcones span.btnIcons {
+    background-color: var(--thirdColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#containerIcones span.btnIcons:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: var(--primaryColor);
+}
+
+#containerPerfil {
+    position: absolute;
+    top: 115px;
+    margin-left: 26px;
+    background-color: var(--secondColor);
+    width: 160px;
+    height: 55px;
+    border-radius: 10px;
+
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 5px;
+}
+
+#containerPerfil img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+#containerPerfil button#botaoLogar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.3em;
+    color: white;
+    font-family: 'GooperSemiBold';
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#containerPerfil div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3em;
+    font-family: 'GooperSemiBold';
+    color: white;
+}
+
+
+#containerPerfil button > span {
+    font-size: 1.3em;
+    margin-left: 5px;
+}
+
+#botaoSair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    font-size: 1.2em;
+    font-family: "GooperSemiBold";
+    color: white;
+    background-color: transparent;
+    border: 0;
+    margin-left: 25px;
+} 
+
+#botaoSair:hover {
+    cursor: pointer;
+    color: rgb(233, 227, 227);
+}
+
+#containerPerfil::after {
+    content: ""; 
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondColor);
+    transform: rotate(45deg);
+    top: -10%;
+    left: 80%;
+    border-radius: 5px;
+}
+
+#inptTrocaFoto {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+nav {
+    display: flex;
+    height: 40px;
+    background-color: var(--thirdColor);
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    padding-bottom: 2px;
+}
+
+nav span:hover {
+    color: var(--secondColor);
+    cursor: pointer;
+    transform: scale(1.1) translateX(3px) translateY(-2px);
+    transition: transform 0.3s;
+}
+
+nav span:hover::after, span:hover::before {
+    display: inline-block;
+}
+
+nav span::before {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-10deg);
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+nav span::after {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(10deg);
+    position: absolute;
+    top: 5px;
+}
+
+a{
+text-decoration: none;
+}
+
+.carrossel{
+color: var(--primaryColor);
+font-size: 2.5em;
+font-family: 'GooperSemiBold';
+font-weight: bold;
+text-align: center;
+width: 100%;
+display: block;
+margin-top: 20px;
+
+}
+
+#container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+#container img {
+
+    width: 100%;
+    height: 100%;
+   
+    
+}
