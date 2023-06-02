@@ -5,6 +5,9 @@ import { showProducts } from "../utils/showProducts.js"
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
+let categoryOrNot = localStorage.getItem("category")
+localStorage.removeItem("category")
+
 function verifyUserOnline() {
 
     let userOnline
@@ -113,7 +116,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) 
             }   
 
             break
@@ -126,7 +129,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) 
             }
 
             break
@@ -139,7 +142,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) 
             }
 
             break
@@ -150,6 +153,20 @@ nav.addEventListener("click",function(event){
             break
     }
 })
+
+if (categoryOrNot) {
+    switch (categoryOrNot) {
+        case "acessorios": 
+            showProducts("acessorios")
+            break
+        case "alimentos":
+            showProducts("alimentos")
+            break
+        case "brinquedos":
+            showProducts("brinquedos")
+            break
+    }
+}
 
 export function constructorProductsElements(id, nome, preco, imagem, descricaoImagem) {
 
