@@ -152,7 +152,7 @@ function funcConstructorElements(cod, quantity) {
     // span icon add
 
     let iconAdd = document.createElement("button")
-    iconAdd.classList = "btnAdd"
+    iconAdd.classList = "material-symbols-outlined btnAdd"
     let textIcon = document.createTextNode("add")
     iconAdd.appendChild(textIcon)
 
@@ -167,7 +167,7 @@ function funcConstructorElements(cod, quantity) {
     // span icon remove
 
     let iconRemove = document.createElement("button")
-    iconRemove.classList = "btnRemove"
+    iconRemove.classList = "material-symbols-outlined btnRemove"
     let textIconRemove = document.createTextNode("remove")
     iconRemove.appendChild(textIconRemove)
 
@@ -175,9 +175,9 @@ function funcConstructorElements(cod, quantity) {
 
     let divContainerQuantidade = document.createElement("div")
     divContainerQuantidade.classList = "containerQuantidade"
-    divContainerQuantidade.appendChild(iconAdd)
-    divContainerQuantidade.appendChild(inptQuant)
     divContainerQuantidade.appendChild(iconRemove)
+    divContainerQuantidade.appendChild(inptQuant)
+    divContainerQuantidade.appendChild(iconAdd)
 
     //h1 nome do produto
 
