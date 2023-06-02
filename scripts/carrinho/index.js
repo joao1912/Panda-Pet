@@ -232,3 +232,18 @@ function calcFinalizarCompra() {
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
     containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
 }
+
+const btnFinalizar = document.getElementById("btnFinalizar")
+btnFinalizar.addEventListener("click", function(){
+    users[userID].carrinho = []
+    saveLocalStorage(users)
+
+    Swal.fire({icon: 'success',
+    title: 'Compra Realizada!',
+    confirmButtonText: 'Ok',
+    color: '#645CBB',
+    text: 'Agradecemos por comprar conosco!'})
+    .then(() => {
+        window.location.href = "../../index.html"
+    })
+})

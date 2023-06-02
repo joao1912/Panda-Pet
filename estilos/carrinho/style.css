@@ -281,3 +281,12 @@ button.btnExcluir:hover, button.btnExcluir:focus {
 #btnFinalizar:hover::before, #btnFinalizar:focus::before {
     height: 1000%;
 }
+
+h2#swal2-title
+{
+   font-size: 24px;
+   font-family:'GooperSemiBold';
+}
+div#swal2-html-container{
+   font-family:'Nunito';
+}
