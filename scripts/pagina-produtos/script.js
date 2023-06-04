@@ -40,8 +40,9 @@ function setPerfilOnline() {
 
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
-        window.location.href = "../../index.html"
         saveLocalStorage(users)
+        localStorage.removeItem("welcome")
+        window.location.href = "../../index.html"
     })
     
 }
