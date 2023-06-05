@@ -5,6 +5,9 @@ import { showProducts } from "../utils/showProducts.js"
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
+let categoryOrNot = JSON.parse(localStorage.getItem("category")) 
+localStorage.removeItem("category")
+
 function verifyUserOnline() {
 
     let userOnline
@@ -150,6 +153,20 @@ nav.addEventListener("click",function(event){
             break
     }
 })
+
+if (categoryOrNot) {
+    switch (categoryOrNot) {
+        case "acessorios": 
+            showProducts("acessorios")
+            break
+        case "alimentos":
+            showProducts("alimentos")
+            break
+        case "brinquedos":
+            showProducts("brinquedos")
+            break
+    }
+}
 
 export function constructorProductsElements(id, nome, preco, imagem, descricaoImagem) {
 
