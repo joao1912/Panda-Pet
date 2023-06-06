@@ -258,6 +258,22 @@ button.btnExcluir:hover, button.btnExcluir:focus {
     z-index: 1;
     cursor: pointer;
 }
+
+#btnFinalizar:disabled {
+    background-color: var(--thirdColor);
+    color: var(--shadowColor3);
+}
+
+#btnFinalizar:disabled:hover {
+    cursor: default;
+    background-color: var(--thirdColor);
+    color: var(--shadowColor3);
+}
+
+#btnFinalizar:disabled::after, #btnFinalizar:disabled::before {
+    content: none;
+}
+
 #btnFinalizar:hover, #btnFinalizar:focus {
     color: white;
 }

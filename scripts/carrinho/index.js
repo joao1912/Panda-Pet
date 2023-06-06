@@ -12,6 +12,7 @@ for (let obj of users) {
     }
 }
 
+const btnFinalizar = document.getElementById("btnFinalizar")
 
 // limpaCarrinho()
 // adicionaProdutoAoCarrinho(5)
@@ -233,10 +234,24 @@ function calcFinalizarCompra() {
     containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
 }
 
-const btnFinalizar = document.getElementById("btnFinalizar")
+function disabledButton() {
+    let carrinho = pegaCarrinho()
+    
+    if (carrinho.length != 0) {
+        btnFinalizar.disabled = false
+    } else {
+        btnFinalizar.disabled = true
+    }
+    
+}
+
+document.addEventListener("DOMContentLoaded", disabledButton())
+
+
 btnFinalizar.addEventListener("click", function(){
     users[userID].carrinho = []
     saveLocalStorage(users)
+    btnFinalizar.disabled = true
 
     Swal.fire({icon: 'success',
     title: 'Compra Realizada!',
