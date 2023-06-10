@@ -212,3 +212,372 @@ iconTelaAdm.addEventListener("click", function(){
 
     
 })
+
+const botoesTrocaMes = document.querySelectorAll(".trocaMes")
+let mesAtual 
+
+;[...botoesTrocaMes].forEach(botao => {
+    botao.addEventListener("click", function(event){
+        let direction = event.target.textContent
+
+        if (direction === "keyboard_arrow_left") {
+
+            if (mesAtual != 0) {
+                mesAtual -= 1
+                changeMonth(mesAtual)
+            } else {
+                mesAtual = 11
+                changeMonth(mesAtual)
+            }
+            
+        } else if(direction === "keyboard_arrow_right") {
+
+            if (mesAtual != 11) {
+                mesAtual += 1
+                changeMonth(mesAtual)
+            } else {
+                mesAtual = 0
+                changeMonth(mesAtual)
+            }
+
+        }
+        
+    })
+})
+
+document.addEventListener("DOMContentLoaded",function(){
+    let mes = new Date()
+    mes = mes.getMonth()
+    const mouthTitle = document.getElementById("mouthTitle")
+
+    switch(mes) {
+        case 0:
+            changeMonth(0)
+            mouthTitle.innerHTML = "Janeiro"
+            mesAtual = 0
+            break
+        case 1:
+            changeMonth(1)
+            mouthTitle.innerHTML = "Fevereiro"
+            mesAtual = 1
+            break
+        case 2:
+            changeMonth(2)
+            mouthTitle.innerHTML = "Março"
+            mesAtual = 2
+            break
+        case 3:
+            changeMonth(3)
+            mouthTitle.innerHTML = "Abril"
+            mesAtual = 3
+            break
+        case 4:
+            changeMonth(4)
+            mouthTitle.innerHTML = "Maio"
+            mesAtual = 4
+            break
+        case 5:
+            changeMonth(5)
+            mouthTitle.innerHTML = "Junho"
+            mesAtual = 5
+            break
+        case 6:
+            changeMonth(6)
+            mouthTitle.innerHTML = "Julho"
+            mesAtual = 6
+            break
+        case 7:
+            changeMonth(7)
+            mouthTitle.innerHTML = "Agosto"
+            mesAtual = 7
+            break
+        case 8:
+            changeMonth(8)
+            mouthTitle.innerHTML = "Setembro"
+            mesAtual = 8
+            break
+        case 9:
+            changeMonth(9)
+            mouthTitle.innerHTML = "Outubro"
+            mesAtual = 9
+            break
+        case 10:
+            changeMonth(10)
+            mouthTitle.innerHTML = "Novembro"
+            mesAtual = 10
+            break
+        case 11:
+            changeMonth(11)
+            mouthTitle.innerHTML = "Dezembro"
+            mesAtual = 11
+            break
+    }
+    setShadowCalendar()
+    //colocar aqui a função de setMarkersCalendar()
+})
+
+let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
+const months = [
+    {
+        id: 0,
+        Mouth: 'Janeiro',
+        daysSet: [31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4]
+    },
+    {
+        id: 1,
+        Mouth: 'Fevereiro',
+        daysSet: [29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,1,2,3,4]
+    },
+    {
+        id: 2,
+        Mouth: 'Março',
+        daysSet: [26,27,28,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1]
+    },
+    {
+        id: 3,
+        Mouth: 'Abril',
+        daysSet: [26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1,2,3,4,5,6]
+    },
+
+    {
+        id: 4,
+        Mouth: 'Maio',
+        daysSet: [30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3]
+    },
+    {
+        id: 5,
+        Mouth: 'Junho',
+        daysSet: [28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1]
+    },
+    {
+        id: 6,
+        Mouth: 'Julho',
+        daysSet: [25,26,27,28,29,30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5]
+    },
+    {
+        id: 7,
+        Mouth: 'Agosto',
+        daysSet: [30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2]
+    },
+
+    {
+        id: 8,
+        Mouth: 'Setembro',
+        daysSet: [27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+    },
+    {
+        id: 9,
+        Mouth: 'Outubro',
+        daysSet: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4]
+    },
+    {
+        id: 10,
+        Mouth: 'Novembro',
+        daysSet: [29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1,2]
+    },
+    {
+        id: 11,
+        Mouth: 'Dezembro',
+        daysSet: [26,27,28,29,30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6]
+    }
+]
+
+function changeMonth(mes) {
+
+
+    let week1 = [...bodyCalendar[0].children]
+    let week2 = [...bodyCalendar[1].children]
+    let week3 = [...bodyCalendar[2].children]
+    let week4 = [...bodyCalendar[3].children]
+    let week5 = [...bodyCalendar[4].children]
+
+    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
+
+    const mouthTitle = document.getElementById("mouthTitle")
+    
+    switch(mes) {
+        case 0:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[0].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Janeiro"
+            break
+        case 1:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[1].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Fevereiro"
+            break
+        case 2:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[2].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Março"
+            break
+        case 3:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[3].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Abril"
+            break
+        case 4:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[4].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Maio"
+            break
+        case 5:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[5].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Junho"
+            break
+        case 6:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[6].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Julho"
+            break
+        case 7:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[7].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Agosto"
+            break
+        case 8:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[8].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Setembro"
+            break
+        case 9:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[9].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Outubro"
+            break
+        case 10:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[10].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Novembro"
+            break
+        case 11:
+            for (let i = 0 ; i < 35; i++) {
+                weeks[i].innerHTML = months[11].daysSet[i]
+            }
+            mouthTitle.innerHTML = "Dezembro"
+            break
+    }
+    setShadowCalendar()
+    //colocar aqui a função de setMarkersCalendar()
+}
+
+function setShadowCalendar() {
+
+    let week1 = [...bodyCalendar[0].children]
+    let week5 = [...bodyCalendar[4].children]
+
+    for (let i = 0 ; i < 7 ; i++) {
+        week1[i].classList = ""
+        week5[i].classList = ""
+    }
+    
+    switch(mesAtual) {
+        case 0:
+            week1[0].classList += "escurecer"
+            for (let i = 4; i < 7 ; i++) {
+                week5[i].classList += "escurecer"
+            }
+            break
+        case 1:
+            for (let i = 0 ; i < 3 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            for (let i = 3; i < 7 ; i++) {
+                week5[i].classList += "escurecer"
+            }
+            break
+        case 2:
+            for (let i = 0 ; i < 3 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            week5[6].classList += "escurecer"
+            break
+        case 3:
+            for (let i = 0 ; i < 6 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            break
+        case 4:
+            week1[0].classList += "escurecer"
+
+            for(let i = 4 ; i < 7 ; i++) {
+                week5[i].classList += "escurecer"
+            }
+            break
+        case 5:
+            for(let i = 0 ; i < 4 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            week5[6].classList += "escurecer"
+            break
+        case 6:
+            for (let i = 0 ; i < 6 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            break
+        case 7:
+            week1[0].classList += "escurecer"
+            week1[1].classList += "escurecer"
+
+            week5[5].classList += "escurecer"
+            week5[6].classList += "escurecer"
+            break
+        case 8: 
+            for (let i = 0 ; i < 5 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            break
+        case 9:
+            for (let i = 3 ; i < 7 ; i++) {
+                week5[i].classList += "escurecer"
+            }
+            break
+        case 10:
+            for (let i = 0 ; i < 3 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+
+            week5[5].classList += "escurecer"
+            week5[6].classList += "escurecer"
+            break
+        case 11:
+            for (let i = 0 ; i < 4 ; i++) {
+                week1[i].classList += "escurecer"
+            }
+            
+            break
+    }
+}
+
+const agendamentos = []
+agendamentos.push({
+    id: userID,
+    service: "Hospedagem",
+    dia: 19,
+    mes: 12
+})
+
+localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
+
+function setMarkersCalendar() {
+    let agendamentos = localStorage.getItem("agendamentos")
+
+    if (agendamentos.length === 0) return
+
+    for (let agendamento of agendamentos) {
+        let usuario = agendamento.id
+        //parei aqui
+    }
+}
