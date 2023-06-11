@@ -69,11 +69,11 @@ body {
     display: flex;
     background-color: #a084dc;
     border-radius: 20px;
+    position: relative;
 }
 
 
 .descricaoProduto > div {
-    width: 100%;
     padding: 10px;
 }
 
@@ -225,12 +225,12 @@ button.btnExcluir:hover, button.btnExcluir:focus {
 }
 
 .valorProduto {
-    display: flex;
-    float: right;
-    justify-content: end;
-    align-items: end;
+    position: absolute;
+    left: 80%;
+    top: 60%;
     font-size: 2em;
     font-family: 'Nunito';
+    width: 200px;
 }
 
 #containerFinalizarCompra {
@@ -305,4 +305,15 @@ h2#swal2-title
 }
 div#swal2-html-container{
    font-family:'Nunito';
+}
+
+.btnRemove,.btnAdd {
+    border-radius: 50%;
+    border: 0;
+    background-color: white;
+}
+
+.btnRemove:hover,.btnAdd:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }

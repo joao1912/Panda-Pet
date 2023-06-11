@@ -231,7 +231,7 @@ function calcFinalizarCompra() {
     });
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
-    containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
+    containerTotalValor.innerHTML = `Total: R$ ${valorTotal.toFixed(2)}`
 }
 
 function disabledButton() {
