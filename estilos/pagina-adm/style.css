@@ -366,6 +366,6 @@ a{
     cursor: pointer;
 }
 
-#viewCalendar .escurecer {
+#viewCalendar td[escurecer] {
     background-color: rgb(232 226 226);;
 }
