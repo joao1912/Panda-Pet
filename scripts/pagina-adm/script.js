@@ -312,8 +312,8 @@ document.addEventListener("DOMContentLoaded",function(){
             mesAtual = 11
             break
     }
-    setShadowCalendar()
-    //colocar aqui a função de setMarkersCalendar()
+    setDarkCellCalendar()
+    setMarkersCalendar()
 })
 
 let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
@@ -469,11 +469,11 @@ function changeMonth(mes) {
             mouthTitle.innerHTML = "Dezembro"
             break
     }
-    setShadowCalendar()
-    //colocar aqui a função de setMarkersCalendar()
+    setDarkCellCalendar()
+    setMarkersCalendar()
 }
 
-function setShadowCalendar() {
+function setDarkCellCalendar() {
 
     let week1 = [...bodyCalendar[0].children]
     let week5 = [...bodyCalendar[4].children]
@@ -482,7 +482,7 @@ function setShadowCalendar() {
         week1[i].classList = ""
         week5[i].classList = ""
     }
-    
+    console.log("setDarkCalendar: " + mesAtual)
     switch(mesAtual) {
         case 0:
             week1[0].classList += "escurecer"
@@ -553,7 +553,7 @@ function setShadowCalendar() {
             week5[6].classList += "escurecer"
             break
         case 11:
-            for (let i = 0 ; i < 4 ; i++) {
+            for (let i = 0 ; i < 5 ; i++) {
                 week1[i].classList += "escurecer"
             }
             
@@ -562,22 +562,111 @@ function setShadowCalendar() {
 }
 
 const agendamentos = []
-agendamentos.push({
-    id: userID,
-    service: "Hospedagem",
-    dia: 19,
-    mes: 12
-})
+agendamentos.push(
+    {
+        id: userID,
+        service: "Hospedagem",
+        dia: 19,
+        mes: 11 //o mes vai de 0 a 11 !!!
+    },
+    {
+        id: userID,
+        service: "Hospedagem",
+        dia: 6,
+        mes: 0 //o mes vai de 0 a 11 !!!
+    },
+    {
+        id: userID,
+        service: "Hospedagem",
+        dia: 27,
+        mes: 10 //o mes vai de 0 a 11 !!!
+    },
+    {
+        id: userID,
+        service: "Hospedagem", //fazer ele achar o 30 !!!
+        dia: 30,
+        mes: 10 //o mes vai de 0 a 11 !!!
+    }
+)
 
 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
 
 function setMarkersCalendar() {
-    let agendamentos = localStorage.getItem("agendamentos")
+    
+    let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+
+    let week1 = [...bodyCalendar[0].children]
+    let week2 = [...bodyCalendar[1].children]
+    let week3 = [...bodyCalendar[2].children]
+    let week4 = [...bodyCalendar[3].children]
+    let week5 = [...bodyCalendar[4].children]
+
+    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
+
+    for (let day of weeks) {
+        day.classList.remove("mark")
+    }
 
     if (agendamentos.length === 0) return
 
     for (let agendamento of agendamentos) {
-        let usuario = agendamento.id
-        //parei aqui
+        
+        if (agendamento.mes == mesAtual) {
+            
+            for (let day of weeks) {
+                
+                if (day.textContent == agendamento.dia) {
+                    let verifyClass = false
+                    ;[...day.classList].forEach(classe => {
+                        if (classe == "mark") {
+                            verifyClass = true
+                        }
+
+                        if (classe == "escurecer") {
+                            verifyClass = true
+                            
+                            for (let agendamentoEscuro of agendamentos) {
+                                console.log(`mes na agenda: ${agendamentoEscuro.mes} | mes atual: ${mesAtual - 1}`)
+                                if (agendamentoEscuro.mes == (mesAtual - 1)) {
+                                    
+                                    for (let day of weeks) {
+                                        
+                                        if (day.textContent == agendamentoEscuro.dia && day.classList.contains("escurecer")) {
+                                            day.classList += " mark"
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    })
+
+                    if (!verifyClass) {
+                        day.classList += "mark"
+                    }
+
+                }
+
+                ;[...day.classList].forEach(classe => {
+                    if (classe == "escurecer") {
+                    
+                    for (let agendamentoEscuro of agendamentos) {
+                        console.log(`mes na agenda: ${agendamentoEscuro.mes} | mes atual: ${mesAtual - 1}`)
+                        if (agendamentoEscuro.mes == (mesAtual - 1)) {
+                            
+                            for (let day of weeks) {
+                                
+                                if (day.textContent == agendamentoEscuro.dia && day.classList.contains("escurecer")) {
+                                    day.classList += " mark"
+                                }
+                            }
+                        }
+                    }
+
+                }
+                }) 
+
+            }
+        }
     }
 }
