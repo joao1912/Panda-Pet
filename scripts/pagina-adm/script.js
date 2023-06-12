@@ -1,6 +1,7 @@
 import {showProducts} from '../../scripts/utils/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 
+let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
@@ -235,15 +236,51 @@ let mesAtual
             if (mesAtual != 11) {
                 mesAtual += 1
                 changeMonth(mesAtual)
+
             } else {
                 mesAtual = 0
                 changeMonth(mesAtual)
             }
-
         }
-        
     })
 })
+
+function setCurrentDay() {
+    let data = new Date()
+    let month = data.getMonth()
+    let day = data.getDate()
+
+    let week1 = [...bodyCalendar[0].children]
+    let week2 = [...bodyCalendar[1].children]
+    let week3 = [...bodyCalendar[2].children]
+    let week4 = [...bodyCalendar[3].children]
+    let week5 = [...bodyCalendar[4].children]
+
+    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
+
+    if (mesAtual == month) {
+        
+        for(let dayIterable of weeks) {
+
+            if (!dayIterable.classList.contains("escurecer")) {
+                
+                if (dayIterable.textContent == day) {
+
+                    dayIterable.setAttribute("currentDay", true)
+
+                } 
+            }
+        }
+        
+    } else {
+
+        for(let dayIterable of weeks) {
+
+            dayIterable.removeAttribute("currentDay")
+
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded",function(){
     let mes = new Date()
@@ -314,9 +351,10 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     setDarkCellCalendar()
     setMarkersCalendar()
+    setCurrentDay()
 })
 
-let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
+
 const months = [
     {
         id: 0,
@@ -471,6 +509,7 @@ function changeMonth(mes) {
     }
     setDarkCellCalendar()
     setMarkersCalendar()
+    setCurrentDay()
 }
 
 function setDarkCellCalendar() {
@@ -583,7 +622,7 @@ agendamentos.push(
     },
     {
         id: userID,
-        service: "Hospedagem", //fazer ele achar o 30 !!!
+        service: "Hospedagem",
         dia: 30,
         mes: 10 //o mes vai de 0 a 11 !!!
     }

@@ -273,6 +273,7 @@ a{
 
 #viewCalendar {
     width: 80%;
+    max-width: 1400px;
     height: 1000px;
     background-color: var(--secondColor);
     margin-top: 50px;
@@ -285,6 +286,10 @@ a{
     align-items: center;
     justify-content: center;
 }  
+
+#viewCalendar td[currentDay] {
+    background-color: var(--thirdColor);
+}
 
 #changeMounth {
     margin-bottom: 40px;
