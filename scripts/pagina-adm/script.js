@@ -669,7 +669,7 @@ function setMarkersCalendar() {
                     }
                     
                     if (!verifyClass) {
-                        day.classList += "mark"
+                        day.classList = "mark"
                     }
 
                 }
@@ -683,7 +683,9 @@ function setMarkersCalendar() {
                             for (let day of weeks) {
                                 
                                 if (day.textContent == agendamentoEscuro.dia && day.getAttribute("escurecer")) {
-                                    day.classList += " mark"
+                                    if (!day.classList.contains("mark")) {
+                                        day.classList = "mark"
+                                    }
                                 }
                             }
                         }
