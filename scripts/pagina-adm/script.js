@@ -1,7 +1,11 @@
-import {showProducts} from '../../scripts/utils/showProducts.js'
+import {showProducts} from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
+import { changeMonth } from '../utils/forCalendar/changeMonth.js'
+import { setDarkCellCalendar } from '../utils/forCalendar/setDarkCellCalendar.js'
+import { setMarkersCalendar } from '../utils/forCalendar/setMarkersCalendar.js'
+import { setCurrentDay } from '../utils/forCalendar/setCurrentDay.js'
 
-let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
+export let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
@@ -215,7 +219,7 @@ iconTelaAdm.addEventListener("click", function(){
 })
 
 const botoesTrocaMes = document.querySelectorAll(".trocaMes")
-let mesAtual 
+export let mesAtual 
 
 ;[...botoesTrocaMes].forEach(botao => {
     botao.addEventListener("click", function(event){
@@ -244,43 +248,6 @@ let mesAtual
         }
     })
 })
-
-function setCurrentDay() {
-    let data = new Date()
-    let month = data.getMonth()
-    let day = data.getDate()
-
-    let week1 = [...bodyCalendar[0].children]
-    let week2 = [...bodyCalendar[1].children]
-    let week3 = [...bodyCalendar[2].children]
-    let week4 = [...bodyCalendar[3].children]
-    let week5 = [...bodyCalendar[4].children]
-
-    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
-
-    if (mesAtual == month) {
-        
-        for(let dayIterable of weeks) {
-
-            if (!dayIterable.classList.contains("escurecer")) {
-                
-                if (dayIterable.textContent == day) {
-
-                    dayIterable.setAttribute("currentDay", true)
-
-                } 
-            }
-        }
-
-    } else {
-
-        for(let dayIterable of weeks) {
-
-            dayIterable.removeAttribute("currentDay")
-
-        }
-    }
-}
 
 document.addEventListener("DOMContentLoaded",function(){
     let mes = new Date()
@@ -354,251 +321,8 @@ document.addEventListener("DOMContentLoaded",function(){
     setCurrentDay()
 })
 
+/* --- TEMPORARIO --- */
 
-const months = [
-    {
-        id: 0,
-        Mouth: 'Janeiro',
-        daysSet: [31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4]
-    },
-    {
-        id: 1,
-        Mouth: 'Fevereiro',
-        daysSet: [29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,1,2,3,4]
-    },
-    {
-        id: 2,
-        Mouth: 'Março',
-        daysSet: [26,27,28,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1]
-    },
-    {
-        id: 3,
-        Mouth: 'Abril',
-        daysSet: [26,27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1,2,3,4,5,6]
-    },
-
-    {
-        id: 4,
-        Mouth: 'Maio',
-        daysSet: [30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3]
-    },
-    {
-        id: 5,
-        Mouth: 'Junho',
-        daysSet: [28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1]
-    },
-    {
-        id: 6,
-        Mouth: 'Julho',
-        daysSet: [25,26,27,28,29,30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5]
-    },
-    {
-        id: 7,
-        Mouth: 'Agosto',
-        daysSet: [30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2]
-    },
-
-    {
-        id: 8,
-        Mouth: 'Setembro',
-        daysSet: [27,28,29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
-    },
-    {
-        id: 9,
-        Mouth: 'Outubro',
-        daysSet: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4]
-    },
-    {
-        id: 10,
-        Mouth: 'Novembro',
-        daysSet: [29,30,31,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,1,2]
-    },
-    {
-        id: 11,
-        Mouth: 'Dezembro',
-        daysSet: [26,27,28,29,30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,1,2,3,4,5,6]
-    }
-]
-
-function changeMonth(mes) {
-
-
-    let week1 = [...bodyCalendar[0].children]
-    let week2 = [...bodyCalendar[1].children]
-    let week3 = [...bodyCalendar[2].children]
-    let week4 = [...bodyCalendar[3].children]
-    let week5 = [...bodyCalendar[4].children]
-
-    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
-
-    const mouthTitle = document.getElementById("mouthTitle")
-    
-    switch(mes) {
-        case 0:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[0].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Janeiro"
-            break
-        case 1:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[1].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Fevereiro"
-            break
-        case 2:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[2].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Março"
-            break
-        case 3:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[3].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Abril"
-            break
-        case 4:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[4].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Maio"
-            break
-        case 5:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[5].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Junho"
-            break
-        case 6:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[6].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Julho"
-            break
-        case 7:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[7].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Agosto"
-            break
-        case 8:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[8].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Setembro"
-            break
-        case 9:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[9].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Outubro"
-            break
-        case 10:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[10].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Novembro"
-            break
-        case 11:
-            for (let i = 0 ; i < 35; i++) {
-                weeks[i].innerHTML = months[11].daysSet[i]
-            }
-            mouthTitle.innerHTML = "Dezembro"
-            break
-    }
-    setDarkCellCalendar()
-    setMarkersCalendar()
-    setCurrentDay()
-}
-
-function setDarkCellCalendar() {
-
-    let week1 = [...bodyCalendar[0].children]
-    let week5 = [...bodyCalendar[4].children]
-
-    for (let i = 0 ; i < 7 ; i++) {
-        week1[i].removeAttribute("escurecer")
-        week5[i].removeAttribute("escurecer")
-    }
-    
-    switch(mesAtual) {
-        case 0:
-            week1[0].setAttribute("escurecer", true)
-            for (let i = 4; i < 7 ; i++) {
-                week5[i].setAttribute("escurecer", true)
-            }
-            break
-        case 1:
-            for (let i = 0 ; i < 3 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            for (let i = 3; i < 7 ; i++) {
-                week5[i].setAttribute("escurecer", true)
-            }
-            break
-        case 2:
-            for (let i = 0 ; i < 3 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            week5[6].setAttribute("escurecer", true)
-            break
-        case 3:
-            for (let i = 0 ; i < 6 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            break
-        case 4:
-            week1[0].setAttribute("escurecer", true)
-
-            for(let i = 4 ; i < 7 ; i++) {
-                week5[i].setAttribute("escurecer", true)
-            }
-            break
-        case 5:
-            for(let i = 0 ; i < 4 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            week5[6].setAttribute("escurecer", true)
-            break
-        case 6:
-            for (let i = 0 ; i < 6 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            break
-        case 7:
-            week1[0].setAttribute("escurecer", true)
-            week1[1].setAttribute("escurecer", true)
-
-            week5[5].setAttribute("escurecer", true)
-            week5[6].setAttribute("escurecer", true)
-            break
-        case 8: 
-            for (let i = 0 ; i < 5 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            break
-        case 9:
-            for (let i = 3 ; i < 7 ; i++) {
-                week5[i].setAttribute("escurecer", true)
-            }
-            break
-        case 10:
-            for (let i = 0 ; i < 3 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-
-            week5[5].setAttribute("escurecer", true)
-            week5[6].setAttribute("escurecer", true)
-            break
-        case 11:
-            for (let i = 0 ; i < 5 ; i++) {
-                week1[i].setAttribute("escurecer", true)
-            }
-            
-            break
-    }
-}
 
 const agendamentos = []
 agendamentos.push(
@@ -629,69 +353,4 @@ agendamentos.push(
 )
 
 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
-
-function setMarkersCalendar() {
-    
-    let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
-
-    let week1 = [...bodyCalendar[0].children]
-    let week2 = [...bodyCalendar[1].children]
-    let week3 = [...bodyCalendar[2].children]
-    let week4 = [...bodyCalendar[3].children]
-    let week5 = [...bodyCalendar[4].children]
-
-    let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
-
-    for (let day of weeks) {
-        day.classList.remove("mark")
-    }
-
-    if (agendamentos.length === 0) return
-
-    for (let agendamento of agendamentos) {
-        
-        if (agendamento.mes == mesAtual) {
-            
-            for (let day of weeks) {
-                
-                if (day.textContent == agendamento.dia) {
-                    let verifyClass = false
-
-                    if (day.classList.contains("mark")) {
-                        verifyClass = true
-                    }
-
-                    if (day.getAttribute("escurecer")) {
-                        
-                        verifyClass = true
-                        
-
-                    }
-                    
-                    if (!verifyClass) {
-                        day.classList = "mark"
-                    }
-
-                }
-                
-                if (day.getAttribute("escurecer")) {
-                
-                    for (let agendamentoEscuro of agendamentos) {
-                        
-                        if (agendamentoEscuro.mes == (mesAtual - 1)) {
-                            
-                            for (let day of weeks) {
-                                
-                                if (day.textContent == agendamentoEscuro.dia && day.getAttribute("escurecer")) {
-                                    if (!day.classList.contains("mark")) {
-                                        day.classList = "mark"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+/* ------------------ */

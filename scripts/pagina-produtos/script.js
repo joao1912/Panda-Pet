@@ -1,5 +1,5 @@
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
-import { showProducts } from "../utils/showProducts.js"
+import { showProducts } from "../utils/forProducts/showProducts.js"
 
 
 let users = JSON.parse(localStorage.getItem("users"))

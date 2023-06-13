@@ -1,5 +1,5 @@
 import { setProductsElements } from "./setProductsElements.js"
-import { constructorProductsElements } from "../pagina-produtos/script.js"
+import { constructorProductsElements } from "../../pagina-produtos/script.js"
 import { getIndexCategory } from "./getIndexCategory.js"
 
 export function showProducts(categoria) {

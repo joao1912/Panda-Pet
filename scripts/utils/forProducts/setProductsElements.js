@@ -1,5 +1,5 @@
-import { produtos } from "./produtos.js"
-import { setButtonsCartsListeners } from "../pagina-produtos/script.js"
+import { produtos } from "../produtos.js"
+import { setButtonsCartsListeners } from "../../pagina-produtos/script.js"
 
 export function setProductsElements(indexProdutos, funcConstructor) {
     for (let c = 0; c < indexProdutos.length ; c++) {
