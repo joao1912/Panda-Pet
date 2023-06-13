@@ -218,6 +218,31 @@ iconTelaAdm.addEventListener("click", function(){
     
 })
 
+const telaAdmUtilities = document.getElementById("containerAdmUtilities")
+const containerCalendar = document.getElementById("viewCalendar")
+
+
+telaAdmUtilities.addEventListener("click", function(event){
+    let idBtn = event.target.id
+
+    switch(idBtn) {
+        case "btnCalendar":
+            telaAdmUtilities.style.display = "none"
+            containerCalendar.style.display = "flex"
+            break
+    }
+})
+
+let btnsBackMenu = document.querySelectorAll(".backMenu")
+
+;[...btnsBackMenu].forEach(btnBack => {
+    btnBack.addEventListener("click", function(){
+        telaAdmUtilities.style.display = "flex"
+    
+        containerCalendar.style.display = 'none'
+    })
+})
+
 const botoesTrocaMes = document.querySelectorAll(".trocaMes")
 export let mesAtual 
 
@@ -354,3 +379,46 @@ agendamentos.push(
 
 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
 /* ------------------ */
+
+let week1 = [...bodyCalendar[0].children]
+let week2 = [...bodyCalendar[1].children]
+let week3 = [...bodyCalendar[2].children]
+let week4 = [...bodyCalendar[3].children]
+let week5 = [...bodyCalendar[4].children]
+
+let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
+
+const calendar = document.getElementById("tbody")
+
+calendar.addEventListener("click", function(event){
+    let target = event.target
+    let day = target.textContent
+    let atributos = event.target.getAttribute("escurecer")
+
+    if (atributos != null) {
+        
+        if (day > 20) {
+            if (mesAtual == 0) {
+
+                mesAtual = 11
+
+            } else {
+
+                mesAtual -= 1
+                
+            }
+
+            changeMonth(mesAtual) 
+           
+            
+        } else {
+            mesAtual += 1
+            changeMonth(mesAtual)
+            
+        }
+
+    } else {
+
+    }
+})
+

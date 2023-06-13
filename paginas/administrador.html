@@ -56,27 +56,28 @@
 
     </nav>
     <div class="centralizador">
-        <section id="containerAdmUtilities" style="display: none;">
+        <section id="containerAdmUtilities">
             
-                <button class="material-symbols-outlined icons">
+                <button class="material-symbols-outlined icons" id="btnCalendar">
                     calendar_month
                 </button>
 
-                <button class="material-symbols-outlined icons">
+                <button class="material-symbols-outlined icons" id="btnPayments">
                     payments
                 </button>
             
-                <button class="material-symbols-outlined icons">
+                <button class="material-symbols-outlined icons" id="btnUsers">
                     groups
                 </button>
 
-                <button class="material-symbols-outlined icons">
+                <button class="material-symbols-outlined icons" id="btnEdit">
                     design_services
                 </button>
 
         </section>
 
         <section id="viewCalendar">
+            <button class="material-symbols-outlined backMenu" id="btnBackCalendar">arrow_back</button>
             <div id="changeMounth">
                 <button class="material-symbols-outlined trocaMes">keyboard_arrow_left</button>
                 <span id="mouthTitle">Janeiro</span>
@@ -108,7 +109,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                     <tr>
                         <td></td>
                         <td></td>
@@ -116,7 +117,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="mark"></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -156,6 +157,10 @@
                     </tr>
                 </tbody>
             </table>
+            <section id="containerCheckedTasks">
+                <h1>Dia 30</h1>
+                
+            </section>
         </section>
 
         <section id="viewProfiles">
