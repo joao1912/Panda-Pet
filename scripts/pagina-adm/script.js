@@ -380,14 +380,7 @@ agendamentos.push(
 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
 /* ------------------ */
 
-let week1 = [...bodyCalendar[0].children]
-let week2 = [...bodyCalendar[1].children]
-let week3 = [...bodyCalendar[2].children]
-let week4 = [...bodyCalendar[3].children]
-let week5 = [...bodyCalendar[4].children]
-
-let weeks = [...week1, ...week2, ...week3, ...week4, ...week5]
-
+const telaCheckedTasks = document.getElementById("containerCheckedTasks")
 const calendar = document.getElementById("tbody")
 
 calendar.addEventListener("click", function(event){
@@ -417,8 +410,28 @@ calendar.addEventListener("click", function(event){
             
         }
 
-    } else {
+    } 
 
+    //pegar e salvar os serviços desse dia
+
+    let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+    console.log(agendamentos)
+    if (agendamentos.length == 0) {
+        telaCheckedTasks.style.display = "flex"
+       
+    } else {
+        
+        telaCheckedTasks.style.backgroundImage = "none"
+        telaCheckedTasks.style.display = "flex"
     }
+
+   
+
+})
+
+
+const btnClose = document.getElementById("btnClose")
+btnClose.addEventListener("click", function(){
+    telaCheckedTasks.style.display = "none"
 })
 
