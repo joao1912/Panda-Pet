@@ -415,7 +415,7 @@ calendar.addEventListener("click", function(event){
     //pegar e salvar os serviços desse dia
 
     let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
-    console.log(agendamentos)
+    
     if (agendamentos.length == 0) {
         telaCheckedTasks.style.display = "flex"
        

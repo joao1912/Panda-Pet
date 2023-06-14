@@ -308,19 +308,18 @@ a{
     position: relative;
 }  
 
-#viewCalendar td[currentDay] {
+#calendar td[currentDay] {
     background-color: var(--thirdColor);
 }
 
 #containerCheckedTasks {
     display: none;
     align-items: center;
-    justify-content: end;
     flex-direction: column;
     width: 650px;
     height: 690px;
     background-color: var(--thirdColor);
-    border-radius: 20px;
+    border-radius: 10px;
     background-image: url(../../imagens/sem-serviço.png);
     background-size: contain;
     text-align: center;
@@ -328,6 +327,7 @@ a{
     top: 58%;
     left: 50%;
     overflow: hidden;
+    overflow-y: scroll;
     transform: translate(-50%,-50%);
 }
 
@@ -337,13 +337,9 @@ a{
     font-family: "GooperSemiBold";
     width: 100%;
     background-color: var(--secondColor);
-    height: 89px;
-}
-
-#containerCheckedTasks > img {
-    border-radius: 20px;
-    margin-top: 30px;
-    box-shadow: 0px 0px 8px var(--primaryColor);
+    height: 80px;
+    padding-top: 2px;
+    position: fixed;
 }
 
 #containerCheckedTasks > #btnClose {
@@ -353,14 +349,27 @@ a{
     color: white;
     border-radius: 50%;
     position: absolute;
-    top: 1%;
+    top: 2%;
     left: 1%;
     border: 0;
+    z-index: 1;
 }
 
 #containerCheckedTasks > #btnClose:hover {
     cursor: pointer;
     background-color: #4f4993;
+}
+
+#containerCheckedTasks::-webkit-scrollbar {
+    background-color: var(--secondColor);
+    width: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#containerCheckedTasks::-webkit-scrollbar-thumb {
+    background-color: var(--primaryColor);
+    border-radius: 10px;
 }
 
 #changeMounth {
@@ -387,14 +396,19 @@ a{
     color: white;
 }
 
-#viewCalendar table, th, td, tr {
+#calendar {
     border: 3px solid var(--primaryColor);
     border-collapse: collapse;
     font-family: 'Nunito';
 }
 
+#calendar table, th, td, tr {
+    border: 3px solid var(--primaryColor);
+    border-collapse: collapse;
+    font-family: 'Nunito';
+}
 
-#viewCalendar td {
+#calendar td {
     background-color: white;
     position: relative;
     font-size: 3em;
@@ -414,19 +428,19 @@ a{
    
 }
 
-#viewCalendar td:hover {
+#calendar td:hover {
     cursor: pointer;
     background-color: var(--thirdColor);
 }
 
-#viewCalendar th {
+#calendar th {
     font-size: 1.3em; 
     padding: 10px;
     width: 100px;
     background-color: var(--thirdColor);
 }
 
-#viewCalendar td {
+#calendar td {
     width: 150px;
     height: 150px;
     text-align: center;
@@ -440,4 +454,47 @@ a{
 
 #viewCalendar td[escurecer] {
     background-color: rgb(232 226 226);;
+}
+
+#tasks {
+    margin-top: 80px;
+}
+
+#tasks table {
+    border-collapse: collapse;
+    width: 637px;
+}
+
+#tasks thead {
+    height: 40px;
+    background-color: var(--secondColor);
+}
+
+#tasks td {
+    min-width: 110px;
+    height: 75px;
+}
+
+.idCell {
+    color: white;
+}
+
+#tasks .idCell,.hrCell {
+    font-size: 1.5em;
+}
+
+.btnCancel {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+.btnCancel:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: rgba(200, 15, 15, 0.816);
 }
