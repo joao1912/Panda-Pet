@@ -222,7 +222,7 @@ a{
     text-decoration: none;
 }
 
-#container{
+#container{     /*INICIO.quadrado todo abaixo da div serviço e div cadastro pet*/
    display: flex;
    width: 90%;  /*largura*/
    height: 90%;  /*altura*/
@@ -230,22 +230,23 @@ a{
    border-radius: 10px;
    overflow: hidden;
 }
-#servico{
+#servico{     /*parte da esquerda primeira pagina,separando o lado esquerdo P direito*/   
     width: 30%;
     height: 100%;
-    background-color: rgb(104, 96, 112);
+    background-color: rgb(12, 121, 37);
     justify-content: center;
     display: flex;   
 
 }
 
-#servico > div {
-    height: 60px;
-    width: 100%;
+#divECima { /*centraliza a patinha e nome PandaPet*/
+    height: 200px;
     display: inline-block;
-}
+}  
 
-#servico > div > div{
+
+
+#divECima { /*formata o circulo branco que a patinha vai dentro */
     width: 70px;
     height: 70px;
     background-color: white;
@@ -255,22 +256,52 @@ a{
     align-items: center;
 
 }
-#servico img{
+#divECima img{/*modifica o tamanho da patinha que esta dentro do circulo branco*/
     width: 50px;
     height: 50px;
 }
-#pandaPet{
+#divTitulo{ /*modifica o descritivo da esquerda PandaPet*/
     display: inline-flex;
-
+    
 }
-#cadastroPet{
+#divEMeio{
+    width: 70px;
+    height: 70px;
+  
+}
+#divEBaixo{
+    width: 70px;/*largura*/
+    height: 70px;/*altura*/
+}
+
+
+
+
+#cadastroPet{ /*parte da direita primeira pagina, /*separando o lado direito do esquerdo*/
     width: 70%;
     height: 100%;
     background-color: rgb(226, 122, 43);
 
 }
 
-.centralizador{
+#divDCima{
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+
+}
+#divDMeio{
+    width: 100%;/*largura*/
+    height: 70%;/*altura*/
+
+}
+#divDBaixo{
+    width: 100%;/*largura*/
+    height: 10%;/*altura*/
+
+}
+
+
+.centralizador{ /*centralizou o quedro da direita para esquerda*/
     height: 100%;
     width: 100%;
     display: flex;

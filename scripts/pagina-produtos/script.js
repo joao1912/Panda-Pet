@@ -40,8 +40,9 @@ function setPerfilOnline() {
 
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
-        window.location.href = "../../index.html"
         saveLocalStorage(users)
+        localStorage.removeItem("welcome")
+        window.location.href = "../../index.html"
     })
     
 }
@@ -116,7 +117,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) 
             }   
 
             break
@@ -129,7 +130,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) 
             }
 
             break
@@ -142,7 +143,7 @@ nav.addEventListener("click",function(event){
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) //não funciona
+                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) 
             }
 
             break

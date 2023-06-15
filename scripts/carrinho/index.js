@@ -12,6 +12,7 @@ for (let obj of users) {
     }
 }
 
+const btnFinalizar = document.getElementById("btnFinalizar")
 
 // limpaCarrinho()
 // adicionaProdutoAoCarrinho(5)
@@ -232,3 +233,32 @@ function calcFinalizarCompra() {
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
     containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
 }
+
+function disabledButton() {
+    let carrinho = pegaCarrinho()
+    
+    if (carrinho.length != 0) {
+        btnFinalizar.disabled = false
+    } else {
+        btnFinalizar.disabled = true
+    }
+    
+}
+
+document.addEventListener("DOMContentLoaded", disabledButton())
+
+
+btnFinalizar.addEventListener("click", function(){
+    users[userID].carrinho = []
+    saveLocalStorage(users)
+    btnFinalizar.disabled = true
+
+    Swal.fire({icon: 'success',
+    title: 'Compra Realizada!',
+    confirmButtonText: 'Ok',
+    color: '#645CBB',
+    text: 'Agradecemos por comprar conosco!'})
+    .then(() => {
+        window.location.href = "../../index.html"
+    })
+})

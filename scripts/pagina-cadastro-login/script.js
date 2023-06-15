@@ -2,11 +2,9 @@ import { Error } from "../utils/erros.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 
 let users = []
+users = JSON.parse(localStorage.getItem("users"))
 
-    try {
-    users = JSON.parse(localStorage.getItem("users"))
-    } catch(error) {
-    //let userAdm = JSON.stringify([{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]) 
+if (users == null) {
     users = [{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]
     localStorage.setItem('users', JSON.stringify(users))
 }
@@ -340,6 +338,9 @@ function login(passWord) {
     for (let obj of users) {
         
         if (obj.senha === passWord) {
+            for(let user of users) {
+                user.online = false
+            }
 
             users[index].online = true
             checkedPassWord = true
