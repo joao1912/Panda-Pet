@@ -490,12 +490,12 @@ function setDayTasks(diaSelecionado) {
     ;[...botoesCancel].forEach( botao => {
     botao.addEventListener("click",async function(event){
        
-        
-        let flagCancel = await warningMessage()
-
-        //fazer ele esperar a resposta da função de cima!!!!!!!!!
-        
-        if (flagCancel) return
+        let showMessageOrNot = JSON.parse(localStorage.getItem("deleteWarning"))
+    
+        if (showMessageOrNot == null) {
+            localStorage.setItem("deleteWarning", true)
+            showMessageOrNot = true
+        }
 
         let btnValue = event.target.value
         let taskDeleted
@@ -506,21 +506,16 @@ function setDayTasks(diaSelecionado) {
             }
         }
 
-        
-        
-        cancelTask(taskDeleted)
-    })
-    })
-
-    async function warningMessage() {
-        let showMessageOrNot = JSON.parse(localStorage.getItem("deleteWarning"))
-        let flagCancel = false
-
-        if (showMessageOrNot == null) {
-            localStorage.setItem("deleteWarning", true)
-            showMessageOrNot = true
+        if (!showMessageOrNot) {
+            cancelTask(taskDeleted)
+        } else {
+            warningMessage(taskDeleted, showMessageOrNot)
         }
+    })
+    })
 
+    function warningMessage(taskDeleted, showMessageOrNot) {
+        
         if (showMessageOrNot) {
             Swal.fire({
 
@@ -536,11 +531,17 @@ function setDayTasks(diaSelecionado) {
             }).then((result) => {
                 
                 if (result.isConfirmed) {
+
                     Swal.fire('Deletado!', '', 'success')
+                    cancelTask(taskDeleted)
+
                 } else if (result.isDenied) {
+
                     Swal.fire('Deletado', '', 'success')
+                    cancelTask(taskDeleted)
                     showMessageOrNot = false
                     localStorage.setItem("deleteWarning", JSON.stringify(showMessageOrNot))
+
                 } else if(result.isDismissed) {
                     flagCancel = true
                 }
