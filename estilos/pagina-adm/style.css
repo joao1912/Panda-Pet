@@ -320,8 +320,6 @@ a{
     height: 690px;
     background-color: var(--thirdColor);
     border-radius: 10px;
-    background-image: url(../../imagens/sem-serviço.png);
-    background-size: contain;
     text-align: center;
     position: absolute;
     top: 58%;
@@ -329,6 +327,12 @@ a{
     overflow: hidden;
     overflow-y: scroll;
     transform: translate(-50%,-50%);
+}
+
+#containerCheckedTasks img {
+    width: 650px;
+    height: 650px;
+    margin-top: 40px;
 }
 
 #containerCheckedTasks > h1 {
@@ -458,6 +462,7 @@ a{
 
 #tasks {
     margin-top: 80px;
+    display: none;
 }
 
 #tasks table {

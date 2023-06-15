@@ -352,28 +352,32 @@ document.addEventListener("DOMContentLoaded",function(){
 const agendamentos = []
 agendamentos.push(
     {
-        id: userID,
+        id: 1,
         service: "Hospedagem",
-        dia: 19,
-        mes: 11 //o mes vai de 0 a 11 !!!
+        dia: 10,
+        mes: 11 ,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
     },
     {
-        id: userID,
+        id: 2,
         service: "Hospedagem",
-        dia: 6,
-        mes: 0 //o mes vai de 0 a 11 !!!
+        dia: 10,
+        mes: 11 ,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
     },
     {
-        id: userID,
+        id: 3,
         service: "Hospedagem",
-        dia: 27,
-        mes: 10 //o mes vai de 0 a 11 !!!
+        dia: 10,
+        mes: 11 ,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
     },
     {
-        id: userID,
+        id: 4,
         service: "Hospedagem",
-        dia: 29,
-        mes: 9 //o mes vai de 0 a 11 !!!
+        dia: 10,
+        mes: 11,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
     }
 )
 
@@ -384,9 +388,11 @@ const telaCheckedTasks = document.getElementById("containerCheckedTasks")
 const calendar = document.getElementById("tbody")
 
 calendar.addEventListener("click", function(event){
+    const imgSemServico = document.getElementById("imgSemSevico")
     let target = event.target
     let day = target.textContent
     let atributos = event.target.getAttribute("escurecer")
+    const container = document.getElementById("tasks")
 
     if (atributos != null) {
         
@@ -415,23 +421,205 @@ calendar.addEventListener("click", function(event){
     //pegar e salvar os serviços desse dia
 
     let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+    let flagEmptyDayTasks = true
+
+    for (let obj of agendamentos) {
+        
+        let diaMarcado = obj.dia
+        let mesMarcado = obj.mes
+       
+        if (mesMarcado == mesAtual && diaMarcado == day) {
+            flagEmptyDayTasks = false
+        }
+
+    }
+
+    const dayH1 = document.getElementById("dayH1")
+    dayH1.innerText = `Dia ${day}`
     
-    if (agendamentos.length == 0) {
+    if (flagEmptyDayTasks) {
+
+        imgSemServico.style.display = "block"
+
         telaCheckedTasks.style.display = "flex"
        
     } else {
         
-        telaCheckedTasks.style.backgroundImage = "none"
+        container.style.display = "block"
+        imgSemServico.style.display = "none"
         telaCheckedTasks.style.display = "flex"
+
+        setDayTasks(day)
     }
 
-   
-
 })
-
 
 const btnClose = document.getElementById("btnClose")
 btnClose.addEventListener("click", function(){
+    const container = document.getElementById("tasks")
     telaCheckedTasks.style.display = "none"
+    container.style.display = "none"
 })
 
+function setDayTasks(diaSelecionado) {
+
+    let agendamentos = JSON.parse(localStorage.getItem("agendamentos")) 
+    let users = JSON.parse(localStorage.getItem("users"))
+    
+    const containerTasks = document.getElementById("dayTasks")
+    containerTasks.innerHTML = ""
+
+    for (let obj of agendamentos) {
+
+        let id = obj.id
+        let nome = users[id].nome
+        let servico = obj.service
+        let day = obj.dia
+        let mes = obj.mes
+        let hora = obj.hora
+
+        if (mesAtual == mes && day == diaSelecionado) {
+
+            let task = constructorTasks(id, nome, hora, servico)
+
+            containerTasks.appendChild(task) 
+        }
+    }
+
+    const botoesCancel = document.querySelectorAll(".btnCancel")
+    ;[...botoesCancel].forEach( botao => {
+    botao.addEventListener("click",async function(event){
+       
+        
+        let flagCancel = await warningMessage()
+
+        //fazer ele esperar a resposta da função de cima!!!!!!!!!
+        
+        if (flagCancel) return
+
+        let btnValue = event.target.value
+        let taskDeleted
+
+        for (let obj of agendamentos) {
+            if (obj.id == btnValue) {
+                taskDeleted = obj
+            }
+        }
+
+        
+        
+        cancelTask(taskDeleted)
+    })
+    })
+
+    async function warningMessage() {
+        let showMessageOrNot = JSON.parse(localStorage.getItem("deleteWarning"))
+        let flagCancel = false
+
+        if (showMessageOrNot == null) {
+            localStorage.setItem("deleteWarning", true)
+            showMessageOrNot = true
+        }
+
+        if (showMessageOrNot) {
+            Swal.fire({
+
+            title: 'Tem Certeza?',
+            icon: 'warning',
+            text: 'Não poderá ser desfeito!',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Deletar',
+            denyButtonText: `Sim, não me avise de novo`,
+            cancelButtonText: 'Cancelar'
+
+            }).then((result) => {
+                
+                if (result.isConfirmed) {
+                    Swal.fire('Deletado!', '', 'success')
+                } else if (result.isDenied) {
+                    Swal.fire('Deletado', '', 'success')
+                    showMessageOrNot = false
+                    localStorage.setItem("deleteWarning", JSON.stringify(showMessageOrNot))
+                } else if(result.isDismissed) {
+                    flagCancel = true
+                }
+            })
+        }
+    }
+
+}
+
+
+
+function constructorTasks(id, nome, hora, servico) {
+    //botao delete
+
+    let deleteButton = document.createElement("button")
+    deleteButton.classList.add('material-symbols-outlined')
+    deleteButton.classList.add('btnCancel')
+
+    let textBtnDelete = document.createTextNode('delete')
+    deleteButton.appendChild(textBtnDelete)
+    deleteButton.value = id
+
+    //td do botao delete
+
+    let tdDeleteButton = document.createElement("td")
+    tdDeleteButton.appendChild(deleteButton)
+
+    //td serviço
+
+    let tdServico = document.createElement("td")
+    let textServico = document.createTextNode(servico)
+    tdServico.appendChild(textServico)
+
+    //td horario
+
+    let tdHora = document.createElement("td")
+    tdHora.classList.add("hrCell")
+    let textHora = document.createTextNode(hora)
+    tdHora.appendChild(textHora)
+
+    //td nome user
+
+    let tdUserName = document.createElement("td")
+    let textName = document.createTextNode(nome)
+    tdUserName.appendChild(textName)
+
+    // td userId
+
+    let tdUserId = document.createElement("td")
+    let textId = document.createTextNode(id)
+    tdUserId.classList.add("idCell")
+    tdUserId.appendChild(textId)
+
+    // tr
+
+    let tr = document.createElement("tr")
+    tr.appendChild(tdUserId)
+    tr.appendChild(tdUserName)
+    tr.appendChild(tdHora)
+    tr.appendChild(tdServico)
+    tr.appendChild(tdDeleteButton)
+
+    return tr
+}
+
+
+
+
+function cancelTask(obj) {
+    const tasks = document.getElementById("dayTasks").children
+    const agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+    
+    for (let task of tasks) {
+        let idTask = task.firstElementChild.textContent
+        if (obj.id == idTask) {
+            task.remove()
+            let novosAgendamentos = agendamentos.filter( item => item.id != obj.id)
+            localStorage.setItem("agendamentos", JSON.stringify(novosAgendamentos))
+        }
+    }
+
+}

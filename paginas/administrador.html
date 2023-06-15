@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
+    <link rel="stylesheet" href="../sweetAlert2/sweetalert2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/pagina-adm/style.css">
@@ -169,145 +170,27 @@
                                 <th>Cancelar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="dayTasks">
+                            <!-- <tr>
                                 <td class="idCell">01</td>
-                                <td>João Pedro Silva Teixeira</td>
+                                <td>Nome Usuário</td>
                                 <td class="hrCell">15:00</td>
-                                <td>Hospedagem
-                                    (entrada)</td>
+                                <td>
+                                    Hospedagem
+                                    (entrada)
+                                </td>
                                 <td>
                                     <button class="material-symbols-outlined btnCancel">
                                         delete
                                     </button>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">02</td>
-                                <td>Carlos</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">03</td>
-                                <td>Zuma</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">01</td>
-                                <td>João Pedro Silva Teixeira</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">02</td>
-                                <td>Carlos</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">03</td>
-                                <td>Zuma</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">01</td>
-                                <td>João Pedro Silva Teixeira</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">02</td>
-                                <td>Carlos</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">03</td>
-                                <td>Zuma</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">01</td>
-                                <td>João Pedro Silva Teixeira</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">02</td>
-                                <td>Carlos</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="idCell">03</td>
-                                <td>Zuma</td>
-                                <td class="hrCell">15:00</td>
-                                <td>Hospedagem</td>
-                                <td>
-                                    <button class="material-symbols-outlined btnCancel">
-                                        delete
-                                    </button>
-                                </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
                 <button class="material-symbols-outlined" id="btnClose">close</button>
-                <h1>Dia 30</h1>
+                <h1 id="dayH1">Dia 30</h1>
+                <img id="imgSemSevico" src="../imagens/sem-serviço.png" alt="Sem serviço para o dia">
             </section>
         </section>
 
@@ -324,7 +207,7 @@
         </section>
     </div>
     
-
+    <script src="../sweetAlert2/sweetalert2.all.min.js"></script>
     <script type="module" src="../scripts/pagina-adm/script.js"></script>
 </body>
 </html>
