@@ -221,6 +221,9 @@ iconTelaAdm.addEventListener("click", function(){
 
 const telaAdmUtilities = document.getElementById("containerAdmUtilities")
 const containerCalendar = document.getElementById("viewCalendar")
+const containerProfiles = document.getElementById("viewProfiles")
+const containerPayments = document.getElementById("viewPayments")
+const containerProducts = document.getElementById("editProducts")
 
 
 telaAdmUtilities.addEventListener("click", function(event){
@@ -231,16 +234,40 @@ telaAdmUtilities.addEventListener("click", function(event){
             telaAdmUtilities.style.display = "none"
             containerCalendar.style.display = "flex"
             break
+        case "btnUsers":
+            telaAdmUtilities.style.display = "none"
+            containerProfiles.style.display = "flex"
+            loadProfiles()
     }
 })
 
 let btnsBackMenu = document.querySelectorAll(".backMenu")
 
 ;[...btnsBackMenu].forEach(btnBack => {
-    btnBack.addEventListener("click", function(){
+    btnBack.addEventListener("click", function(event){
         telaAdmUtilities.style.display = "flex"
+
+        let id = event.target.id
+
+        switch (id) {
+            case "btnBackCalendar":
+                containerCalendar.style.display = 'none'
+                break
+            case "btnBackProfiles":
+                containerProfiles.style.display = 'none'
+                break
+            case "btnBackPayments":
+                containerPayments.style.display = 'none'
+                break
+            case "btnBackProducts":
+                containerProducts.style.display = 'none'
+                break
+        }
     
-        containerCalendar.style.display = 'none'
+        
+        
+        
+        
     })
 })
 
@@ -460,5 +487,101 @@ btnClose.addEventListener("click", function(){
     const container = document.getElementById("tasks")
     telaCheckedTasks.style.display = "none"
     container.style.display = "none"
+    localStorage.removeItem("deleteWarning")
 })
 
+
+/* containerProfiles */
+
+loadProfiles()
+function loadProfiles() {
+    let elementos = containerProfiles.childNodes
+
+    for (let i = 7 ; i < elementos.length; i++) {
+        elementos[i].remove()
+    }
+    
+    const users = JSON.parse(localStorage.getItem("users"))
+
+    if (users.length == 1) {
+
+    } else {
+
+        for (let user of users) {
+
+            let id = user.id
+            let nome = user.nome
+            let dataObj = user.date
+            let totalGasto = user.atividadeNoSite.totalGasto
+            let imagem = user.img
+
+            if (!imagem) {
+                imagem = null
+            }
+            
+            if (id == 0) continue
+
+            let containerUser = constructorProfiles(id, nome, dataObj, totalGasto, imagem)
+
+            containerProfiles.appendChild(containerUser)
+        }
+
+    }
+}
+
+function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
+
+    // paragrafos
+
+    let paragrafoUserId = document.createElement("p")
+    let paragrafoUserName = document.createElement("p")
+    let paragrafoUserDate = document.createElement("p")
+    let paragrafoUserSpending = document.createElement("p")
+
+    let textUserId = document.createTextNode(id)
+    let textUserName = document.createTextNode(nome)
+    let textUserDate = document.createTextNode(dataObj.text)
+    let textUserSpending = document.createTextNode(totalGasto)
+
+    paragrafoUserId.classList.add("userId")
+    paragrafoUserId.appendChild(textUserId)
+
+    paragrafoUserName.classList.add("userName")
+    paragrafoUserName.appendChild(textUserName)
+
+    paragrafoUserDate.classList.add("userDate")
+    paragrafoUserDate.appendChild(textUserDate)
+
+    paragrafoUserSpending.classList.add("userSpending")
+    paragrafoUserSpending.appendChild(textUserSpending)
+
+    //article
+
+    let article = document.createElement("article")
+    article.appendChild(paragrafoUserId)
+    article.appendChild(paragrafoUserName)
+    article.appendChild(paragrafoUserDate)
+    article.appendChild(paragrafoUserSpending)
+
+    //imagem user
+
+    let img = document.createElement("img")
+    
+    if (imagem == null) {
+        img.src = "../../imagens/perfil-default.jpg"
+    } else {
+        img.src = imagem
+    }
+
+    img.alt = "Foto De Perfil"
+
+    //div container user
+
+    let divContainer = document.createElement("div")
+    divContainer.classList.add("containerUser")
+
+    divContainer.appendChild(img)
+    divContainer.appendChild(article)
+
+    return divContainer
+}

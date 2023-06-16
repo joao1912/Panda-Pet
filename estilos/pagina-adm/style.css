@@ -238,7 +238,7 @@ a{
     border-radius: 20px;
     box-shadow: 0px 0px 8px var(--thirdColor);
 
-    display: flex;
+    display: none; /*FLEX*/
     flex-direction: column;
     align-items: center;
     align-content: center;
@@ -266,6 +266,11 @@ a{
     left: 2%;
 }
 
+#btnBackProfiles {
+    top: 90%;
+    left: 1%;
+}
+
 #containerAdmUtilities > button {
     width: 25vw;
     height: 200px;
@@ -290,6 +295,9 @@ a{
 .icons {
     font-size: 6em;
 }
+
+
+/* CALENDARIO */
 
 #viewCalendar {
     width: 80%;
@@ -511,4 +519,118 @@ h2#swal2-title
 }
 div#swal2-html-container{
    font-family:'Nunito';
+}
+
+/* FIM CALENDARIO */
+
+/*----------------*/
+
+/* PROFILES */
+
+#viewProfiles {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    width: 80%;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin-top: 100px;
+    box-shadow: 0px 0px 10px var(--shadowColor3);
+    padding: 30px;
+    padding-bottom: 80px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+#viewProfiles > h1 {
+    font-size: 3em;
+    font-family: 'GooperSemiBold';
+    color: var(--primaryColor);
+    position: absolute;
+    top: -10%;
+}
+
+div.containerUser {
+    width: 350px;
+    height: 500px;
+    background-color: var(--primaryColor);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 20px;
+    position: relative;
+}
+
+div.containerUser img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+div.containerUser article {
+    height: 40%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-size: 1.5em;
+    font-family: 'Nunito';
+}
+
+.userId::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 57%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 66.5%;
+}
+
+.userDate::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 76%;
+}
+
+.userSpending::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 85%;
 }
