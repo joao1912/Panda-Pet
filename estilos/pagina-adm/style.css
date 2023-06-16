@@ -503,3 +503,12 @@ a{
     transform: scale(1.1);
     color: rgba(200, 15, 15, 0.816);
 }
+
+h2#swal2-title
+{
+   font-size: 24px;
+   font-family:'GooperSemiBold';
+}
+div#swal2-html-container{
+   font-family:'Nunito';
+}

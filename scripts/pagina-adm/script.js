@@ -509,12 +509,12 @@ function setDayTasks(diaSelecionado) {
         if (!showMessageOrNot) {
             cancelTask(taskDeleted)
         } else {
-            warningMessage(taskDeleted, showMessageOrNot)
+            confirmDeletion(taskDeleted, showMessageOrNot)
         }
     })
     })
 
-    function warningMessage(taskDeleted, showMessageOrNot) {
+    function confirmDeletion(taskDeleted, showMessageOrNot) {
         
         if (showMessageOrNot) {
             Swal.fire({
@@ -532,13 +532,24 @@ function setDayTasks(diaSelecionado) {
                 
                 if (result.isConfirmed) {
 
-                    Swal.fire('Deletado!', '', 'success')
+                    Swal.fire({
+                        title:'Deletado!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1200
+                        })
                     cancelTask(taskDeleted)
 
                 } else if (result.isDenied) {
 
-                    Swal.fire('Deletado', '', 'success')
+                    Swal.fire({
+                        title:'Deletado!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
                     cancelTask(taskDeleted)
+                    
                     showMessageOrNot = false
                     localStorage.setItem("deleteWarning", JSON.stringify(showMessageOrNot))
 
