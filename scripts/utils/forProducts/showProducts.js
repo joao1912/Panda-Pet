@@ -1,5 +1,4 @@
 import { setProductsElements } from "./setProductsElements.js"
-import { constructorProductsElements } from "../../pagina-produtos/script.js"
 import { getIndexCategory } from "./getIndexCategory.js"
 
 export function showProducts(categoria) {
@@ -19,7 +18,7 @@ export function showProducts(categoria) {
             indexProdutos = getIndexCategory("acessorios")
             containerProdutos.innerHTML = ""
         
-            setProductsElements(indexProdutos, constructorProductsElements)
+            setProductsElements(indexProdutos)
 
             break
 
@@ -28,7 +27,7 @@ export function showProducts(categoria) {
             indexProdutos = getIndexCategory("alimentacao")
             containerProdutos.innerHTML = ""
 
-            setProductsElements(indexProdutos, constructorProductsElements)
+            setProductsElements(indexProdutos)
 
             break
         
@@ -38,11 +37,8 @@ export function showProducts(categoria) {
             indexProdutos = getIndexCategory("brinquedos")
             containerProdutos.innerHTML = ""
 
-            setProductsElements(indexProdutos, constructorProductsElements)
+            setProductsElements(indexProdutos)
 
             break
     }
-
-    
-
 }   

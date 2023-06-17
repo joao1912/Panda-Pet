@@ -163,7 +163,7 @@ function funcConstructorElements(cod, quantity) {
     inptQuant.type = "number"
     inptQuant.classList = "inptQuantProduto"
     inptQuant.value = quantity
-    inptQuant.setAttribute("readonly", true) // Alterei essa linha porque tava faltando um parâmetro no setAttribute
+    inptQuant.setAttribute("readonly", true)
 
     // span icon remove
 
