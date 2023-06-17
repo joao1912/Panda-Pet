@@ -9,7 +9,7 @@ export function getIndexCategory(getCategoria) {
             quantityProducts = 12
         }
 
-        while (indexProd.length < 12) {
+        while (indexProd.length < quantityProducts) {
 
             var randomNumber = Math.floor(Math.random() * produtos.length)
 
