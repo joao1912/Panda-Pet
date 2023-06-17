@@ -1,11 +1,10 @@
 import { produtos } from "../produtos.js"
 import { constructorProductsElements } from "./constructorProductsElements.js"
 import { saveLocalStorage } from "../saveLocalStorage.js"
-import { verifyUserOnline } from "../../pagina-produtos/script.js"
+import { verifyUserOnline } from "../../utils/verifyUserOnline.js"
 
-
+let users = JSON.parse(localStorage.getItem("users"))
 let userID = verifyUserOnline()
-console.log(userID)
 
 export function setProductsElements(indexProdutos) {
     for (let c = 0; c < indexProdutos.length ; c++) {
@@ -25,21 +24,21 @@ export function setProductsElements(indexProdutos) {
 }
 
 function setButtonsCartsListeners() {
+    if (userID === undefined) {
+        window.location.href = "../../paginas/cadastro-login.html" 
+        return
+    }
+    
     const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
-   
+
     ;[...botoesCarrinho].forEach(botao => {
         
         botao.addEventListener("click",function(event){
             let elemento = event.target
-            let produtoId = botao.value 
+            let produtoId = Number(botao.value)
             if (elemento.src === undefined) {
                 elemento = elemento.children[0].children[0]
             }
-
-            if (userID === undefined) {
-                window.location.href = "../../paginas/cadastro-login.html" 
-            }
-            if (userID === undefined) return
 
             saveOrDeleteProduct(produtoId, elemento)
        
