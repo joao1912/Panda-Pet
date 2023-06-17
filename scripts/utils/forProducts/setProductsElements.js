@@ -72,17 +72,17 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
         imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
         
         let index = 0
-        let produtoIndex 
         
         for (let obj of users[userID].carrinho) { 
             
             if (obj.codigo === produtoId) {
-                produtoIndex = index
+                break
             }
             index++
         }
+
         users = JSON.parse(localStorage.getItem("users"))
-        users[userID].carrinho.splice(produtoIndex, 1)
+        users[userID].carrinho.splice(index, 1)
 
         saveLocalStorage(users)
     }
