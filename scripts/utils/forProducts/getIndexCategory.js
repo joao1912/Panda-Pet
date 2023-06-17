@@ -1,4 +1,4 @@
-import { produtos } from "./produtos.js"
+import { produtos } from "../produtos.js"
 
 export function getIndexCategory(getCategoria) {
     let indexProd = []

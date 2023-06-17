@@ -1,10 +1,22 @@
 import { Error } from "../utils/erros.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
+import { getDate } from '../utils/getDate.js'
 
-let users = JSON.parse(localStorage.getItem("users"))
+let users = []
+users = JSON.parse(localStorage.getItem("users"))
 
 if (users == null) {
-    users = [{ id: 0, nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg' }]
+    users = [{
+        id: 0 ,
+        nome: "Admin",
+        senha: "administrador123", 
+        carrinho: [], 
+        online: false, 
+        date: getDate(), 
+        atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        img: '../../imagens/perfil-default.jpg'
+    }]
+
     localStorage.setItem('users', JSON.stringify(users))
 }
 
@@ -235,12 +247,29 @@ function saveUser(userName, passWord) {
 
     if (urlFotoPerfil != undefined) {
 
-        users.push({ id: nextId, nome: userName, senha: passWord, carrinho: [], online: true, img: urlFotoPerfil })
+        users.push({
+            id: nextId ,
+            nome: userName, 
+            senha: passWord, 
+            carrinho: [], 
+            online: true, 
+            date: getDate(), 
+            atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            img: urlFotoPerfil
+        })
         saveLocalStorage(users)
 
     } else {
 
-        users.push({ id: nextId, nome: userName, senha: passWord, carrinho: [], online: true })
+        users.push({
+            id: nextId ,
+            nome: userName, 
+            senha: passWord, 
+            carrinho: [], 
+            online: true, 
+            date: getDate(), 
+            atividadeNoSite: {totalGasto: 0, produtosComprados: []}
+        })
         saveLocalStorage(users)
 
     }

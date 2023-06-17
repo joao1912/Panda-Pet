@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Pet</title>
+    <link rel="stylesheet" href="../sweetAlert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../estilos/index.css">
+    <link rel="stylesheet" href="../estilos/pagina-adm/style.css">
+</head>
+<body>
+    <header>
+        <img src="../imagens/1.png" alt="Logo Panda Pet">
+
+        <div id="containerBarraDePesquisa">
+            <input type="text" id="barraPesquisa" placeholder="Pesquise">
+            <span><i class="material-symbols-outlined">search</i></span>
+        </div>
+
+        <div id="containerIcones">
+            <span class="btnIcons" id="icon-tela-adm"><i class="material-symbols-outlined">settings_suggest</i></span>
+            <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
+            <a href="./carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <div id="containerPerfil">
+                <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
+                <div id="userLogado">
+                    <img id="fotoPerfilOnline" src="../imagens/perfil-default.jpg" alt="foto de perfil">
+                    <input type="file" id="inptTrocaFoto">
+                    <button id="botaoSair">Sair<span class="material-symbols-outlined">logout</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <span id="forHome">
+            Home
+        </span>
+
+        <span id="forAcessorios">
+            Acessórios
+        </span>
+
+        <span id="forAlimentacao">
+            Alimentação
+        </span>
+
+        <span id="forBrinquedos">
+            Brinquedos
+        </span>
+
+        <span id="forAgendamento">
+            Agendamento
+        </span>
+
+    </nav>
+    <div class="centralizador">
+        <section id="containerAdmUtilities">
+            
+                <button class="material-symbols-outlined icons" id="btnCalendar" title="Agendamentos">
+                    calendar_month
+                </button>
+
+                <button class="material-symbols-outlined icons" id="btnPayments" title="Financeiro">
+                    payments
+                </button>
+            
+                <button class="material-symbols-outlined icons" id="btnUsers" title="Usuários">
+                    groups
+                </button>
+
+                <button class="material-symbols-outlined icons" id="btnEdit" title="Administrar Produtos">
+                    design_services
+                </button>
+
+        </section>
+
+        <section id="viewCalendar">
+            <button class="material-symbols-outlined backMenu" id="btnBackCalendar">arrow_back</button>
+            <div id="changeMounth">
+                <button class="material-symbols-outlined trocaMes">keyboard_arrow_left</button>
+                <span id="mouthTitle">Janeiro</span>
+                <button class="material-symbols-outlined trocaMes">keyboard_arrow_right</button>
+            </div>
+            <table id="calendar">
+                <thead>
+                    <tr>
+                        <th>
+                            dom
+                        </th>
+                        <th>
+                            seg
+                        </th>
+                        <th>
+                            ter
+                        </th>
+                        <th>
+                            qua
+                        </th>
+                        <th>
+                            qui
+                        </th>
+                        <th>
+                            sex
+                        </th>
+                        <th>
+                            sab
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <section id="containerCheckedTasks">
+                <div id="tasks">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Hora</th>
+                                <th>Serviço</th>
+                                <th>Cancelar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dayTasks">
+                            <!-- <tr>
+                                <td class="idCell">01</td>
+                                <td>Nome Usuário</td>
+                                <td class="hrCell">15:00</td>
+                                <td>
+                                    Hospedagem
+                                    (entrada)
+                                </td>
+                                <td>
+                                    <button class="material-symbols-outlined btnCancel">
+                                        delete
+                                    </button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <button class="material-symbols-outlined" id="btnClose">close</button>
+                <h1 id="dayH1">Dia 30</h1>
+                <img id="imgSemSevico" src="../imagens/sem-serviço.png" alt="Não há serviço para esse dia">
+            </section>
+        </section>
+
+        <section id="viewProfiles">
+            <h1>Usuários</h1>
+
+            <!-- <div class="containerUser">
+                <img src="../imagens/perfil-default.jpg" alt="Foto De Perfil">
+                <article>
+                    <p class="userId">ID</p>
+                    <p class="userName">Nome Completo</p>
+                    <p class="userDate">Dia do Cadastro</p>
+                    <p class="userSpending">Total Gasto No Site</p>
+                </article>
+            </div> -->
+            <button class="material-symbols-outlined backMenu" id="btnBackProfiles">arrow_back</button>
+        </section>
+
+        <section id="viewPayments">
+
+        </section>
+
+        <section id="editProducts">
+
+        </section>
+    </div>
+    
+    <script src="../sweetAlert2/sweetalert2.all.min.js"></script>
+    <script type="module" src="../scripts/pagina-adm/script.js"></script>
+</body>
+</html>

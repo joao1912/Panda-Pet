@@ -1,0 +1,636 @@
+html,body{
+    height: 100%;
+}
+
+header {
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+header > img {
+    height: 115px;
+    margin-left: 20px;
+}
+
+header #containerBarraDePesquisa {
+    height: 40px;
+    width: 50%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#barraPesquisa {
+    width: 96%;
+    height: 100%;
+    border-radius: 50px;
+    border: 0;
+    padding-left: 30px;
+    display: inline-flex;
+    font-size: 1.5em;
+    font-family: "Nunito";
+}
+
+#barraPesquisa:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+#containerBarraDePesquisa span {
+    width: 35px;
+}
+
+#containerBarraDePesquisa span:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#containerIcones {
+    display: flex;
+    flex-direction: row;
+}
+
+#containerIcones span.btnIcons {
+    background-color: var(--thirdColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#containerIcones span.btnIcons:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: var(--primaryColor);
+}
+
+#containerPerfil {
+    position: absolute;
+    top: 115px;
+    margin-left: 26px;
+    background-color: var(--secondColor);
+    width: 160px;
+    height: 55px;
+    border-radius: 10px;
+
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 5px;
+}
+
+#containerPerfil img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+#containerPerfil button#botaoLogar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.3em;
+    color: white;
+    font-family: 'GooperSemiBold';
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#containerPerfil div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3em;
+    font-family: 'GooperSemiBold';
+    color: white;
+}
+
+
+#containerPerfil button > span {
+    font-size: 1.3em;
+    margin-left: 5px;
+}
+
+#botaoSair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    font-size: 1.2em;
+    font-family: "GooperSemiBold";
+    color: white;
+    background-color: transparent;
+    border: 0;
+    margin-left: 25px;
+} 
+
+#botaoSair:hover {
+    cursor: pointer;
+    color: rgb(233, 227, 227);
+}
+
+#containerPerfil::after {
+    content: ""; 
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondColor);
+    transform: rotate(45deg);
+    top: -10%;
+    left: 80%;
+    border-radius: 5px;
+}
+
+#inptTrocaFoto {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+nav {
+    display: flex;
+    height: 40px;
+    background-color: var(--thirdColor);
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    padding-bottom: 2px;
+}
+
+nav span:hover {
+    color: var(--secondColor);
+    cursor: pointer;
+    transform: scale(1.1) translateX(3px) translateY(-2px);
+    transition: transform 0.3s;
+}
+
+nav span:hover::after, span:hover::before {
+    display: inline-block;
+}
+
+nav span::before {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-10deg);
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+nav span::after {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(10deg);
+    position: absolute;
+    top: 5px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.centralizador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#containerAdmUtilities {
+    width: 80%;
+    height: 645px;
+    background-color: var(--secondColor);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px var(--thirdColor);
+
+    display: none; /*FLEX*/
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.backMenu {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--primaryColor);
+    border: 0;
+    position: absolute;
+}
+
+.backMenu:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#btnBackCalendar {
+    top: 2.5%;
+    left: 2%;
+}
+
+#btnBackProfiles {
+    top: 90%;
+    left: 1%;
+}
+
+#containerAdmUtilities > button {
+    width: 25vw;
+    height: 200px;
+    background-color: var(--thirdColor);
+    border: 0;
+    margin: 20px;
+    border-radius: 30px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;   
+    box-shadow:  5px 5px 10px var(--primaryColor);
+}
+
+#containerAdmUtilities > button:hover {
+    transform: scale(1.1);
+}
+
+#containerAdmUtilities > button:focus {
+    border: 2px solid white;
+}
+
+.icons {
+    font-size: 6em;
+}
+
+
+/* CALENDARIO */
+
+#viewCalendar {
+    width: 80%;
+    max-width: 1400px;
+    height: 1000px;
+    background-color: var(--secondColor);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px var(--thirdColor);
+
+    display: none; /*flex*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}  
+
+#calendar td[currentDay] {
+    background-color: var(--thirdColor);
+}
+
+#containerCheckedTasks {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    width: 650px;
+    height: 690px;
+    background-color: var(--thirdColor);
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    overflow: hidden;
+    overflow-y: scroll;
+    transform: translate(-50%,-50%);
+}
+
+#containerCheckedTasks img {
+    width: 650px;
+    height: 650px;
+    margin-top: 40px;
+}
+
+#containerCheckedTasks > h1 {
+    font-size: 3.5em;
+    color: white;
+    font-family: "GooperSemiBold";
+    width: 100%;
+    background-color: var(--secondColor);
+    height: 80px;
+    padding-top: 2px;
+    position: fixed;
+}
+
+#containerCheckedTasks > #btnClose {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primaryColor);
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    border: 0;
+    z-index: 1;
+}
+
+#containerCheckedTasks > #btnClose:hover {
+    cursor: pointer;
+    background-color: #4f4993;
+}
+
+#containerCheckedTasks::-webkit-scrollbar {
+    background-color: var(--secondColor);
+    width: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#containerCheckedTasks::-webkit-scrollbar-thumb {
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+}
+
+#changeMounth {
+    margin-bottom: 40px;
+    font-size: 3.8em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+#changeMounth span {
+    font-family: "GooperSemiBold";
+    color: white;
+}
+
+#changeMounth button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid white;
+    outline: 0;
+    background-color: transparent;
+    color: white;
+}
+
+#calendar {
+    border: 3px solid var(--primaryColor);
+    border-collapse: collapse;
+    font-family: 'Nunito';
+}
+
+#calendar table, th, td, tr {
+    border: 3px solid var(--primaryColor);
+    border-collapse: collapse;
+    font-family: 'Nunito';
+}
+
+#calendar td {
+    background-color: white;
+    position: relative;
+    font-size: 3em;
+}
+
+
+.mark::before {
+    content: "";
+    width: 80%;
+    height: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    left: 10%;
+    top: 90%;
+   
+}
+
+#calendar td:hover {
+    cursor: pointer;
+    background-color: var(--thirdColor);
+}
+
+#calendar th {
+    font-size: 1.3em; 
+    padding: 10px;
+    width: 100px;
+    background-color: var(--thirdColor);
+}
+
+#calendar td {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    
+}
+
+#viewCalendar button.trocaMes:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#viewCalendar td[escurecer] {
+    background-color: rgb(232 226 226);;
+}
+
+#tasks {
+    margin-top: 80px;
+    display: none;
+}
+
+#tasks table {
+    border-collapse: collapse;
+    width: 637px;
+}
+
+#tasks thead {
+    height: 40px;
+    background-color: var(--secondColor);
+}
+
+#tasks td {
+    min-width: 110px;
+    height: 75px;
+}
+
+.idCell {
+    color: white;
+}
+
+#tasks .idCell,.hrCell {
+    font-size: 1.5em;
+}
+
+.btnCancel {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+.btnCancel:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: rgba(200, 15, 15, 0.816);
+}
+
+h2#swal2-title
+{
+   font-size: 24px;
+   font-family:'GooperSemiBold';
+}
+div#swal2-html-container{
+   font-family:'Nunito';
+}
+
+/* FIM CALENDARIO */
+
+/*----------------*/
+
+/* PROFILES */
+
+#viewProfiles {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    width: 80%;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin-top: 100px;
+    box-shadow: 0px 0px 10px var(--shadowColor3);
+    padding: 30px;
+    padding-bottom: 80px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+#viewProfiles > h1 {
+    font-size: 3em;
+    font-family: 'GooperSemiBold';
+    color: var(--primaryColor);
+    position: absolute;
+    top: -10%;
+}
+
+div.containerUser {
+    width: 350px;
+    height: 500px;
+    background-color: var(--primaryColor);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 20px;
+    position: relative;
+}
+
+div.containerUser img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+div.containerUser article {
+    height: 40%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-size: 1.5em;
+    font-family: 'Nunito';
+}
+
+.userId::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 57%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 66.5%;
+}
+
+.userDate::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 76%;
+}
+
+.userSpending::before {
+    content: "";
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: var(--thirdColor);
+    border-radius: 50%;
+
+    left: 1%;
+    top: 85%;
+}
