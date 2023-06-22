@@ -1,4 +1,4 @@
-import {showProducts} from '../utils/forProducts/showProducts.js'
+import { showProducts } from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 import { changeMonth } from '../utils/forCalendar/changeMonth.js'
 import { setDarkCellCalendar } from '../utils/forCalendar/setDarkCellCalendar.js'
@@ -6,6 +6,32 @@ import { setMarkersCalendar } from '../utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from '../utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from '../utils/forCalendar/setDayTasks.js'
 
+let categoryTransations = JSON.parse(localStorage.getItem("compras"))
+
+if (categoryTransations == null) {
+    categoryTransations = [
+        {
+            nome: "banhoETosa",
+            valorVendido: 0
+        },
+        {
+            nome: "hospedagem",
+            valorVendido: 0
+        },
+        {
+            nome: "brinquedos",
+            valorVendido: 0
+        },
+        {
+            nome: "acessórios",
+            valorVendido: 0
+        },
+        {
+            nome: "alimentacao",
+            valorVendido: 0
+        }
+    ]
+}
 export let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -14,22 +40,22 @@ function verifyUserOnline() {
 
     let userOnline
     if (users) {
-    for (let obj of users) {
+        for (let obj of users) {
             if (obj.online) {
                 userOnline = obj.id
             }
-        } 
+        }
     }
     return userOnline || undefined
 }
 
 function setPerfilOnline() {
-    
+
     if (users[userID].img) {
         let urlImagem = users[userID].img
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
-    } 
+    }
 
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
@@ -40,16 +66,16 @@ function setPerfilOnline() {
     botaoLogar.style.display = "none"
     containerUserLogado.style.display = "flex"
 
-    document.getElementById("botaoSair").addEventListener("click",function sair(){
+    document.getElementById("botaoSair").addEventListener("click", function sair() {
         users[userID].online = false
         if (window.location.pathname != '/index.html') {
 
             window.location.href = "../../index.html"
 
-       }
+        }
         saveLocalStorage(users)
     })
-    
+
 }
 
 if (userID) {
@@ -66,15 +92,15 @@ function trocaFotoPerfil() {
     fileTrocaFoto.addEventListener("change", readImage, false);
     const file = document.getElementById("fotoPerfilOnline")
 
-    function readImage() { 
+    function readImage() {
         let fr = new FileReader();
-        fr.onload = function(event) {
+        fr.onload = function (event) {
             file.src = event.target.result
-            
-        };       
+
+        };
         fr.readAsDataURL(this.files[0]);
 
-        fr.addEventListener("load",() => {
+        fr.addEventListener("load", () => {
             users[userID].img = fr.result
             saveLocalStorage(users)
         })
@@ -83,13 +109,13 @@ function trocaFotoPerfil() {
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
 
-iconeDoPerfil.addEventListener("click",function(){
+iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
-    function redirecionarCadastro(){
+    function redirecionarCadastro() {
         window.location.href = "../../paginas/cadastro-login.html"
     }
-    
+
     let visibility = tabelaPerfil.style.display
 
     if (visibility === "none") {
@@ -106,16 +132,16 @@ iconeDoPerfil.addEventListener("click",function(){
 })
 
 const nav = document.querySelector("nav")
-nav.addEventListener("click",function(event){
-   
-    switch(event.target.id) {
+nav.addEventListener("click", function (event) {
+
+    switch (event.target.id) {
         case "forHome":
-            
-           
+
+
 
             if (window.location.pathname != '/index.html') {
 
-                 window.location.href = "../../index.html"
+                window.location.href = "../../index.html"
 
             }
 
@@ -131,12 +157,12 @@ nav.addEventListener("click",function(event){
                 let category = JSON.stringify("acessorios")
                 localStorage.setItem("category", category)
                 window.location.href = "../../paginas/produtos.html"
-            }   
+            }
 
             break
-        
+
         case "forAlimentacao":
-           
+
             if (window.location.pathname == '/paginas/produtos.html') {
 
                 showProducts("alimentos")
@@ -144,13 +170,13 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("alimentos")
                 localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html" 
+                window.location.href = "../../paginas/produtos.html"
             }
 
             break
 
         case "forBrinquedos":
-           
+
             if (window.location.pathname == '../../paginas/produtos.html') {
 
                 showProducts("brinquedos")
@@ -158,13 +184,13 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("brinquedos")
                 localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html" 
+                window.location.href = "../../paginas/produtos.html"
             }
 
             break
-        
+
         case "forAgendamento":
-        
+
             //href
             break
     }
@@ -174,7 +200,7 @@ const barra_pesquisa = document.getElementById("barraPesquisa")
 barra_pesquisa.addEventListener("keyup", barraPesquisa)
 
 function barraPesquisa() {
-    
+
     let stringSearch = barra_pesquisa.value
     stringSearch = stringSearch.trim()
     let searhProdutos = document.querySelectorAll(".produto")
@@ -188,35 +214,35 @@ function barraPesquisa() {
 
     if (searhProdutos.length == 0) return
 
-   
 
-    ;[...searhProdutos].forEach( produto => {
 
-        let title = produto.children[0].children[1].children[0].children[0].textContent 
-        
-        let exist = title.normalize("NFD")
-        .replace(/[^a-zA-Z\s]/g, "")
-        .toLowerCase()
-        .includes(stringSearch.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")
-        .toLowerCase())
+        ;[...searhProdutos].forEach(produto => {
 
-        if (!exist) {
-            produto.style.display = "none"
-        } else {
-            produto.style.display = "flex"
-        }
-    })
+            let title = produto.children[0].children[1].children[0].children[0].textContent
+
+            let exist = title.normalize("NFD")
+                .replace(/[^a-zA-Z\s]/g, "")
+                .toLowerCase()
+                .includes(stringSearch.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")
+                    .toLowerCase())
+
+            if (!exist) {
+                produto.style.display = "none"
+            } else {
+                produto.style.display = "flex"
+            }
+        })
 }
 
 const iconTelaAdm = document.getElementById("icon-tela-adm")
-iconTelaAdm.addEventListener("click", function(){
+iconTelaAdm.addEventListener("click", function () {
 
 
     if (!window.location.pathname == '/paginas/administrador.html') {
         window.location.href = "../../paginas/administrador.html"
     }
 
-    
+
 })
 
 const telaAdmUtilities = document.getElementById("containerAdmUtilities")
@@ -226,10 +252,10 @@ const containerPayments = document.getElementById("viewPayments")
 const containerProducts = document.getElementById("editProducts")
 
 
-telaAdmUtilities.addEventListener("click", function(event){
+telaAdmUtilities.addEventListener("click", function (event) {
     let idBtn = event.target.id
 
-    switch(idBtn) {
+    switch (idBtn) {
         case "btnCalendar":
             telaAdmUtilities.style.display = "none"
             containerCalendar.style.display = "flex"
@@ -237,77 +263,77 @@ telaAdmUtilities.addEventListener("click", function(event){
         case "btnUsers":
             telaAdmUtilities.style.display = "none"
             containerProfiles.style.display = "flex"
-           
+
     }
 })
 
 let btnsBackMenu = document.querySelectorAll(".backMenu")
 
-;[...btnsBackMenu].forEach(btnBack => {
-    btnBack.addEventListener("click", function(event){
-        telaAdmUtilities.style.display = "flex"
+    ;[...btnsBackMenu].forEach(btnBack => {
+        btnBack.addEventListener("click", function (event) {
+            telaAdmUtilities.style.display = "flex"
 
-        let id = event.target.id
+            let id = event.target.id
 
-        switch (id) {
-            case "btnBackCalendar":
-                containerCalendar.style.display = 'none'
-                break
-            case "btnBackProfiles":
-                containerProfiles.style.display = 'none'
-                break
-            case "btnBackPayments":
-                containerPayments.style.display = 'none'
-                break
-            case "btnBackProducts":
-                containerProducts.style.display = 'none'
-                break
-        }
-    
-        
-        
-        
-        
+            switch (id) {
+                case "btnBackCalendar":
+                    containerCalendar.style.display = 'none'
+                    break
+                case "btnBackProfiles":
+                    containerProfiles.style.display = 'none'
+                    break
+                case "btnBackPayments":
+                    containerPayments.style.display = 'none'
+                    break
+                case "btnBackProducts":
+                    containerProducts.style.display = 'none'
+                    break
+            }
+
+
+
+
+
+        })
     })
-})
 
 const botoesTrocaMes = document.querySelectorAll(".trocaMes")
-export let mesAtual 
+export let mesAtual
 
-;[...botoesTrocaMes].forEach(botao => {
-    botao.addEventListener("click", function(event){
-        let direction = event.target.textContent
+    ;[...botoesTrocaMes].forEach(botao => {
+        botao.addEventListener("click", function (event) {
+            let direction = event.target.textContent
 
-        if (direction === "keyboard_arrow_left") {
+            if (direction === "keyboard_arrow_left") {
 
-            if (mesAtual != 0) {
-                mesAtual -= 1
-                changeMonth(mesAtual)
-            } else {
-                mesAtual = 11
-                changeMonth(mesAtual)
+                if (mesAtual != 0) {
+                    mesAtual -= 1
+                    changeMonth(mesAtual)
+                } else {
+                    mesAtual = 11
+                    changeMonth(mesAtual)
+                }
+
+            } else if (direction === "keyboard_arrow_right") {
+
+                if (mesAtual != 11) {
+                    mesAtual += 1
+                    changeMonth(mesAtual)
+
+                } else {
+                    mesAtual = 0
+                    changeMonth(mesAtual)
+                }
             }
-            
-        } else if(direction === "keyboard_arrow_right") {
-
-            if (mesAtual != 11) {
-                mesAtual += 1
-                changeMonth(mesAtual)
-
-            } else {
-                mesAtual = 0
-                changeMonth(mesAtual)
-            }
-        }
+        })
     })
-})
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
     let mes = new Date()
     mes = mes.getMonth()
     const mouthTitle = document.getElementById("mouthTitle")
 
-    switch(mes) {
+    switch (mes) {
         case 0:
             changeMonth(0)
             mouthTitle.innerHTML = "Janeiro"
@@ -383,21 +409,21 @@ agendamentos.push(
         id: 1,
         service: "Hospedagem",
         dia: 10,
-        mes: 11 ,//o mes vai de 0 a 11 !!!
+        mes: 11,//o mes vai de 0 a 11 !!!
         hora: "15:30"
     },
     {
         id: 2,
         service: "Hospedagem",
         dia: 10,
-        mes: 11 ,//o mes vai de 0 a 11 !!!
+        mes: 11,//o mes vai de 0 a 11 !!!
         hora: "15:30"
     },
     {
         id: 3,
         service: "Hospedagem",
         dia: 10,
-        mes: 11 ,//o mes vai de 0 a 11 !!!
+        mes: 11,//o mes vai de 0 a 11 !!!
         hora: "15:30"
     },
     {
@@ -416,7 +442,7 @@ const telaCheckedTasks = document.getElementById("containerCheckedTasks")
 const calendar = document.getElementById("tbody")
 let flagCalendar = false
 
-calendar.addEventListener("click", function(event){
+calendar.addEventListener("click", function (event) {
 
     if (flagCalendar) return
 
@@ -429,7 +455,7 @@ calendar.addEventListener("click", function(event){
     const container = document.getElementById("tasks")
 
     if (atributos != null) {
-        
+
         if (day > 20) {
             if (mesAtual == 0) {
 
@@ -438,19 +464,19 @@ calendar.addEventListener("click", function(event){
             } else {
 
                 mesAtual -= 1
-                
+
             }
 
-            changeMonth(mesAtual) 
-           
-            
+            changeMonth(mesAtual)
+
+
         } else {
             mesAtual += 1
             changeMonth(mesAtual)
-            
+
         }
 
-    } 
+    }
 
     //pegar e salvar os serviços desse dia
 
@@ -458,10 +484,10 @@ calendar.addEventListener("click", function(event){
     let flagEmptyDayTasks = true
 
     for (let obj of agendamentos) {
-        
+
         let diaMarcado = obj.dia
         let mesMarcado = obj.mes
-       
+
         if (mesMarcado == mesAtual && diaMarcado == day) {
             flagEmptyDayTasks = false
         }
@@ -470,15 +496,15 @@ calendar.addEventListener("click", function(event){
 
     const dayH1 = document.getElementById("dayH1")
     dayH1.innerText = `Dia ${day}`
-    
+
     if (flagEmptyDayTasks) {
 
         imgSemServico.style.display = "block"
 
         telaCheckedTasks.style.display = "flex"
-       
+
     } else {
-        
+
         container.style.display = "block"
         imgSemServico.style.display = "none"
         telaCheckedTasks.style.display = "flex"
@@ -489,7 +515,7 @@ calendar.addEventListener("click", function(event){
 })
 
 const btnClose = document.getElementById("btnClose")
-btnClose.addEventListener("click", function(){
+btnClose.addEventListener("click", function () {
     flagCalendar = false
     const container = document.getElementById("tasks")
     telaCheckedTasks.style.display = "none"
@@ -503,12 +529,12 @@ btnClose.addEventListener("click", function(){
 loadProfiles()
 function loadProfiles() {
     let elementos = containerProfiles.childNodes
-   
-    for (let i = 7 ; i < elementos.length; i++) {
-        
+
+    for (let i = 7; i < elementos.length; i++) {
+
         elementos[i].remove()
     }
-    
+
     const users = JSON.parse(localStorage.getItem("users"))
 
     if (users.length == 1 || users.length == 0) {
@@ -526,7 +552,7 @@ function loadProfiles() {
             if (!imagem) {
                 imagem = null
             }
-            
+
             if (id == 0) continue
 
             let containerUser = constructorProfiles(id, nome, dataObj, totalGasto, imagem)
@@ -574,7 +600,7 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
     //imagem user
 
     let img = document.createElement("img")
-    
+
     if (imagem == null) {
         img.src = "../../imagens/perfil-default.jpg"
     } else {
@@ -599,25 +625,46 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 var ctx = document.getElementById("chart")
 
 
-var chartGraph = new Chart(ctx, {
-    type: "pie",
-    data: {
-        labels: [
-            'Tosa e Banho',
-            'Hospedagem',
-            'Brinquedos',
-            'Acessórios',
-            'Alimentos'
-          ],
-          datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)'
+let tosaText = document.getElementById("tosaText")
+let hospedagemText = document.getElementById("hospedagemText")
+let brinquedosText = document.getElementById("brinquedosText")
+let acessoriosText = document.getElementById("acessoriosText")
+let alimentosText = document.getElementById("alimentosText")
+let valueAllTransations = 0
+
+for (let obj of categoryTransations) {
+    valueAllTransations += obj.valorVendido
+
+    let id = document.getElementById(`${obj.nome}-Text`)
+
+    id.innerHTML = obj.valorVendido
+}
+
+if (valueAllTransations > 0) {
+
+    var chartGraph = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: [
+                'Tosa e Banho',
+                'Hospedagem',
+                'Brinquedos',
+                'Acessórios',
+                'Alimentos'
             ],
-            hoverOffset: 4
-          }]
-    }
-})
+            datasets: [{
+                label: 'My First Dataset',
+                data: [categoryTransations[0].valorVendido, categoryTransations[1].valorVendido, categoryTransations[2].valorVendido, categoryTransations[3].valorVendido, categoryTransations[4].valorVendido],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        }
+    })
+}
+
+
+
