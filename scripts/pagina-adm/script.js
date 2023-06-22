@@ -19,11 +19,11 @@ if (categoryTransations == null) {
             valorVendido: 0
         },
         {
-            nome: "brinquedos",
+            nome: "brinquedo",
             valorVendido: 0
         },
         {
-            nome: "acessórios",
+            nome: "acessorios",
             valorVendido: 0
         },
         {
@@ -635,8 +635,7 @@ let valueAllTransations = 0
 for (let obj of categoryTransations) {
     valueAllTransations += obj.valorVendido
 
-    let id = document.getElementById(`${obj.nome}-Text`)
-
+    let id = document.getElementById(`${obj.nome}-text`) //Estava Text, o correto text ;)
     id.innerHTML = obj.valorVendido
 }
 
