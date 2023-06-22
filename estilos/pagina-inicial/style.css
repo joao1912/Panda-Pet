@@ -307,6 +307,54 @@ margin-top: 20px;
     margin-top: 20px;
     padding-left: 20%;
     padding-right: 20%;
+    margin-bottom: 120px;
+
+}
+
+.Hospedagem{
+color: var(--primaryColor);
+font-size: 2.5em;
+font-family: 'GooperSemiBold';
+font-weight: bold;
+text-align: center;
+width:100%;
+display: block;
+margin-top: 20px;
+}
+
+.icon2{
+    color: var(--primaryColor);
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-top: 50px;
+    font-size: 4em;
+
+}
 
 
+#texto2{
+    color: var(--secondColor);
+    font-size: 1em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 120px;
+
+}
+
+
+#footer{
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
 }
