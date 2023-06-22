@@ -243,3 +243,54 @@ margin-top: 20px;
     height: 500px;
     
 }
+
+#container2 {
+    width: 90%;
+    margin: 0 auto;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+#container2 img {
+    width: 1030px;
+    height: 500px;
+    
+}
+
+
+.carrossel2{
+    color: var(--primaryColor);
+    font-size: 2.5em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    
+    }
+    
+.icon{
+    color: var(--primaryColor);
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 50%;
+    display: block;
+    margin-top: 50px;
+
+}
+
+.quemSomos{
+    color: var(--primaryColor);
+    font-size: 2.5em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+    display: block;
+    margin-top: 20px;
+
+}
+
