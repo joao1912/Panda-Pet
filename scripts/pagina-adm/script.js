@@ -603,9 +603,11 @@ var chartGraph = new Chart(ctx, {
     type: "pie",
     data: {
         labels: [
-            'Red',
-            'Blue',
-            'Yellow'
+            'Tosa e Banho',
+            'Hospedagem',
+            'Brinquedos',
+            'Acessórios',
+            'Alimentos'
           ],
           datasets: [{
             label: 'My First Dataset',
