@@ -224,7 +224,7 @@ font-size: 2.5em;
 font-family: 'GooperSemiBold';
 font-weight: bold;
 text-align: center;
-width: 100%;
+width: 100vw;
 display: block;
 margin-top: 20px;
 
@@ -271,15 +271,17 @@ margin-top: 20px;
     
     }
     
-.icon{
+#icon{
     color: var(--primaryColor);
-    font-size: 2.5em;
     font-weight: bold;
     text-align: center;
-    width: 50%;
     display: block;
     margin-top: 50px;
 
+}
+
+.icon{
+    font-size: 4em;   
 }
 
 .quemSomos{
@@ -288,9 +290,23 @@ margin-top: 20px;
     font-family: 'GooperSemiBold';
     font-weight: bold;
     text-align: center;
-    width: 20%;
+    width:100%;
     display: block;
     margin-top: 20px;
 
 }
 
+#texto1{
+    color: var(--secondColor);
+    font-size: 1em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
+
+
+}
