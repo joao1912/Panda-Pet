@@ -267,8 +267,17 @@ a{
 }
 
 #btnBackProfiles {
-    top: 90%;
-    left: 1%;
+    position: relative;
+}
+
+#footerUsers {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    top: 93%;
+    align-items: center;
+    padding-left: 20px;
+
 }
 
 #containerAdmUtilities > button {
@@ -528,7 +537,7 @@ div#swal2-html-container{
 /* PROFILES */
 
 #viewProfiles {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
@@ -542,6 +551,7 @@ div#swal2-html-container{
     padding-bottom: 80px;
     gap: 30px;
     margin-bottom: 40px;
+    overflow: hidden;
 }
 
 #viewProfiles > h1 {
@@ -549,7 +559,7 @@ div#swal2-html-container{
     font-family: 'GooperSemiBold';
     color: var(--primaryColor);
     position: absolute;
-    top: -10%;
+    top: -60px;
 }
 
 div.containerUser {
@@ -633,4 +643,61 @@ div.containerUser article {
 
     left: 1%;
     top: 85%;
+}
+
+/* Payments */
+
+#viewPayments {
+    display: flex;
+    margin-top: 50px;
+    width: 80%;
+    min-width: 600px;
+    height: 800px;
+    background-color: var(--secondColor);
+    margin-bottom: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#paymentsGeral {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#paymentsGeral > div {
+    width: 100%;
+    height: 160px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid var(--primaryColor);
+    border-right: 2px solid var(--primaryColor);
+}
+
+#paymentsGeral > div > h2 {
+    font-family: 'GooperSemiBold';
+    color: white;
+}
+
+#paymentsGeral > div > p {
+    margin-top: 15%;
+    font-family: "Nunito";
+    font-size: 1.6em;
+}
+
+#containerGrafico {
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+#containerGrafico h1 {
+    font-size: 3em;
+    font-family: "GooperBold";
+    color: white;
 }

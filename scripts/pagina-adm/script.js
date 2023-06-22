@@ -1,3 +1,5 @@
+import Chart from '../../node_modules/chart.js'
+
 import {showProducts} from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 import { changeMonth } from '../utils/forCalendar/changeMonth.js'
@@ -237,7 +239,7 @@ telaAdmUtilities.addEventListener("click", function(event){
         case "btnUsers":
             telaAdmUtilities.style.display = "none"
             containerProfiles.style.display = "flex"
-            loadProfiles()
+           
     }
 })
 
@@ -414,8 +416,14 @@ localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
 
 const telaCheckedTasks = document.getElementById("containerCheckedTasks")
 const calendar = document.getElementById("tbody")
+let flagCalendar = false
 
 calendar.addEventListener("click", function(event){
+
+    if (flagCalendar) return
+
+    flagCalendar = true
+
     const imgSemServico = document.getElementById("imgSemSevico")
     let target = event.target
     let day = target.textContent
@@ -484,6 +492,7 @@ calendar.addEventListener("click", function(event){
 
 const btnClose = document.getElementById("btnClose")
 btnClose.addEventListener("click", function(){
+    flagCalendar = false
     const container = document.getElementById("tasks")
     telaCheckedTasks.style.display = "none"
     container.style.display = "none"
@@ -496,15 +505,16 @@ btnClose.addEventListener("click", function(){
 loadProfiles()
 function loadProfiles() {
     let elementos = containerProfiles.childNodes
-
+   
     for (let i = 7 ; i < elementos.length; i++) {
+        
         elementos[i].remove()
     }
     
     const users = JSON.parse(localStorage.getItem("users"))
 
-    if (users.length == 1) {
-
+    if (users.length == 1 || users.length == 0) {
+        //por imagem
     } else {
 
         for (let user of users) {
@@ -585,3 +595,29 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 
     return divContainer
 }
+
+// payments
+
+var ctx = document.getElementsByClassName("line-chart")
+
+
+var chartGraph = new Chart(ctx, {
+    type: "pie",
+    data: {
+        labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+          ],
+          datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+          }]
+    }
+})
