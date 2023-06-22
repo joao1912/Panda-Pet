@@ -1,5 +1,3 @@
-import Chart from '../../node_modules/chart.js'
-
 import {showProducts} from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 import { changeMonth } from '../utils/forCalendar/changeMonth.js'
@@ -598,7 +596,7 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 
 // payments
 
-var ctx = document.getElementsByClassName("line-chart")
+var ctx = document.getElementById("chart")
 
 
 var chartGraph = new Chart(ctx, {

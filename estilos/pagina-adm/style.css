@@ -684,7 +684,7 @@ div.containerUser article {
 }
 
 #paymentsGeral > div > p {
-    margin-top: 15%;
+    margin-top: 40px;
     font-family: "Nunito";
     font-size: 1.6em;
 }
@@ -700,4 +700,17 @@ div.containerUser article {
     font-size: 3em;
     font-family: "GooperBold";
     color: white;
+}
+
+#containerGrafico > div {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+
+#chart {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    margin-top: 50px;
 }
