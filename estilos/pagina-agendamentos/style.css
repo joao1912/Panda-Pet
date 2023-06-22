@@ -234,64 +234,111 @@ a{
     width: 30%;
     height: 100%;
     background-color: rgb(12, 121, 37);
-    justify-content: center;
+    align-items: center;
     display: flex;   
+    flex-direction: column;
 
 }
 
-#divECima { /*centraliza a patinha e nome PandaPet*/
-    height: 200px;
-    display: inline-block;
-}  
-
-
-
 #divECima { /*formata o circulo branco que a patinha vai dentro */
-    width: 70px;
-    height: 70px;
-    background-color: white;
-    border-radius: 50%;
+    width: 200px;
+    height: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
 }
-#divECima img{/*modifica o tamanho da patinha que esta dentro do circulo branco*/
-    width: 50px;
-    height: 50px;
-}
-#divTitulo{ /*modifica o descritivo da esquerda PandaPet*/
-    display: inline-flex;
-    
-}
-#divEMeio{
+
+#divECima div { /* dic cima que comanda toda a dive de cima*/
+    background-color: white;
+    border-radius: 50%;
     width: 70px;
     height: 70px;
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
 }
-#divEBaixo{
-    width: 70px;/*largura*/
-    height: 70px;/*altura*/
+#divECima img{/*modifica o tamanho da patinha que esta dentro do circulo branco*/
+    width: 50px;
+    height: 50px;      
+}
+#titulo{
+    font-size: 1.5em;
+    font-family:'GooperSemiBold';
 }
 
+#divEMeio{/* div dos imputs*/
+    width: 44%;
+    height: 40%;
+    font-size: 1.0em;
+    font-family:'GooperSemiBold';
+    justify-content: center; 
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    position: relative;
+}
+
+#divEBaixo{ /* div da imagem*/
+    width: 100%;/*largura*/
+    height: 40%;/*altura*/
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
 
 
+}
+/*faz as linhas dos imputs*/
+/* #perfil::before { 
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 45px;
+    background-color: var(--shadowColor2);
+    top: 28%;
+    left: 5%;
+}
+#serv::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 45px;
+    background-color: var(--shadowColor2);
+    top: 53%;
+    left: 5%;
+} */
+
+/* perfilServ{
+    z-index: 1;
+} */
 
 #cadastroPet{ /*parte da direita primeira pagina, /*separando o lado direito do esquerdo*/
     width: 70%;
     height: 100%;
     background-color: rgb(226, 122, 43);
+    flex-direction: column;
 
 }
 
-#divDCima{
+#divDCima{ /* div das frases*/
     width: 100%;/*largura*/
     height: 20%;/*altura*/
+   text-align: center; /*alinha os textos*/
 
 }
+
+#divDCima h1,h2 {
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
+
+}
+
 #divDMeio{
     width: 100%;/*largura*/
     height: 70%;/*altura*/
+   
 
 }
 #divDBaixo{
