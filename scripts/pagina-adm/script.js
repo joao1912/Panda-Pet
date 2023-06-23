@@ -11,23 +11,23 @@ let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 if (categoryTransations == null) {
     categoryTransations = [
         {
-            nome: "banhoETosa",
+            identificacaoCategoria: "banhoETosa",
             valorVendido: 0
         },
         {
-            nome: "hospedagem",
+            identificacaoCategoria: "hospedagem",
             valorVendido: 0
         },
         {
-            nome: "brinquedo",
+            identificacaoCategoria: "brinquedos",
             valorVendido: 0
         },
         {
-            nome: "acessorios",
+            identificacaoCategoria: "acessorios",
             valorVendido: 0
         },
         {
-            nome: "alimentacao",
+            identificacaoCategoria: "alimentacao",
             valorVendido: 0
         }
     ]
@@ -625,17 +625,12 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 var ctx = document.getElementById("chart")
 
 
-let tosaText = document.getElementById("tosaText")
-let hospedagemText = document.getElementById("hospedagemText")
-let brinquedosText = document.getElementById("brinquedosText")
-let acessoriosText = document.getElementById("acessoriosText")
-let alimentosText = document.getElementById("alimentosText")
 let valueAllTransations = 0
 
 for (let obj of categoryTransations) {
     valueAllTransations += obj.valorVendido
 
-    let id = document.getElementById(`${obj.nome}-text`) //Estava Text, o correto text ;)
+    let id = document.getElementById(`${obj.identificacaoCategoria}-text`)
     id.innerHTML = obj.valorVendido
 }
 
