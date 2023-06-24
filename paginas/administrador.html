@@ -215,31 +215,35 @@
             <section id="paymentsGeral">
                 <div id="tosaBanho">
                     <h2>Tosa e Banho</h2>
-                    <p id="banhoETosa-text">R$ 500,00</p>
+                    <p id="banhoETosa-text"></p>
                 </div>
 
                 <div id="hospedagem">
                     <h2>Hospedagem</h2>
-                    <p id="hospedagem-text">R$ 500,00</p>
+                    <p id="hospedagem-text"></p>
                 </div>
 
                 <div  id="lojaBrinquedos">
                     <h2>Loja - Brinquedos</h2>
-                    <p id="brinquedo-text">R$ 500,00</p>
+                    <p id="brinquedo-text"></p>
                 </div>
 
                 <div id="lojaAcessorios">
                     <h2>Loja - Acessórios</h2>
-                    <p id="acessorios-text">R$ 500,00</p>
+                    <p id="acessorios-text"></p>
                 </div>
 
-                <div id="lojaAlimentos">
+                <div id="lojaAlimentos" style="border-bottom: 0px;">
                     <h2>Loja - Alimentos</h2>
-                    <p id="alimentacao-text">R$ 500,00</p>
+                    <p id="alimentacao-text"></p>
                 </div>
             </section>
             <section id="containerGrafico">
+                <button class="material-symbols-outlined backMenu" id="btnBackPayments">arrow_back</button>  
                 <h1>Rendimento Bruto</h1>
+                <div id="semRedimentos">
+                    <img src="../imagens/Sem Rendimento.png" alt="Não há rendimentos ainda">
+                </div>
                 <div>
                     <canvas id="chart" role="grafico"></canvas>
                 </div>

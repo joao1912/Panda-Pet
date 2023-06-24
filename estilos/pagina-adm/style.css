@@ -238,7 +238,7 @@ a{
     border-radius: 20px;
     box-shadow: 0px 0px 8px var(--thirdColor);
 
-    display: none; /*FLEX*/
+    display: flex; /*FLEX*/
     flex-direction: column;
     align-items: center;
     align-content: center;
@@ -648,7 +648,7 @@ div.containerUser article {
 /* Payments */
 
 #viewPayments {
-    display: flex;
+    display: none;
     margin-top: 50px;
     width: 80%;
     min-width: 600px;
@@ -694,6 +694,7 @@ div.containerUser article {
     height: 100%;
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 #containerGrafico h1 {
@@ -713,4 +714,21 @@ div.containerUser article {
     height: 500px;
     margin: auto;
     margin-top: 50px;
+}
+
+#btnBackPayments {
+    left: 88%;
+    top: 26px;
+}
+
+#semRedimentos {
+    height: 100%;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+#semRedimentos img {
+    width: 90%;
 }

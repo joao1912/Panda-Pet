@@ -263,6 +263,10 @@ telaAdmUtilities.addEventListener("click", function (event) {
         case "btnUsers":
             telaAdmUtilities.style.display = "none"
             containerProfiles.style.display = "flex"
+            break
+        case "btnPayments":
+            telaAdmUtilities.style.display = "none"
+            containerPayments.style.display = 'flex'
 
     }
 })
@@ -289,11 +293,6 @@ let btnsBackMenu = document.querySelectorAll(".backMenu")
                     containerProducts.style.display = 'none'
                     break
             }
-
-
-
-
-
         })
     })
 
@@ -535,14 +534,16 @@ function loadProfiles() {
         elementos[i].remove()
     }
 
-    const users = JSON.parse(localStorage.getItem("users"))
-
+    let users = JSON.parse(localStorage.getItem("users"))
+   
     if (users.length == 1 || users.length == 0) {
+
         //por imagem
+
     } else {
 
         for (let user of users) {
-
+           
             let id = user.id
             let nome = user.nome
             let dataObj = user.date
@@ -635,8 +636,8 @@ let valueAllTransations = 0
 for (let obj of categoryTransations) {
     valueAllTransations += obj.valorVendido
 
-    let id = document.getElementById(`${obj.nome}-text`) //Estava Text, o correto text ;)
-    id.innerHTML = obj.valorVendido
+    let id = document.getElementById(`${obj.nome}-text`) 
+    id.innerHTML = `R$ ${obj.valorVendido.toFixed(2)}`
 }
 
 if (valueAllTransations > 0) {
@@ -652,7 +653,7 @@ if (valueAllTransations > 0) {
                 'Alimentos'
             ],
             datasets: [{
-                label: 'My First Dataset',
+                label: 'Rendimento Bruto',
                 data: [categoryTransations[0].valorVendido, categoryTransations[1].valorVendido, categoryTransations[2].valorVendido, categoryTransations[3].valorVendido, categoryTransations[4].valorVendido],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
@@ -663,6 +664,10 @@ if (valueAllTransations > 0) {
             }]
         }
     })
+} else {
+    const imgContainer = document.getElementById("semRedimentos")
+
+    imgContainer.style.display = "flex"
 }
 
 
