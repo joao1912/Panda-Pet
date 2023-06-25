@@ -251,8 +251,80 @@
         </section>
 
         <section id="editProducts">
+            <div id="containerEditButtons">
+                <button class="material-symbols-outlined backMenu" id="btnBackProducts">arrow_back</button>
+                                      
+                <button class="btnEditProducts" title="Adicionar Produtos" id="btnAdd">
+                    <div class="material-symbols-outlined subButtonCircle">
+                        add
+                    </div>
+                </button>
 
+
+                <button class="btnEditProducts" title="Editar produtos" id="btnEdit">
+                    <div class="material-symbols-outlined subButtonCircle" id="editDeleteSquare">
+                        edit_square
+                    </div>
+                </button>
+        
+
+            
+                <button class="btnEditProducts" title="Remover Produtos" id="btnRemove">
+                    <div class="material-symbols-outlined subButtonCircle">
+                        delete_forever
+                    </div>
+                </button>
+            </div>
+
+            <section id="screenEditProducts">
+                <div id="leftSide">
+                    <button class="material-symbols-outlined backEditButtons" id="internalAddButton">arrow_back</button>
+
+                    <button id="btnAddPhoto" title="Adicionar Foto Do Produto">
+                        <div class="material-symbols-outlined" id="containerIconAddPhoto">
+                            add_a_photo
+                        </div>
+                    </button>
+                    <div id="formAddProduct">
+                        
+                            <label for="productName">Nome</label>
+                            <input type="text" id="productName">
+                        
+                       
+                            <label for="productPrice">Preço</label>
+                            <div id="containerPrice">
+                                <div id="elementReal">R$</div>
+                                <input type="number" id="productPrice">
+                            </div>
+                        
+                        
+                            <label for="productDescription">Descrição</label>
+                            <textarea id="productDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                        
+                    </div>
+                </div>
+                <div id="rightSide">
+                    <h1>Pré-Visualizar</h1>
+
+                    <div id="containerProduto">
+                        <img src="../imagens/pet-recomendações.png" alt="Imagem do Produto">
+                        <div>
+                            <h2>Nome do Produto</h2>
+                            <span>R$ 0,00</span>
+                            <div>
+                                <button id="btnComprar">Comprar</button>
+                                <button class="material-symbols-outlined" id="btnCart">shopping_cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btnAdicionar" disabled>Adicionar</button>
+                </div>
+            </section>
+            
         </section>
+
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../sweetAlert2/sweetalert2.all.min.js"></script>

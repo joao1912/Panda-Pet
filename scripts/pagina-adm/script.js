@@ -267,7 +267,10 @@ telaAdmUtilities.addEventListener("click", function (event) {
         case "btnPayments":
             telaAdmUtilities.style.display = "none"
             containerPayments.style.display = 'flex'
-
+            break
+        case "btnEdit":
+            telaAdmUtilities.style.display = "none"
+            containerProducts.style.display = "flex"
     }
 })
 
@@ -669,6 +672,49 @@ if (valueAllTransations > 0) {
 
     imgContainer.style.display = "flex"
 }
+
+
+/* edit products */
+
+const editButtons = document.querySelectorAll(".btnEditProducts")
+const screenButtons = document.getElementById("containerEditButtons")
+const screenAddProducts = document.getElementById("screenEditProducts")
+;[...editButtons].forEach( button => {
+    button.addEventListener("click", function(event){
+        let text = event.target.textContent
+        text = text.trim()
+       
+        switch(text) {
+            case "add":
+                screenButtons.style.display = "none"
+                screenAddProducts.style.display = "flex"
+                break
+            case "edit_square":
+                screenButtons.style.display = "none"
+
+                break
+            case "delete_forever":
+                screenButtons.style.display = "none"
+
+                break
+        }
+    })
+})
+
+const buttonInternos = document.querySelectorAll(".backEditButtons")
+
+;[...buttonInternos].forEach(button => {
+    button.addEventListener("click",function(event){
+        let id = event.target.id
+
+        switch(id) {
+            case "internalAddButton":
+                screenAddProducts.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+        }
+    })
+})
 
 
 
