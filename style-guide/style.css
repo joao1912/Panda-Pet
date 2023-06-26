@@ -117,10 +117,11 @@ li:hover {
 }
 
 img {
-    width: 350px;
-    height: 350px;
+    width: 265px;
+    height: 150px;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #circlesAndColors {
@@ -180,6 +181,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Nunito";
 }
 
 #botoes {
