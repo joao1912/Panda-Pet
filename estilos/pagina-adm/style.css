@@ -231,6 +231,7 @@ a{
 
 #containerAdmUtilities {
     width: 80%;
+    max-width: 1200px;
     height: 645px;
     background-color: var(--secondColor);
     margin-top: 50px;
@@ -268,6 +269,7 @@ a{
 
 #btnBackProfiles {
     position: relative;
+    margin-left: -28px;
 }
 
 #footerUsers {
@@ -282,6 +284,7 @@ a{
 
 #containerAdmUtilities > button {
     width: 25vw;
+    max-width: 400px;
     height: 200px;
     background-color: var(--thirdColor);
     border: 0;
@@ -717,7 +720,7 @@ div.containerUser article {
 }
 
 #btnBackPayments {
-    left: 88%;
+    right: 26px;
     top: 26px;
 }
 
@@ -1386,6 +1389,24 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+#btnSaveEditProduct:disabled {
+    background-color: #444074;
+    color: lightgray;
+}
 
+#btnSaveEditProduct:disabled:hover {
+    cursor: default;
+    transform: none;
+}
+
+#btnRemoveProduct:disabled {
+    background-color: #444074;
+    color: lightgray;
+}
+
+#btnRemoveProduct:disabled:hover {
+    cursor: default;
+    transform: none;
+}
 
 
