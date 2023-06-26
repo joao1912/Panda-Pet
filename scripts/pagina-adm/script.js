@@ -12,23 +12,23 @@ if (categoryTransations == null) {
     categoryTransations = [
         {
             nome: "banhoETosa",
-            valorVendido: 0
+            valorVendido: 110
         },
         {
             nome: "hospedagem",
-            valorVendido: 0
+            valorVendido: 220
         },
         {
             nome: "brinquedo",
-            valorVendido: 0
+            valorVendido: 330
         },
         {
             nome: "acessorios",
-            valorVendido: 0
+            valorVendido: 50
         },
         {
             nome: "alimentacao",
-            valorVendido: 0
+            valorVendido: 60
         }
     ]
 }
@@ -661,7 +661,9 @@ if (valueAllTransations > 0) {
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
+                    'rgb(255, 205, 86)',
+                    'rgb(217, 94, 50)',
+                    'rgb(255, 3, 33)'
                 ],
                 hoverOffset: 4
             }]
@@ -672,6 +674,12 @@ if (valueAllTransations > 0) {
 
     imgContainer.style.display = "flex"
 }
+
+/*
+    'rgb(255, 99, 132)',
+    'rgb(54, 162, 235)',
+    'rgb(255, 205, 86)'
+*/
 
 
 /* edit products */
