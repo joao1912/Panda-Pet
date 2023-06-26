@@ -104,6 +104,10 @@
     animation: sumir 1s;
 }
 
+#icon-tela-adm {
+    display: none;
+}
+
 @keyframes sumir {
     0% {
         opacity: 1;

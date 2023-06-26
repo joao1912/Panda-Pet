@@ -37,8 +37,16 @@ function setPerfilOnline() {
 if (userID) {
     setPerfilOnline()
 
+    const iconAdmUtils = document.getElementById("icon-tela-adm")
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
     fotoPerfil.addEventListener("click", trocaFotoPerfil)
+
+    if (userID == 0) {
+        iconAdmUtils.style.display = "inline-block"
+        iconAdmUtils.addEventListener("click", function(){
+            window.location.href = "../../paginas/administrador.html"
+        })
+    }
 }
 
 function trocaFotoPerfil() {

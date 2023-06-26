@@ -60,7 +60,7 @@ function setPerfilOnline() {
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
     containerUser.style.width = "200px"
-    containerUser.style.marginLeft = "-5px"
+    containerUser.style.marginLeft = "65px" 
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
@@ -108,7 +108,7 @@ function trocaFotoPerfil() {
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
-
+let telaPerfilVisibleOrNot = false
 iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
@@ -116,15 +116,15 @@ iconeDoPerfil.addEventListener("click", function () {
         window.location.href = "../../paginas/cadastro-login.html"
     }
 
-    let visibility = tabelaPerfil.style.display
-
-    if (visibility === "none") {
+    if (!telaPerfilVisibleOrNot) {
+        telaPerfilVisibleOrNot = true
         tabelaPerfil.style.display = "flex"
 
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.addEventListener("click", redirecionarCadastro)
 
     } else {
+        telaPerfilVisibleOrNot = false
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.removeEventListener('click', redirecionarCadastro)
         tabelaPerfil.style.display = "none"
@@ -136,8 +136,6 @@ nav.addEventListener("click", function (event) {
 
     switch (event.target.id) {
         case "forHome":
-
-
 
             if (window.location.pathname != '/index.html') {
 
