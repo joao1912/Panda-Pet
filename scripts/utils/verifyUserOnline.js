@@ -10,5 +10,5 @@ export function verifyUserOnline() {
         }
         } 
     }
-    return userOnline || undefined
+    return userOnline ?? undefined
 }
