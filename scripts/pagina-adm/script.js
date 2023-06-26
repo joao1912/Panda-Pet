@@ -675,13 +675,6 @@ if (valueAllTransations > 0) {
     imgContainer.style.display = "flex"
 }
 
-/*
-    'rgb(255, 99, 132)',
-    'rgb(54, 162, 235)',
-    'rgb(255, 205, 86)'
-*/
-
-
 /* edit products */
 
 const editButtons = document.querySelectorAll(".btnEditProducts")
