@@ -686,7 +686,10 @@ if (valueAllTransations > 0) {
 
 const editButtons = document.querySelectorAll(".btnEditProducts")
 const screenButtons = document.getElementById("containerEditButtons")
-const screenAddProducts = document.getElementById("screenEditProducts")
+const screenAddProducts = document.getElementById("screenAddProducts")
+const screenEditProducts = document.getElementById("screenEditProduct")
+const screenRemoveProdutcs = document.getElementById("screenRemoveProduct")
+
 ;[...editButtons].forEach( button => {
     button.addEventListener("click", function(event){
         let text = event.target.textContent
@@ -699,11 +702,11 @@ const screenAddProducts = document.getElementById("screenEditProducts")
                 break
             case "edit_square":
                 screenButtons.style.display = "none"
-
+                screenEditProducts.style.display = "flex"
                 break
             case "delete_forever":
                 screenButtons.style.display = "none"
-
+                screenRemoveProdutcs.style.display = "flex"
                 break
         }
     })
@@ -718,6 +721,14 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
         switch(id) {
             case "internalAddButton":
                 screenAddProducts.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+            case "internalEditButton":
+                screenEditProducts.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+            case "internalRemoveButton":
+                screenRemoveProdutcs.style.display = "none"
                 screenButtons.style.display = "flex"
                 break
         }

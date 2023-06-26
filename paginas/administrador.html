@@ -276,7 +276,7 @@
                 </button>
             </div>
 
-            <section id="screenEditProducts">
+            <section id="screenAddProducts">
                 <div id="leftSide">
                     <button class="material-symbols-outlined backEditButtons" id="internalAddButton">arrow_back</button>
 
@@ -320,6 +320,66 @@
 
                     <button id="btnAdicionar" disabled>Adicionar</button>
                 </div>
+            </section>
+
+            <section id="screenEditProduct">
+                <button class="material-symbols-outlined backEditButtons" id="internalEditButton">arrow_back</button>
+
+                <div class="containerCodProduct">
+                    <label for="productCodEdit">Código</label>
+                    <input type="number" id="productCodEdit">
+                </div>
+
+                <button id="btnEditPhoto" title="Editar Foto Do Produto">
+                    <div class="material-symbols-outlined" id="containerIconEditPhoto">
+                        add_a_photo
+                    </div>
+                </button>
+                <div id="formEditProduct">
+                    
+                        <label for="productNewName">Novo Nome</label>
+                        <input type="text" id="productNewName">
+                    
+                   
+                        <label for="productNewPrice">Novo Preço</label>
+                        <div id="containerPriceEdit">
+                            <div id="elementEditReal">R$</div>
+                            <input type="number" id="productNewPrice">
+                        </div>
+                    
+                    
+                        <label for="productNewDescription">Nova Descrição</label>
+                        <textarea id="productNewDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                    
+                </div>
+
+                <button id="btnSaveEditProduct">Salvar</button>
+            </section>
+
+            <section id="screenRemoveProduct">
+                <button class="material-symbols-outlined backEditButtons" id="internalRemoveButton">arrow_back</button>
+
+                <div class="containerCodProduct">
+                    <label for="productCodRemove">Código</label>
+                    <input type="number" id="productCodRemove">
+                </div>
+
+                <div id="containerViewProduct">
+                    <div id="viewProduct">
+                        <img src="../imagens/pet-recomendações.png" alt="Foto Do Produto">
+                        <div>
+                            <h2>Nome Do Produto</h2>
+                            <span>R$ 0,00</span>
+                            <div>
+                                <button id="btnViewBuy">Comprar</button>
+                                <button class="material-symbols-outlined" id="btnViewCart">shopping_cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btnRemoveProduct">Excluir</button>
+
             </section>
             
         </section>
