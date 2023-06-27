@@ -248,9 +248,58 @@ function disabledButton() {
 document.addEventListener("DOMContentLoaded", disabledButton())
 
 
+
 btnFinalizar.addEventListener("click", function(){
+
+    let categoryTransations = JSON.parse(localStorage.getItem("compras"))
+
+    if (categoryTransations == null) {
+        categoryTransations = [
+            {
+                nome: "banhoETosa",
+                valorVendido: 0
+            },
+            {
+                nome: "hospedagem",
+                valorVendido: 0
+            },
+            {
+                nome: "brinquedo",
+                valorVendido: 0
+            },
+            {
+                nome: "acessorios",
+                valorVendido: 0
+            },
+            {
+                nome: "alimentacao",
+                valorVendido: 0
+            }
+        ]
+    }
+
+    for(let obj of users[userID].carrinho) {
+
+        let productCategory = produtos[obj.codigo].categoria
+        let productPrice = produtos[obj.codigo].preco
+
+        users[userID].atividadeNoSite.totalGasto += (productPrice * obj.quantidade)
+        users[userID].atividadeNoSite.produtosComprados.push(obj.codigo)
+
+        for(let i = 0; i < categoryTransations.length; i++) {
+            if(categoryTransations[i].nome == productCategory) {
+
+                categoryTransations[i].valorVendido += (productPrice * obj.quantidade)
+            }
+        }
+    }
+
+    localStorage.setItem("compras", JSON.stringify(categoryTransations))
+
     users[userID].carrinho = []
+
     saveLocalStorage(users)
+    
     btnFinalizar.disabled = true
 
     Swal.fire({icon: 'success',
