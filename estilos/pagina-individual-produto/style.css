@@ -2,6 +2,10 @@ html,body{
     height: 100%;
 }
 
+body {
+    position: relative;
+}
+
 header {
     display: flex;
     height: 150px;
@@ -220,4 +224,28 @@ nav span::after {
 
 a{
     text-decoration: none;
+}
+
+#conteinerPrincipal{
+
+display: flex;
+width: 100%;
+height: 600px;
+
+
+}
+
+#conteinerPrincipal > img {
+margin: 30px;
+width: 50%;
+height: 100%;
+max-width: 550px;
+max-height: 550px;
+background-color: black;
+}
+
+#conteinerPrincipal > div{
+
+    width: 50%;
+
 }
