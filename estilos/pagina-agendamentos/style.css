@@ -335,13 +335,36 @@ a{
 
 }
 
-#divDMeio{
+#divDMeio{ /*Div imputs direita*/
     width: 100%;/*largura*/
     height: 70%;/*altura*/
+    font-family:'GooperSemiBold';
+    display: flex;
    
 
 }
+.containersCadastro{
+  width: 50%;
+  height: 100%;
+  display: flex;
+flex-direction: column;
+}
+.inputs{/*formata os inputs nome*/
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;
 
+}
+#inputPeso{/* diminuiu somente o input peso*/
+    width: 100px;/*largura*/ 
+    border: 0;
+}
+
+
+   
 #divDBaixo{
     width: 100%;/*largura*/
     height: 10%;/*altura*/
@@ -349,10 +372,60 @@ a{
 }
 
 
-.centralizador{ /*centralizou o quedro da direita para esquerda*/
+.centralizador{ /*centralizou o quadro da direita para esquerda*/
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#containerBotoes {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Nunito";
+}
+
+#botoes {
+    display: flex;
+    flex-direction: row;
+}
+
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#botaoArredondado {
+    width: 200px;
+    height: 40px;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-family: "Nunito";
+
+    background-color: white;
+}
+
+#botaoArredondado:hover {
+    border-color: var(--primaryColor);
+    color: var(--primaryColor);
+    background-color: var(--thirdColor);
+}
+
+#botaoTransparente {
+    width: 200px;
+    height: 40px;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+    box-shadow: 1px 1px 5px var(--shadowColor3);
+    font-family: "Nunito";
 }

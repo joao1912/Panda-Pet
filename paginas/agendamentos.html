@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panda Pet</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/pagina-agendamentos/style.css">
 
 </head>
+
 <body>
     <header>
         <img src="../imagens/1.png" alt="Logo Panda Pet">
@@ -21,7 +24,8 @@
 
         <div id="containerIcones">
             <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
-            <a href="./carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+            <a href="./carrinho.html"><span class="btnIcons"><i
+                        class="material-symbols-outlined">shopping_cart</i></span></a>
             <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
             <div id="containerPerfil">
                 <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
@@ -59,17 +63,17 @@
         <section id="container">
 
             <div id="servico">
-                
 
-                    <div id="divECima">
-                        <div>
-                            <img src="../imagens/icons/pata.svg" alt="imagemPata">
-                        </div>
-                        
-                        <h1 id="titulo">Panda Pet</h1>  
+
+                <div id="divECima">
+                    <div>
+                        <img src="../imagens/icons/pata.svg" alt="imagemPata">
                     </div>
 
-                   
+                    <h1 id="titulo">Panda Pet</h1>
+                </div>
+
+
 
                 <div id="divEMeio">
 
@@ -77,44 +81,59 @@
 
                     <div id="serv"> <input type="radio" class="perfilServ" disabled><label>Serviço</label> </div>
 
-                    <div> <input type="radio"  disabled><label>Confirmação</label> </div>
-                   
-                
+                    <div> <input type="radio" disabled><label>Confirmação</label> </div>
+
+
                 </div>
-                        
-                    <div id="divEBaixo">
 
-                        <img src="../imagens/pandinha 7.jpg" alt="fotoPanda">
+                <div id="divEBaixo">
 
-                      
-                    </div>
+                    <img src="../imagens/pandinha 7.jpg" alt="fotoPanda">
+
+
+                </div>
 
             </div>
 
-                <div id="cadastroPet">
+            <div id="cadastroPet">
 
-                    <div id="divDCima">
-                        <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
-                        <h2>Nos fale um pouco dele:</h2>
+                <div id="divDCima">
+                    <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
+                    <h2>Nos fale um pouco dele:</h2>
 
-                    </div>
+                </div>
 
-                    <div id ="divDMeio">
+                <div id="divDMeio">
 
-                        <label id="labelNome" class="inputs">Nome</label>
-                        <input id="inputNome" class="inputs"><br>
-                        <label id="labelAniversario" class="inputs">Aniversário</label>
+                    <div id="divDEsquerdoNome" class="containersCadastro">
+
+                        <label id="labelNome">Nome</label>
+                        <input id="inputNome" class="inputs">
+                        <label id="labelAniversario">Aniversário</label>
                         <input id="inputAniver" class="inputs">
-                        <label id="labelRaca" class="inputs">Raça</label>
+                        <label id="labelRaca">Raça</label>
                         <input id="inputRaca" class="inputs">
-                        <label id="labelPeso" class="inputs">Peso</label>
+                        <label id="labelPeso">Peso</label>
                         <input id="inputPeso" class="inputs">
 
                     </div>
 
+                    <div id="divDDireitoGenero" class="containersCadastro">
+
+
+                        <div id="botaoEscolha">
+                            <button data-content="Sim" class="btnOpt" id="btnYes">Sim</button>
+                            <button class="btnOpt" id="btnNo">Não</button>
+                        </div>
+
+
+                    </div>
+
+
+
                     <div id="divDBaixo">
 
-                        <input id="inputProx" class="inputs" placeholder="Próximo">
+                        <input id="inputProx" class="inputsBaixo" placeholder="Próximo">
 
                     </div>
 
@@ -126,4 +145,5 @@
 
     <script type="module" src="../scripts/pagina-agendamentos/script.js"></script>
 </body>
+
 </html>
