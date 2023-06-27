@@ -244,33 +244,6 @@ margin-top: 20px;
     
 }
 
-#container2 {
-    width: 90%;
-    margin: 0 auto;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-}
-
-#container2 img {
-    width: 1030px;
-    height: 500px;
-    
-}
-
-
-.carrossel2{
-    color: var(--primaryColor);
-    font-size: 2.5em;
-    font-family: 'GooperSemiBold';
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    display: block;
-    margin-top: 20px;
-    
-    }
-    
 #icon{
     color: var(--primaryColor);
     font-weight: bold;
@@ -281,7 +254,8 @@ margin-top: 20px;
 }
 
 .icon{
-    font-size: 4em;   
+    font-size: 4em;
+    margin-top: 150px;   
 }
 
 .quemSomos{
@@ -292,7 +266,7 @@ margin-top: 20px;
     text-align: center;
     width:100%;
     display: block;
-    margin-top: 20px;
+
 
 }
 
@@ -345,9 +319,80 @@ margin-top: 20px;
     padding-left: 20%;
     padding-right: 20%;
     margin-bottom: 120px;
-
 }
 
+
+
+.petshop{
+    color: var(--primaryColor);
+    font-size: 1.5em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width:100%;
+    display: block;
+    margin-top: 20px; 
+   
+}
+
+#containerPetShop{
+    display: flex;
+   justify-content: end;
+      
+}
+
+#imagemPanda{
+    width: 30%;
+    margin-top: 20px;
+    box-shadow:20%;
+    position: absolute;
+    top: 860px;
+   
+}
+
+
+#promocoes{
+    margin-top: 50px;
+}
+
+#agendeSeuHorario{
+    margin-top: 80px;
+}
+
+#textoPetShop{
+    color: var(--secondColor);
+    font-size: 1em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 120px;
+   
+}
+
+#botaoTransparente {
+    width: 200px;
+    height: 40px;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primaryColor);
+    box-shadow: 1px 1px 5px var(--shadowColor3);
+   
+}
+
+#agendar{
+justify-content: center;
+align-items: center;
+display: flex;
+margin-top: -10px;
+}
 
 #footer{
     display: flex;
