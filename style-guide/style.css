@@ -202,6 +202,7 @@ button:hover {
     font-weight: bold;
     border-radius: 10px;
     font-size: 1.1em;
+    font-family: "Nunito";
 
     background-color: white;
 }
@@ -210,12 +211,6 @@ button:hover {
     border-color: var(--primaryColor);
     color: var(--primaryColor);
     background-color: var(--thirdColor);
-}
-
-#botaoDeEscolha {
-    width: 200px;
-    height: 40px;
-    
 }
 
 #botaoTransparente {
@@ -228,6 +223,7 @@ button:hover {
     font-size: 1.1em;
     color: var(--primaryColor);
     box-shadow: 1px 1px 5px var(--shadowColor3);
+    font-family: "Nunito";
 }
 
 table {
@@ -263,6 +259,40 @@ td {
     align-items: center;
     justify-content: center;
     background-color: white;
+    position: relative;
+}
+
+.btnOpt {
+    width: 50%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+    color: var(--primaryColor);
+    font-family: "Nunito";
+    background-color: transparent;
+}
+
+#btnYes::before {
+    content: attr(data-content);
+    color: white;
+    position: absolute;
+    width: 95px;
+    height: 90%;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 2px;
+    left: 3px;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+}
+
+.btnOpt:hover {
+    transform: none;
 }
 
 .ops {
@@ -279,16 +309,6 @@ td {
 
 .ops:hover {
     cursor: pointer;
-}
-
-#botaoTrocaEscolha {
-    position: absolute;
-    width: 95px;
-    height: 40px;
-    background-color: var(--primaryColor);
-    border-radius: 10px;
-    left: 62%;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 #containerTipografia {
