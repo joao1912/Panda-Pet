@@ -256,28 +256,28 @@ btnFinalizar.addEventListener("click", function(){
     if (categoryTransations == null) {
         categoryTransations = [
             {
-                nome: "banhoETosa",
+                identificacaoCategoria: "banhoETosa",
                 valorVendido: 0
             },
             {
-                nome: "hospedagem",
+                identificacaoCategoria: "hospedagem",
                 valorVendido: 0
             },
             {
-                nome: "brinquedos",
+                identificacaoCategoria: "brinquedos",
                 valorVendido: 0
             },
             {
-                nome: "acessorios",
+                identificacaoCategoria: "acessorios",
                 valorVendido: 0
             },
             {
-                nome: "alimentacao",
+                identificacaoCategoria: "alimentacao",
                 valorVendido: 0
             }
         ]
     }
-
+    
     for(let obj of users[userID].carrinho) {
 
         let productCategory = produtos[obj.codigo].categoria
@@ -287,7 +287,7 @@ btnFinalizar.addEventListener("click", function(){
         users[userID].atividadeNoSite.produtosComprados.push(obj.codigo)
 
         for(let i = 0; i < categoryTransations.length; i++) {
-            if(categoryTransations[i].nome == productCategory) {
+            if(categoryTransations[i].identificacaoCategoria == productCategory) {
 
                 categoryTransations[i].valorVendido += (productPrice * obj.quantidade)
             }
