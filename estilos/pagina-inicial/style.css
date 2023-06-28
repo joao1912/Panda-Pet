@@ -402,6 +402,8 @@ display: flex;
 margin-top: -10px;
 }
 
+
+
 #footer{
     display: flex;
     height: 150px;
@@ -430,5 +432,6 @@ color: white;
   display:flex;  
   gap: 20px;
   margin-bottom: 5px;
+  font-family: "Nunito";
 
 }
