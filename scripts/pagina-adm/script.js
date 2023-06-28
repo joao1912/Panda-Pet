@@ -12,30 +12,43 @@ const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
 
 formAddProduct.addEventListener("keyup", function() {
+
     if(productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
+
         btnAdicionar.removeAttribute("disabled")
     } else {
+
         btnAdicionar.setAttribute("disabled", "true")
     }
 })
+
 productName.addEventListener("keyup", function() {
+
     let productNameView = document.getElementById("productNameView")
     productNameView.innerHTML = productName.value
 
     if(productName.value == "") {
-        productNameView.innerHTML = `Nome do produto`
-    }
 
+        productNameView.innerHTML = `Nome do produto`
+
+    }
 
 })
 
 productPrice.addEventListener("keyup", function() {
+
     let productPriceView = document.getElementById("productPriceView")
     let value = Number(productPrice.value).toFixed(2)
 
     productPriceView.innerHTML = `R$ ${value}`
+
 })
 
+btnAdicionar.addEventListener("click", function() {
+
+    alert("oi")
+    
+})
 
 let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
