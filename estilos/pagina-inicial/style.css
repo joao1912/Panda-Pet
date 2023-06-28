@@ -1,3 +1,5 @@
+
+
 header {
     display: flex;
     height: 150px;
@@ -344,9 +346,8 @@ margin-top: 20px;
 #imagemPanda{
     width: 30%;
     margin-top: 20px;
-    box-shadow:20%;
     position: absolute;
-    top: 860px;
+    top: 880px;
    
 }
 
@@ -358,24 +359,29 @@ margin-top: 20px;
 #agendeSeuHorario{
     margin-top: 80px;
     padding: 30px;
+    font-size: 2.5em;
 
 }
 
 #textoPetShop{
     color: var(--secondColor);
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: 'GooperSemiBold';
     font-weight: bold;
     text-align: center;
-    width: 100%;
     display: block;
     margin-top: 20px;
-    padding-left: 20%;
-    padding-right: 20%;
-    margin-bottom: 120px;
-   
-}
+    margin-bottom: 50px;
+    padding: 270px;
+    padding-bottom: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
 
+}
+#textoPetShop p{
+width: 400px;
+}
 #botaoTransparente {
     width: 200px;
     height: 40px;
@@ -417,4 +423,12 @@ margin-top: -10px;
 #icones{
  display: flex;
  flex-direction: column;
+color: white;
+}
+
+.iconLateral{
+  display:flex;  
+  gap: 20px;
+  margin-bottom: 5px;
+
 }
