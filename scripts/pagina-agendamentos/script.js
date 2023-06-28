@@ -202,28 +202,30 @@ function barraPesquisa() {
     })
 }
 
-const botaoEscolha = document.getElementById("botaoEscolha")
-const btnYes = document.getElementById("btnYes")
+
+
+const botaoEscolhaGenero = document.getElementById("botaoEscolhaGenero")
+const btnMacho = document.getElementById("btnMacho")
 let btnBefore 
 
 ;[...document.styleSheets[2].cssRules].forEach( styleSheet => {
-  if (styleSheet.selectorText == "#btnYes::before") {
+  if (styleSheet.selectorText == "#btnMacho::before") {
     btnBefore = styleSheet
   }
   
 })
 
-botaoEscolha.addEventListener("click", function(event){
+botaoEscolhaGenero.addEventListener("click", function(event){
     let id = event.target.id
 
     switch(id) {
-        case "btnYes":
+        case "btnMacho":
             btnBefore.style.left = "3px"
-            btnYes.dataset.content = "Sim"
+            btnMacho.dataset.content = "Macho"
             break
-        case "btnNo":
+        case "btnFemea":
             btnBefore.style.left = "102px"
-            btnYes.dataset.content = "Não"
+            btnMacho.dataset.content = "Fêmea"
             break
     }
 })
