@@ -264,7 +264,7 @@ btnFinalizar.addEventListener("click", function(){
                 valorVendido: 0
             },
             {
-                nome: "brinquedo",
+                nome: "brinquedos",
                 valorVendido: 0
             },
             {

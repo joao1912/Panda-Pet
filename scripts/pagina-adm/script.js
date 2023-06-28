@@ -12,26 +12,27 @@ if (categoryTransations == null) {
     categoryTransations = [
         {
             nome: "banhoETosa",
-            valorVendido: 110
+            valorVendido: 0
         },
         {
             nome: "hospedagem",
-            valorVendido: 220
+            valorVendido: 0
         },
         {
-            nome: "brinquedo",
-            valorVendido: 330
+            nome: "brinquedos",
+            valorVendido: 0
         },
         {
             nome: "acessorios",
-            valorVendido: 50
+            valorVendido: 0
         },
         {
             nome: "alimentacao",
-            valorVendido: 60
+            valorVendido: 0
         }
     ]
 }
+
 export let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -627,11 +628,6 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 var ctx = document.getElementById("chart")
 
 
-let tosaText = document.getElementById("tosaText")
-let hospedagemText = document.getElementById("hospedagemText")
-let brinquedosText = document.getElementById("brinquedosText")
-let acessoriosText = document.getElementById("acessoriosText")
-let alimentosText = document.getElementById("alimentosText")
 let valueAllTransations = 0
 
 for (let obj of categoryTransations) {
