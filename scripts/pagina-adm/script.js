@@ -5,6 +5,50 @@ import { setDarkCellCalendar } from '../utils/forCalendar/setDarkCellCalendar.js
 import { setMarkersCalendar } from '../utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from '../utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from '../utils/forCalendar/setDayTasks.js'
+const productName = document.getElementById("productName")
+const productPrice = document.getElementById("productPrice")
+const productDescription = document.getElementById("productDescription")
+const btnAdicionar = document.getElementById("btnAdicionar")
+const formAddProduct = document.getElementById("formAddProduct")
+
+formAddProduct.addEventListener("keyup", function() {
+
+    if(productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
+
+        btnAdicionar.removeAttribute("disabled")
+    } else {
+
+        btnAdicionar.setAttribute("disabled", "true")
+    }
+})
+
+productName.addEventListener("keyup", function() {
+
+    let productNameView = document.getElementById("productNameView")
+    productNameView.innerHTML = productName.value
+
+    if(productName.value == "") {
+
+        productNameView.innerHTML = `Nome do produto`
+
+    }
+
+})
+
+productPrice.addEventListener("keyup", function() {
+
+    let productPriceView = document.getElementById("productPriceView")
+    let value = Number(productPrice.value).toFixed(2)
+
+    productPriceView.innerHTML = `R$ ${value}`
+
+})
+
+btnAdicionar.addEventListener("click", function() {
+
+    alert("oi")
+    
+})
 
 let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
@@ -32,6 +76,7 @@ if (categoryTransations == null) {
         }
     ]
 }
+
 export let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -60,7 +105,7 @@ function setPerfilOnline() {
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
     containerUser.style.width = "200px"
-    containerUser.style.marginLeft = "-5px"
+    containerUser.style.marginLeft = "65px" 
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
@@ -108,7 +153,7 @@ function trocaFotoPerfil() {
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
-
+let telaPerfilVisibleOrNot = false
 iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
@@ -116,15 +161,15 @@ iconeDoPerfil.addEventListener("click", function () {
         window.location.href = "../../paginas/cadastro-login.html"
     }
 
-    let visibility = tabelaPerfil.style.display
-
-    if (visibility === "none") {
+    if (!telaPerfilVisibleOrNot) {
+        telaPerfilVisibleOrNot = true
         tabelaPerfil.style.display = "flex"
 
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.addEventListener("click", redirecionarCadastro)
 
     } else {
+        telaPerfilVisibleOrNot = false
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.removeEventListener('click', redirecionarCadastro)
         tabelaPerfil.style.display = "none"
@@ -136,8 +181,6 @@ nav.addEventListener("click", function (event) {
 
     switch (event.target.id) {
         case "forHome":
-
-
 
             if (window.location.pathname != '/index.html') {
 
@@ -263,7 +306,14 @@ telaAdmUtilities.addEventListener("click", function (event) {
         case "btnUsers":
             telaAdmUtilities.style.display = "none"
             containerProfiles.style.display = "flex"
-
+            break
+        case "btnPayments":
+            telaAdmUtilities.style.display = "none"
+            containerPayments.style.display = 'flex'
+            break
+        case "btnEdit":
+            telaAdmUtilities.style.display = "none"
+            containerProducts.style.display = "flex"
     }
 })
 
@@ -289,11 +339,6 @@ let btnsBackMenu = document.querySelectorAll(".backMenu")
                     containerProducts.style.display = 'none'
                     break
             }
-
-
-
-
-
         })
     })
 
@@ -535,14 +580,16 @@ function loadProfiles() {
         elementos[i].remove()
     }
 
-    const users = JSON.parse(localStorage.getItem("users"))
-
+    let users = JSON.parse(localStorage.getItem("users"))
+   
     if (users.length == 1 || users.length == 0) {
+
         //por imagem
+
     } else {
 
         for (let user of users) {
-
+           
             let id = user.id
             let nome = user.nome
             let dataObj = user.date
@@ -631,7 +678,7 @@ for (let obj of categoryTransations) {
     valueAllTransations += obj.valorVendido
 
     let id = document.getElementById(`${obj.identificacaoCategoria}-text`)
-    id.innerHTML = obj.valorVendido
+    id.innerHTML = `R$ ${obj.valorVendido.toFixed(2)}`
 }
 
 if (valueAllTransations > 0) {
@@ -647,18 +694,77 @@ if (valueAllTransations > 0) {
                 'Alimentos'
             ],
             datasets: [{
-                label: 'My First Dataset',
+                label: 'Rendimento Bruto',
                 data: [categoryTransations[0].valorVendido, categoryTransations[1].valorVendido, categoryTransations[2].valorVendido, categoryTransations[3].valorVendido, categoryTransations[4].valorVendido],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
+                    'rgb(255, 205, 86)',
+                    'rgb(217, 94, 50)',
+                    'rgb(255, 3, 33)'
                 ],
                 hoverOffset: 4
             }]
         }
     })
+} else {
+    const imgContainer = document.getElementById("semRedimentos")
+
+    imgContainer.style.display = "flex"
 }
+
+/* edit products */
+
+const editButtons = document.querySelectorAll(".btnEditProducts")
+const screenButtons = document.getElementById("containerEditButtons")
+const screenAddProducts = document.getElementById("screenAddProducts")
+const screenEditProducts = document.getElementById("screenEditProduct")
+const screenRemoveProdutcs = document.getElementById("screenRemoveProduct")
+
+;[...editButtons].forEach( button => {
+    button.addEventListener("click", function(event){
+        let text = event.target.textContent
+        text = text.trim()
+       
+        switch(text) {
+            case "add":
+                screenButtons.style.display = "none"
+                screenAddProducts.style.display = "flex"
+                break
+            case "edit_square":
+                screenButtons.style.display = "none"
+                screenEditProducts.style.display = "flex"
+                break
+            case "delete_forever":
+                screenButtons.style.display = "none"
+                screenRemoveProdutcs.style.display = "flex"
+                break
+        }
+    })
+})
+
+const buttonInternos = document.querySelectorAll(".backEditButtons")
+
+;[...buttonInternos].forEach(button => {
+    button.addEventListener("click",function(event){
+        let id = event.target.id
+
+        switch(id) {
+            case "internalAddButton":
+                screenAddProducts.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+            case "internalEditButton":
+                screenEditProducts.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+            case "internalRemoveButton":
+                screenRemoveProdutcs.style.display = "none"
+                screenButtons.style.display = "flex"
+                break
+        }
+    })
+})
 
 
 

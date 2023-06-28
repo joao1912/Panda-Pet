@@ -231,6 +231,7 @@ a{
 
 #containerAdmUtilities {
     width: 80%;
+    max-width: 1200px;
     height: 645px;
     background-color: var(--secondColor);
     margin-top: 50px;
@@ -238,7 +239,7 @@ a{
     border-radius: 20px;
     box-shadow: 0px 0px 8px var(--thirdColor);
 
-    display: none; /*FLEX*/
+    display: flex; /*FLEX*/
     flex-direction: column;
     align-items: center;
     align-content: center;
@@ -268,6 +269,7 @@ a{
 
 #btnBackProfiles {
     position: relative;
+    margin-left: -28px;
 }
 
 #footerUsers {
@@ -282,6 +284,7 @@ a{
 
 #containerAdmUtilities > button {
     width: 25vw;
+    max-width: 400px;
     height: 200px;
     background-color: var(--thirdColor);
     border: 0;
@@ -648,7 +651,7 @@ div.containerUser article {
 /* Payments */
 
 #viewPayments {
-    display: flex;
+    display: none;
     margin-top: 50px;
     width: 80%;
     min-width: 600px;
@@ -694,6 +697,7 @@ div.containerUser article {
     height: 100%;
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 #containerGrafico h1 {
@@ -714,3 +718,695 @@ div.containerUser article {
     margin: auto;
     margin-top: 50px;
 }
+
+#btnBackPayments {
+    right: 26px;
+    top: 26px;
+}
+
+#semRedimentos {
+    height: 100%;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+#semRedimentos img {
+    width: 90%;
+}
+
+/* edit products */
+
+#editProducts {
+    display: none;
+    width: 80%;
+    max-width: 1000px;
+    height: 600px;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin-top: 62px;
+    margin-bottom: 62px;
+    position: relative;
+
+    justify-content: center;
+    align-items: center;
+   
+}
+
+#containerEditButtons {
+    width: 100%;
+    height: 100%;
+    display: flex; /*flex*/
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#btnBackProducts {
+    top: 20px;
+    left: 20px;
+}
+
+.btnEditProducts {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    border: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnEditProducts:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.subButtonCircle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    color: var(--primaryColor);
+}
+
+#editDeleteSquare {
+    padding-bottom: 12px;
+}
+
+#screenAddProducts {
+    width: 100%;
+    height: 110%;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin: 20px 0;
+    display: none;
+}
+
+#leftSide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+
+
+.backEditButtons {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--primaryColor);
+    border: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.backEditButtons:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#btnAddPhoto {
+    width: 180px;
+    height: 180px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnAddPhoto:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#containerIconAddPhoto {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    color: var(--primaryColor);
+}
+
+#formAddProduct {
+    width: 400px;
+    height: 400px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#formAddProduct label {
+    font-size: 1.3em;
+    font-family: "gooperSemiBold";
+    margin-bottom: 2px;
+    margin-left: 40px;
+}
+
+#formAddProduct input#productName {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 60px;
+    border-radius: 20px;
+    border: 0;
+    font-size: 1.2em;
+    padding-left: 10px;
+    font-family: "Nunito";
+}
+
+#containerPrice {
+    display: flex;
+    
+}
+
+#formAddProduct input#productPrice {
+    margin-bottom: 20px;
+    width: 30%;
+    height: 60px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 0;
+    font-size: 1.5em;
+    padding-left: 10px;
+    font-family: "Nunito";
+    position: relative;
+}
+
+#elementReal {
+    display: inline-flex;
+    margin-left: 30px;
+    background-color: var(--secondColor);
+    height: 60px;
+    width: 50px;
+    margin-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-family: "gooperSemiBold";
+    color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+
+
+#formAddProduct #productDescription {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 350px;
+    height: 120px;
+    max-height: 120px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.2em;
+    padding-left: 10px;
+    font-family: "Nunito";
+    padding: 10px;
+}
+
+#productDescription:focus {
+    outline: 0;
+}
+
+#formAddProduct input:focus {
+    outline: none;
+}
+
+#rightSide {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--primaryColor);
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#rightSide > h1 {
+    font-size: 2em;
+    font-family: "GooperSemiBold";
+    color: white;
+}
+
+#containerProduto {
+    width: 250px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+#containerProduto img {
+    width: 90%;
+    height: 50%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#containerProduto > div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 50%;
+    justify-content: space-around;
+    font-family: "Nunito";
+}
+
+#containerProduto > div > h2 {
+    font-size: 1.5em;
+}
+
+#containerProduto > div > span {
+    font-size: 1.3em;
+}
+
+#containerProduto > div > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#btnComprar {
+    width: 60%;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+}
+
+#btnCart {
+    width: 25%;
+    border: 0;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+#btnAdicionar {
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.3em;
+    font-family: "Nunito";
+    color: white;
+    background-color: var(--primaryColor);
+    cursor: pointer;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+#btnAdicionar:hover, #btnAdicionar:focus {
+    color: var(--primaryColor);
+    font-weight: bold;
+}
+
+#btnAdicionar:disabled {
+    background-color: #544f89;
+    color: rgb(157, 154, 154);
+    cursor: default;
+    font-weight: normal;
+}
+
+#btnAdicionar:disabled::after, #btnAdicionar:disabled::before {
+    content: none;
+}
+
+#btnAdicionar::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 0;
+
+    background-color: white;
+    z-index: -1;
+
+    transition: .7s ease;
+    transform: translate(-50%,-50%);
+}
+
+#btnAdicionar:hover::before, #btnAdicionar:focus::before {
+   height: 101%;
+}
+
+/* screen edit product*/
+
+
+#screenEditProduct {
+    width: 100%;
+    height: 116%;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin: 20px 0;
+    display: none;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#internalEditButton {
+    top: 3%;
+}
+
+#btnEditPhoto {
+    width: 180px;
+    height: 180px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnEditPhoto:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#containerIconEditPhoto {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    color: var(--primaryColor);
+}
+
+#formEditProduct {
+    width: 400px;
+    height: 400px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+#formEditProduct label {
+    font-size: 1.3em;
+    font-family: "gooperSemiBold";
+    margin-bottom: 2px;
+    margin-left: 40px;
+    width: 50%;
+}
+
+#formEditProduct input#productNewName {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 60px;
+    border-radius: 20px;
+    border: 0;
+    font-size: 1.2em;
+    padding-left: 10px;
+    font-family: "Nunito";
+}
+
+#containerPriceEdit {
+    display: flex;
+    
+}
+
+#formEditProduct input#productNewPrice {
+    margin-bottom: 20px;
+    width: 30%;
+    height: 60px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 0;
+    font-size: 1.5em;
+    padding-left: 10px;
+    font-family: "Nunito";
+    position: relative;
+}
+
+#elementEditReal {
+    display: inline-flex;
+    margin-left: 30px;
+    background-color: var(--secondColor);
+    height: 60px;
+    width: 50px;
+    margin-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-family: "gooperSemiBold";
+    color: white;
+}
+
+#formEditProduct #productNewDescription {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 350px;
+    height: 120px;
+    max-height: 120px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.2em;
+    padding-left: 10px;
+    font-family: "Nunito";
+    padding: 10px;
+}
+
+#productNewDescription:focus {
+    outline: 0;
+}
+
+#formEditProduct input:focus {
+    outline: 0;
+}
+
+.containerCodProduct {
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    top: 10px;
+    top: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCodProduct label {
+    position: absolute;
+    top: -45px;
+    font-size: 2em;
+    font-family: "gooperSemiBold";
+}
+
+.containerCodProduct input {
+    width: 190px;
+    height: 110px;
+    border-radius: 20px;
+    border: 0;
+    text-align: center;
+    font-size: 3em;
+    font-family: "gooperSemiBold";
+}
+
+.containerCodProduct input:focus {
+    outline: none;
+}
+
+#btnSaveEditProduct {
+    width: 150px;
+    height: 50px;
+    border: 0;
+    background-color: var(--primaryColor);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-family: "gooperSemiBold";
+    padding-bottom: 3px;
+}
+
+#btnSaveEditProduct:hover {
+    transition: transform 0.2s ease-out;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* screen remove product*/
+
+#screenRemoveProduct {
+    width: 100%;
+    height: 116%;
+    background-color: var(--secondColor);
+    border-radius: 20px;
+    margin: 20px 0;
+    display: none;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+#internalRemoveButton {
+    top: 3%;
+}
+
+#containerViewProduct {
+    width: 320px;
+    height: 470px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+    display: flex;
+    flex-direction:column ;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+#containerViewProduct > div {
+    width: 270px;
+    height: 420px;
+    background-color: var(--secondColor);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#containerViewProduct > div > img {
+    width: 80%;
+    height: 200px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#containerViewProduct > div > div {
+    width: 80%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: "Nunito";
+}
+
+#containerViewProduct > div > div > span {
+    font-size: 1.5em;
+}
+
+#containerViewProduct > div > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#btnViewBuy {
+    width: 60%;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+}
+
+#btnViewCart {
+    width: 25%;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+#btnRemoveProduct {
+    width: 150px;
+    height: 50px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    margin-top: 40px;
+    border: 0;
+    color: white;
+    font-size: 1.5em;
+    font-family: "GooperSemiBold";
+    padding-bottom: 3px;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+
+#btnRemoveProduct:hover {
+    transition: transform 0.2s ease-out;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#btnSaveEditProduct:disabled {
+    background-color: #444074;
+    color: lightgray;
+}
+
+#btnSaveEditProduct:disabled:hover {
+    cursor: default;
+    transform: none;
+}
+
+#btnRemoveProduct:disabled {
+    background-color: #444074;
+    color: lightgray;
+}
+
+#btnRemoveProduct:disabled:hover {
+    cursor: default;
+    transform: none;
+}
+
+

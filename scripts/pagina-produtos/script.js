@@ -19,12 +19,23 @@ function setPerfilOnline() {
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
     containerUser.style.width = "200px"
-    containerUser.style.marginLeft = "-5px"
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
     containerUserLogado.style.display = "flex"
+    /* ADICINAR EM TODAS AS PAGES */
+    const iconAdmUtils = document.getElementById("icon-tela-adm")
 
+    if (userID == 0) {
+        containerUser.style.marginLeft = "65px"
+        iconAdmUtils.style.display = "inline-flex"
+        iconAdmUtils.addEventListener("click", function(){
+            window.location.href = "../../paginas/administrador.html" 
+        })
+    } else {
+        containerUser.style.marginLeft = "-5px"
+    }
+    /* -------------------------- */
     document.getElementById("botaoSair").addEventListener("click", function sair() {
         users[userID].online = false
         saveLocalStorage(users)
@@ -33,14 +44,19 @@ function setPerfilOnline() {
     })
 
 }
-
-if (userID) {
+ /* ADICINAR EM TODAS AS PAGES */
+if (userID || userID == 0) {
+    
     setPerfilOnline()
-
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
     fotoPerfil.addEventListener("click", trocaFotoPerfil)
+    
+} else {
+    const containerUser = document.getElementById("containerPerfil")
+    containerUser.style.marginLeft = "28px"
+    containerUser.style.top = "108px"
 }
-
+/* -------------------------- */
 function trocaFotoPerfil() {
     const fileTrocaFoto = document.getElementById("inptTrocaFoto")
 
