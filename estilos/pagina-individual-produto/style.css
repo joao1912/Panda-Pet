@@ -235,17 +235,67 @@ height: 600px;
 
 }
 
-#conteinerPrincipal > img {
+#imagemProduto img {
 margin: 30px;
-width: 50%;
-height: 100%;
-max-width: 550px;
-max-height: 550px;
+width: 400px;
+height: 400px;
 background-color: black;
+
 }
 
 #conteinerPrincipal > div{
 
     width: 50%;
+
+}
+
+#imagemProduto{
+
+width: 50%;
+height: 100%;
+
+
+}
+
+#paginaLadoDireito{
+
+    
+width: 50%;
+height: 100%;
+display: flex;
+
+
+}
+
+#descricaoImagem{
+
+background-color: chartreuse;
+width: 50%;
+height: 100%;
+
+}
+
+#descricaoImagem-2{
+
+
+background-color: crimson;
+width: 50%;
+height: 100%;
+
+
+
+}
+
+#botaoTeste{
+
+width: 50px;
+height: 50px;
+
+}
+
+#imagemDescricaoProduto{
+
+width: 50px ;
+height: 50px; 
 
 }
