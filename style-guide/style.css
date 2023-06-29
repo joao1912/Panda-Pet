@@ -348,3 +348,52 @@ i {
     border-radius: 50%;
 }
 
+h1#h1Libs {
+    margin-top: 400px;
+    font-size: 3em;
+    padding-right: 0;
+}
+
+#containerSweetAlert {
+    margin-bottom: 200px;
+}
+
+#containerLibs h2 {
+
+    font-size: 2em;
+    color: var(--primaryColor);
+    margin-bottom: 20px;
+
+}
+
+
+#containerSweetAlert button {
+    width: 150px;
+    height: 55px;
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--primaryColor);
+    color: white;
+    font-family: "GooperSemiBold";
+    font-size: 1.1em;
+}
+
+#containerSlick {
+    margin-bottom: 300px;
+}
+
+#containerChart {
+    margin-bottom: 300px;
+    width: 500px;
+    height: 500px;
+}
+
+#carrossel {
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+.nunito {
+    font-family: "nunito";
+}
