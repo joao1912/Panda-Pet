@@ -437,13 +437,103 @@ color: white;
 }
 
 #perfilUsuario{
-position: sticky;
+position: absolute;
 top: 50%;
 left: 50%;
-width: 500px;
-height: 600px;
-background-color: var(--secondColor);
+width: 1000px;
+height: 550px;
+background-color: var(--primaryColor);
 z-index: 3;
 transform: translate(-50%, -50%);
+border-radius: 5%;
+display: flex;
+align-items: center;
+justify-content: center;
 
+}
+
+#dentroPerfil{
+    background-color: var(--secondColor);
+    height: 90%;
+    width: 95%;
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+
+}
+#imagemDefault{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+#imagemDefault > img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+}
+
+#infoUser{
+    width: 100%;
+    height: 70%;
+    display: flex;
+}
+
+.textoInputs{
+    font-size: 1em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    color: black;
+}
+
+#botoes{
+display: flex;
+flex-direction: column;
+margin-bottom: 5px;
+width: 50%;
+height: 100%;
+justify-content: center;
+align-items: flex-start;
+}
+
+.inputs{
+    width: 30%;
+    height: 10%;
+   border-radius: 5%;
+   margin-bottom: 40px;
+
+}
+#direita{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.petsz{
+font-size: 2em;
+font-family: 'GooperSemiBold';
+font-weight: bold;
+color: black;
+display: flex;
+align-items: center;
+}
+
+#quadradoPets{
+    width: 200px;
+    height: 300px;
+    background-color:white;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.botaoTransparente{
+    width: 80px;
+    background-color: white;
 }
