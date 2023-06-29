@@ -51,7 +51,7 @@ productPrice.addEventListener("keyup", function() {
 
 btnAdicionar.addEventListener("click", function() {
     const productAdd = {
-        codigo: (produtos.length + 1),
+        codigo: (produtos[produtos.length-1].codigo) + 1,
         nome: productName.value,
         descricao: productDescription.value,
         imagem: photoProductReaded,
