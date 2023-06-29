@@ -278,6 +278,10 @@ a{
     flex-direction: column;
     gap:40px;
     position: relative;
+
+    /* colocado pelo joão */
+    width: 100%;
+    align-items: center;
 }
 
 #divEBaixo{ /* div da imagem*/
@@ -291,7 +295,7 @@ a{
 
 }
 /*faz as linhas dos imputs*/
-/* #perfil::before { 
+#perfil::before { 
     content: "";
     position: absolute;
     width: 2px;
@@ -299,6 +303,8 @@ a{
     background-color: var(--shadowColor2);
     top: 28%;
     left: 5%;
+    /* alterado pelo joão*/
+    top: 20%;
 }
 #serv::before{
     content: "";
@@ -308,11 +314,23 @@ a{
     background-color: var(--shadowColor2);
     top: 53%;
     left: 5%;
-} */
+} 
 
-/* perfilServ{
-    z-index: 1;
-} */
+.perfilServ{
+    list-style: none;
+    /* alterado pelo joão*/
+    z-index: 2;
+    display: inline-flex;
+    position: relative;
+    background-color: white;
+   
+}
+
+.perfilServ:disabled {
+    background-color: white;
+    border-color:white ;
+    color: white;
+}
 
 #cadastroPet{ /*parte da direita primeira pagina, /*separando o lado direito do esquerdo*/
     width: 70%;
@@ -512,3 +530,57 @@ align-items: center;
     max-width: 205px;
 }
 
+/* tudo aqui foi feito pelo joão*/
+
+#containerInputRadios {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.inptEstilizado {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 4px solid var(--primaryColor);
+    border-radius: 50%;
+    position: relative;
+}
+
+.labelRadio::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 70px;
+    background-color: var(--shadowColor2);
+    top: 70%;
+    left: 9.5%;
+}
+
+.marked::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--primaryColor);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.sub-container-inpt label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+} 
+
+button {
+    cursor: pointer;
+}
+
+/* ---------------------------- */

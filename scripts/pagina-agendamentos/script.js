@@ -206,11 +206,11 @@ function barraPesquisa() {
 
 const botaoEscolhaGenero = document.getElementById("botaoEscolhaGenero")
 const btnMacho = document.getElementById("btnMacho")
-let btnBefore 
+let btnBeforeGenero 
 
 ;[...document.styleSheets[2].cssRules].forEach( styleSheet => {
   if (styleSheet.selectorText == "#btnMacho::before") {
-    btnBefore = styleSheet
+    btnBeforeGenero = styleSheet
   }
   
 })
@@ -220,12 +220,38 @@ botaoEscolhaGenero.addEventListener("click", function(event){
 
     switch(id) {
         case "btnMacho":
-            btnBefore.style.left = "3px"
+            btnBeforeGenero.style.left = "3px"
             btnMacho.dataset.content = "Macho"
             break
         case "btnFemea":
-            btnBefore.style.left = "102px"
+            btnBeforeGenero.style.left = "102px"
             btnMacho.dataset.content = "Fêmea"
+            break
+    }
+})
+
+const botaoEscolha = document.getElementById("botaoEscolha")
+const btnYes = document.getElementById("btnYes")
+let btnBefore 
+
+;[...document.styleSheets[2].cssRules].forEach( styleSheet => {
+  if (styleSheet.selectorText == "#btnYes::before") {
+    btnBefore = styleSheet
+  }
+  
+})
+
+botaoEscolha.addEventListener("click", function(event){
+    let id = event.target.id
+
+    switch(id) {
+        case "btnYes":
+            btnBefore.style.left = "3px"
+            btnYes.dataset.content = "Sim"
+            break
+        case "btnNo":
+            btnBefore.style.left = "102px"
+            btnYes.dataset.content = "Não"
             break
     }
 })
