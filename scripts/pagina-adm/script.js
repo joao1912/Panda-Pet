@@ -5,33 +5,78 @@ import { setDarkCellCalendar } from '../utils/forCalendar/setDarkCellCalendar.js
 import { setMarkersCalendar } from '../utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from '../utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from '../utils/forCalendar/setDayTasks.js'
+const productName = document.getElementById("productName")
+const productPrice = document.getElementById("productPrice")
+const productDescription = document.getElementById("productDescription")
+const btnAdicionar = document.getElementById("btnAdicionar")
+const formAddProduct = document.getElementById("formAddProduct")
+
+formAddProduct.addEventListener("keyup", function() {
+
+    if(productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
+
+        btnAdicionar.removeAttribute("disabled")
+    } else {
+
+        btnAdicionar.setAttribute("disabled", "true")
+    }
+})
+
+productName.addEventListener("keyup", function() {
+
+    let productNameView = document.getElementById("productNameView")
+    productNameView.innerHTML = productName.value
+
+    if(productName.value == "") {
+
+        productNameView.innerHTML = `Nome do produto`
+
+    }
+
+})
+
+productPrice.addEventListener("keyup", function() {
+
+    let productPriceView = document.getElementById("productPriceView")
+    let value = Number(productPrice.value).toFixed(2)
+
+    productPriceView.innerHTML = `R$ ${value}`
+
+})
+
+btnAdicionar.addEventListener("click", function() {
+
+    alert("oi")
+    
+})
 
 let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
 if (categoryTransations == null) {
     categoryTransations = [
         {
-            nome: "banhoETosa",
-            valorVendido: 110
+            identificacaoCategoria: "banhoETosa",
+            valorVendido: 0
         },
         {
-            nome: "hospedagem",
-            valorVendido: 220
+            identificacaoCategoria: "hospedagem",
+            valorVendido: 0
         },
         {
-            nome: "brinquedo",
-            valorVendido: 330
+            identificacaoCategoria: "brinquedos",
+            valorVendido: 0
         },
         {
-            nome: "acessorios",
-            valorVendido: 50
+            identificacaoCategoria: "acessorios",
+            valorVendido: 0
         },
         {
-            nome: "alimentacao",
-            valorVendido: 60
+            identificacaoCategoria: "alimentacao",
+            valorVendido: 0
         }
     ]
 }
+
 export let bodyCalendar = [...document.getElementById("calendar").lastElementChild.children]
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -627,17 +672,12 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 var ctx = document.getElementById("chart")
 
 
-let tosaText = document.getElementById("tosaText")
-let hospedagemText = document.getElementById("hospedagemText")
-let brinquedosText = document.getElementById("brinquedosText")
-let acessoriosText = document.getElementById("acessoriosText")
-let alimentosText = document.getElementById("alimentosText")
 let valueAllTransations = 0
 
 for (let obj of categoryTransations) {
     valueAllTransations += obj.valorVendido
 
-    let id = document.getElementById(`${obj.nome}-text`) 
+    let id = document.getElementById(`${obj.identificacaoCategoria}-text`)
     id.innerHTML = `R$ ${obj.valorVendido.toFixed(2)}`
 }
 
