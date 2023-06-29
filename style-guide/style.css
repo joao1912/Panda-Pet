@@ -295,22 +295,6 @@ td {
     transform: none;
 }
 
-.ops {
-    display: inline-flex;
-    width: 48%;
-    height: 90%;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3em;
-    z-index: 1;
-    font-weight: bold;
-    color: var(--thirdColor);
-}
-
-.ops:hover {
-    cursor: pointer;
-}
-
 #containerTipografia {
     margin-top: 60px;
 }
