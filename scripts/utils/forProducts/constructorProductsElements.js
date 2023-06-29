@@ -89,7 +89,11 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
     //img do produto
 
     let elementImg = document.createElement("img")
+    if(imagem.substring(0, 5) != "data:") {
     elementImg.src = `../../imagens/${imagem}`
+    } else {
+        elementImg.src = imagem
+    }
     elementImg.alt = descricaoImagem
 
     //div que contem a descrição e imagem do produto

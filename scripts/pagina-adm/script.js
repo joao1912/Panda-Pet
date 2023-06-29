@@ -1,3 +1,4 @@
+import { produtos} from "../utils/produtos.js"
 import { showProducts } from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 import { changeMonth } from '../utils/forCalendar/changeMonth.js'
@@ -5,6 +6,8 @@ import { setDarkCellCalendar } from '../utils/forCalendar/setDarkCellCalendar.js
 import { setMarkersCalendar } from '../utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from '../utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from '../utils/forCalendar/setDayTasks.js'
+
+const btnAddPhoto = document.getElementById("btnAddPhoto")
 const productName = document.getElementById("productName")
 const productPrice = document.getElementById("productPrice")
 const productDescription = document.getElementById("productDescription")
@@ -13,7 +16,7 @@ const formAddProduct = document.getElementById("formAddProduct")
 
 formAddProduct.addEventListener("keyup", function() {
 
-    if(productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
+    if(photoProductReaded.length > 0 && productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
 
         btnAdicionar.removeAttribute("disabled")
     } else {
@@ -21,6 +24,8 @@ formAddProduct.addEventListener("keyup", function() {
         btnAdicionar.setAttribute("disabled", "true")
     }
 })
+
+btnAddPhoto.addEventListener("click", photoProductEvents)
 
 productName.addEventListener("keyup", function() {
 
@@ -45,9 +50,20 @@ productPrice.addEventListener("keyup", function() {
 })
 
 btnAdicionar.addEventListener("click", function() {
+    const productAdd = {
+        codigo: (produtos.length + 1),
+        nome: productName.value,
+        descricao: productDescription.value,
+        imagem: photoProductReaded,
+        preco: Number(productPrice.value),
+        categoria: "brinquedos",
+        descricaoImagem: "Descrição da imagem",
+        estoque: 10}
 
-    alert("oi")
-    
+        produtos.push(productAdd)
+        localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+    alert("produto adicionado!")
+
 })
 
 let categoryTransations = JSON.parse(localStorage.getItem("compras"))
@@ -766,5 +782,28 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
     })
 })
 
+let photoProductReaded = ""
 
+function photoProductEvents() {
 
+const filePhotoProduct = document.getElementById("photoProduct")
+
+    filePhotoProduct.click();
+    filePhotoProduct.addEventListener("change", readImage, false);
+    const file = document.getElementById("imgProduct")
+
+    function readImage() {
+        let fr = new FileReader();
+        fr.onload = function (event) {
+            file.src = event.target.result
+            photoProductReaded = event.target.result
+
+        };
+        fr.readAsDataURL(this.files[0]);
+
+        // fr.addEventListener("load", () => {
+            
+        // })
+    }
+
+}

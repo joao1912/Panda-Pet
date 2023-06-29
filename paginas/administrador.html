@@ -282,11 +282,12 @@
                 <div id="leftSide">
                     <button class="material-symbols-outlined backEditButtons" id="internalAddButton">arrow_back</button>
 
-                    <button id="btnAddPhoto" title="Adicionar Foto Do Produto">
-                        <div class="material-symbols-outlined" id="containerIconAddPhoto">
+                    <button id="btnAddPhoto" aria-label="Adicionar Foto Do Produto">
+                        <div class="material-symbols-outlined" id="containerIconAddPhoto" aria-hidden="true">
                             add_a_photo
                         </div>
                     </button>
+                    <input type="file" id="photoProduct" style="display: none;">
                     <div id="formAddProduct">
                         
                             <label for="productName">Nome</label>
@@ -309,7 +310,7 @@
                     <h1>Pré-Visualizar</h1>
 
                     <div id="containerProduto">
-                        <img src="../imagens/pet-recomendações.png" alt="Imagem do Produto">
+                        <img src="../imagens/pet-recomendações.png" alt="Imagem do Produto" id="imgProduct">
                         <div>
                             <h2 id="productNameView">Nome do Produto</h2>
                             <span id="productPriceView">R$ 0,00</span>

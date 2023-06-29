@@ -50,7 +50,7 @@ function initializeProducts() {
         new Produto(19, "Guia retrátil", "Guia de corda retrátil para oferecer mais liberdade de movimento durante os passeios.", "guia1.jpg", 29.99, "acessorios", "", 10),
         new Produto(20, "Caixa de areia", "Caixa de areia higiênica para gatos fazerem suas necessidades de forma adequada.", "caixa_areia1.jpg", 24.99, "acessorios", "", 10),
         new Produto(21, "Cama confortável", "Cama macia e aconchegante para proporcionar um lugar de descanso ao cachorro.", "cama1.jpg", 39.99, "acessorios", "", 10),
-        new Produto(22, "Comedouro automático", "Comedouro programável para fornecer alimento automaticamente em horários determinados.", "comedouro1.jpg", 49.99, "acessorios", "", 10),
+        new Produto(22, "Comedouro automático", "Comedouro programável para fornecer alimento automaticamente em horários determinados.", "", 49.99, "acessorios", "", 10),
         new Produto(23, "Cama aquecida", "Cama macia e aquecida para proporcionar conforto extra ao gato durante o sono.", "cama2.jpg", 62.99, "acessorios", "", 10),
         new Produto(24, "Bebedouro automático", "Bebedouro com sistema de fluxo constante de água fresca para manter seu pet hidratado.", "bebedouro1.jpg", 45.99, "acessorios", "", 10),
         new Produto(25, "Escova de pelos", "Escova de pelos com cerdas macias para cuidar da pelagem do seu pet.", "escova1.jpg", 9.99, "acessorios", "", 10),
@@ -61,4 +61,4 @@ function initializeProducts() {
 
 }
 
-export const produtos = getAllProducts()
+export let produtos = getAllProducts()
