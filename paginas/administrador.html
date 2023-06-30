@@ -368,17 +368,27 @@
                     </div>
                 </button>
                 <div id="formEditProduct">
-                    
-                        <label for="productNewName">Novo Nome</label>
-                        <input type="text" id="productNewName">
-                    
-                   
-                        <label for="productNewPrice">Novo Preço</label>
-                        <div id="containerPriceEdit">
-                            <div id="elementEditReal">R$</div>
-                            <input type="number" id="productNewPrice">
+                                 
+                        <div>
+                            <div class="containerPriceAndStock">
+                                <label for="productNewPrice">Novo Preço</label>
+                                <div id="containerPriceEdit">
+                                    <div id="elementEditReal">R$</div>
+                                    <input type="number" id="productNewPrice">
+                                </div>
+                            </div>
+                            
+                            <div class="containerPriceAndStock" id="containerNewStock">
+                                <label for="productNewStock" style="margin-left: 5px;">Novo Estoque</label>
+                                <input type="number" id="productNewStock">
+                            </div>
+                            
                         </div>
-                    
+
+                        <div id="containerNewDescImage">
+                                <label for="newDescImage">Nova Descrição da Imagem</label>
+                                <textarea id="newDescImage" cols="30" rows="10"  maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                        </div>
                     
                         <label for="productNewDescription">Nova Descrição</label>
                         <textarea id="productNewDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>

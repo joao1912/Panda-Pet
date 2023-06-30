@@ -1139,8 +1139,8 @@ input::-webkit-inner-spin-button {
 }
 
 #formEditProduct {
-    width: 400px;
-    height: 400px;
+    width: 379px;
+    height: 420px;
     background-color: var(--primaryColor);
     border-radius: 10px;
     display: flex;
@@ -1149,24 +1149,71 @@ input::-webkit-inner-spin-button {
     position: relative;
 }
 
+#formEditProduct > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 19px;
+}
+
+#newDescImage {
+    border-radius: 10px;
+    height: 100px;
+    width: 300px;
+    max-width: 320px;
+    max-height: 110px;
+    min-width: 320px;
+    min-height: 110px;
+    border: 0;
+    outline: none;
+    padding: 10px;
+    font-size: 1.2em;
+    font-family: "Nunito";
+    
+}
+
+#productNewStock {
+    width: 150px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+    padding-left: 10px;
+}
+
+#containerNewStock {
+    padding-bottom: 18px;
+}
+
+#containerPriceAndStock {
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+}
+
 #formEditProduct label {
     font-size: 1.3em;
     font-family: "gooperSemiBold";
     margin-bottom: 2px;
     margin-left: 40px;
     width: 50%;
+    margin-top: -10px;
 }
 
-#formEditProduct input#productNewName {
-    margin-left: 30px;
+#containerNewDescImage {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     margin-bottom: 20px;
-    width: 80%;
-    height: 60px;
-    border-radius: 20px;
-    border: 0;
-    font-size: 1.2em;
-    padding-left: 10px;
-    font-family: "Nunito";
+}
+
+#containerNewDescImage label {
+    font-size: 1.3em;
+    width: 89%;
+    margin-bottom: -15px;
+    margin-top: -10px;
 }
 
 #containerPriceEdit {
@@ -1176,7 +1223,8 @@ input::-webkit-inner-spin-button {
 
 #formEditProduct input#productNewPrice {
     margin-bottom: 20px;
-    width: 30%;
+    width: 100px;
+    max-width: 150px;
     height: 60px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -1208,9 +1256,11 @@ input::-webkit-inner-spin-button {
     margin-left: 30px;
     margin-bottom: 20px;
     width: 80%;
-    max-width: 350px;
-    height: 120px;
+    max-width: 320px;
+    height: 110px;
     max-height: 120px;
+    min-width: 320px;
+    min-height: 120px;
     border-radius: 10px;
     border: 0;
     font-size: 1.2em;
