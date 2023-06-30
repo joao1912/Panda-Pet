@@ -1,4 +1,4 @@
-import { produtos} from "../utils/produtos.js"
+import { produtos } from "../utils/produtos.js"
 import { showProducts } from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 import { changeMonth } from '../utils/forCalendar/changeMonth.js'
@@ -10,13 +10,15 @@ import { setDayTasks } from '../utils/forCalendar/setDayTasks.js'
 const btnAddPhoto = document.getElementById("btnAddPhoto")
 const productName = document.getElementById("productName")
 const productPrice = document.getElementById("productPrice")
+const productStock = document.getElementById("productStock")
 const productDescription = document.getElementById("productDescription")
+const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
 
-formAddProduct.addEventListener("keyup", function() {
+formAddProduct.addEventListener("keyup", function () {
 
-    if(photoProductReaded.length > 0 && productName.value.length > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0) {
+    if (photoProductReaded.length > 0 && productName.value.length > 0 && Number(productStock.value) > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0 && imageDescription.value.length > 0) {
 
         btnAdicionar.removeAttribute("disabled")
     } else {
@@ -27,12 +29,12 @@ formAddProduct.addEventListener("keyup", function() {
 
 btnAddPhoto.addEventListener("click", photoProductEvents)
 
-productName.addEventListener("keyup", function() {
+productName.addEventListener("keyup", function () {
 
     let productNameView = document.getElementById("productNameView")
     productNameView.innerHTML = productName.value
 
-    if(productName.value == "") {
+    if (productName.value == "") {
 
         productNameView.innerHTML = `Nome do produto`
 
@@ -40,7 +42,8 @@ productName.addEventListener("keyup", function() {
 
 })
 
-productPrice.addEventListener("keyup", function() {
+
+productPrice.addEventListener("keyup", function () {
 
     let productPriceView = document.getElementById("productPriceView")
     let value = Number(productPrice.value).toFixed(2)
@@ -49,19 +52,48 @@ productPrice.addEventListener("keyup", function() {
 
 })
 
-btnAdicionar.addEventListener("click", function() {
+productDescription.addEventListener("keyup", function () {
+
+    let productDescriptionView = document.getElementById("productNameView")
+    productDescriptionView.innerHTML = productDescription.value
+
+})
+
+
+btnAdicionar.addEventListener("click", function () {
+
+    const category1 = document.getElementById("brinquedo")
+    const category2 = document.getElementById("alimento")
+    const category3 = document.getElementById("acessorio")
+    let categoryName
+
+    if (category1.checked) {
+
+        categoryName = "brinquedos"
+
+    } else if (category2.checked) {
+
+        categoryName = "alimentacao"
+
+    } else {
+
+        categoryName = "acessorios"
+
+    }
+
     const productAdd = {
-        codigo: (produtos[produtos.length-1].codigo) + 1,
+        codigo: (produtos[produtos.length - 1].codigo) + 1,
         nome: productName.value,
         descricao: productDescription.value,
         imagem: photoProductReaded,
         preco: Number(productPrice.value),
-        categoria: "brinquedos",
-        descricaoImagem: "Descrição da imagem",
-        estoque: 10}
+        categoria: categoryName,
+        descricaoImagem: imageDescription.value,
+        estoque: parseInt(productStock.value)
+    }
 
-        produtos.push(productAdd)
-        localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+    produtos.push(productAdd)
+    localStorage.setItem("listaProdutos", JSON.stringify(produtos))
     alert("produto adicionado!")
 
 })
@@ -121,7 +153,7 @@ function setPerfilOnline() {
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
     containerUser.style.width = "200px"
-    containerUser.style.marginLeft = "65px" 
+    containerUser.style.marginLeft = "65px"
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
@@ -597,7 +629,7 @@ function loadProfiles() {
     }
 
     let users = JSON.parse(localStorage.getItem("users"))
-   
+
     if (users.length == 1 || users.length == 0) {
 
         //por imagem
@@ -605,7 +637,7 @@ function loadProfiles() {
     } else {
 
         for (let user of users) {
-           
+
             let id = user.id
             let nome = user.nome
             let dataObj = user.date
@@ -737,56 +769,56 @@ const screenAddProducts = document.getElementById("screenAddProducts")
 const screenEditProducts = document.getElementById("screenEditProduct")
 const screenRemoveProdutcs = document.getElementById("screenRemoveProduct")
 
-;[...editButtons].forEach( button => {
-    button.addEventListener("click", function(event){
-        let text = event.target.textContent
-        text = text.trim()
-       
-        switch(text) {
-            case "add":
-                screenButtons.style.display = "none"
-                screenAddProducts.style.display = "flex"
-                break
-            case "edit_square":
-                screenButtons.style.display = "none"
-                screenEditProducts.style.display = "flex"
-                break
-            case "delete_forever":
-                screenButtons.style.display = "none"
-                screenRemoveProdutcs.style.display = "flex"
-                break
-        }
+    ;[...editButtons].forEach(button => {
+        button.addEventListener("click", function (event) {
+            let text = event.target.textContent
+            text = text.trim()
+
+            switch (text) {
+                case "add":
+                    screenButtons.style.display = "none"
+                    screenAddProducts.style.display = "flex"
+                    break
+                case "edit_square":
+                    screenButtons.style.display = "none"
+                    screenEditProducts.style.display = "flex"
+                    break
+                case "delete_forever":
+                    screenButtons.style.display = "none"
+                    screenRemoveProdutcs.style.display = "flex"
+                    break
+            }
+        })
     })
-})
 
 const buttonInternos = document.querySelectorAll(".backEditButtons")
 
-;[...buttonInternos].forEach(button => {
-    button.addEventListener("click",function(event){
-        let id = event.target.id
+    ;[...buttonInternos].forEach(button => {
+        button.addEventListener("click", function (event) {
+            let id = event.target.id
 
-        switch(id) {
-            case "internalAddButton":
-                screenAddProducts.style.display = "none"
-                screenButtons.style.display = "flex"
-                break
-            case "internalEditButton":
-                screenEditProducts.style.display = "none"
-                screenButtons.style.display = "flex"
-                break
-            case "internalRemoveButton":
-                screenRemoveProdutcs.style.display = "none"
-                screenButtons.style.display = "flex"
-                break
-        }
+            switch (id) {
+                case "internalAddButton":
+                    screenAddProducts.style.display = "none"
+                    screenButtons.style.display = "flex"
+                    break
+                case "internalEditButton":
+                    screenEditProducts.style.display = "none"
+                    screenButtons.style.display = "flex"
+                    break
+                case "internalRemoveButton":
+                    screenRemoveProdutcs.style.display = "none"
+                    screenButtons.style.display = "flex"
+                    break
+            }
+        })
     })
-})
 
 let photoProductReaded = ""
 
 function photoProductEvents() {
 
-const filePhotoProduct = document.getElementById("photoProduct")
+    const filePhotoProduct = document.getElementById("photoProduct")
 
     filePhotoProduct.click();
     filePhotoProduct.addEventListener("change", readImage, false);
@@ -802,7 +834,7 @@ const filePhotoProduct = document.getElementById("photoProduct")
         fr.readAsDataURL(this.files[0]);
 
         // fr.addEventListener("load", () => {
-            
+
         // })
     }
 
