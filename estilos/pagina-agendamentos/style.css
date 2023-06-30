@@ -233,7 +233,7 @@ a{
 #servico{     /*parte da esquerda primeira pagina,separando o lado esquerdo P direito*/   
     width: 30%;
     height: 100%;
-    background-color: rgb(12, 121, 37);
+    background-color: var(--primaryColor); /*cor do quadrado da esquerda*/
     align-items: center;
     display: flex;   
     flex-direction: column;
@@ -249,7 +249,7 @@ a{
 
 }
 
-#divECima div { /* dic cima que comanda toda a dive de cima*/
+#divECima div { /* diV cima que comanda toda a div de cima*/
     background-color: white;
     border-radius: 50%;
     width: 70px;
@@ -335,10 +335,12 @@ a{
 #cadastroPet{ /*parte da direita primeira pagina, /*separando o lado direito do esquerdo*/
     width: 70%;
     height: 100%;
-    background-color: rgb(226, 122, 43);
+    background-color: var(--secondColor);/*cor do quadrrado direito*/
     flex-direction: column;
-
+    display: none;
 }
+
+
 
 #divDCima{ /* div das frases*/
     width: 100%;/*largura*/
@@ -382,25 +384,28 @@ align-items: center;
     width: 100px;/*largura*/ 
     border: 0;
     margin-left: -100px; 
-   
     
 }
-
-
    
 #divDBaixo{
     width: 100%;/*largura*/
     height: 10%;/*altura*/   
+    display:flex;
+    justify-content: end;
 
 }
-#inputProx{
+
+
+#botaoProximo{
     border-radius: 10px;
-    height: 40px;/*altura*/
-    width: 200px;/*largura*/
+    height: 34px;/*altura*/
+    width: 133px;/*largura*/
     border: 0;
-    display: flex;
-    padding-left: 8%;
-    margin-top: -21px;
+    margin-top: -19px;
+    margin-right: 20px;
+    color:white;
+    font-family:'GooperSemiBold';
+    background-color: var(--primaryColor);
     
 }
 
@@ -584,3 +589,114 @@ button {
 }
 
 /* ---------------------------- */
+
+/*paginas da segunda tela da direita*/
+
+#cadastroPet2{ /*parte da direita SEGUNDA PAGINA, /*separando o lado direito do esquerdo*/
+    width: 70%;/*largura*/
+    height: 100%;/*altura*/
+    background-color: var(--secondColor);/*cor do quadrado direito DA SEGUNDA PAGINA*/
+    flex-direction: column;
+    display: flex;
+}
+#divDCima2{ /* div das frases*/
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+   text-align: center; /*alinha os textos*/
+
+}
+
+#divDCima2 h1,h2 {/*altera a fonte das frases*/
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
+
+}
+#divDMeio2{
+    width: 100%;/*largura*/
+    height: 60%;/*altura*/
+    display: flex;
+ 
+}
+#botaoTosa{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';
+    margin-top: 50px;/*margem superior*/
+    margin-left: 100px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+    color:black;
+    background-color: var(--primaryColor);
+}
+#botaoBanho{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';  
+    margin-top: 50px;/*margem superior*/
+    margin-left: 200px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+    color:black;
+    background-color: var(--primaryColor); 
+    justify-self: center;
+}
+#botaoHospedar{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+    margin-top: -900px;/*margem superior*/
+    margin-left: 310px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+   
+    
+}
+#quadro2{
+    border-radius: 5px;
+    width: 205px;
+    max-width: 205px;
+    margin-left: 310px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+}
+
+#divDBaixo2{
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+    display: flex;
+}
+#botaoVoltar{
+    border-radius: 10px;
+    height: 37px;/*altura*/
+    width: 135px;/*largura*/
+    border:0;
+    font-family:'GooperSemiBold';  
+    margin-top: 10px;
+    margin-right:10px;
+    color:black;
+    background-color: var(--primaryColor); 
+    margin-top:30px;/*margem superior*/
+    margin-left: 20px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+}
+#botaoProximo2{
+    border-radius: 10px;
+    height:37px;/*altura*/
+    width:160px;/*largura*/
+    border:0;
+    font-family:'GooperSemiBold';  
+    margin-top: 10px;
+    margin-right:10px;
+    color:black;
+    background-color: var(--primaryColor); 
+    margin-top:30px;/*margem superior*/
+    margin-left:400px;/*margem esquerda*/
+    margin-right:200px;/*margem direita */
+    /* justify-content:flex-end; */
+}
+
+
