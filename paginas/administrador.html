@@ -290,19 +290,48 @@
                     <input type="file" id="photoProduct" style="display: none;">
                     <div id="formAddProduct">
                         
-                            <label for="productName">Nome</label>
-                            <input type="text" id="productName" maxlength="26">
-                        
-                       
-                            <label for="productPrice">Preço</label>
-                            <div id="containerPrice">
-                                <div id="elementReal">R$</div>
-                                <input type="number" id="productPrice">
+                            <div id="formSiteLeft">
+                                <label for="productName">Nome</label>
+                                <input type="text" id="productName" maxlength="26">
+                                <div>
+                                    <div class="productInternal">
+                                        <label for="productPrice">Preço</label>
+                                        <div id="containerPrice">
+                                            <div id="elementReal">R$</div>
+                                            <input type="number" id="productPrice">
+                                        </div>
+                                    </div>
+
+                                    <div class="productInternal" id="containerProdutcStock">
+                                        <label for="produtcStock" style="margin-left: 10px;">Estoque</label>
+                                        <input type="number" id="produtcStock">
+                                    </div>
+                                </div>
+                                <label for="productDescription">Descrição</label>
+                                <textarea id="productDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
                             </div>
-                        
-                        
-                            <label for="productDescription">Descrição</label>
-                            <textarea id="productDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+
+                            <div id="formSiteRight">
+                                <label for="imageDescription">Descrição da Imagem</label>
+                                <textarea id="imageDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                                <div id="containerRadioCategory">
+                                    <h2 id="h2Category">Categoria</h2>
+                                    <div>
+                                        <input type="radio" name="category" id="brinquedo" class="radio" checked>
+                                        <label for="brinquedo">Brinquedo</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="category" id="alimento" class="radio">
+                                        <label for="alimento">Alimento</label>
+                                    </div>
+                                    
+                                    <div>
+                                        <input type="radio" name="category" id="acessorio" class="radio">
+                                        <label for="acessorio">Acessorio</label>
+                                    </div>
+                                </div>
+                            </div>
                         
                     </div>
                 </div>

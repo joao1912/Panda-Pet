@@ -805,6 +805,7 @@ div.containerUser article {
 
 #screenAddProducts {
     width: 100%;
+    min-width: 1000px;
     height: 110%;
     background-color: var(--secondColor);
     border-radius: 20px;
@@ -818,7 +819,7 @@ div.containerUser article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 70%;
 }
 
 
@@ -869,15 +870,13 @@ div.containerUser article {
 }
 
 #formAddProduct {
-    width: 400px;
+    width: 90%;
     height: 400px;
     background-color: var(--primaryColor);
     border-radius: 10px;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    
 }
 
 #formAddProduct label {
@@ -885,6 +884,7 @@ div.containerUser article {
     font-family: "gooperSemiBold";
     margin-bottom: 2px;
     margin-left: 40px;
+    margin-top:10px ;
 }
 
 #formAddProduct input#productName {
@@ -906,7 +906,7 @@ div.containerUser article {
 
 #formAddProduct input#productPrice {
     margin-bottom: 20px;
-    width: 30%;
+    width: 50%;
     height: 60px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -966,7 +966,7 @@ input::-webkit-inner-spin-button {
 }
 
 #rightSide {
-    width: 40%;
+    width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -1409,4 +1409,131 @@ input::-webkit-inner-spin-button {
     transform: none;
 }
 
+.productInternal {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+#containerProdutcStock {
+    padding-bottom: 17px;
+}
+
+#produtcStock {
+    width: 80%;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.5em;
+    font-family: "Nunito";
+    text-align: center;
+}
+
+#formSiteLeft {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+}
+
+#formSiteLeft > div {
+    display: flex;
+    align-items: center;
+}
+
+
+#formSiteRight {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+}
+
+#formSiteRight label {
+    font-size: 1.2em;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#formSiteRight input[type="number"] {
+    width: 50%;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#formSiteRight textarea {
+    width: 90%;
+    max-width: 250px;
+    height: 170px;
+    max-height: 170px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-family: "Nunito";
+}
+
+#containerRadioCategory {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+    padding-left: 40px;
+    
+}
+
+#h2Category {
+    font-family: "GooperSemiBold";
+    font-size: 1.3em;
+    margin-left: 20px;
+}
+
+#containerRadioCategory div {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+#containerRadioCategory label {
+    font-family: "Nunito";
+    font-size: 1.2em;
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.radio {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid var(--secondColor);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: var(--secondColor);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+}
+
+.radio:checked::before {
+    opacity: 1;
+}
+
+.radio:focus {
+    box-shadow: 0 0 5px var(--secondColor);
+}
