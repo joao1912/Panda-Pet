@@ -5,7 +5,7 @@ let users = []
 users = JSON.parse(localStorage.getItem("users"))
 
 if (users == null) {
-    users = [{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], online: false, img: '../../imagens/perfil-default.jpg'}]
+    users = [{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], lembrarDeMim: false , online: false, img: '../../imagens/perfil-default.jpg'}]
     localStorage.setItem('users', JSON.stringify(users))
 }
 
@@ -236,12 +236,12 @@ function saveUser(userName, passWord) {
 
     if (urlFotoPerfil != undefined) {
 
-        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], online: true, img: urlFotoPerfil})
+        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], lembrarDeMim: false ,online: true, img: urlFotoPerfil})
         saveLocalStorage(users)
 
     } else {
 
-        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], online: true})
+        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], lembrarDeMim: false , online: true})
         saveLocalStorage(users)
 
     }
@@ -342,11 +342,15 @@ function login(passWord) {
                 user.online = false
             }
 
+            if (verificationRememberMe()) {
+                users[index].lembrarDeMim = true
+            }
+
             users[index].online = true
             checkedPassWord = true
-
             saveLocalStorage(users)
             window.location.href = "../../index.html"
+            break
         } 
 
         index++
@@ -359,4 +363,11 @@ function login(passWord) {
 
     }
 
+}
+
+function verificationRememberMe() {
+    const checkbox = document.getElementById("lembrarDeMimLogin")
+
+    return checkbox.checked
+    
 }
