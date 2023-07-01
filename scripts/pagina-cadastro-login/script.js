@@ -1,6 +1,7 @@
 import { Error } from "../utils/erros.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 import { getDate } from '../utils/getDate.js'
+import {userID} from '../pagina-produtos/script.js'
 
 let users = []
 users = JSON.parse(localStorage.getItem("users"))
@@ -18,6 +19,11 @@ if (users == null) {
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
+}
+
+if (userID != 0) {
+    /*window.location.href = "../../index.html"  PROVISÓRIO */
+    alert("voce não é o adm")
 }
 
 let cont = 1
