@@ -313,6 +313,10 @@ input {
     cursor: pointer;
 }
 
+.containerlembrarDeMim > input {
+    cursor: pointer;
+}
+
 .checkbox-lembrar-de-mim {
     all: unset;
     width: 20px;
