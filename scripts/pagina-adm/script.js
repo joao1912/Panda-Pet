@@ -42,20 +42,12 @@ productName.addEventListener("keyup", function () {
 
 })
 
-
 productPrice.addEventListener("keyup", function () {
 
     let productPriceView = document.getElementById("productPriceView")
     let value = Number(productPrice.value).toFixed(2)
 
     productPriceView.innerHTML = `R$ ${value}`
-
-})
-
-productDescription.addEventListener("keyup", function () {
-
-    let productDescriptionView = document.getElementById("productNameView")
-    productDescriptionView.innerHTML = productDescription.value
 
 })
 
