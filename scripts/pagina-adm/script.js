@@ -831,3 +831,4 @@ function photoProductEvents() {
     }
 
 }
+
