@@ -234,6 +234,11 @@ function saveUser(userName, passWord) {
     }
     nextId++
 
+    for (let user of users) {
+        user.online = false
+        user.lembrarDeMim = false
+    }
+
     if (urlFotoPerfil != undefined) {
 
         users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], lembrarDeMim: false ,online: true, img: urlFotoPerfil})
@@ -338,8 +343,10 @@ function login(passWord) {
     for (let obj of users) {
         
         if (obj.senha === passWord) {
-            for(let user of users) {
+         
+            for (let user of users) {
                 user.online = false
+                user.lembrarDeMim = false
             }
 
             if (verificationRememberMe()) {
