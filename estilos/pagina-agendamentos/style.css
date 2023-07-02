@@ -550,7 +550,7 @@ align-items: center;
     width: 30px;
     height: 30px;
     background-color: white;
-    border: 4px solid var(--primaryColor);
+    border: 4px solid #564ead;
     border-radius: 50%;
     position: relative;
 }
@@ -612,9 +612,15 @@ button {
 
 }
 #divDMeio2{
-    width: 100%;/*largura*/
-    height: 60%;/*altura*/
+    width: 80%;/*largura*/
+    height: 20%;/*altura*/
+    margin-left: 10%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    border-bottom: 3px solid var(--primaryColor);
+    
  
 }
 #botaoTosa{
@@ -623,9 +629,6 @@ button {
     width: 200px;/*largura*/
     border: 0;
     font-family:'GooperSemiBold';
-    margin-top: 50px;/*margem superior*/
-    margin-left: 100px;/*margem esquerda*/
-    margin-right: 20px;/*margem direita*/
     color:black;
     background-color: var(--primaryColor);
 }
@@ -635,12 +638,8 @@ button {
     width: 200px;/*largura*/
     border: 0;
     font-family:'GooperSemiBold';  
-    margin-top: 50px;/*margem superior*/
-    margin-left: 200px;/*margem esquerda*/
-    margin-right: 20px;/*margem direita*/
     color:black;
     background-color: var(--primaryColor); 
-    justify-self: center;
 }
 #botaoHospedar{
     border-radius: 10px;
@@ -650,11 +649,6 @@ button {
     font-family:'GooperSemiBold';  
     color:black;
     background-color: var(--primaryColor); 
-    margin-top: -900px;/*margem superior*/
-    margin-left: 310px;/*margem esquerda*/
-    margin-right: 20px;/*margem direita*/
-   
-    
 }
 #quadro2{
     border-radius: 5px;
@@ -664,39 +658,35 @@ button {
     margin-right: 20px;/*margem direita*/
 }
 
+#containerCalendario {
+    height: 40%;
+}
+
 #divDBaixo2{
     width: 100%;/*largura*/
     height: 20%;/*altura*/
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
 }
 #botaoVoltar{
     border-radius: 10px;
-    height: 37px;/*altura*/
-    width: 135px;/*largura*/
+    width: 150px;
+    height: 40px;
     border:0;
     font-family:'GooperSemiBold';  
-    margin-top: 10px;
-    margin-right:10px;
     color:black;
     background-color: var(--primaryColor); 
-    margin-top:30px;/*margem superior*/
-    margin-left: 20px;/*margem esquerda*/
-    margin-right: 20px;/*margem direita*/
 }
 #botaoProximo2{
     border-radius: 10px;
-    height:37px;/*altura*/
-    width:160px;/*largura*/
+    width: 150px;
+    height: 40px;
     border:0;
     font-family:'GooperSemiBold';  
-    margin-top: 10px;
-    margin-right:10px;
     color:black;
     background-color: var(--primaryColor); 
-    margin-top:30px;/*margem superior*/
-    margin-left:400px;/*margem esquerda*/
-    margin-right:200px;/*margem direita */
-    /* justify-content:flex-end; */
 }
 
 
