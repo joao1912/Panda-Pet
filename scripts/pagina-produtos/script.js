@@ -23,6 +23,14 @@ function setPerfilOnline() {
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
     containerUserLogado.style.display = "flex"
+
+    document.getElementById("botaoSair").addEventListener("click", function sair() {
+        users[userID].online = false
+        saveLocalStorage(users)
+        localStorage.removeItem("welcome")
+        window.location.href = "../../index.html"
+    })
+
     /* ADICINAR EM TODAS AS PAGES */
     const iconAdmUtils = document.getElementById("icon-tela-adm")
 
@@ -36,15 +44,10 @@ function setPerfilOnline() {
         containerUser.style.marginLeft = "-5px"
     }
     /* -------------------------- */
-    document.getElementById("botaoSair").addEventListener("click", function sair() {
-        users[userID].online = false
-        saveLocalStorage(users)
-        localStorage.removeItem("welcome")
-        window.location.href = "../../index.html"
-    })
+    
 
 }
- /* ADICINAR EM TODAS AS PAGES */
+/* ADICINAR EM TODAS AS PAGES */
 if (userID || userID == 0) {
     
     setPerfilOnline()

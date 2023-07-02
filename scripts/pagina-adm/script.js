@@ -121,6 +121,11 @@ export let bodyCalendar = [...document.getElementById("calendar").lastElementChi
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
+if (userID != 0) {
+    // window.location.href = "../../index.html" 
+    //descomentar quando a pagina do adm estiver totalmente pronta
+}
+
 function verifyUserOnline() {
 
     let userOnline
@@ -131,7 +136,7 @@ function verifyUserOnline() {
             }
         }
     }
-    return userOnline || undefined
+    return userOnline ?? undefined
 }
 
 function setPerfilOnline() {
