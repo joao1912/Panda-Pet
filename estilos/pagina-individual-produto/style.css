@@ -314,6 +314,9 @@ margin-bottom: 10px;
 background-color: crimson;
 width: 50%;
 height: 100%;
+display: flex;
+flex-direction: column;
+
 
 
 
@@ -329,8 +332,45 @@ height: 20px;
 #imagemDescricaoProduto{
 
    background-color: black;
-   width: 200px;
-   height: 150px;
+   width: 50%;
+   height: 80%;
 
+
+}
+
+.descricaoDivs{
+
+width: 100%;    
+height:22.5% ;
+
+}
+
+#addProdutos{
+
+width: 100%;
+height: 10%;
+
+}
+
+#botaoAdd{
+display: flex;
+flex-direction: column;
+
+}
+
+.botoesAdd{
+
+width: 25px;
+height: 25px;
+border-radius: 50%;
+border: 0;
+
+
+}
+
+#butaoFuncoes{
+
+display: flex;
+flex-direction: column;
 
 }
