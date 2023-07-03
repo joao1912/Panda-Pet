@@ -15,8 +15,32 @@ const productDescription = document.getElementById("productDescription")
 const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
+const inptProductCodEdit = document.getElementById("productCodEdit")
 
-formAddProduct.addEventListener("keyup", function () {
+inptProductCodEdit.addEventListener("keyup", function() {
+let productIndex = produtos.findIndex(produto => produto.codigo === Number(inptProductCodEdit.value))
+if(productIndex > -1) {
+
+    let inptProductPrice = document.getElementById("productNewPrice")
+    let inptProductNewStock = document.getElementById("productNewStock")
+    let inptNewDescImage = document.getElementById("newDescImage")
+    let inptProductNewDescription = document.getElementById("productNewDescription")
+
+    //productPhoto.src = produtos[productIndex].imagem
+
+    inptProductPrice.value = produtos[productIndex].preco
+
+    inptProductNewStock.value = produtos[productIndex].estoque
+
+    inptNewDescImage.value = produtos[productIndex].descricaoImagem
+    
+    inptProductNewDescription.value = produtos[productIndex].descricao
+
+
+}
+})
+
+formAddProduct.addEventListener("keyup", function() {
 
     if (photoProductReaded.length > 0 && productName.value.length > 0 && Number(productStock.value) > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0 && imageDescription.value.length > 0) {
 
