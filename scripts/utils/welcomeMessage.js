@@ -4,6 +4,7 @@ let newUser = JSON.parse(localStorage.getItem("welcome"))
 
 const divWelcomeMessage = document.getElementById("msgBemVindo")
 const containerFotoBemVindo = document.querySelector("#fotoUserBemVindo")
+divWelcomeMessage.style.zIndex = "4"
 
 if (userID != undefined && newUser != 1) {
 
