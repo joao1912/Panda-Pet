@@ -437,7 +437,7 @@ color: white;
 }
 
 #perfilUsuario{
-    display: none; /* FLEX */
+    display: flex; /* FLEX */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -462,6 +462,30 @@ color: white;
     flex-direction: column;
 
 }
+
+#botaoFechar{
+position: absolute;
+display: flex;
+justify-content: flex-start;
+}
+
+#botaoFechar button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    font-size: 0.8em;
+}
+
+#botaoFechar > button > i{
+    margin-top: 3px;
+}
+
+#botaoFechar > button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 #imagemDefault{
     width: 100%;
     height: 30%;
