@@ -16,14 +16,14 @@
 
         <div id="containerBarraDePesquisa">
             <input type="text" id="barraPesquisa" placeholder="Pesquise">
-            <span><i class="material-symbols-outlined">search</i></span>
+            <span aria-label="Pesquisar"><i class="material-symbols-outlined" aria-hidden="true">search</i></span>
         </div>
 
         <div id="containerIcones">
-            <span class="btnIcons" id="icon-tela-adm"><i class="material-symbols-outlined">settings_suggest</i></span>
-            <a href="./carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+            <a class="btnIcons" id="icon-tela-adm" aria-label="Configurações"><i class="material-symbols-outlined" aria-hidden="true">settings_suggest</i></span>
+            <a href="./carrinho.html" aria-label="Carrinho"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
 
-            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <button class="btnIcons" id="perfilIcon" aria-label="Perfil"><i class="material-symbols-outlined" aria-hidden="true">person</i></button>
             <div id="containerPerfil">
                 <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
                 <div id="userLogado">
@@ -60,26 +60,26 @@
     <div class="centralizador">
         <section id="containerAdmUtilities">
             
-                <button class="material-symbols-outlined icons" id="btnCalendar" title="Agendamentos">
+                <button class="material-symbols-outlined icons" id="btnCalendar" aria-label="Agendamentos">
                     calendar_month
                 </button>
 
-                <button class="material-symbols-outlined icons" id="btnPayments" title="Financeiro">
+                <button class="material-symbols-outlined icons" id="btnPayments" aria-label="Financeiro">
                     payments
                 </button>
             
-                <button class="material-symbols-outlined icons" id="btnUsers" title="Usuários">
+                <button class="material-symbols-outlined icons" id="btnUsers" aria-label="Usuários">
                     groups
                 </button>
 
-                <button class="material-symbols-outlined icons" id="btnEdit" title="Administrar Produtos">
+                <button class="material-symbols-outlined icons" id="btnEdit" aria-label="Administrar Produtos">
                     design_services
                 </button>
 
         </section>
 
         <section id="viewCalendar">
-            <button class="material-symbols-outlined backMenu" id="btnBackCalendar">arrow_back</button>
+            <button class="material-symbols-outlined backMenu" id="btnBackCalendar" aria-label="Voltar">arrow_back</button>
             <div id="changeMounth">
                 <button class="material-symbols-outlined trocaMes">keyboard_arrow_left</button>
                 <span id="mouthTitle">Janeiro</span>
@@ -208,7 +208,7 @@
                 </article>
             </div> -->
             <div id="footerUsers">
-               <button class="material-symbols-outlined backMenu" id="btnBackProfiles">arrow_back</button>  
+               <button class="material-symbols-outlined backMenu" id="btnBackProfiles" aria-label="Voltar">arrow_back</button>  
             </div>
         </section>
 
@@ -240,7 +240,7 @@
                 </div>
             </section>
             <section id="containerGrafico">
-                <button class="material-symbols-outlined backMenu" id="btnBackPayments">arrow_back</button>  
+                <button class="material-symbols-outlined backMenu" id="btnBackPayments" aria-label="Voltar">arrow_back</button>  
                 <h1>Rendimento Bruto</h1>
                 <div id="semRedimentos">
                     <img src="../imagens/Sem Rendimento.png" alt="Não há rendimentos ainda">
@@ -253,16 +253,16 @@
 
         <section id="editProducts">
             <div id="containerEditButtons">
-                <button class="material-symbols-outlined backMenu" id="btnBackProducts">arrow_back</button>
+                <button class="material-symbols-outlined backMenu" id="btnBackProducts" aria-label="Voltar">arrow_back</button>
                                       
-                <button class="btnEditProducts" title="Adicionar Produtos" id="btnAdd">
+                <button class="btnEditProducts" aria-label="Adicionar Produtos" id="btnAdd">
                     <div class="material-symbols-outlined subButtonCircle">
                         add
                     </div>
                 </button>
 
 
-                <button class="btnEditProducts" title="Editar produtos" id="btnEdit">
+                <button class="btnEditProducts" aria-label="Editar produtos" id="btnEdit">
                     <div class="material-symbols-outlined subButtonCircle" id="editDeleteSquare">
                         edit_square
                     </div>
@@ -270,7 +270,7 @@
         
 
             
-                <button class="btnEditProducts" title="Remover Produtos" id="btnRemove">
+                <button class="btnEditProducts" aria-label="Remover Produtos" id="btnRemove">
                     <div class="material-symbols-outlined subButtonCircle">
                         delete_forever
                     </div>
@@ -279,7 +279,7 @@
 
             <section id="screenAddProducts">
                 <div id="leftSide">
-                    <button class="material-symbols-outlined backEditButtons" id="internalAddButton">arrow_back</button>
+                    <button class="material-symbols-outlined backEditButtons" id="internalAddButton" aria-label="Voltar">arrow_back</button>
 
                     <button id="btnAddPhoto" aria-label="Adicionar Foto Do Produto">
                         <div class="material-symbols-outlined" id="containerIconAddPhoto" aria-hidden="true">
@@ -354,14 +354,14 @@
             </section>
 
             <section id="screenEditProduct">
-                <button class="material-symbols-outlined backEditButtons" id="internalEditButton">arrow_back</button>
+                <button class="material-symbols-outlined backEditButtons" id="internalEditButton" aria-label="Voltar">arrow_back</button>
 
                 <div class="containerCodProduct">
                     <label for="productCodEdit">Código</label>
                     <input type="number" id="productCodEdit">
                 </div>
 
-                <button id="btnEditPhoto" title="Editar Foto Do Produto">
+                <button id="btnEditPhoto" aria-label="Editar Foto Do Produto">
                     <div class="material-symbols-outlined" id="containerIconEditPhoto">
                         add_a_photo
                     </div>
@@ -398,7 +398,7 @@
             </section>
 
             <section id="screenRemoveProduct">
-                <button class="material-symbols-outlined backEditButtons" id="internalRemoveButton">arrow_back</button>
+                <button class="material-symbols-outlined backEditButtons" id="internalRemoveButton" aria-label="Voltar">arrow_back</button>
 
                 <div class="containerCodProduct">
                     <label for="productCodRemove">Código</label>
