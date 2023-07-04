@@ -211,17 +211,19 @@
             <div id="cadastroPet3">
 
                 <div id="divDCima3">
-                 <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
-                 <h2>Tudo Prontinho</h2>
+                 <h1>Tudo Prontinho!</h1>
                 </div>
-
+                    <div id="divTitulo">
+                       <h1>Informações De Pagamento</h1>     
+                    </div>
+                    
                     <div id="divDMeio3">
+
+                        
 
                         <div id="divPagamento1">
 
-                            <div id="divTitulo">
-                            <h1>Informações De Pagamento</h1>
-                            </div>
+                            
 
                             <div id="divNomePet">
                                 <label class="labelNomePet" for="inputNomePet">Nome Do Pet</label>
@@ -255,17 +257,24 @@
                                <h2>Forma De Pagamento</h2> 
                             </div>
 
-                            <div id="inputs2">
-                                <label class="labelCreditoDebito" for="inputPix">Cartão De Credito Ou Débito</label>
-                                <input id="inputCreditoDebito" class="input2"> 
-                                <label class="labelPix" for="inputPix">Pix</label>
-                                <input id="inputPix" class="input2"> 
-                                <label class="labelBoleto" for="inputBoleto">Boleto</label>
-                                <input id="inputBoleto" class="input2">
-                            </div>
-                                <div id="divPagamentoFinalizar">
-                                    <button id="botaoFinalizar">Finalizar</button>
-                                </div>   
+                            <div id="div2">
+                                <div>  
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputCreditoDebito"> 
+                                    <label class="labelCreditoDebito" for="inputCreditoDebito">Cartão De Crédito Ou Débito</label>
+                                  
+                                </div>
+                                <div> 
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputPix">
+                                    <label class="labelPix" for="inputPix">Pix</label>    
+                                </div>
+                                <div>
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputBoleto">
+                                    <label class="labelBoleto" for="inputBoleto">Boleto</label>   
+                                </div>
+                               
+                            </div>    
+
+                            
                         </div>
 
                        
@@ -274,8 +283,9 @@
 
                         <div id="divDBaixo3">
                             <button id="botaoVoltar3">Voltar</button>  
+                            <button id="botaoFinalizar">Finalizar</button>
                         </div>
-                </div>
+                       
 
         </section>
     </div>

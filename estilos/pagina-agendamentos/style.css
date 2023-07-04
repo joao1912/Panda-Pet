@@ -700,32 +700,33 @@ button {
 }
 #divDCima3{ /* div das frases*/
     width: 100%;/*largura*/
-    height: 20%;/*altura*/
+    height: 10%;/*altura*/
    text-align: center; /*alinha os textos*/
 }
-#divDCima3 h1,h2 {/*altera a fonte das frases*/
+#divDCima3 h1 {/*altera a fonte das frases*/
     margin-top: 20px;
-
+}
+#divTitulo{
+    font-size: 0.8em;
+    text-align: center;
 }
 #divDMeio3{
     width: 100%;/*largura*/
-    height: 60%;/*altura*/
-    flex-direction: column;
+    height: 80%;/*altura*/
     display: flex;
     align-items: center;
     /* justify-content: space-between;*/
     padding: 0 40px; 
+    flex-direction: row-reverse;
 }
 
 #divPagamento1{
+    width: 50%;
     flex-direction: column;
     display: flex;
     /* float: right; */
     /* justify-content: flex-end; */
-}
-#divTitulo{
-    font-size: 0.8em;
-    /* display: flex; */
+    align-items: center;
 }
 /* #divNomePet{
 
@@ -736,15 +737,14 @@ button {
     width: 200px;/*largura*/
     border: 0;
     display: flex;
-    flex-direction: column;
-    
-    
+    flex-direction: column;   
 }
 
 #divPagamento2{
+    width: 50%;
     flex-direction: column;
     display: flex;
-
+    align-items: center;
 }
 .inputPagamento2{
     border-radius: 10px;
@@ -753,46 +753,53 @@ button {
     border: 0;
     display: flex;
     flex-direction: column;
-
 }
 #divFormaPagamento{
     font-size: 0.6em;
+}
+#div2{
+    display: flex;
+    flex-direction: column;
+}
+#div2 div {
+    display:flex;
 }
 .input2{
     display: inline-block;
     width: 20px;
     height: 20px;
     background-color: white;
-    border: 4px solid #564ead;
     border-radius: 50%;
     position: relative;
-    display: flex;
-}
-#botaoFinalizar{
-    border-radius: 10px;
-    width: 150px;
-    height: 40px;
-    border:0;
-    font-family:'GooperSemiBold';  
-    color:black;
-    background-color: var(--primaryColor); 
-
+    display: flex;   
 }
 
 #divDBaixo3{
     width: 100%;/*largura*/
-    height: 20%;/*altura*/ 
+    height: 10%;/*altura*/ 
     display: flex;
+    justify-content: space-between;
 }
 #botaoVoltar3{
     border-radius: 10px;
-    width: 150px;
+    width: 130px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor);
+    margin-left: 20px;
+   
+}
+ #botaoFinalizar{
+    border-radius: 10px;
+    width: 130px;
     height: 40px;
     border:0;
     font-family:'GooperSemiBold';  
     color:black;
     background-color: var(--primaryColor); 
-
+    align-items: center;
+    margin-right: 20px;
 }
-
 
