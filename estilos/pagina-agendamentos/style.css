@@ -337,7 +337,7 @@ a{
     height: 100%;
     background-color: var(--secondColor);/*cor do quadrrado direito*/
     flex-direction: column;
-    display: none;
+     display: none; 
 }
 
 
@@ -403,7 +403,7 @@ align-items: center;
     border: 0;
     margin-top: -19px;
     margin-right: 20px;
-    color:white;
+    color:black;
     font-family:'GooperSemiBold';
     background-color: var(--primaryColor);
     
@@ -535,7 +535,7 @@ align-items: center;
     max-width: 205px;
 }
 
-/* tudo aqui foi feito pelo joão*/
+
 
 #containerInputRadios {
     height: 80%;
@@ -598,6 +598,7 @@ button {
     background-color: var(--secondColor);/*cor do quadrado direito DA SEGUNDA PAGINA*/
     flex-direction: column;
     display: flex;
+    display: none;
 }
 #divDCima2{ /* div das frases*/
     width: 100%;/*largura*/
@@ -687,6 +688,111 @@ button {
     font-family:'GooperSemiBold';  
     color:black;
     background-color: var(--primaryColor); 
+}
+#cadastroPet3{ /*primeira pagina 3 -parte da direita TERCEIRA PAGINA*/
+    width: 70%;/*largura*/
+    height: 100%;/*altura*/
+    background-color: var(--secondColor);/*cor do quadrado direito DA SEGUNDA PAGINA*/
+    flex-direction: column;
+    display: flex;
+    font-family:'GooperSemiBold';
+     /* display: none;  */
+}
+#divDCima3{ /* div das frases*/
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+   text-align: center; /*alinha os textos*/
+}
+#divDCima3 h1,h2 {/*altera a fonte das frases*/
+    margin-top: 20px;
+
+}
+#divDMeio3{
+    width: 100%;/*largura*/
+    height: 60%;/*altura*/
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between;*/
+    padding: 0 40px; 
+}
+
+#divPagamento1{
+    flex-direction: column;
+    display: flex;
+    /* float: right; */
+    /* justify-content: flex-end; */
+}
+#divTitulo{
+    font-size: 0.8em;
+    /* display: flex; */
+}
+/* #divNomePet{
+
+} */
+.inputPagamento1{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+#divPagamento2{
+    flex-direction: column;
+    display: flex;
+
+}
+.inputPagamento2{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+#divFormaPagamento{
+    font-size: 0.6em;
+}
+.input2{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid #564ead;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+}
+#botaoFinalizar{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+
+}
+
+#divDBaixo3{
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/ 
+    display: flex;
+}
+#botaoVoltar3{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+
 }
 
 
