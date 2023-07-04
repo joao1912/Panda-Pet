@@ -13,7 +13,7 @@ function verifyUserOnline() {
             }
         } 
     }
-    return userOnline || undefined
+    return userOnline ?? undefined
 }
 
 function setPerfilOnline() {
@@ -209,17 +209,24 @@ if (userID == 0) {
     iconAdmUtils.addEventListener("click", function(){
         window.location.href = "../../paginas/administrador.html" 
     })
+    
+    setPerfilOnline()
+    const fotoPerfil = document.getElementById("fotoPerfilOnline")
+    fotoPerfil.addEventListener("click", trocaFotoPerfil)
+    containerUser.style.marginLeft = "-5px"
 } 
 
-if (userID || userID == 0) {
+if (userID) {
     
     setPerfilOnline()
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
     fotoPerfil.addEventListener("click", trocaFotoPerfil)
     
 } else {
-    containerUser.style.marginLeft = "-43px"
-    containerUser.style.top = "115px"
+    if (userID != 0) {
+        containerUser.style.marginLeft = "-43px"
+        containerUser.style.top = "115px" 
+    }
 }
 
 $('#container').slick({
