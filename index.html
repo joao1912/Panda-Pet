@@ -22,7 +22,6 @@
         </div>
 
         <div id="containerIcones">
-            <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
             <a href="paginas/carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
             <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
             <div id="containerPerfil">
@@ -67,29 +66,29 @@
         <div id="infoUser">
             <div id="botoes">
 
-             <div id="informacoes">
-                
-                <div id="nome">
-                    <label class="textoInputs">Nome:</label>
-                    <input type="text" class="inputs">
-                </div>
+                <div id="informacoes">
+                    
+                    <div id="nome">
+                        <label class="textoInputs">Nome:</label>
+                        <input type="text" class="inputs" readonly>
+                    </div>
 
-                <div id="conta">
-                    <label class="textoInputs">Data de criação da conta:</label>
-                    <input type="text" class="inputs">
-                </div>
+                    <div id="conta">
+                        <label class="textoInputs">Data de criação da conta:</label>
+                        <input type="text" class="inputs" readonly>
+                    </div>
 
-                <div id="contato">
-                    <label class="textoInputs">Contato:</label>
-                    <input type="text" class="inputs">
-                </div>
+                    <div id="contato">
+                        <label class="textoInputs">Contato:</label>
+                        <input type="text" class="inputs" readonly>
+                    </div>
 
-             </div>
+                </div>
 
                 <div id="excluirEeditar">
-                    <button class="botaoTransparente"><label class="textoBotao">Excluir</label></button>
-                    <button class="botaoTransparente"><label class="textoBotao">Editar</label></button>
-                    <button class="botaoTransparente"><label class="textoBotao">Minhas compras</label></button>
+                    <button class="botaoTransparente">Excluir</button>
+                    <button class="botaoTransparente">Editar</button>
+                    <button class="botaoTransparente">Minhas compras</button>
                  </div>
                </div>  
 
@@ -112,9 +111,7 @@
       </div>
 
       <h2 class="carrossel"></h2>
-    <script type="module" src="scripts/pagina-inicial/index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
       <h2 id="agendeSeuHorario" class="petshop">Agende seu horário!</h2>
       <article id="textoPetShop"><p>Seu pet precisa de serviços de cuidados
@@ -137,14 +134,15 @@
     <div id="icon">
         <i class="material-symbols-outlined icon">pets</i>
     </div>
-    <!-- ola!!!!! Sou eu o chato(João), eu dei uma olhada na sua pagina aqui em casa, esses paragrafos que estão dentro dos articles estão com as letras muito pequenas, tenta aumentar elas um pouco, outra coisa, no js ainda tem o carrossel2 la, tem que apagar :), opaaa, quase esqueci de falar sobre as nossas lindas fontes, tem que colocar elas la no footer, pensei em estilizar o botao 'agendar', mas fiquei com medo de tomar um chingão de você, boa noite(ou bom dia, não sei quando voce vai ler esse comentario) -->
     <h2 class="quemSomos">Quem somos</h2>
-    <article id="texto1">Olá amigos! Muito prazer, somos a equipe Panda Pet, 
+    <article id="texto1">
+        Olá amigos! Muito prazer, somos a equipe Panda Pet, 
         nossa empresa nasceu no ano de 2023 e nosso maior objetivo é o bem-estar animal.
         Nossa preocupação vai além da venda dos melhores produtos para seu animalzinho, oferecemos também hospedagem e 
-        os melhores cuidados para a beleza e higiene do seu pet.</article>
+        os melhores cuidados para a beleza e higiene do seu pet.
+    </article>
 
-    </div>
+    <!-- </div> -->
 
     <div id="textoHome">
     
@@ -152,42 +150,42 @@
             <i class="material-symbols-outlined icon2">home</i>
         </div>
 
-    <h2 class="Hospedagem">Viaje tranquilo!</h2>
-    <article id="texto2">Você sabia que o Panda Pet conta com a melhor hospedagem para seu melhor amigo?
-    Viaje tranquilo sabendo que seu animalzinho vai estar bem cuidado por profissionais atenciosos que vão fazer
-    seu pet se sentir no seu proprio lar! Aqui o seu pet poderá ficar em contato com outros amiguinhos, 
-    sociabilizar, se divertir e, o mais importante, receber muito amor e carinho. Agende já a hospedagem do seu pet!
-    </article>
-
-</div>
+        <h2 class="Hospedagem">Viaje tranquilo!</h2>
+        <article id="texto2">
+            Você sabia que o Panda Pet conta com a melhor hospedagem para seu melhor amigo?
+            Viaje tranquilo sabendo que seu animalzinho vai estar bem cuidado por profissionais atenciosos que vão fazer
+            seu pet se sentir no seu proprio lar! Aqui o seu pet poderá ficar em contato com outros amiguinhos, 
+            sociabilizar, se divertir e, o mais importante, receber muito amor e carinho. Agende já a hospedagem do seu pet!
+        </article>
+    </div>
 
     <footer id="footer">
- <div id=icones>
-        <div class="iconLateral">
-            <i class="material-symbols-outlined">location_on</i>
-            <span>Endereço: Rua dos pets 175, bairro: Felicidade</span>
-        </div>   
 
-        <div class="iconLateral">
-        <i class="material-symbols-outlined">mail</i>
-        <span>pandapet@gmail.com</span>
+        <div id=icones>
+            <div class="iconLateral">
+                <i class="material-symbols-outlined">location_on</i>
+                <span>Endereço: Rua dos pets 175, bairro: Felicidade</span>
+            </div>   
+
+            <div class="iconLateral">
+                <i class="material-symbols-outlined">mail</i>
+                <span>pandapet@gmail.com</span>
+            </div>
+
+            <div class="iconLateral">
+                <i class="material-symbols-outlined">phone_in_talk</i>
+                <span>(48) 9999-0011</span>
+            </div>  
+        </div>
+ 
+        <div id="iconeImg" >
+            <img src="./imagens/icons/instagram-icon (1).svg" alt=""> 
+            <img src="./imagens/icons/facebook-icon(2).svg">    
         </div>
 
-        <div class="iconLateral">
-        <i class="material-symbols-outlined">phone_in_talk</i>
-        <span>(48) 9999-0011</span>
-        </div>  
- </div>
- 
-<div id="iconeImg" >
-    <img src="./imagens/icons/instagram-icon (1).svg" alt=""> 
-    <img src="./imagens/icons/facebook-icon(2).svg">    
-</div>
-
- 
- 
-</footer>
-
-  
+    </footer>
+    <script type="module" src="scripts/pagina-inicial/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

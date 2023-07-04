@@ -77,7 +77,7 @@ header #containerBarraDePesquisa {
 #containerPerfil {
     position: absolute;
     top: 115px;
-    margin-left: 26px;
+    margin-left: -42px;
     background-color: var(--secondColor);
     width: 160px;
     height: 55px;
@@ -437,18 +437,18 @@ color: white;
 }
 
 #perfilUsuario{
-position: absolute;
-top: 50%;
-left: 50%;
-width: 1000px;
-height: 550px;
-background-color: var(--primaryColor);
-z-index: 3;
-transform: translate(-50%, -50%);
-border-radius: 5%;
-display: flex;
-align-items: center;
-justify-content: center;
+    display: none; /* FLEX */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 550px;
+    background-color: var(--primaryColor);
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    border-radius: 5%;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -506,6 +506,8 @@ border-radius: 50%;
     height: 40px;
    border-radius: 20px;
    border: none;
+   outline: none;
+   cursor: default;
 
 }
 
@@ -513,6 +515,10 @@ border-radius: 50%;
 display: flex;
 flex-direction: column;
 gap: 15px;
+}
+
+#informacoes label {
+    padding-left: 10px;
 }
 
 #nome{
@@ -537,41 +543,37 @@ gap: 15px;
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 
 }
 .petsz{
-font-size: 2em;
-font-family: 'GooperSemiBold';
-font-weight: bold;
-color: black;
-display: flex;
-align-items: center;
+    font-size: 2em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    position: absolute;
+    left: 1%;
+
 }
 
 #quadradoPets{
-    width: 200px;
+    width: 300px;
     height: 300px;
     background-color:white;
     border-radius: 5%;
     display: flex;
     align-items: center;
+    position: absolute;
+    right: -5px;
 }
 
 .botaoTransparente{
     width: 100px;
     height: 50px;
     background-color: white;
-}
-
-.textoBotao{
-font-size: 0.65em;
-font-family: 'GooperSemiBold';
-font-weight: bold;
-color: var(--primaryColor);
-display: flex;
-align-items: center;
-justify-content: center;
-
 }
 
 #excluirEeditar{
@@ -581,4 +583,19 @@ justify-content: center;
     gap: 10px;
     margin-top: 20px;
    
+}
+
+#excluirEeditar button {
+    font-size: 0.8em;
+    font-family: 'GooperSemiBold';
+    font-weight: bold;
+    color: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#excluirEeditar button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
