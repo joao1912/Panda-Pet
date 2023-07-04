@@ -1,4 +1,5 @@
-html,body{
+html,
+body {
     height: 100%;
 }
 
@@ -16,7 +17,7 @@ header {
     padding: 15px;
 }
 
-header > img {
+header>img {
     height: 115px;
     margin-left: 20px;
 }
@@ -131,7 +132,7 @@ header #containerBarraDePesquisa {
 }
 
 
-#containerPerfil button > span {
+#containerPerfil button>span {
     font-size: 1.3em;
     margin-left: 5px;
 }
@@ -148,7 +149,7 @@ header #containerBarraDePesquisa {
     background-color: transparent;
     border: 0;
     margin-left: 25px;
-} 
+}
 
 #botaoSair:hover {
     cursor: pointer;
@@ -156,7 +157,7 @@ header #containerBarraDePesquisa {
 }
 
 #containerPerfil::after {
-    content: ""; 
+    content: "";
     position: absolute;
     width: 20px;
     height: 20px;
@@ -193,13 +194,15 @@ nav span:hover {
     transition: transform 0.3s;
 }
 
-nav span:hover::after, span:hover::before {
+nav span:hover::after,
+span:hover::before {
     display: inline-block;
 }
 
 nav span::before {
     content: "";
-    display: none; /* inline-block */
+    display: none;
+    /* inline-block */
     background-image: url(../../imagens/icons/pata.svg);
     background-size: cover;
     width: 20px;
@@ -212,7 +215,8 @@ nav span::before {
 
 nav span::after {
     content: "";
-    display: none; /* inline-block */
+    display: none;
+    /* inline-block */
     background-image: url(../../imagens/icons/pata.svg);
     background-size: cover;
     width: 20px;
@@ -222,28 +226,28 @@ nav span::after {
     top: 5px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-#conteinerPrincipal{
+#conteinerPrincipal {
 
-display: flex;
-width: 100%;
-height: 600px;
-font-family: "Nunito";
+    display: flex;
+    width: 100%;
+    height: 600px;
+    font-family: "Nunito";
 
 
 }
 
 #imagemProduto img {
-width: 450px;
-height: 450px;
-background-color: black;
+    width: 450px;
+    height: 450px;
+    background-color: black;
 
 }
 
-#conteinerPrincipal > div{
+#conteinerPrincipal>div {
 
     width: 50%;
     display: flex;
@@ -252,149 +256,171 @@ background-color: black;
 
 }
 
-#imagemProduto{
+#imagemProduto {
 
-width: 50%;
-height: 100%;
+    width: 50%;
+    height: 100%;
 
 
 }
 
-#paginaLadoDireito{
+#paginaLadoDireito {
 
-    
-width: 50%;
-height: 100%;
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+
+
+}
+
+#descricaoImagem {
+
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+#conteinerTituloProduto {
+
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+
+#tituloProduto {
+
+    font-size: 2em;
+
+}
+
+#descricaoCodigo {
+
+    font-size: 1em;
+
+}
+
+#TituloCodigo {
+
+    font-size: 2em;
+    margin-bottom: 10px;
+
+
+}
+
+#descricaoImagem-2 {
+
+
+    background-color: crimson;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+
+
+
+}
+
+#botaoTeste {
+
+    width: 50px;
+    height: 20px;
+
+}
+
+#imagemDescricaoProduto {
+
+    background-color: black;
+    width: 50%;
+    height: 80%;
+
+
+}
+
+.descricaoDivs {
+
+    width: 100%;
+    height: 40%;
+
+}
+
+#descricaoBaixo {
+
+    width: 100%;
+    height: 50%;
+
+}
+
+#tituloTextoCalcular {
+
+    font-size: 1.5em;
+
+}
+
+#addProdutos {
+
+    width: 100%;
+    height: 10%;
+
+}
+
+#botaoAdd {
+    display: flex;
+
+}
+
+#botaoINPT {
+
+    width: 40px;
+    border-radius: 20%;
+    border: 0;
+
+
+}
+
+.botoesAdd {
+
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 0;
+
+
+}
+
+#botaoFuncoes {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+
+}
+
+.botaoFuncoestamanho {
+
+    border-radius: 6px;
+
+
+}
+
+#tituloTextoCep {
+
+    display: flex;
+    width: 50%;
+    height: 15%;
+
+}
+
+#botoesCep{
+
 display: flex;
-
-
-}
-
-#descricaoImagem{
-
-background-color: rgb(255, 255, 255);
-width: 50%;
-height: 100%;
-display: flex;
-flex-direction: column;
-padding: 20px;
-
-}
-
-#conteinerTituloProduto{
-
-text-align: center;
-margin-bottom: 50px;
-
-}
-
-#tituloProduto{
-
-font-size: 2em;
-
-}
-
-#descricaoCodigo{
-
-font-size: 1em;
-
-}
-
-#TituloCodigo{
-
-font-size: 2em;
-margin-bottom: 10px;
-
-
-}
-
-#descricaoImagem-2{
-
-
-background-color: crimson;
-width: 50%;
-height: 100%;
-display: flex;
-flex-direction: column;
-padding: 25px;
-
-
-
-
-}
-
-#botaoTeste{
-
-width: 50px;
-height: 20px;
-
-}
-
-#imagemDescricaoProduto{
-
-   background-color: black;
-   width: 50%;
-   height: 80%;
-
-
-}
-
-.descricaoDivs{
-
-width: 100%;    
-height:22.5% ;
-
-}
-
-#addProdutos{
-
-width: 100%;
-height: 10%;
-
-}
-
-#botaoAdd{
-display: flex;
-
-}
-
-#botaoINPT{
-
-width: 40px;
-border-radius:20% ;
-border: 0;
-
-
-}
-
-.botoesAdd{
-
-width: 25px;
-height: 25px;
-border-radius: 50%;
-border: 0;
-
-
-}
-
-#botaoFuncoes{
-
-display: flex;
-flex-direction: column;
-gap: 15px;
-
-
-}
-
-.botaoFuncoestamanho{
-
-border-radius: 6px;
-border: 0;
-
-}
-
-#tituloTextoCalcular{
-
 
 
 }
