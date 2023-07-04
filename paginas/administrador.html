@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Pet</title>
+    <link rel="stylesheet" href="../sweetAlert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../estilos/index.css">
+    <link rel="stylesheet" href="../estilos/pagina-adm/style.css">
+</head>
+<body>
+    <header>
+        <img src="../imagens/1.png" alt="Logo Panda Pet">
+
+        <div id="containerBarraDePesquisa">
+            <input type="text" id="barraPesquisa" placeholder="Pesquise">
+            <span><i class="material-symbols-outlined">search</i></span>
+        </div>
+
+        <div id="containerIcones">
+            <span class="btnIcons" id="icon-tela-adm"><i class="material-symbols-outlined">settings_suggest</i></span>
+            <span class="btnIcons"><i class="material-symbols-outlined">star</i></span>
+            <a href="./carrinho.html"><span class="btnIcons"><i class="material-symbols-outlined">shopping_cart</i></span></a>
+
+            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <div id="containerPerfil">
+                <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
+                <div id="userLogado">
+                    <img id="fotoPerfilOnline" src="../imagens/perfil-default.jpg" alt="foto de perfil">
+                    <input type="file" id="inptTrocaFoto">
+                    <button id="botaoSair">Sair<span class="material-symbols-outlined">logout</span></button>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    <nav>
+        <span id="forHome">
+            Home
+        </span>
+
+        <span id="forAcessorios">
+            Acessórios
+        </span>
+
+        <span id="forAlimentacao">
+            Alimentação
+        </span>
+
+        <span id="forBrinquedos">
+            Brinquedos
+        </span>
+
+        <span id="forAgendamento">
+            Agendamento
+        </span>
+
+    </nav>
+    <div class="centralizador">
+        <section id="containerAdmUtilities">
+            
+                <button class="material-symbols-outlined icons" id="btnCalendar" title="Agendamentos">
+                    calendar_month
+                </button>
+
+                <button class="material-symbols-outlined icons" id="btnPayments" title="Financeiro">
+                    payments
+                </button>
+            
+                <button class="material-symbols-outlined icons" id="btnUsers" title="Usuários">
+                    groups
+                </button>
+
+                <button class="material-symbols-outlined icons" id="btnEdit" title="Administrar Produtos">
+                    design_services
+                </button>
+
+        </section>
+
+        <section id="viewCalendar">
+            <button class="material-symbols-outlined backMenu" id="btnBackCalendar">arrow_back</button>
+            <div id="changeMounth">
+                <button class="material-symbols-outlined trocaMes">keyboard_arrow_left</button>
+                <span id="mouthTitle">Janeiro</span>
+                <button class="material-symbols-outlined trocaMes">keyboard_arrow_right</button>
+            </div>
+            <table id="calendar">
+                <thead>
+                    <tr>
+                        <th>
+                            dom
+                        </th>
+                        <th>
+                            seg
+                        </th>
+                        <th>
+                            ter
+                        </th>
+                        <th>
+                            qua
+                        </th>
+                        <th>
+                            qui
+                        </th>
+                        <th>
+                            sex
+                        </th>
+                        <th>
+                            sab
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <section id="containerCheckedTasks">
+                <div id="tasks">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Hora</th>
+                                <th>Serviço</th>
+                                <th>Cancelar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dayTasks">
+                            <!-- <tr>
+                                <td class="idCell">01</td>
+                                <td>Nome Usuário</td>
+                                <td class="hrCell">15:00</td>
+                                <td>
+                                    Hospedagem
+                                    (entrada)
+                                </td>
+                                <td>
+                                    <button class="material-symbols-outlined btnCancel">
+                                        delete
+                                    </button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <button class="material-symbols-outlined" id="btnClose">close</button>
+                <h1 id="dayH1">Dia 30</h1>
+                <img id="imgSemSevico" src="../imagens/sem-serviço.png" alt="Não há serviço para esse dia">
+            </section>
+        </section>
+
+        <section id="viewProfiles">
+            <h1>Usuários</h1>
+
+            <!-- <div class="containerUser">
+                <img src="../imagens/perfil-default.jpg" alt="Foto De Perfil">
+                <article>
+                    <p class="userId">ID</p>
+                    <p class="userName">Nome Completo</p>
+                    <p class="userDate">Dia do Cadastro</p>
+                    <p class="userSpending">Total Gasto No Site</p>
+                </article>
+            </div> -->
+            <div id="footerUsers">
+               <button class="material-symbols-outlined backMenu" id="btnBackProfiles">arrow_back</button>  
+            </div>
+        </section>
+
+        <section id="viewPayments">
+            <section id="paymentsGeral">
+                <div id="tosaBanho">
+                    <h2>Tosa e Banho</h2>
+                    <p id="banhoETosa-text"></p>
+                </div>
+
+                <div id="hospedagem">
+                    <h2>Hospedagem</h2>
+                    <p id="hospedagem-text"></p>
+                </div>
+
+                <div  id="lojaBrinquedos">
+                    <h2>Loja - Brinquedos</h2>
+                    <p id="brinquedos-text"></p>
+                </div>
+
+                <div id="lojaAcessorios">
+                    <h2>Loja - Acessórios</h2>
+                    <p id="acessorios-text"></p>
+                </div>
+
+                <div id="lojaAlimentos" style="border-bottom: 0px;">
+                    <h2>Loja - Alimentos</h2>
+                    <p id="alimentacao-text"></p>
+                </div>
+            </section>
+            <section id="containerGrafico">
+                <button class="material-symbols-outlined backMenu" id="btnBackPayments">arrow_back</button>  
+                <h1>Rendimento Bruto</h1>
+                <div id="semRedimentos">
+                    <img src="../imagens/Sem Rendimento.png" alt="Não há rendimentos ainda">
+                </div>
+                <div>
+                    <canvas id="chart" role="grafico" style="width: 320px;height: 320px;"></canvas>
+                </div>
+            </section>
+        </section>
+
+        <section id="editProducts">
+            <div id="containerEditButtons">
+                <button class="material-symbols-outlined backMenu" id="btnBackProducts">arrow_back</button>
+                                      
+                <button class="btnEditProducts" title="Adicionar Produtos" id="btnAdd">
+                    <div class="material-symbols-outlined subButtonCircle">
+                        add
+                    </div>
+                </button>
+
+
+                <button class="btnEditProducts" title="Editar produtos" id="btnEdit">
+                    <div class="material-symbols-outlined subButtonCircle" id="editDeleteSquare">
+                        edit_square
+                    </div>
+                </button>
+        
+
+            
+                <button class="btnEditProducts" title="Remover Produtos" id="btnRemove">
+                    <div class="material-symbols-outlined subButtonCircle">
+                        delete_forever
+                    </div>
+                </button>
+            </div>
+
+            <section id="screenAddProducts">
+                <div id="leftSide">
+                    <button class="material-symbols-outlined backEditButtons" id="internalAddButton">arrow_back</button>
+
+                    <button id="btnAddPhoto" aria-label="Adicionar Foto Do Produto">
+                        <div class="material-symbols-outlined" id="containerIconAddPhoto" aria-hidden="true">
+                            add_a_photo
+                        </div>
+                    </button>
+                    <input type="file" id="photoProduct" style="display: none;">
+                    <div id="formAddProduct">
+                        
+                            <div id="formSiteLeft">
+                                <label for="productName">Nome</label>
+                                <input type="text" id="productName" maxlength="26">
+                                <div>
+                                    <div class="productInternal">
+                                        <label for="productPrice">Preço</label>
+                                        <div id="containerPrice">
+                                            <div id="elementReal">R$</div>
+                                            <input type="number" id="productPrice">
+                                        </div>
+                                    </div>
+
+                                    <div class="productInternal" id="containeProductStock">
+                                        <label for="productStock" style="margin-left: 10px;">Estoque</label>
+                                        <input type="number" id="productStock">
+                                    </div>
+                                </div>
+                                <label for="productDescription">Descrição</label>
+                                <textarea id="productDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                            </div>
+
+                            <div id="formSiteRight">
+                                <label for="imageDescription">Descrição da Imagem</label>
+                                <textarea id="imageDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                                <div id="containerRadioCategory">
+                                    <h2 id="h2Category">Categoria</h2>
+                                    <div>
+                                        <input type="radio" name="category" id="brinquedo" class="radio" checked>
+                                        <label for="brinquedo">Brinquedo</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="category" id="alimento" class="radio">
+                                        <label for="alimento">Alimento</label>
+                                    </div>
+                                    
+                                    <div>
+                                        <input type="radio" name="category" id="acessorio" class="radio">
+                                        <label for="acessorio">Acessório</label>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div id="rightSide">
+                    <h1>Pré-Visualizar</h1>
+
+                    <div id="containerProduto">
+                        <img src="../imagens/pet-recomendações.png" alt="Imagem do Produto" id="imgProduct">
+                        <div>
+                            <h2 id="productNameView">Nome do Produto</h2>
+                            <span id="productPriceView">R$ 0,00</span>
+                            <div>
+                                <button id="btnComprar">Comprar</button>
+                                <button class="material-symbols-outlined" id="btnCart">shopping_cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btnAdicionar" disabled>Adicionar</button>
+                </div>
+            </section>
+
+            <section id="screenEditProduct">
+                <button class="material-symbols-outlined backEditButtons" id="internalEditButton">arrow_back</button>
+
+                <div class="containerCodProduct">
+                    <label for="productCodEdit">Código</label>
+                    <input type="number" id="productCodEdit">
+                </div>
+
+                <button id="btnEditPhoto" title="Editar Foto Do Produto">
+                    <div class="material-symbols-outlined" id="containerIconEditPhoto">
+                        add_a_photo
+                    </div>
+                </button>
+                <div id="formEditProduct">
+                                 
+                        <div>
+                            <div class="containerPriceAndStock">
+                                <label for="productNewPrice">Novo Preço</label>
+                                <div id="containerPriceEdit">
+                                    <div id="elementEditReal">R$</div>
+                                    <input type="number" id="productNewPrice">
+                                </div>
+                            </div>
+                            
+                            <div class="containerPriceAndStock" id="containerNewStock">
+                                <label for="productNewStock" style="margin-left: 5px;">Novo Estoque</label>
+                                <input type="number" id="productNewStock">
+                            </div>
+                            
+                        </div>
+
+                        <div id="containerNewDescImage">
+                                <label for="newDescImage">Nova Descrição da Imagem</label>
+                                <textarea id="newDescImage" cols="30" rows="10"  maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                        </div>
+                    
+                        <label for="productNewDescription">Nova Descrição</label>
+                        <textarea id="productNewDescription" cols="30" rows="10" maxlength="150" placeholder="MAX 150 Caracteres"></textarea>
+                    
+                </div>
+
+                <button id="btnSaveEditProduct" disabled>Salvar</button>
+            </section>
+
+            <section id="screenRemoveProduct">
+                <button class="material-symbols-outlined backEditButtons" id="internalRemoveButton">arrow_back</button>
+
+                <div class="containerCodProduct">
+                    <label for="productCodRemove">Código</label>
+                    <input type="number" id="productCodRemove">
+                </div>
+
+                <div id="containerViewProduct">
+                    <div id="viewProduct">
+                        <img src="../imagens/pet-recomendações.png" alt="Foto Do Produto">
+                        <div>
+                            <h2>Nome Do Produto</h2>
+                            <span>R$ 0,00</span>
+                            <div>
+                                <button id="btnViewBuy">Comprar</button>
+                                <button class="material-symbols-outlined" id="btnViewCart">shopping_cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btnRemoveProduct" disabled>Excluir</button>
+
+            </section>
+            
+        </section>
+
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="../sweetAlert2/sweetalert2.all.min.js"></script>
+    <script type="module" src="../scripts/pagina-adm/script.js"></script>
+</body>
+</html>

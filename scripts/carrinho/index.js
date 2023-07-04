@@ -163,7 +163,7 @@ function funcConstructorElements(cod, quantity) {
     inptQuant.type = "number"
     inptQuant.classList = "inptQuantProduto"
     inptQuant.value = quantity
-    inptQuant.setAttribute("readonly", true) // Alterei essa linha porque tava faltando um parâmetro no setAttribute
+    inptQuant.setAttribute("readonly", true)
 
     // span icon remove
 
@@ -231,7 +231,7 @@ function calcFinalizarCompra() {
     });
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
-    containerTotalValor.innerHTML = `Total: R$ ${valorTotal}`
+    containerTotalValor.innerHTML = `Total: R$ ${valorTotal.toFixed(2)}`
 }
 
 function disabledButton() {
@@ -248,9 +248,58 @@ function disabledButton() {
 document.addEventListener("DOMContentLoaded", disabledButton())
 
 
+
 btnFinalizar.addEventListener("click", function(){
+
+    let categoryTransations = JSON.parse(localStorage.getItem("compras"))
+
+    if (categoryTransations == null) {
+        categoryTransations = [
+            {
+                identificacaoCategoria: "banhoETosa",
+                valorVendido: 0
+            },
+            {
+                identificacaoCategoria: "hospedagem",
+                valorVendido: 0
+            },
+            {
+                identificacaoCategoria: "brinquedos",
+                valorVendido: 0
+            },
+            {
+                identificacaoCategoria: "acessorios",
+                valorVendido: 0
+            },
+            {
+                identificacaoCategoria: "alimentacao",
+                valorVendido: 0
+            }
+        ]
+    }
+    
+    for(let obj of users[userID].carrinho) {
+
+        let productCategory = produtos[obj.codigo].categoria
+        let productPrice = produtos[obj.codigo].preco
+
+        users[userID].atividadeNoSite.totalGasto += (productPrice * obj.quantidade)
+        users[userID].atividadeNoSite.produtosComprados.push(obj.codigo)
+
+        for(let i = 0; i < categoryTransations.length; i++) {
+            if(categoryTransations[i].identificacaoCategoria == productCategory) {
+
+                categoryTransations[i].valorVendido += (productPrice * obj.quantidade)
+            }
+        }
+    }
+
+    localStorage.setItem("compras", JSON.stringify(categoryTransations))
+
     users[userID].carrinho = []
+
     saveLocalStorage(users)
+    
     btnFinalizar.disabled = true
 
     Swal.fire({icon: 'success',

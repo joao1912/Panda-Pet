@@ -13,9 +13,11 @@ body {
     width: 75%;
     min-height: 300px;
     background-color: transparent;
+    background-image: url(../../imagens/carrinhoVazio.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    
 }
 
 #containerFinalizarCompra {
@@ -69,11 +71,11 @@ body {
     display: flex;
     background-color: #a084dc;
     border-radius: 20px;
+    position: relative;
 }
 
 
 .descricaoProduto > div {
-    width: 100%;
     padding: 10px;
 }
 
@@ -225,12 +227,12 @@ button.btnExcluir:hover, button.btnExcluir:focus {
 }
 
 .valorProduto {
-    display: flex;
-    float: right;
-    justify-content: end;
-    align-items: end;
+    position: absolute;
+    left: 80%;
+    top: 60%;
     font-size: 2em;
     font-family: 'Nunito';
+    width: 200px;
 }
 
 #containerFinalizarCompra {
@@ -305,4 +307,33 @@ h2#swal2-title
 }
 div#swal2-html-container{
    font-family:'Nunito';
+}
+
+.btnRemove,.btnAdd {
+    border-radius: 50%;
+    border: 0;
+    background-color: white;
+}
+
+.btnRemove:hover,.btnAdd:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#botaoDeRetorno {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: var(--primaryColor);
+    color: white;
+    position: absolute;
+    left: 95%;
+    top: 91%;
+    border: 0;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+}
+
+#botaoDeRetorno:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }

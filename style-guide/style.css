@@ -117,10 +117,11 @@ li:hover {
 }
 
 img {
-    width: 350px;
-    height: 350px;
+    width: 265px;
+    height: 150px;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #circlesAndColors {
@@ -180,6 +181,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Nunito";
 }
 
 #botoes {
@@ -200,6 +202,7 @@ button:hover {
     font-weight: bold;
     border-radius: 10px;
     font-size: 1.1em;
+    font-family: "Nunito";
 
     background-color: white;
 }
@@ -208,12 +211,6 @@ button:hover {
     border-color: var(--primaryColor);
     color: var(--primaryColor);
     background-color: var(--thirdColor);
-}
-
-#botaoDeEscolha {
-    width: 200px;
-    height: 40px;
-    
 }
 
 #botaoTransparente {
@@ -226,6 +223,7 @@ button:hover {
     font-size: 1.1em;
     color: var(--primaryColor);
     box-shadow: 1px 1px 5px var(--shadowColor3);
+    font-family: "Nunito";
 }
 
 table {
@@ -261,32 +259,40 @@ td {
     align-items: center;
     justify-content: center;
     background-color: white;
+    position: relative;
 }
 
-.ops {
-    display: inline-flex;
-    width: 48%;
-    height: 90%;
-    align-items: center;
-    justify-content: center;
+.btnOpt {
+    width: 50%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
     font-size: 1.3em;
-    z-index: 1;
-    font-weight: bold;
-    color: var(--thirdColor);
+    color: var(--primaryColor);
+    font-family: "Nunito";
+    background-color: transparent;
 }
 
-.ops:hover {
-    cursor: pointer;
-}
-
-#botaoTrocaEscolha {
+#btnYes::before {
+    content: attr(data-content);
+    color: white;
     position: absolute;
     width: 95px;
-    height: 40px;
+    height: 90%;
     background-color: var(--primaryColor);
     border-radius: 10px;
-    left: 62%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 2px;
+    left: 3px;
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+}
+
+.btnOpt:hover {
+    transform: none;
 }
 
 #containerTipografia {
@@ -342,3 +348,52 @@ i {
     border-radius: 50%;
 }
 
+h1#h1Libs {
+    margin-top: 400px;
+    font-size: 3em;
+    padding-right: 0;
+}
+
+#containerSweetAlert {
+    margin-bottom: 200px;
+}
+
+#containerLibs h2 {
+
+    font-size: 2em;
+    color: var(--primaryColor);
+    margin-bottom: 20px;
+
+}
+
+
+#containerSweetAlert button {
+    width: 150px;
+    height: 55px;
+    border-radius: 20px;
+    border: 0;
+    background-color: var(--primaryColor);
+    color: white;
+    font-family: "GooperSemiBold";
+    font-size: 1.1em;
+}
+
+#containerSlick {
+    margin-bottom: 300px;
+}
+
+#containerChart {
+    margin-bottom: 300px;
+    width: 500px;
+    height: 500px;
+}
+
+#carrossel {
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+.nunito {
+    font-family: "nunito";
+}

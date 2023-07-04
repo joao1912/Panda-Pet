@@ -6,7 +6,7 @@ export function setProductsElements(indexProdutos, funcConstructor) {
         let index = indexProdutos[c]
         
         if (produtos[index].estoque != 0) {
-            let elemento = funcConstructor(produtos[index].codigo ,produtos[index].nome, produtos[index].preco , produtos[index].imagem, produtos[index].descricaoImagem)
+            let elemento = funcConstructor(produtos[index].codigo, produtos[index].nome, produtos[index].preco, produtos[index].imagem, produtos[index].descricaoImagem)
 
             const containerProdutos = document.getElementById("containerProdutos")
             containerProdutos.appendChild(elemento)

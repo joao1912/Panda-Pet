@@ -1,11 +1,23 @@
 import { Error } from "../utils/erros.js"
 import { saveLocalStorage } from "../utils/saveLocalStorage.js"
+import { getDate } from '../utils/getDate.js'
 
 let users = []
 users = JSON.parse(localStorage.getItem("users"))
 
 if (users == null) {
-    users = [{id: 0 ,nome: "Admin", senha: "administrador123", carrinho: [], lembrarDeMim: false , online: false, img: '../../imagens/perfil-default.jpg'}]
+    users = [{
+        id: 0 ,
+        nome: "Admin",
+        senha: "administrador123", 
+        carrinho: [], 
+        lembrarDeMim: false,
+        online: false, 
+        date: getDate(), 
+        atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        img: '../../imagens/perfil-default.jpg'
+    }]
+
     localStorage.setItem('users', JSON.stringify(users))
 }
 
@@ -20,24 +32,24 @@ const inptConfirmCadastro = document.getElementById("confirmarSenhaCadastro")
 let divFile = document.getElementById("fileFotoPerfil")
 let urlFotoPerfil
 
-inptUserNameCadastro.addEventListener("keypress", function(){
+inptUserNameCadastro.addEventListener("keypress", function () {
     const containerErro = document.getElementById("erroCadastroUserName")
     containerErro.innerHTML = ""
 
     const icon = document.getElementById("iconVisibilityPassWord")
-    
+
     icon.style.top = "38.8%"
-   
+
 
 })
 
-inptPassWordCadastro.addEventListener("keypress", function(){
+inptPassWordCadastro.addEventListener("keypress", function () {
     const containerErro = document.getElementById("erroCadastroPassWord")
     containerErro.innerHTML = ""
-    
+
 })
 
-inptConfirmCadastro.addEventListener("keypress", function(){
+inptConfirmCadastro.addEventListener("keypress", function () {
     const containerErro = document.getElementById("erroCadastroConfirm")
     containerErro.innerHTML = ""
 })
@@ -45,7 +57,7 @@ inptConfirmCadastro.addEventListener("keypress", function(){
 const inptUserNameLogin = document.getElementById("nomeLogin")
 const inptPassWordLogin = document.getElementById("senhaLogin")
 
-inptUserNameLogin.addEventListener("keypress",function(){
+inptUserNameLogin.addEventListener("keypress", function () {
     const containerErro = document.getElementById("erroLoginConfirm")
     containerErro.innerHTML = ""
 
@@ -53,88 +65,88 @@ inptUserNameLogin.addEventListener("keypress",function(){
     icon.style.top = "54%"
 })
 
-inptPassWordLogin.addEventListener("keypress",function(){
+inptPassWordLogin.addEventListener("keypress", function () {
     const containerErro = document.getElementById("erroLoginPassWord")
     containerErro.innerHTML = ""
 
 })
 
-;[...botaoTrocarlado].forEach( botao => {
+    ;[...botaoTrocarlado].forEach(botao => {
 
-    botao.addEventListener("click", () => {
+        botao.addEventListener("click", () => {
 
-        const elemento = document.getElementById("container")
-        const containerForm = document.getElementById("containerForm")
-    
-        const telaLogin = document.getElementById("formLogin")
-        const telaCadastro = document.getElementById("formCadastro")
-        const iconesVisibility = document.querySelectorAll(".visibility")
+            const elemento = document.getElementById("container")
+            const containerForm = document.getElementById("containerForm")
 
-        const containerErros = document.querySelectorAll(".erroContainer")
+            const telaLogin = document.getElementById("formLogin")
+            const telaCadastro = document.getElementById("formCadastro")
+            const iconesVisibility = document.querySelectorAll(".visibility")
 
-        ;[...containerErros].forEach(container => {
-            container.innerHTML = ""
-            iconesVisibility[0].style.top = "38.8%"
-            iconesVisibility[1].style.top = "54%"
-        })
+            const containerErros = document.querySelectorAll(".erroContainer")
 
-        inptUserNameCadastro.value = ""
-        inptPassWordCadastro.value = ""
-        inptConfirmCadastro.value = ""
+                ;[...containerErros].forEach(container => {
+                    container.innerHTML = ""
+                    iconesVisibility[0].style.top = "38.8%"
+                    iconesVisibility[1].style.top = "54%"
+                })
 
-        inptUserNameLogin.value = ""
-        inptPassWordLogin.value = ""
-    
-        if (cont == 1) {
-            containerForm.style.marginLeft = "49.8%"
-            
-            telaCadastro.style.display = "flex" 
-            telaLogin.style.display = "none"
-            botaoTrocarlado[0].setAttribute('disabled','disabled')
+            inptUserNameCadastro.value = ""
+            inptPassWordCadastro.value = ""
+            inptConfirmCadastro.value = ""
 
-            
+            inptUserNameLogin.value = ""
+            inptPassWordLogin.value = ""
 
-            iconesVisibility[0].style.display = "none"
-            setTimeout(function(){iconesVisibility[1].style.display = "inline-block"}, 380)
-
-            setTimeout(function(){
-                iconesVisibility[0].style.display = "inline-block"
-                iconesVisibility[1].style.display = "inline-block"
-            }, 380)
-
-            setTimeout(function(){botaoTrocarlado[0].removeAttribute('disabled')},1000)
-            
-        } else {
-            containerForm.style.marginRight = "49.8%"
-    
-            telaLogin.style.display = "flex" 
-            telaCadastro.style.display = "none"
-    
-            botaoTrocarlado[1].setAttribute('disabled','disabled')
-
-            iconesVisibility[1].style.display = "none" 
-            setTimeout(function(){iconesVisibility[1].style.display = "inline-block"}, 380)
-
-            setTimeout(function(){botaoTrocarlado[1].removeAttribute('disabled')},1000)
-        }
-    
-        
-    
-        setTimeout(function(){
             if (cont == 1) {
-                cont = 0
-                elemento.style.justifyContent = "end"
-                containerForm.style.marginLeft = "30px"
-                
+                containerForm.style.marginLeft = "49.8%"
+
+                telaCadastro.style.display = "flex"
+                telaLogin.style.display = "none"
+                botaoTrocarlado[0].setAttribute('disabled', 'disabled')
+
+
+
+                iconesVisibility[0].style.display = "none"
+                setTimeout(function () { iconesVisibility[1].style.display = "inline-block" }, 380)
+
+                setTimeout(function () {
+                    iconesVisibility[0].style.display = "inline-block"
+                    iconesVisibility[1].style.display = "inline-block"
+                }, 380)
+
+                setTimeout(function () { botaoTrocarlado[0].removeAttribute('disabled') }, 1000)
+
             } else {
-                cont = 1
-                elemento.style.justifyContent = "flex-start"
-                containerForm.style.marginRight = "30px"
-    
+                containerForm.style.marginRight = "49.8%"
+
+                telaLogin.style.display = "flex"
+                telaCadastro.style.display = "none"
+
+                botaoTrocarlado[1].setAttribute('disabled', 'disabled')
+
+                iconesVisibility[1].style.display = "none"
+                setTimeout(function () { iconesVisibility[1].style.display = "inline-block" }, 380)
+
+                setTimeout(function () { botaoTrocarlado[1].removeAttribute('disabled') }, 1000)
             }
-        },600)
+
+
+
+            setTimeout(function () {
+                if (cont == 1) {
+                    cont = 0
+                    elemento.style.justifyContent = "end"
+                    containerForm.style.marginLeft = "30px"
+
+                } else {
+                    cont = 1
+                    elemento.style.justifyContent = "flex-start"
+                    containerForm.style.marginRight = "30px"
+
+                }
+            }, 600)
+        })
     })
-})
 
 botaoFotoPerfil.addEventListener("click", () => {
 
@@ -144,13 +156,13 @@ botaoFotoPerfil.addEventListener("click", () => {
 
     function readImage() {
         let fr = new FileReader();
-        fr.onload = function(event) {
+        fr.onload = function (event) {
             file.src = event.target.result
-            
-        };       
+
+        };
         fr.readAsDataURL(this.files[0]);
 
-        fr.addEventListener("load",() => {
+        fr.addEventListener("load", () => {
             urlFotoPerfil = fr.result
         })
     }
@@ -159,46 +171,46 @@ botaoFotoPerfil.addEventListener("click", () => {
 const botaoCadastrar = document.getElementById("btnCadastrar")
 
 
-botaoCadastrar.addEventListener('click',function(){
+botaoCadastrar.addEventListener('click', function () {
     const userName = inptUserNameCadastro.value
     const passWord = inptPassWordCadastro.value
     const confirmPassWord = inptConfirmCadastro.value
-    
+
     if (userName == "") {
-        
+
         Error("#userName-vazio#")
-       
+
     } else if (passWord == "") {
-        
+
         Error("#passWord-vazio#")
 
-    } else if( detecNumbersAndCaracters(passWord) ) {
-      
+    } else if (detecNumbersAndCaracters(passWord)) {
+
         Error("#senha-invalida#")
 
     } else if (passWord != confirmPassWord) {
-        
+
         Error("#senhas-diferentes#")
 
     } else if (userName == "Admin") {
-        
+
         Error("#Nome-nao-disponivel#")
 
-    } else  {
-        
-        let repeatUser = users.find( objUser => {
+    } else {
+
+        let repeatUser = users.find(objUser => {
             return objUser.nome == userName
         })
-        
+
         if (repeatUser != undefined) {
-            
+
             Error("#Nome-nao-disponivel#")
 
         } else {
             saveUser(userName, passWord)
         }
 
-    } 
+    }
 
 })
 
@@ -206,8 +218,8 @@ function detecNumbersAndCaracters(password) {
     let contNumbers = 0
     let contCaracters = 0
 
-    for (let c = 0 ; c < password.length ; c++) {
-    
+    for (let c = 0; c < password.length; c++) {
+
         if (Number(password[c])) {
 
             contNumbers++
@@ -241,76 +253,95 @@ function saveUser(userName, passWord) {
 
     if (urlFotoPerfil != undefined) {
 
-        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], lembrarDeMim: false ,online: true, img: urlFotoPerfil})
+        users.push({
+            id: nextId ,
+            nome: userName, 
+            senha: passWord, 
+            carrinho: [], 
+            lembrarDeMim: false,
+            online: true, 
+            date: getDate(), 
+            atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            img: urlFotoPerfil
+        })
         saveLocalStorage(users)
 
     } else {
 
-        users.push({id: nextId ,nome: userName, senha: passWord, carrinho: [], lembrarDeMim: false , online: true})
+        users.push({
+            id: nextId ,
+            nome: userName, 
+            senha: passWord, 
+            carrinho: [], 
+            lembrarDeMim: false,
+            online: true, 
+            date: getDate(), 
+            atividadeNoSite: {totalGasto: 0, produtosComprados: []}
+        })
         saveLocalStorage(users)
 
     }
-    
+
     window.location.href = "../index.html"
 }
 
 const iconsVisibility = document.querySelectorAll(".visibility")
 
-;[...iconsVisibility].forEach(icone => {
-    icone.addEventListener("click", function(){
-        switch (icone.textContent) {
-            case "visibility":
-                icone.textContent = "visibility_off"
+    ;[...iconsVisibility].forEach(icone => {
+        icone.addEventListener("click", function () {
+            switch (icone.textContent) {
+                case "visibility":
+                    icone.textContent = "visibility_off"
 
-                if(icone.id == "iconVisibilityPassWord") {
+                    if (icone.id == "iconVisibilityPassWord") {
 
-                    inptPassWordCadastro.type = "password"
-                    inptConfirmCadastro.type = "password"
+                        inptPassWordCadastro.type = "password"
+                        inptConfirmCadastro.type = "password"
 
-                } else if (icone.id == "iconLoginVisibility"){
+                    } else if (icone.id == "iconLoginVisibility") {
 
-                    inptPassWordLogin.type = "password"
+                        inptPassWordLogin.type = "password"
 
-                }
+                    }
 
-                break
+                    break
 
-            case "visibility_off":
-                icone.textContent = "visibility"
+                case "visibility_off":
+                    icone.textContent = "visibility"
 
-                if(icone.id == "iconVisibilityPassWord") {
+                    if (icone.id == "iconVisibilityPassWord") {
 
-                    inptPassWordCadastro.type = "text"
-                    inptConfirmCadastro.type = "text"
+                        inptPassWordCadastro.type = "text"
+                        inptConfirmCadastro.type = "text"
 
-                } else if (icone.id == "iconLoginVisibility"){
+                    } else if (icone.id == "iconLoginVisibility") {
 
-                    inptPassWordLogin.type = "text"
+                        inptPassWordLogin.type = "text"
 
-                }     
-                break
+                    }
+                    break
             }
+        })
     })
-})
 
 
 const botaoLogar = document.getElementById("btnLogar")
 
-botaoLogar.addEventListener("click", function(){
+botaoLogar.addEventListener("click", function () {
     if (inptUserNameLogin.value === "") {
-        
-        Error("#userName-vazio#")  
+
+        Error("#userName-vazio#")
 
     } else if (inptPassWordLogin.value === "") {
-        
-        Error("#passWord-vazio#")  
 
-    } else if(detecNumbersAndCaracters(inptPassWordLogin.value)) {
-        
-        Error("#senha-invalida#")  
+        Error("#passWord-vazio#")
+
+    } else if (detecNumbersAndCaracters(inptPassWordLogin.value)) {
+
+        Error("#senha-invalida#")
 
     } else if (validaUser(inptUserNameLogin.value)) {
-        
+
         Error("#usuario-inexistente#")
 
     } else {
@@ -321,13 +352,15 @@ botaoLogar.addEventListener("click", function(){
 })
 
 function validaUser(userName) {
-    
+
     let users = JSON.parse(localStorage.getItem('users'))
-   
-    for (let obj of users) {
-        if (obj.nome === userName) {
-            return false
-        } 
+
+    if (users) {
+        for (let obj of users) {
+            if (obj.nome === userName) {
+                return false
+            }
+        }
     }
 
     return true
@@ -335,13 +368,13 @@ function validaUser(userName) {
 }
 
 function login(passWord) {
-    
+
     let users = JSON.parse(localStorage.getItem('users'))
     let index = 0
     let checkedPassWord = false
-   
+
     for (let obj of users) {
-        
+
         if (obj.senha === passWord) {
          
             for (let user of users) {
@@ -361,12 +394,12 @@ function login(passWord) {
         } 
 
         index++
-        
+
     }
 
     if (!checkedPassWord) {
-        
-        Error ("#senha-incorreta#")
+
+        Error("#senha-incorreta#")
 
     }
 
