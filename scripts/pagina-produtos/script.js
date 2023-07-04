@@ -26,6 +26,7 @@ function setPerfilOnline() {
 
     document.getElementById("botaoSair").addEventListener("click", function sair() {
         users[userID].online = false
+        users[userID].lembrarDeMim = false /* alterar na tela da zuma */
         saveLocalStorage(users)
         localStorage.removeItem("welcome")
         window.location.href = "../../index.html"
@@ -56,7 +57,7 @@ if (userID || userID == 0) {
     
 } else {
     const containerUser = document.getElementById("containerPerfil")
-    containerUser.style.marginLeft = "28px"
+    containerUser.style.marginLeft = "-43px"
     containerUser.style.top = "108px"
 }
 /* -------------------------- */

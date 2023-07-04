@@ -4,11 +4,8 @@ import { getIndexCategory } from "./getIndexCategory.js"
 export function showProducts(categoria) {
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
-    const containerErro404 = document.getElementById("containerErro404")
 
     let indexProdutos
-
-    containerErro404.style.display = "none"
     containerProdutos.style.display = "flex"
 
     switch (categoria) {

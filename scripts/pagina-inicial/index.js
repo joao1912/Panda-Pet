@@ -1,4 +1,4 @@
-import {showProducts} from '../utils/showProducts.js'
+import {showProducts} from '../utils/forProducts/showProducts.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -27,7 +27,7 @@ function setPerfilOnline() {
     const containerUser = document.getElementById("containerPerfil")
     containerUser.style.height = "90px"
     containerUser.style.width = "200px"
-    containerUser.style.marginLeft = "-5px"
+    containerUser.style.marginLeft = "-75px"
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
@@ -35,6 +35,7 @@ function setPerfilOnline() {
 
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
+        users[userID].lembrarDeMim = false
         if (window.location.pathname != '/index.html') {
 
             window.location.href = "../../index.html"
@@ -75,23 +76,23 @@ function trocaFotoPerfil() {
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
-
+let visibility = false
 iconeDoPerfil.addEventListener("click",function(){
     const tabelaPerfil = document.getElementById("containerPerfil")
 
     function redirecionarCadastro(){
         window.location.href = "./paginas/cadastro-login.html"
     }
-    
-    let visibility = tabelaPerfil.style.display
 
-    if (visibility === "none") {
+    if (!visibility) {
+        visibility = true
         tabelaPerfil.style.display = "flex"
 
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.addEventListener("click", redirecionarCadastro)
 
     } else {
+        visibility = false
         const botaoLogar = document.getElementById("botaoLogar")
         botaoLogar.removeEventListener('click', redirecionarCadastro)
         tabelaPerfil.style.display = "none"
@@ -199,6 +200,26 @@ function barraPesquisa() {
             produto.style.display = "flex"
         }
     })
+}
+
+const iconAdmUtils = document.getElementById("icon-tela-adm")
+const containerUser = document.getElementById("containerPerfil")
+if (userID == 0) {
+    iconAdmUtils.style.display = "inline-flex"
+    iconAdmUtils.addEventListener("click", function(){
+        window.location.href = "../../paginas/administrador.html" 
+    })
+} 
+
+if (userID || userID == 0) {
+    
+    setPerfilOnline()
+    const fotoPerfil = document.getElementById("fotoPerfilOnline")
+    fotoPerfil.addEventListener("click", trocaFotoPerfil)
+    
+} else {
+    containerUser.style.marginLeft = "-43px"
+    containerUser.style.top = "115px"
 }
 
 $('#container').slick({
