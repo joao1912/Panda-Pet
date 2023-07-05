@@ -249,25 +249,25 @@ a {
 
 #conteinerPrincipal>div {
 
-    width: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
 
 }
 
 #imagemProduto {
 
-    width: 50%;
+    width: 40%;
     height: 100%;
-
-
+    background-color: white
 }
 
 #paginaLadoDireito {
 
 
-    width: 50%;
+    width: 60%;
     height: 100%;
     display: flex;
 
@@ -276,13 +276,13 @@ a {
 
 #descricaoImagem {
 
-    background-color: rgb(255, 255, 255);
+
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 20px;
-
+    background-color: white
 }
 
 #conteinerTituloProduto {
@@ -295,36 +295,32 @@ a {
 #tituloProduto {
 
     font-size: 2em;
+    color: var(--primaryColor);
 
 }
 
 #descricaoCodigo {
 
     font-size: 1em;
-
+    color: var(--primaryColor);
 }
 
 #TituloCodigo {
 
     font-size: 2em;
     margin-bottom: 10px;
-
+    color: var(--primaryColor);
 
 }
 
 #descricaoImagem-2 {
 
-
-    background-color: crimson;
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 25px;
-
-
-
-
+    background-color: white
 }
 
 #botaoTeste {
@@ -341,6 +337,7 @@ a {
     height: 80%;
 
 
+
 }
 
 .descricaoDivs {
@@ -350,28 +347,69 @@ a {
 
 }
 
+#alteracoesDescricaodivs {
+
+    display: flex;
+    width: 100%;
+    height: 40%;
+    font-size: 2.5em;
+    color: var(--primaryColor);
+
+}
+
+#alteracoesDescricaodivs2 {
+
+    display: flex;
+    width: 100%;
+    height: 40%;
+    font-size: 2.5em;
+    color: var(--primaryColor);
+
+
+}
+
 #descricaoBaixo {
 
+
     width: 100%;
-    height: 50%;
+    height: 30%;
+    padding-top: 15px;
+
 
 }
 
 #tituloTextoCalcular {
 
+    display: flex;
     font-size: 1.5em;
+    width: 100%;
+    height: 40%;
+    color: var(--primaryColor);
 
 }
 
 #addProdutos {
 
     width: 100%;
-    height: 10%;
+    height: 20%;
 
 }
 
 #botaoAdd {
     display: flex;
+    gap: 5px;
+
+
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 
 }
 
@@ -380,6 +418,9 @@ a {
     width: 40px;
     border-radius: 20%;
     border: 0;
+    text-align: center;
+    outline: none;
+    cursor: default;
 
 
 }
@@ -390,6 +431,7 @@ a {
     height: 25px;
     border-radius: 50%;
     border: 0;
+    color: var(--primaryColor);
 
 
 }
@@ -399,14 +441,21 @@ a {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 5px;
 
 
 }
 
 .botaoFuncoestamanho {
 
-    border-radius: 6px;
 
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    font-size: 1.5em;
+    border: 0;
+    background-color: var(--secondColor);
+    color: white;
 
 }
 
@@ -414,13 +463,29 @@ a {
 
     display: flex;
     width: 50%;
-    height: 15%;
+    height: 40px;
+    border-radius: 15px;
+    border: 0;
+    text-align: center;
+    font-size: 1em;
+    outline: 0;
+
 
 }
 
-#botoesCep{
+#btnOk {
 
-display: flex;
+    margin-left: 5px;
+    width: 50px;
+    border-radius: 10px;
+    border: 0;
+
+}
+
+#botoesCep {
+
+
+    display: flex;
 
 
 }
