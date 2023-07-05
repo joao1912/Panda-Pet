@@ -124,17 +124,6 @@ header #containerBarraDePesquisa {
     border-radius: 10px;
 }
 
-#containerPerfil div {
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1.3em;
-    font-family: 'GooperSemiBold';
-    color: white;
-}
-
-
 #containerPerfil button > span {
     font-size: 1.3em;
     margin-left: 5px;
