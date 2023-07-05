@@ -6,10 +6,18 @@ export function getDate() {
     let hora = data.getHours()
     let textDataCadastro
 
-    if (mes > 9) {
+    if (mes > 9 && dia > 9) {
         textDataCadastro = `${dia}/${mes}/${ano}`
     } else {
+        textDataCadastro = `0${dia}/0${mes}/${ano}`
+    }
+
+    if (mes < 9 && dia > 9) {
         textDataCadastro = `${dia}/0${mes}/${ano}`
+    }
+
+    if (mes > 9 && dia < 9) {
+        textDataCadastro = `0${dia}/${mes}/${ano}`
     }
     
     let dataCompletaCadastro = {
