@@ -24,8 +24,8 @@ function initializeProducts() {
     const initialProducts = [
         //Categoria: Alimentação
 
-        new Produto(0, "Royal Canin Maxi Adult", "Ração balanceada para cães adultos de raças grandes, fornecendo os nutrientes essenciais para sua saúde e bem-estar.", "racao1.jpg", 49.99, "alimentacao", "", 10),
-        new Produto(1, "Ração Natural para Gatos", "Ração natural com ingredientes orgânicos para gatos.", "racao2.jpg", 29.99, "alimentacao", "", 10),
+        new Produto(0, "Bifinho sabor carne", "Bifinho saudável para seu cachorro sabor carne.", "../../imagens/alimentacao/bifinhoSaborCarne.png", 29,90, "alimentacao", "", 10),
+        new Produto(1, "Gran Nature", "Ração natural com ingredientes orgânicos para gatos.", "../../imagens/alimentacao/gran-nature.png", 35,99, "alimentacao", "", 10),
         new Produto(2, "Petisco Dental para Cães", "Petisco saboroso que auxilia na saúde bucal dos cães.", "petisco1.jpg", 12.99, "alimentacao", "", 10),
         new Produto(3, "Purina Pro Plan Focus", "Ração com fórmula especializada para fornecer nutrição de qualidade, ajudando a manter a saúde e o peso ideal dos cães adultos.", "racao3.jpg", 59.99, "alimentacao", "", 10),
         new Produto(4, "Petisco Orgânico para Gatos", "Petisco orgânico e livre de conservantes para gatos exigentes.", "petisco2.jpg", 14.99, "alimentacao", "", 10),
