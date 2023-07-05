@@ -395,6 +395,12 @@ width: 400px;
    
 }
 
+#botaoTransparente:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
 #agendar{
 justify-content: center;
 align-items: center;
@@ -437,7 +443,7 @@ color: white;
 }
 
 #perfilUsuario{
-    display: flex; /* FLEX */
+    display: none; /* FLEX */
     position: absolute;
     top: 50%;
     left: 50%;

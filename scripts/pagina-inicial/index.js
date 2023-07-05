@@ -261,8 +261,6 @@ function puxarInfos(){
    inserirInfo()
 }
 
-puxarInfos()
-
 function inserirInfo(){
    let nomeUser = document.getElementById("nomeUser")
    let contaUser= document.getElementById("contaUser")
