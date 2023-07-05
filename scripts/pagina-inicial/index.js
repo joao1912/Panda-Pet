@@ -50,28 +50,35 @@ if (userID) {
     setPerfilOnline()
 
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
-    fotoPerfil.addEventListener("click", trocaFotoPerfil)
+    fotoPerfil.addEventListener("click", () => {trocaFotoPerfil("fotoPerfilOnline", "inptTrocaFoto")} )
 }
 
-function trocaFotoPerfil() {
-    const fileTrocaFoto = document.getElementById("inptTrocaFoto")
+function trocaFotoPerfil(elementIdImg, inptFileId) {
+   
+    const fileTrocaFoto = document.getElementById(inptFileId)
+    const file = document.getElementById(elementIdImg)
 
-    fileTrocaFoto.click();
-    fileTrocaFoto.addEventListener("change", readImage, false);
-    const file = document.getElementById("fotoPerfilOnline")
+    if (file !== null && fileTrocaFoto !== null) {
 
-    function readImage() { 
-        let fr = new FileReader();
-        fr.onload = function(event) {
-            file.src = event.target.result
-            
-        };       
-        fr.readAsDataURL(this.files[0]);
+        /* ESTA REALIZANDO UM DUPLO CLICK, RESOLVER */
 
-        fr.addEventListener("load",() => {
-            users[userID].img = fr.result
-            saveLocalStorage(users)
-        })
+        fileTrocaFoto.click();
+        fileTrocaFoto.addEventListener("change", readImage, false);
+        
+        function readImage() { 
+            let fr = new FileReader();
+            fr.onload = function(event) {
+                file.src = event.target.result
+                
+            };       
+            fr.readAsDataURL(this.files[0]);
+
+            fr.addEventListener("load",() => {
+                users[userID].img = fr.result
+                saveLocalStorage(users)
+            })
+        }
+
     }
 }
 
@@ -270,10 +277,11 @@ function inserirInfo(){
    contaUser.value=dataConta
    imagem.src=img
 
+   const imgUser = document.getElementById("imagem")
+
+   imgUser.addEventListener(() => {trocaFotoPerfil("imagem", "userImg")})
+
 }
-
-
-
 
 
  
