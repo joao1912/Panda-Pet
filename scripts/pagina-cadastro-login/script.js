@@ -15,6 +15,7 @@ if (users == null) {
         online: false, 
         date: getDate(), 
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        pets: [],
         img: '../../imagens/perfil-default.jpg'
     }]
 
@@ -262,6 +263,7 @@ function saveUser(userName, passWord) {
             online: true, 
             date: getDate(), 
             atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            pets: [],
             img: urlFotoPerfil
         })
         saveLocalStorage(users)
@@ -276,7 +278,8 @@ function saveUser(userName, passWord) {
             lembrarDeMim: false,
             online: true, 
             date: getDate(), 
-            atividadeNoSite: {totalGasto: 0, produtosComprados: []}
+            atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            pets: []
         })
         saveLocalStorage(users)
 
