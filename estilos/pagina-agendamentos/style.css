@@ -1,0 +1,762 @@
+html,body{
+    height: 100%;
+}
+
+header {
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+header > img {
+    height: 115px;
+    margin-left: 20px;
+}
+
+#containerIcones {
+    display: flex;
+    flex-direction: row;
+}
+
+#containerIcones span.btnIcons {
+    background-color: var(--thirdColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#containerIcones span.btnIcons:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: var(--primaryColor);
+}
+
+#containerPerfil {
+    position: absolute;
+    top: 115px;
+    margin-left: -43px;
+    background-color: var(--secondColor);
+    width: 160px;
+    height: 55px;
+    border-radius: 10px;
+
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 5px;
+}
+
+#containerPerfil img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+#containerPerfil button#botaoLogar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.3em;
+    color: white;
+    font-family: 'GooperSemiBold';
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+
+
+#containerPerfil button > span {
+    font-size: 1.3em;
+    margin-left: 5px;
+}
+
+#botaoSair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    font-size: 1.2em;
+    font-family: "GooperSemiBold";
+    color: white;
+    background-color: transparent;
+    border: 0;
+    margin-left: 25px;
+} 
+
+#botaoSair:hover {
+    cursor: pointer;
+    color: rgb(233, 227, 227);
+}
+
+#containerPerfil::after {
+    content: ""; 
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondColor);
+    transform: rotate(45deg);
+    top: -10%;
+    left: 80%;
+    border-radius: 5px;
+}
+
+#inptTrocaFoto {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+nav {
+    display: flex;
+    height: 40px;
+    background-color: var(--thirdColor);
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    padding-bottom: 2px;
+}
+
+nav span:hover {
+    color: var(--secondColor);
+    cursor: pointer;
+    transform: scale(1.1) translateX(3px) translateY(-2px);
+    transition: transform 0.3s;
+}
+
+nav span:hover::after, span:hover::before {
+    display: inline-block;
+}
+
+nav span::before {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-10deg);
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+nav span::after {
+    content: "";
+    display: none; /* inline-block */
+    background-image: url(../../imagens/icons/pata.svg);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    transform: rotate(10deg);
+    position: absolute;
+    top: 5px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#container{     /*INICIO.quadrado todo abaixo da div serviço e div cadastro pet*/
+   display: flex;
+   width: 90%;  /*largura*/
+   height: 90%;  /*altura*/
+   background-color: blue;
+   border-radius: 10px;
+   overflow: hidden;
+}
+#servico{     /*parte da esquerda primeira pagina,separando o lado esquerdo P direito*/   
+    width: 30%;
+    height: 100%;
+    background-color: var(--primaryColor); /*cor do quadrado da esquerda*/
+    align-items: center;
+    display: flex;   
+    flex-direction: column;
+
+}
+
+#divECima { /*formata o circulo branco que a patinha vai dentro */
+    width: 200px;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#divECima div { /* diV cima que comanda toda a div de cima*/
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+#divECima img{/*modifica o tamanho da patinha que esta dentro do circulo branco*/
+    width: 50px;
+    height: 50px;      
+}
+#titulo{
+    font-size: 1.5em;
+    font-family:'GooperSemiBold';
+}
+
+#divEMeio{/* div dos imputs*/
+    width: 44%;
+    height: 40%;
+    font-size: 1.0em;
+    font-family:'GooperSemiBold';
+    justify-content: center; 
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+    position: relative;
+
+    /* colocado pelo joão */
+    width: 100%;
+    align-items: center;
+}
+
+#divEBaixo{ /* div da imagem*/
+    width: 100%;/*largura*/
+    height: 40%;/*altura*/
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+/*faz as linhas dos imputs*/
+#perfil::before { 
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 45px;
+    background-color: var(--shadowColor2);
+    top: 28%;
+    left: 5%;
+    /* alterado pelo joão*/
+    top: 20%;
+}
+#serv::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 45px;
+    background-color: var(--shadowColor2);
+    top: 53%;
+    left: 5%;
+} 
+
+.perfilServ{
+    list-style: none;
+    /* alterado pelo joão*/
+    z-index: 2;
+    display: inline-flex;
+    position: relative;
+    background-color: white;
+   
+}
+
+.perfilServ:disabled {
+    background-color: white;
+    border-color:white ;
+    color: white;
+}
+
+#cadastroPet{ /*parte da direita primeira pagina, /*separando o lado direito do esquerdo*/
+    width: 70%;
+    height: 100%;
+    background-color: var(--secondColor);/*cor do quadrrado direito*/
+    flex-direction: column;
+     display: none; 
+}
+
+
+
+#divDCima{ /* div das frases*/
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+   text-align: center; /*alinha os textos*/
+
+}
+
+#divDCima h1,h2 {
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
+
+}
+
+#divDMeio{ /*Div imputs direita*/
+    width: 100%;/*largura*/
+    height: 70%;/*altura*/
+    font-family:'GooperSemiBold';
+    display: flex;
+   
+
+}
+.containersCadastro{
+  width: 50%;
+  height: 100%;
+  display: flex;
+flex-direction: column;
+
+align-items: center;
+}
+.inputs{/*formata os inputs nome*/
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+#inputPeso{/* diminuiu somente o input peso*/
+    width: 100px;/*largura*/ 
+    border: 0;
+    margin-left: -100px; 
+    
+}
+   
+#divDBaixo{
+    width: 100%;/*largura*/
+    height: 10%;/*altura*/   
+    display:flex;
+    justify-content: end;
+
+}
+
+
+#botaoProximo{
+    border-radius: 10px;
+    height: 34px;/*altura*/
+    width: 133px;/*largura*/
+    border: 0;
+    margin-top: -19px;
+    margin-right: 20px;
+    color:black;
+    font-family:'GooperSemiBold';
+    background-color: var(--primaryColor);
+    
+}
+
+
+.centralizador{ /*centralizou o quadro da direita para esquerda*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* botão escolha Macho e femea*/
+
+#botaoEscolhaGenero {
+    width: 205px;
+    height: 50px;
+    border: 3px solid var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+}
+
+.btnOpt {
+    width: 50%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+    color: var(--primaryColor);
+    font-family: "Nunito";
+    background-color: transparent;
+}
+
+#btnMacho::before {
+    content: attr(data-content);
+    color: white;
+    position: absolute;
+    width: 95px;
+    height: 90%;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 2px;
+    left: 3px;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+}
+
+.btnOpt:hover {
+    transform: none;
+}
+
+/* ---------------- */
+
+/*botao escolha sim ou nao*/
+
+#botaoEscolha {
+    width: 205px;
+    height: 50px;
+    border: 3px solid var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+}
+
+.btnOpt {
+    width: 50%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+    color: var(--primaryColor);
+    font-family: "Nunito";
+    background-color: transparent;
+}
+
+#btnYes::before {
+    content: attr(data-content);
+    color: white;
+    position: absolute;
+    width: 95px;
+    height: 90%;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 2px;
+    left: 3px;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+}
+
+.btnOpt:hover {
+    transform: none;
+}
+/*--------------------*/
+.labelCadastro{
+  /* text-align: left; */
+  align-self:self-start;
+  padding-left: 28%;
+  margin-top: 15px;
+
+}
+.labelGeneroAlergico{
+  align-self:self-start;
+  padding-left: 28%;
+  margin-top: 15px; 
+
+}
+#quadro{
+    border-radius: 5px;
+    width: 205px;
+    max-width: 205px;
+}
+
+
+
+#containerInputRadios {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.inptEstilizado {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 4px solid #564ead;
+    border-radius: 50%;
+    position: relative;
+}
+
+.labelRadio::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 70px;
+    background-color: var(--shadowColor2);
+    top: 70%;
+    left: 9.5%;
+}
+
+.marked::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--primaryColor);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.sub-container-inpt label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+} 
+
+button {
+    cursor: pointer;
+}
+
+/* ---------------------------- */
+
+/*paginas da segunda tela da direita*/
+
+#cadastroPet2{ /*parte da direita SEGUNDA PAGINA, /*separando o lado direito do esquerdo*/
+    width: 70%;/*largura*/
+    height: 100%;/*altura*/
+    background-color: var(--secondColor);/*cor do quadrado direito DA SEGUNDA PAGINA*/
+    flex-direction: column;
+    display: flex;
+    display: none;
+}
+#divDCima2{ /* div das frases*/
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+   text-align: center; /*alinha os textos*/
+
+}
+
+#divDCima2 h1,h2 {/*altera a fonte das frases*/
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
+
+}
+#divDMeio2{
+    width: 80%;/*largura*/
+    height: 20%;/*altura*/
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    border-bottom: 3px solid var(--primaryColor);
+    
+ 
+}
+#botaoTosa{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';
+    color:black;
+    background-color: var(--primaryColor);
+}
+#botaoBanho{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+}
+#botaoHospedar{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+}
+#quadro2{
+    border-radius: 5px;
+    width: 205px;
+    max-width: 205px;
+    margin-left: 310px;/*margem esquerda*/
+    margin-right: 20px;/*margem direita*/
+}
+
+#containerCalendario {
+    height: 40%;
+}
+
+#divDBaixo2{
+    width: 100%;/*largura*/
+    height: 20%;/*altura*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+#botaoVoltar{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+}
+#botaoProximo2{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+}
+#cadastroPet3{ /*primeira pagina 3 -parte da direita TERCEIRA PAGINA*/
+    width: 70%;/*largura*/
+    height: 100%;/*altura*/
+    background-color: var(--secondColor);/*cor do quadrado direito DA SEGUNDA PAGINA*/
+    flex-direction: column;
+    display: flex;
+    font-family:'GooperSemiBold';
+     /* display: none;  */
+}
+#divDCima3{ /* div das frases*/
+    width: 100%;/*largura*/
+    height: 10%;/*altura*/
+   text-align: center; /*alinha os textos*/
+}
+#divDCima3 h1 {/*altera a fonte das frases*/
+    margin-top: 20px;
+}
+#divTitulo{
+    font-size: 0.8em;
+    text-align: center;
+}
+#divDMeio3{
+    width: 100%;/*largura*/
+    height: 80%;/*altura*/
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between;*/
+    padding: 0 40px; 
+    flex-direction: row-reverse;
+}
+
+#divPagamento1{
+    width: 50%;
+    flex-direction: column;
+    display: flex;
+    /* float: right; */
+    /* justify-content: flex-end; */
+    align-items: center;
+}
+/* #divNomePet{
+
+} */
+.inputPagamento1{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;   
+}
+
+#divPagamento2{
+    width: 50%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+.inputPagamento2{
+    border-radius: 10px;
+    height: 40px;/*altura*/
+    width: 200px;/*largura*/
+    border: 0;
+    display: flex;
+    flex-direction: column;
+}
+#divFormaPagamento{
+    font-size: 0.6em;
+}
+#div2{
+    display: flex;
+    flex-direction: column;
+}
+#div2 div {
+    display:flex;
+}
+.input2{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;   
+}
+
+#divDBaixo3{
+    width: 100%;/*largura*/
+    height: 10%;/*altura*/ 
+    display: flex;
+    justify-content: space-between;
+}
+#botaoVoltar3{
+    border-radius: 10px;
+    width: 130px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor);
+    margin-left: 20px;
+   
+}
+ #botaoFinalizar{
+    border-radius: 10px;
+    width: 130px;
+    height: 40px;
+    border:0;
+    font-family:'GooperSemiBold';  
+    color:black;
+    background-color: var(--primaryColor); 
+    align-items: center;
+    margin-right: 20px;
+}
+

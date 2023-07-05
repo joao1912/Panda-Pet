@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Pet</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../estilos/index.css">
+    <link rel="stylesheet" href="../estilos/pagina-agendamentos/style.css">
+
+</head>
+
+<body>
+    <header>
+        <img src="../imagens/1.png" alt="Logo Panda Pet">
+
+        <div id="containerBarraDePesquisa">
+            <input type="text" id="barraPesquisa" placeholder="Pesquise">
+        </div>
+
+        <div id="containerIcones">
+            <span class="btnIcons" id="icon-tela-adm" style="display: none;"><i class="material-symbols-outlined">settings_suggest</i></span>
+            <a href="./carrinho.html"><span class="btnIcons"><i
+                        class="material-symbols-outlined">shopping_cart</i></span></a>
+            <span class="btnIcons" id="perfilIcon"><i class="material-symbols-outlined">person</i></span>
+            <div id="containerPerfil">
+                <button id="botaoLogar">Logar<span class="material-symbols-outlined">login</span></button>
+                <div id="userLogado">
+                    <div id="containerButtonsLogin">
+                        <img id="fotoPerfilOnline" src="../imagens/perfil-default.jpg" alt="foto de perfil">
+                        <input type="file" id="inptTrocaFoto">
+                        <button id="botaoSair">Sair<span class="material-symbols-outlined">logout</span></button> 
+                    </div>
+                    <div id="containerBtnMeuPerfil">
+                        <button id="btnMeuPerfil">Meu Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <span id="forHome">
+            Home
+        </span>
+
+        <span id="forAcessorios">
+            Acessórios
+        </span>
+
+        <span id="forAlimentacao">
+            Alimentação
+        </span>
+
+        <span id="forBrinquedos">
+            Brinquedos
+        </span>
+
+        <span id="forAgendamento">
+            Agendamento
+        </span>
+
+    </nav>
+    <div class="centralizador">
+        <section id="container">
+
+            <div id="servico">
+
+
+                <div id="divECima">
+                    <div>
+                        <img src="../imagens/icons/pata.svg" alt="imagemPata">
+                    </div>
+
+                    <h1 id="titulo">Panda Pet</h1>
+                </div>
+
+
+
+                <div id="divEMeio">
+
+                    <div id="containerInputRadios">
+
+                        <div class="sub-container-inpt">
+                            <input type="radio" id="inptPerfilPet" style="display: none;">
+                            <label for="inptPerfilPet" class="labelRadio">
+                                <div class="inptEstilizado marked">
+
+                                </div>
+                                <span>Perfil Do Pet</span>
+                            </label>
+                        </div>
+                        <div class="sub-container-inpt">
+                            <input type="radio" id="inptServico" style="display: none;">
+                            <label for="inptServico" class="labelRadio">
+                                <div class="inptEstilizado">
+
+                                </div>
+                                <span>Serviço</span>
+                            </label>
+                        </div>
+                        <div class="sub-container-inpt">
+                            <input type="radio" id="inptConfirmacao" style="display: none;">
+                            <label for="inptConfirmacao">
+                                <div class="inptEstilizado">
+
+                                </div>
+                                <span>Confirmação</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="divEBaixo">
+
+                    <img src="../imagens/pandinha 7.jpg" alt="fotoPanda">
+
+
+                </div>
+
+            </div>
+
+            <div id="cadastroPet">
+
+                <div id="divDCima">
+                    <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
+                    <h2>Nos fale um pouco dele:</h2>
+
+                </div>
+
+                <div id="divDMeio">
+
+                    <div id="divDEsquerdoNome" class="containersCadastro">
+
+                        <label class="labelCadastro" for="inputNome">Nome</label>
+                        <input id="inputNome" class="inputs">
+                        <label class="labelCadastro" for="inputAniver">Aniversário</label>
+                        <input id="inputAniver" class="inputs">
+                        <label class="labelCadastro" for="inputRaca">Raça</label>
+                        <input id="inputRaca" class="inputs">
+                        <label class="labelCadastro" for="inputPeso">Peso</label>
+                        <input id="inputPeso" class="inputs">
+
+                    </div>
+
+                    <div id="divDDireitoGenero" class="containersCadastro">
+
+                        <label for="botaoEscolhaGenero" class="labelGeneroAlergico">Gênero</label>
+                        <div id="botaoEscolhaGenero">
+                            <button data-content="Macho" class="btnOpt" id="btnMacho">Macho</button>
+                            <button class="btnOpt" id="btnFemea">Fêmea</button>
+                        </div>
+                            <label for="botaoEscolhaAlergico" class="labelGeneroAlergico">Alérgico</label>
+                            <div id="botaoEscolha">
+                                <button data-content="Sim" class="btnOpt" id="btnYes">Sim</button>
+                                <button class="btnOpt" id="btnNo">Não</button>
+                            </div>
+
+                            <textarea id="quadro" cols="30" rows="10">
+
+                            </textarea>
+
+                    </div>
+
+                </div>
+
+                    <div id="divDBaixo">
+
+                        <button id="botaoProximo">Próximo</button>
+                    </div> 
+
+            
+            </div>
+
+            <div id="cadastroPet2">
+
+                <div id="divDCima2">
+                 <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
+                 <h2>Qual o serviço desejado ?</h2>
+                </div>
+
+                    <div id="divDMeio2">
+                        <button id="botaoBanho">Banho e Tosa</button>
+                        <button id="botaoHospedar">Hospedar</button>
+                    </div>
+                    
+                    <div id="containerCalendario">
+                        
+                    </div> 
+                   
+                    <div id="divDBaixo2">
+                        <button id="botaoVoltar">Voltar</button>
+                        <button id="botaoProximo2">Próximo</button>
+                    </div>
+            </div>
+
+
+            <div id="cadastroPet3">
+
+                <div id="divDCima3">
+                 <h1>Tudo Prontinho!</h1>
+                </div>
+                    <div id="divTitulo">
+                       <h1>Informações De Pagamento</h1>     
+                    </div>
+                    
+                    <div id="divDMeio3">
+
+                        
+
+                        <div id="divPagamento1">
+
+                            
+
+                            <div id="divNomePet">
+                                <label class="labelNomePet" for="inputNomePet">Nome Do Pet</label>
+                                <input id="inputNomePet" class="inputPagamento1">
+                            </div>
+
+                            <div id="divAlergias">
+                                <label class="labelAlergias" for="inputAlergias">Alergias</label>
+                                <input id="inputAlergias" class="inputPagamento1">
+                            </div>
+
+                            <div id="divRaca">
+                                <label class="labelRaca" for="inputRaça">Raça</label>
+                                <input id="inputRaça" class="inputPagamento1">
+                            </div>
+
+                            <div id="divServico">
+                                <label class="labelServico" for="inputServico">Serviço</label>
+                                <input id="inputServico" class="inputPagamento1">
+                            </div>
+                       </div>
+                        
+                        <div id="divPagamento2">
+
+                            <div div="divSeuNome">
+                                 <label class="labelSeuNome" for="inputSeuNome">Seu Nome</label>
+                                 <input id="inputSeuNome" class="inputPagamento2">
+                            </div>
+
+                            <div id="divFormaPagamento">
+                               <h2>Forma De Pagamento</h2> 
+                            </div>
+
+                            <div id="div2">
+                                <div>  
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputCreditoDebito"> 
+                                    <label class="labelCreditoDebito" for="inputCreditoDebito">Cartão De Crédito Ou Débito</label>
+                                  
+                                </div>
+                                <div> 
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputPix">
+                                    <label class="labelPix" for="inputPix">Pix</label>    
+                                </div>
+                                <div>
+                                    <input type="radio" name="inputpagamentos" class="input2" id="inputBoleto">
+                                    <label class="labelBoleto" for="inputBoleto">Boleto</label>   
+                                </div>
+                               
+                            </div>    
+
+                            
+                        </div>
+
+                       
+                    
+                    </div>
+
+                        <div id="divDBaixo3">
+                            <button id="botaoVoltar3">Voltar</button>  
+                            <button id="botaoFinalizar">Finalizar</button>
+                        </div>
+                       
+
+        </section>
+    </div>
+
+    <script type="module" src="../scripts/pagina-agendamentos/script.js"></script>
+</body>
+
+</html>

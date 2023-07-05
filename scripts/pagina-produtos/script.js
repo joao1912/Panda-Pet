@@ -5,8 +5,24 @@ import { verifyUserOnline } from "../utils/verifyUserOnline.js"
 var users = JSON.parse(localStorage.getItem("users"))
 export var userID = verifyUserOnline()
 
-let categoryOrNot = JSON.parse(localStorage.getItem("category"))
+let users = JSON.parse(localStorage.getItem("users"))
+export let userID = verifyUserOnline()
+
+let categoryOrNot = JSON.parse(localStorage.getItem("category")) 
 localStorage.removeItem("category")
+
+function verifyUserOnline() {
+
+    let userOnline
+    if (users) {
+    for (let obj of users) {
+            if (obj.online) {
+                userOnline = obj.id
+            }
+        } 
+    }
+    return userOnline || undefined
+}
 
 function setPerfilOnline() {
 
@@ -124,8 +140,8 @@ nav.addEventListener("click", function (event) {
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("acessorios"))
-            }
+                document.addEventListener("DOMContentLoaded", showProducts("acessorios")) 
+            }   
 
             break
 
@@ -137,7 +153,7 @@ nav.addEventListener("click", function (event) {
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("alimentos"))
+                document.addEventListener("DOMContentLoaded", showProducts("alimentos")) 
             }
 
             break
@@ -150,7 +166,7 @@ nav.addEventListener("click", function (event) {
 
             } else {
                 window.location.href = "../../paginas/produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("brinquedos"))
+                document.addEventListener("DOMContentLoaded", showProducts("brinquedos")) 
             }
 
             break
@@ -164,7 +180,7 @@ nav.addEventListener("click", function (event) {
 
 if (categoryOrNot) {
     switch (categoryOrNot) {
-        case "acessorios":
+        case "acessorios": 
             showProducts("acessorios")
             break
         case "alimentos":
@@ -173,6 +189,73 @@ if (categoryOrNot) {
         case "brinquedos":
             showProducts("brinquedos")
             break
+    }
+}
+
+
+
+
+export function setButtonsCartsListeners() {
+    const botoesCarrinho = document.querySelectorAll(".btnCarrinho")
+   
+    ;[...botoesCarrinho].forEach(botao => {
+        
+        botao.addEventListener("click",function(event){
+            let elemento = event.target
+            let produtoId = botao.value 
+            if (elemento.src === undefined) {
+                elemento = elemento.children[0].children[0]
+            }
+
+            if (userID === undefined) {
+                window.location.href = "../../paginas/cadastro-login.html" 
+            }
+            if (userID === undefined) return
+
+            saveOrDeleteProduct(produtoId, elemento)
+       
+        })
+      
+    })
+}
+
+function saveOrDeleteProduct(produtoId, imgIcon) { 
+
+    let carrinho = users[userID].carrinho
+    let searchProduto = carrinho.filter( obj => obj.codigo == produtoId)
+    
+    if (searchProduto.length === 0) {
+
+        imgIcon.src = "../../imagens/icons/remove_shopping_cart.svg" 
+      
+        let objProduto = {
+            codigo: produtoId,
+            quantidade: 1
+        }
+
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.push(objProduto)
+
+        saveLocalStorage(users)
+
+    } else {
+     
+        imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
+        
+        let index = 0
+        let produtoIndex 
+        
+        for (let obj of users[userID].carrinho) { 
+            
+            if (obj.codigo === produtoId) {
+                produtoIndex = index
+            }
+            index++
+        }
+        users = JSON.parse(localStorage.getItem("users"))
+        users[userID].carrinho.splice(produtoIndex, 1)
+
+        saveLocalStorage(users)
     }
 }
 
