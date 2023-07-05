@@ -223,17 +223,9 @@ if (userID == 0) {
     containerUser.style.marginLeft = "-5px"
 } 
 
-if (userID) {
-    
-    setPerfilOnline()
-    const fotoPerfil = document.getElementById("fotoPerfilOnline")
-    fotoPerfil.addEventListener("click", trocaFotoPerfil)
-    
-} else {
-    if (userID != 0) {
-        containerUser.style.marginLeft = "-43px"
-        containerUser.style.top = "115px" 
-    }
+if (userID == undefined) {
+    containerUser.style.marginLeft = "-43px"
+    containerUser.style.top = "115px" 
 }
 
 $('#container').slick({

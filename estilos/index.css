@@ -251,7 +251,7 @@ header #containerBarraDePesquisa {
 }
 
 #containerBarraDePesquisa::before {
-    content: url(../../imagens/icons/procurar.svg);
+    content: url(../imagens/icons/procurar.svg);
     width: 50px;
     height: 40px;
     background-color: white;
