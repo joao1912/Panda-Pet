@@ -25,7 +25,7 @@ function setPerfilOnline() {
     } 
 
     const containerUser = document.getElementById("containerPerfil")
-    containerUser.style.height = "90px"
+    containerUser.style.height = "110px"
     containerUser.style.width = "200px"
     containerUser.style.marginLeft = "-75px"
     const botaoLogar = document.getElementById("botaoLogar")
@@ -278,7 +278,6 @@ function inserirInfo(){
    imagem.src=img
 
    const imgUser = document.getElementById("imagem")
-
    imgUser.addEventListener(() => {trocaFotoPerfil("imagem", "userImg")})
 
 }

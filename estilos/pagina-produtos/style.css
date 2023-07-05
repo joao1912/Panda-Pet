@@ -24,54 +24,6 @@ header > img {
     margin-left: 20px;
 }
 
-header #containerBarraDePesquisa {
-    height: 40px;
-    width: 50%;
-    background-color: white;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-}
-
-#barraPesquisa {
-    width: 96%;
-    height: 100%;
-    border-radius: 50px;
-    border: 0;
-    padding-left: 10px;
-    display: inline-flex;
-    font-size: 1.5em;
-    font-family: "Nunito";
-}
-
-#containerBarraDePesquisa::before {
-    content: url(../../imagens/icons/procurar.svg);
-    width: 50px;
-    height: 40px;
-    background-color: white;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    color: var(--primaryColor);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#barraPesquisa:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-}
-
-#containerBarraDePesquisa span {
-    width: 35px;
-}
-
-#containerBarraDePesquisa span:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
 #containerIcones {
     display: flex;
     flex-direction: row;
@@ -137,17 +89,6 @@ header #containerBarraDePesquisa {
     font-weight: 600;
     border-radius: 10px;
 }
-
-#containerPerfil div {
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1.3em;
-    font-family: 'GooperSemiBold';
-    color: white;
-}
-
 
 #containerPerfil button > span {
     font-size: 1.3em;

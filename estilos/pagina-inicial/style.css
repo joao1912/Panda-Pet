@@ -15,40 +15,6 @@ header > img {
     margin-left: 20px;
 }
 
-header #containerBarraDePesquisa {
-    height: 40px;
-    width: 50%;
-    background-color: white;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-}
-
-#barraPesquisa {
-    width: 96%;
-    height: 100%;
-    border-radius: 50px;
-    border: 0;
-    padding-left: 30px;
-    display: inline-flex;
-    font-size: 1.5em;
-    font-family: "Nunito";
-}
-
-#barraPesquisa:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-}
-
-#containerBarraDePesquisa span {
-    width: 35px;
-}
-
-#containerBarraDePesquisa span:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
 #containerIcones {
     display: flex;
     flex-direction: row;
@@ -114,15 +80,7 @@ header #containerBarraDePesquisa {
     border-radius: 10px;
 }
 
-#containerPerfil div {
-    display: none;
-    justify-content: center;
-    align-items: center;
 
-    font-size: 1.3em;
-    font-family: 'GooperSemiBold';
-    color: white;
-}
 
 
 #containerPerfil button > span {
@@ -443,7 +401,7 @@ color: white;
 }
 
 #perfilUsuario{
-    display: flex; /* FLEX */
+    display: none; /* FLEX */
     position: absolute;
     top: 50%;
     left: 50%;

@@ -172,7 +172,7 @@ function setPerfilOnline() {
     }
 
     const containerUser = document.getElementById("containerPerfil")
-    containerUser.style.height = "90px"
+    containerUser.style.height = "110px"
     containerUser.style.width = "200px"
     containerUser.style.marginLeft = "-5px"
     const botaoLogar = document.getElementById("botaoLogar")

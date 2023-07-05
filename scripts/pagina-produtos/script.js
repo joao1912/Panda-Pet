@@ -17,7 +17,7 @@ function setPerfilOnline() {
     }
 
     const containerUser = document.getElementById("containerPerfil")
-    containerUser.style.height = "90px"
+    containerUser.style.height = "110px" /* alterar na tela da zuma */
     containerUser.style.width = "200px"
     const botaoLogar = document.getElementById("botaoLogar")
     const containerUserLogado = document.getElementById("userLogado")
@@ -36,7 +36,7 @@ function setPerfilOnline() {
     const iconAdmUtils = document.getElementById("icon-tela-adm")
 
     if (userID == 0) {
-        containerUser.style.marginLeft = "65px"
+        containerUser.style.marginLeft = "-5px"
         iconAdmUtils.style.display = "inline-flex"
         iconAdmUtils.addEventListener("click", function(){
             window.location.href = "../../paginas/administrador.html" 
