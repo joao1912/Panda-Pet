@@ -14,11 +14,6 @@ for (let obj of users) {
 
 const btnFinalizar = document.getElementById("btnFinalizar")
 
-// limpaCarrinho()
-// adicionaProdutoAoCarrinho(5)
-// adicionaProdutoAoCarrinho(6)
-// adicionaProdutoAoCarrinho(5)
-
 
 function adicionaProdutoAoCarrinho(codigo) {
     let carrinho = pegaCarrinho()

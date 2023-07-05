@@ -165,8 +165,9 @@ nav.addEventListener("click",function(event){
             break
         
         case "forAgendamento":
-        
-            //href
+            
+            window.location.href = "/paginas/agendamentos.html" 
+                
             break
     }
 })

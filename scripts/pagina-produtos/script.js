@@ -2,27 +2,11 @@ import { saveLocalStorage } from "../utils/saveLocalStorage.js"
 import { showProducts } from "../utils/forProducts/showProducts.js"
 import { verifyUserOnline } from "../utils/verifyUserOnline.js"
 
-var users = JSON.parse(localStorage.getItem("users"))
-export var userID = verifyUserOnline()
-
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
 let categoryOrNot = JSON.parse(localStorage.getItem("category")) 
 localStorage.removeItem("category")
-
-function verifyUserOnline() {
-
-    let userOnline
-    if (users) {
-    for (let obj of users) {
-            if (obj.online) {
-                userOnline = obj.id
-            }
-        } 
-    }
-    return userOnline || undefined
-}
 
 function setPerfilOnline() {
 

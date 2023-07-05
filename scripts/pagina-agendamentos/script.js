@@ -1,4 +1,4 @@
-import {showProducts} from '../../scripts/utils/showProducts.js'
+import { showProducts } from '../utils/forProducts/showProducts.js'
 import { saveLocalStorage } from '../utils/saveLocalStorage.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
