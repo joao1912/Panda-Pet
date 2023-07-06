@@ -186,7 +186,6 @@ nav span::after {
 #containerProdutos {
     width: 90%;
     max-width: 1400px;
-    height: 90vh;
     margin-top: 20px;
     border-radius: 40px;
     margin-bottom: 20px;
@@ -213,7 +212,6 @@ h1#h1Produtos {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 825px;
     width: 100%;
 }
 

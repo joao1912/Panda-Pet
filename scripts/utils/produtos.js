@@ -54,7 +54,7 @@ function initializeProducts() {
         new Produto(23, "Guia retrátil", "Guia retrátil para deixar seu pet confortável na hora do passeio.", "../../imagens/acessorios/guia-retratil.png", 25.99, "acessorios", "", 10),
         new Produto(24, "Porta ração", "Mantenha a ração dos seus pets organizada, escolha o tamanho ideal para guardar a ração de maneira prática.", "../../imagens/acessorios/porta-racao-pet.jpg", 45.99, "acessorios", "", 10),
         new Produto(25, "Casa tunel para gatos", "Casinha confortavél para seu gatinho.", "../../imagens/acessorios/toca-tunel-gato.jpg", 99.90, "acessorios", "", 10),
-        new Produto(26, "Cama pets", "Caminha ideal para seu pet, com o conforto que ele merece.", "imagens/acessorios/caminha-pet.png", 59.90, "acessorios", "", 10)
+        new Produto(26, "Cama pets", "Caminha ideal para seu pet, com o conforto que ele merece.", "../../imagens/acessorios/caminha-pet.png", 59.90, "acessorios", "", 10)
     ]
 
     localStorage.setItem("listaProdutos", JSON.stringify(initialProducts))
