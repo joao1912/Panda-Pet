@@ -192,7 +192,7 @@ nav span::after {
     padding: 30px;
     text-align: center;
     
-    display: none;
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;

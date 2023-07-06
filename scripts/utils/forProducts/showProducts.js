@@ -4,7 +4,6 @@ import { getIndexCategory } from "./getIndexCategory.js"
 export function showProducts(categoria) {
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
-
     let indexProdutos
     containerProdutos.style.display = "flex"
 

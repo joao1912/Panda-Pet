@@ -1,4 +1,4 @@
-import {showProducts} from '../utils/forProducts/showProducts.js'
+//import {showProducts} from '../utils/forProducts/showProducts.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -125,8 +125,8 @@ nav.addEventListener("click",function(event){
         case "forAcessorios":
 
             if (window.location.pathname == '/paginas/produtos.html') {
-
-                showProducts("acessorios")
+                
+                // showProducts("acessorios")
 
             } else {
                 let category = JSON.stringify("acessorios")
@@ -140,7 +140,7 @@ nav.addEventListener("click",function(event){
            
             if (window.location.pathname == '/paginas/produtos.html') {
 
-                showProducts("alimentos")
+                // showProducts("alimentos")
 
             } else {
                 let category = JSON.stringify("alimentos")
@@ -154,7 +154,7 @@ nav.addEventListener("click",function(event){
            
             if (window.location.pathname == '/paginas/produtos.html') {
 
-                showProducts("brinquedos")
+                // showProducts("brinquedos")
 
             } else {
                 let category = JSON.stringify("brinquedos")
@@ -274,9 +274,3 @@ function inserirInfo(){
    imgUser.addEventListener(() => {trocaFotoPerfil("imagem", "userImg")})
 
 }
-
-
- 
-
-
-  
