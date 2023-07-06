@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;   
     background-color: white;
+    position: relative;
 }
 a {
     text-decoration: none;
@@ -212,7 +213,8 @@ h1#h1Produtos {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 900px;
+    margin-bottom: 825px;
+    width: 100%;
 }
 
 /*produto*/

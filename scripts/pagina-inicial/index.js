@@ -163,6 +163,19 @@ nav.addEventListener("click",function(event){
             }
 
             break
+
+        case "forSugestoes":
+
+            if (window.location.pathname == '/paginas/produtos.html') {
+
+                showProducts("sugestoes")
+
+            } else {
+                window.location.href = "../../paginas/produtos.html"
+                document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
+            }
+
+            break  
         
         case "forAgendamento":
             

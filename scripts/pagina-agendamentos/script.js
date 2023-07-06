@@ -112,27 +112,20 @@ nav.addEventListener("click",function(event){
    
     switch(event.target.id) {
         case "forHome":
-            
-           
 
-            if (window.location.pathname != '/index.html') {
-
-                 window.location.href = "../../index.html"
-
-            }
-
+            window.location.href = "../../index.html"
             break
 
         case "forAcessorios":
 
             if (window.location.pathname == '/paginas/produtos.html') {
-
+                
                 showProducts("acessorios")
 
             } else {
                 let category = JSON.stringify("acessorios")
                 localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html"
+                window.location.href = "./paginas/produtos.html"
             }   
 
             break
@@ -146,28 +139,42 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("alimentos")
                 localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html" 
+                window.location.href = "./paginas/produtos.html" 
             }
 
             break
 
         case "forBrinquedos":
            
-            if (window.location.pathname == '../../paginas/produtos.html') {
+            if (window.location.pathname == '/paginas/produtos.html') {
 
                 showProducts("brinquedos")
 
             } else {
                 let category = JSON.stringify("brinquedos")
                 localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html" 
+                window.location.href = "/paginas/produtos.html" 
             }
 
             break
+
+        case "forSugestoes":
+
+            if (window.location.pathname == '/paginas/produtos.html') {
+
+                showProducts("sugestoes")
+
+            } else {
+                window.location.href = "../../paginas/produtos.html"
+                document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
+            }
+
+            break  
         
         case "forAgendamento":
-        
-            //href
+            
+            /* href */ 
+                
             break
     }
 })
