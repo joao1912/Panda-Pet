@@ -175,24 +175,6 @@ nav.addEventListener("click", function (event) {
     }
 })
 
-if (categoryOrNot) {
-    switch (categoryOrNot) {
-        case "acessorios": 
-            showProducts("acessorios")
-            break
-        case "alimentos":
-            showProducts("alimentos")
-            break
-        case "brinquedos":
-            showProducts("brinquedos")
-            break
-    
-    }
-    
-} else {
-    showProducts("sugestoes")
-}
-
 
 
 
@@ -296,4 +278,24 @@ function barraPesquisa() {
                 produto.style.display = "flex"
             }
         })
+}
+
+if(window.location.pathname == "/paginas/produtos.html") {
+if (categoryOrNot) {
+    switch (categoryOrNot) {
+        case "acessorios": 
+            showProducts("acessorios")
+            break
+        case "alimentos":
+            showProducts("alimentos")
+            break
+        case "brinquedos":
+            showProducts("brinquedos")
+            break
+    
+    }
+    
+} else {
+    showProducts("sugestoes")
+}
 }

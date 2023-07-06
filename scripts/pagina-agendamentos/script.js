@@ -125,7 +125,7 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("acessorios")
                 localStorage.setItem("category", category)
-                window.location.href = "./paginas/produtos.html"
+                window.location.href = "produtos.html"
             }   
 
             break
@@ -139,7 +139,7 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("alimentos")
                 localStorage.setItem("category", category)
-                window.location.href = "./paginas/produtos.html" 
+                window.location.href = "produtos.html" 
             }
 
             break
@@ -153,7 +153,7 @@ nav.addEventListener("click",function(event){
             } else {
                 let category = JSON.stringify("brinquedos")
                 localStorage.setItem("category", category)
-                window.location.href = "/paginas/produtos.html" 
+                window.location.href = "produtos.html" 
             }
 
             break
@@ -165,7 +165,7 @@ nav.addEventListener("click",function(event){
                 showProducts("sugestoes")
 
             } else {
-                window.location.href = "../../paginas/produtos.html"
+                window.location.href = "produtos.html"
                 document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
             }
 
