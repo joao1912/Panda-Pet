@@ -242,13 +242,16 @@ a{
 }
 
 #divEBaixo{ /* div da imagem*/
-    width: 100%;/*largura*/
+    width: 90%;/*largura*/
     height: 40%;/*altura*/
     display: flex;
     justify-content: end;
     align-items: center;
     flex-direction: column;
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imagens/pandaAgendamento.png)
 
 }
 /*faz as linhas dos imputs*/
@@ -294,7 +297,7 @@ a{
     height: 100%;
     background-color: var(--secondColor);/*cor do quadrrado direito*/
     flex-direction: column;
-     display: none; 
+     /* display: none;  */
 }
 
 
@@ -653,7 +656,7 @@ button {
     flex-direction: column;
     display: flex;
     font-family:'GooperSemiBold';
-     /* display: none;  */
+     display: none; 
 }
 #divDCima3{ /* div das frases*/
     width: 100%;/*largura*/
