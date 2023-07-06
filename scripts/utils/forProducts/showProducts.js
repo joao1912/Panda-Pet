@@ -19,6 +19,16 @@ export function showProducts(categoria) {
 
             break
 
+            case 'sugestoes':
+
+            h1Produtos.textContent = "Sugestões"
+            indexProdutos = getIndexCategory("sugestoes")
+            containerProdutos.innerHTML = ""
+        
+            setProductsElements(indexProdutos)
+
+            break
+
         case 'alimentos': 
             h1Produtos.textContent = "Alimentação"
             indexProdutos = getIndexCategory("alimentacao")
