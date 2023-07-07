@@ -1,4 +1,4 @@
-import { userID } from "../../pagina-produtos/script.js"
+import { userID } from "../../pag-produtos.js"
 
 
 export function constructorProductsElements(id, nome, preco, imagem, descricaoImagem) {

@@ -1,6 +1,6 @@
-import { Error } from "../utils/erros.js"
-import { saveLocalStorage } from "../utils/saveLocalStorage.js"
-import { getDate } from '../utils/getDate.js'
+import { Error } from "./utils/erros.js"
+import { saveLocalStorage } from "./utils/saveLocalStorage.js"
+import { getDate } from './utils/getDate.js'
 
 let users = []
 users = JSON.parse(localStorage.getItem("users"))

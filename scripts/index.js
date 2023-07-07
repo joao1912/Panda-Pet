@@ -1,21 +1,8 @@
-import { showProducts } from '../utils/forProducts/showProducts.js'
-import { saveLocalStorage } from '../utils/saveLocalStorage.js'
+import { showProducts } from "./utils/forProducts/showProducts.js";
+import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
-
-function verifyUserOnline() {
-
-    let userOnline
-    if (users) {
-    for (let obj of users) {
-            if (obj.online) {
-                userOnline = obj.id
-            }
-        } 
-    }
-    return userOnline ?? undefined
-}
 
 function setPerfilOnline() {
     
@@ -89,7 +76,7 @@ iconeDoPerfil.addEventListener("click",function(){
     const tabelaPerfil = document.getElementById("containerPerfil")
 
     function redirecionarCadastro(){
-        window.location.href = "../../paginas/cadastro-login.html"
+        window.location.href = "./paginas/cadastro-login.html"
     }
 
     if (!visibility) {
@@ -108,72 +95,103 @@ iconeDoPerfil.addEventListener("click",function(){
 })
 
 const nav = document.querySelector("nav")
+const containerTelaInicial = document.getElementById("containerTelaInicial")
+const containerTelaProdutos = document.getElementById("containerTelaProdutos")
+const containerTelaAgendamento = document.getElementById("containerTelaAgendamento")
+
+const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento]
+
 nav.addEventListener("click",function(event){
    
     switch(event.target.id) {
         case "forHome":
 
-            window.location.href = "../../index.html"
+            if (containerTelaInicial.style.display == "block") return
+
+            telas.forEach( tela => {
+                tela.style.display = "none"
+            })
+
+            containerTelaInicial.style.display = "block"
+            location.reload()
+
             break
 
         case "forAcessorios":
 
-            if (window.location.pathname == '/paginas/produtos.html') {
-                
+            if (containerTelaProdutos.style.display == "block") {
+                showProducts("acessorios")
+            } else {
+                telas.forEach( tela => {
+                    tela.style.display = "none"
+                })
+
+                containerTelaProdutos.style.display = "block"
                 showProducts("acessorios")
 
-            } else {
-                let category = JSON.stringify("acessorios")
-                localStorage.setItem("category", category)
-                window.location.href = "produtos.html"
-            }   
+            }
+ 
+           
 
             break
-        
         case "forAlimentacao":
-           
-            if (window.location.pathname == '/paginas/produtos.html') {
 
+            if (containerTelaProdutos.style.display == "block") {
+                showProducts("alimentos")
+            } else {
+                telas.forEach( tela => {
+                    console.log(tela)
+                    tela.style.display = "none"
+                })
+
+                containerTelaProdutos.style.display = "block"
                 showProducts("alimentos")
 
-            } else {
-                let category = JSON.stringify("alimentos")
-                localStorage.setItem("category", category)
-                window.location.href = "produtos.html" 
             }
 
             break
 
         case "forBrinquedos":
-           
-            if (window.location.pathname == '/paginas/produtos.html') {
 
+            if (containerTelaProdutos.style.display == "block") {
+                showProducts("brinquedos")
+            } else {
+                telas.forEach( tela => {
+                    tela.style.display = "none"
+                })
+
+                containerTelaProdutos.style.display = "block"
                 showProducts("brinquedos")
 
-            } else {
-                let category = JSON.stringify("brinquedos")
-                localStorage.setItem("category", category)
-                window.location.href = "produtos.html" 
             }
 
             break
 
         case "forSugestoes":
 
-            if (window.location.pathname == '/paginas/produtos.html') {
+            if (containerTelaProdutos.style.display == "block") {
+                showProducts("sugestoes")
+            } else {
+                telas.forEach( tela => {
+                    tela.style.display = "none"
+                })
 
+                containerTelaProdutos.style.display = "block"
                 showProducts("sugestoes")
 
-            } else {
-                window.location.href = "produtos.html"
-                document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
             }
 
             break  
         
         case "forAgendamento":
             
-            /* href */ 
+            if (containerTelaAgendamento.style.display == "block") return
+
+            telas.forEach( tela => {
+                tela.style.display = "none"
+            })
+
+            containerTelaAgendamento.style.display = "block"
                 
             break
     }
@@ -217,68 +235,22 @@ function barraPesquisa() {
     })
 }
 
+
 const iconAdmUtils = document.getElementById("icon-tela-adm")
 const containerUser = document.getElementById("containerPerfil")
 if (userID == 0) {
     iconAdmUtils.style.display = "inline-flex"
     iconAdmUtils.addEventListener("click", function(){
-        window.location.href = "../../paginas/administrador.html" 
+        window.location.href = "./paginas/administrador.html" 
     })
     
     setPerfilOnline()
     const fotoPerfil = document.getElementById("fotoPerfilOnline")
-    fotoPerfil.addEventListener("click", trocaFotoPerfil)
+    fotoPerfil.addEventListener("click", () => {trocaFotoPerfil()})
     containerUser.style.marginLeft = "-5px"
+} 
+
+if (userID == undefined) {
+    containerUser.style.marginLeft = "-43px"
+    containerUser.style.top = "115px" 
 }
-
-const botaoEscolhaGenero = document.getElementById("botaoEscolhaGenero")
-const btnMacho = document.getElementById("btnMacho")
-let btnBeforeGenero 
-
-;[...document.styleSheets[2].cssRules].forEach( styleSheet => {
-  if (styleSheet.selectorText == "#btnMacho::before") {
-    btnBeforeGenero = styleSheet
-  }
-  
-})
-
-botaoEscolhaGenero.addEventListener("click", function(event){
-    let id = event.target.id
-
-    switch(id) {
-        case "btnMacho":
-            btnBeforeGenero.style.left = "3px"
-            btnMacho.dataset.content = "Macho"
-            break
-        case "btnFemea":
-            btnBeforeGenero.style.left = "102px"
-            btnMacho.dataset.content = "Fêmea"
-            break
-    }
-})
-
-const botaoEscolha = document.getElementById("botaoEscolha")
-const btnYes = document.getElementById("btnYes")
-let btnBefore 
-
-;[...document.styleSheets[2].cssRules].forEach( styleSheet => {
-  if (styleSheet.selectorText == "#btnYes::before") {
-    btnBefore = styleSheet
-  }
-  
-})
-
-botaoEscolha.addEventListener("click", function(event){
-    let id = event.target.id
-
-    switch(id) {
-        case "btnYes":
-            btnBefore.style.left = "3px"
-            btnYes.dataset.content = "Sim"
-            break
-        case "btnNo":
-            btnBefore.style.left = "102px"
-            btnYes.dataset.content = "Não"
-            break
-    }
-})

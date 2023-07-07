@@ -1,4 +1,4 @@
-import { mesAtual } from "../../pagina-adm/script.js"
+import { mesAtual } from "../../pagina-adm/pag-adm.js"
 import { constructorTasks } from "./constructorTasks.js"
 import { cancelTask } from "./cancelTask.js"
 import { confirmDeletion } from "./confirmDeletion.js"

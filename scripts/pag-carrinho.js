@@ -1,5 +1,5 @@
-import { saveLocalStorage } from "../utils/saveLocalStorage.js"
-import { produtos } from "../utils/produtos.js"
+import { saveLocalStorage } from "./utils/saveLocalStorage.js"
+import { produtos } from "./utils/produtos.js"
 let users = JSON.parse(localStorage.getItem("users"))
 
 //[{nome: userName, senha: passWord, carrinho: [ cod: , quant: ], online: false, img: urlFotoPerfil}]

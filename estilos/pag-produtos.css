@@ -1,0 +1,165 @@
+body {
+    display: flex;
+    flex-direction: column;   
+    background-color: white;
+    position: relative;
+}
+a {
+    text-decoration: none;
+}
+
+#containerProdutos {
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 20px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    padding: 30px;
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+}
+
+h1#h1Produtos {
+    font-size: 5em;
+    font-family: "GooperBold";
+    font-weight: bold;
+    color: var(--primaryColor);
+    margin-top: 30px;
+}
+
+.centralizador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/*produto*/
+
+.produto {
+    width: 300px;
+    height: 450px;
+    background-color: var(--thirdColor);
+    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-size: 270px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 18px rgba(97, 94, 94, 0.519);
+}
+
+.produto > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 97%;
+    background-color: var(--thirdColor);
+}
+
+.produto > div > img {
+    width: 90%;
+    height: 50%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.produto > div > div {
+    display: flex;
+    flex-direction: column;
+    height: 190px;
+    width: 90%;
+    justify-content: space-evenly; 
+}
+
+.produto .titleProd {
+    min-width: 160px;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    margin-bottom: 23px;
+}
+
+.produto .precoProd {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.containerBotoes {
+   display: flex;
+   justify-content: space-between; 
+   width: 100%;
+   
+}
+
+.descricao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button.btnComprar {
+    width: 60%;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+button.btnCarrinho {
+    width: 25%;
+    border: 0;
+    border-radius: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+button.btnCarrinho img {
+    width: 30px;
+}
+
+#footer{
+    display: flex;
+    height: 150px;
+    background-color: var(--primaryColor);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+#iconeImg{
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: right;
+}
+
+#icones{
+ display: flex;
+ flex-direction: column;
+color: white;
+}
+
+.iconLateral{
+  display:flex;  
+  gap: 20px;
+  margin-bottom: 5px;
+  font-family: "Nunito";
+
+}

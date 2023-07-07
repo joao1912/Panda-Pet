@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+
     <link rel="stylesheet" href="estilos/index.css">
-    <link rel="stylesheet" href="estilos/pagina-inicial/style.css">
+    <link rel="stylesheet" href="estilos/pag-inicial.css">
+    <link rel="stylesheet" href="./estilos/pag-produtos.css">
+    <link rel="stylesheet" href="./estilos/pag-agendamento.css">
     
 </head>
 <body>
@@ -71,111 +75,331 @@
            <img id="fotoUserBemVindo" src="../imagens/perfil-default.jpg" alt="Foto de Perfil">
         </div>
     </div>
-    <section id="perfilUsuario">
 
-    <div id="dentroPerfil">
-        <div id="imagemDefault">
-            <img id="imagem" src="./imagens/perfil-default.jpg">
-            <input type="file" id="userImg">
+    <section id="perfilUsuario">
+        <div id="dentroPerfil">
+            <div id="imagemDefault">
+                <img id="imagem" src="./imagens/perfil-default.jpg">
+                <input type="file" id="userImg">
+            </div>
+
+            <div id="botaoFechar">
+                <button><i class="material-symbols-outlined">close</i></button>
+            </div>
+
+            <div id="infoUser">
+                <div id="botoes">
+
+                    <div id="informacoes">
+                        
+                        <div id="nome">
+                            <label class="textoInputs">Nome:</label>
+                            <input id="nomeUser" type="text" class="inputs" readonly>
+                        </div>
+
+                        <div id="conta">
+                            <label class="textoInputs">Data de criação da conta:</label>
+                            <input id="contaUser" type="text" class="inputs" readonly>
+                        </div>
+
+                        <div id="contato">
+                            <label class="textoInputs">Contato:</label>
+                            <input  id="contatoUser" type="text" class="inputs" readonly>
+                        </div>
+
+                    </div>
+
+                    <div id="excluirEeditar">
+                        <button class="botaoTransparente">Excluir</button>
+                        <button class="botaoTransparente">Editar</button>
+                        <button class="botaoTransparente">Minhas compras</button>
+                    </div>
+                </div>  
+
+                <div id="direita">
+                    <label class="petsz">Pets</label>
+                    <div id="quadradoPets"></div>
+                </div>
+            </div>
         </div>
 
-        <div id="botaoFechar">
-            <button><i class="material-symbols-outlined">close</i></button>
-         </div>
+    </section>
 
-        <div id="infoUser">
-            <div id="botoes">
+    <section id="containerTelaInicial">
+        <h2 id="promocoes" class="carrossel"></h2>
+        <div id="containerCarrossel">
+            <img src="imagens/carrossel/aumigao.png.png" alt="Aumigao" />
+            <img src="imagens/carrossel/produtoqualidade.png" alt="Produtos" />
+            <img src="imagens/carrossel/petshop.png" alt="PetLimpo"/>
+        </div>
 
-                <div id="informacoes">
+        <h2 class="carrossel"></h2>
+        
+
+        <h2 id="agendeSeuHorario" class="petshop">Agende seu horário!</h2>
+        <article id="textoPetShop"><p>Seu pet precisa de serviços de cuidados
+        para higiene? Contamos com os melhores profissionais de banho e tosa,
+            prontos para deixar seu "cãopanheiro" bonito e muito cheiroso!</p> 
+        </article>
+
+        <div id="agendar">
+        <button id="botaoTransparente">Agendar</button>
+        </div>
+
+        <div id="containerPetShop">
+        <img id="imagemPanda" src="imagens/pandaAgendar.png">
+        </div>
+    <div>
+        
+    </div>
+
+    <div id="textoSomos">
+        <div id="icon">
+            <i class="material-symbols-outlined icon">pets</i>
+        </div>
+        <h2 class="quemSomos">Quem somos</h2>
+        <article id="texto1">
+            Olá amigos! Muito prazer, somos a equipe Panda Pet, 
+            nossa empresa nasceu no ano de 2023 e nosso maior objetivo é o bem-estar animal.
+            Nossa preocupação vai além da venda dos melhores produtos para seu animalzinho, oferecemos também hospedagem e 
+            os melhores cuidados para a beleza e higiene do seu pet.
+        </article>
+
+        <div id="textoHome">
+        
+            <div class="">
+                <i class="material-symbols-outlined icon2">home</i>
+            </div>
+
+            <h2 class="Hospedagem">Viaje tranquilo!</h2>
+            <article id="texto2">
+                Você sabia que o Panda Pet conta com a melhor hospedagem para seu melhor amigo?
+                Viaje tranquilo sabendo que seu animalzinho vai estar bem cuidado por profissionais atenciosos que vão fazer
+                seu pet se sentir no seu proprio lar! Aqui o seu pet poderá ficar em contato com outros amiguinhos, 
+                sociabilizar, se divertir e, o mais importante, receber muito amor e carinho. Agende já a hospedagem do seu pet!
+            </article>
+        </div>
+    </section>
+
+    <section id="containerTelaProdutos">
+        <div class="centralizador">
+            <h1 id="h1Produtos"></h1>
+            <section id="containerProdutos">
+                
+            </section>
+        </div>
+    </section>
+        
+    <section id="containerTelaAgendamento">
+        <div class="centralizadorAgenadamento">
+            <section id="container">
+
+                <div id="servico">
+
+                    <div id="divECima">
+                        <div>
+                            <img src="../imagens/icons/pata.svg" alt="imagemPata">
+                        </div>
+
+                        <h1 id="titulo">Panda Pet</h1>
+                    </div>
+
+                    <div id="divEMeio">
+
+                        <div id="containerInputRadios">
+
+                            <div class="sub-container-inpt">
+                                <input type="radio" id="inptPerfilPet" style="display: none;">
+                                <label for="inptPerfilPet" class="labelRadio">
+                                    <div class="inptEstilizado marked">
+
+                                    </div>
+                                    <span>Perfil Do Pet</span>
+                                </label>
+                            </div>
+                            <div class="sub-container-inpt">
+                                <input type="radio" id="inptServico" style="display: none;">
+                                <label for="inptServico" class="labelRadio">
+                                    <div class="inptEstilizado">
+
+                                    </div>
+                                    <span>Serviço</span>
+                                </label>
+                            </div>
+                            <div class="sub-container-inpt">
+                                <input type="radio" id="inptConfirmacao" style="display: none;">
+                                <label for="inptConfirmacao">
+                                    <div class="inptEstilizado">
+
+                                    </div>
+                                    <span>Confirmação</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divEBaixo">
+
+                    </div>
+                </div>
+
+                <div id="cadastroPet">
+
+                    <div id="divDCima">
+                        <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
+                        <h2>Nos fale um pouco dele:</h2>
+                    </div>
+
+                    <div id="divDMeio">
+
+                        <div id="divDEsquerdoNome" class="containersCadastro">
+
+                            <label class="labelCadastro" for="inputNome">Nome</label>
+                            <input id="inputNome" class="inputs">
+                            <label class="labelCadastro" for="inputAniver">Aniversário</label>
+                            <input id="inputAniver" class="inputs">
+                            <label class="labelCadastro" for="inputRaca">Raça</label>
+                            <input id="inputRaca" class="inputs">
+                            <label class="labelCadastro" for="inputPeso">Peso</label>
+                            <input id="inputPeso" class="inputs">
+
+                        </div>
+
+                        <div id="divDDireitoGenero" class="containersCadastro">
+
+                            <label for="botaoEscolhaGenero" class="labelGeneroAlergico">Gênero</label>
+                            <div id="botaoEscolhaGenero">
+                                <button data-content="Macho" class="btnOpt" id="btnMacho">Macho</button>
+                                <button class="btnOpt" id="btnFemea">Fêmea</button>
+                            </div>
+                            <label for="botaoEscolhaAlergico" class="labelGeneroAlergico">Alérgico</label>
+                            <div id="botaoEscolha">
+                                <button data-content="Sim" class="btnOpt" id="btnYes">Sim</button>
+                                <button class="btnOpt" id="btnNo">Não</button>
+                            </div>
+
+                            <textarea id="quadro" cols="30" rows="10">
+
+                            </textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div id="divDBaixo">
+                        <button id="botaoProximo">Próximo</button>
+                    </div> 
+                </div>
+
+                <div id="cadastroPet2">
+
+                    <div id="divDCima2">
+                        <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
+                        <h2>Qual o serviço desejado ?</h2>
+                    </div>
+
+                    <div id="divDMeio2">
+                        <button id="botaoBanho">Banho e Tosa</button>
+                        <button id="botaoHospedar">Hospedar</button>
+                    </div>
+                        
+                    <div id="containerCalendario">
+                        
+                    </div> 
                     
-                    <div id="nome">
-                        <label class="textoInputs">Nome:</label>
-                        <input id="nomeUser" type="text" class="inputs" readonly>
-                    </div>
-
-                    <div id="conta">
-                        <label class="textoInputs">Data de criação da conta:</label>
-                        <input id="contaUser" type="text" class="inputs" readonly>
-                    </div>
-
-                    <div id="contato">
-                        <label class="textoInputs">Contato:</label>
-                        <input  id="contatoUser" type="text" class="inputs" readonly>
+                    <div id="divDBaixo2">
+                        <button id="botaoVoltar">Voltar</button>
+                        <button id="botaoProximo2">Próximo</button>
                     </div>
 
                 </div>
 
-                <div id="excluirEeditar">
-                    <button class="botaoTransparente">Excluir</button>
-                    <button class="botaoTransparente">Editar</button>
-                    <button class="botaoTransparente">Minhas compras</button>
-                 </div>
-               </div>  
+                <div id="cadastroPet3">
 
-            <div id="direita">
-                <label class="petsz">Pets</label>
-                <div id="quadradoPets"></div>
+                    <div id="divDCima3">
+                        <h1>Tudo Prontinho!</h1>
+                    </div>
 
-            </div>
+
+                    <div id="divTitulo">
+                        <h1>Informações De Pagamento</h1>     
+                    </div>
+                        
+                    <div id="divDMeio3">
+
+                        
+
+                        <div id="divPagamento1">
+
+                            <div id="divNomePet">
+                                <label class="labelNomePet" for="inputNomePet">Nome Do Pet</label>
+                                <input id="inputNomePet" class="inputPagamento1">
+                            </div>
+
+                            <div id="divAlergias">
+                                <label class="labelNomePet" for="inputAlergias">Alergias</label>
+                                <input id="inputAlergias" class="inputPagamento1">
+                            </div>
+
+                            <div id="divRaca">
+                                <label class="labelNomePet" for="inputRaça">Raça</label>
+                                <input id="inputRaça" class="inputPagamento1">
+                            </div>
+
+                            <div id="divServico">
+                                <label class="labelNomePet" for="inputServico">Serviço</label>
+                                <input id="inputServico" class="inputPagamento1">
+                            </div>
+
+                        </div>
+                        
+                        <div id="divPagamento2">
+
+                            <div id="divSeuNome">
+                                <label class="labelNomePet" for="inputSeuNome">Seu Nome</label>
+                                <input id="inputSeuNome" class="inputPagamento2">
+                            </div>
+
+                            <div id="divAlinhar">
+
+                                <div id="divFormaPagamento">
+                                <h2>Forma De Pagamento</h2> 
+                                </div>
+
+                                <div id="div2">
+
+                                    <div>  
+                                        <input type="radio" name="inputpagamentos" class="input2" id="inputCreditoDebito" checked> 
+                                        <label class="labelCreditoDebito" for="inputCreditoDebito">Cartão De Crédito Ou Débito</label>
+                                    </div>
+
+                                    <div> 
+                                        <input type="radio" name="inputpagamentos" class="input2" id="inputPix">
+                                        <label class="labelPix" for="inputPix">Pix</label>    
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="inputpagamentos" class="input2" id="inputBoleto">
+                                        <label class="labelBoleto" for="inputBoleto">Boleto</label>   
+                                    </div> 
+
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                <div id="divDBaixo3">
+                    <button id="botaoVoltar3">Voltar</button>  
+                    <button id="botaoFinalizar">Finalizar</button>
+                </div>
+        
+            </section>
         </div>
-    </div>
+    </section>
 
+    <section id="containerTelaCarrinho">
 
     </section>
-        
-      <h2 id="promocoes" class="carrossel"></h2>
-      <div id="container">
-        <img src="imagens/carrossel/aumigao.png.png" alt="Aumigao" />
-        <img src="imagens/carrossel/produtoqualidade.png" alt="Produtos" />
-        <img src="imagens/carrossel/petshop.png" alt="PetLimpo"/>
-      </div>
-
-      <h2 class="carrossel"></h2>
-    
-
-      <h2 id="agendeSeuHorario" class="petshop">Agende seu horário!</h2>
-      <article id="textoPetShop"><p>Seu pet precisa de serviços de cuidados
-       para higiene? Contamos com os melhores profissionais de banho e tosa,
-        prontos para deixar seu "cãopanheiro" bonito e muito cheiroso!</p> 
-      </article>
-
-    <div id="agendar">
-      <button id="botaoTransparente">Agendar</button>
-    </div>
-
-    <div id="containerPetShop">
-      <img id="imagemPanda" src="imagens/pandaAgendar.png">
-    </div>
-<div>
-    
-</div>
-
-<div id="textoSomos">
-    <div id="icon">
-        <i class="material-symbols-outlined icon">pets</i>
-    </div>
-    <h2 class="quemSomos">Quem somos</h2>
-    <article id="texto1">
-        Olá amigos! Muito prazer, somos a equipe Panda Pet, 
-        nossa empresa nasceu no ano de 2023 e nosso maior objetivo é o bem-estar animal.
-        Nossa preocupação vai além da venda dos melhores produtos para seu animalzinho, oferecemos também hospedagem e 
-        os melhores cuidados para a beleza e higiene do seu pet.
-    </article>
-
-    <div id="textoHome">
-    
-        <div class="">
-            <i class="material-symbols-outlined icon2">home</i>
-        </div>
-
-        <h2 class="Hospedagem">Viaje tranquilo!</h2>
-        <article id="texto2">
-            Você sabia que o Panda Pet conta com a melhor hospedagem para seu melhor amigo?
-            Viaje tranquilo sabendo que seu animalzinho vai estar bem cuidado por profissionais atenciosos que vão fazer
-            seu pet se sentir no seu proprio lar! Aqui o seu pet poderá ficar em contato com outros amiguinhos, 
-            sociabilizar, se divertir e, o mais importante, receber muito amor e carinho. Agende já a hospedagem do seu pet!
-        </article>
-    </div>
+      
 
     <footer id="footer">
 
@@ -202,7 +426,14 @@
         </div>
 
     </footer>
-    <script type="module" src="scripts/pagina-inicial/index.js"></script>
+
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="scripts/pag-inicial.js"></script>
+    <script type="module" src="./scripts/pag-produtos.js"></script>
+    <script type="module" src="./scripts/pag-agendamento.js"></script>
+    <!-- <script type="module" src="./scripts/pag-carrinho.js"></script> -->
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="./scripts/utils/welcomeMessage.js"></script>

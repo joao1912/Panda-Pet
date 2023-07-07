@@ -1,5 +1,5 @@
-import { mesAtual } from "../../pagina-adm/script.js"
-import { bodyCalendar } from "../../pagina-adm/script.js"
+import { mesAtual } from "../../pagina-adm/pag-adm.js"
+import { bodyCalendar } from "../../pagina-adm/pag-adm.js"
 
 export function setDarkCellCalendar() {
 
