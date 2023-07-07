@@ -35,9 +35,9 @@ function initializeProducts() {
         new Produto(8, "Ração para cachorro porte grande", "Ração com ingredientes selecionados, como frango e arroz, oferecendo uma nutrição completa e equilibrada para cães adultos.", "../../imagens/alimentacao/soft-dog-caes.png", 59.99, "alimentacao", "", 10),
 
         // Categoria: Brinquedos
-        new Produto(9, "Arranhador para Gatos", "Arranhador resistente com plataforma para gatos afiarem as unhas.", "../../imagens/brinquedos/arranhador-brinquedo-cat.jpg", 59.99, "brinquedos", "", 10),
+        new Produto(9, "Arranhador", "Arranhador resistente com plataforma para gatos afiarem as unhas.", "../../imagens/brinquedos/arranhador-brinquedo-cat.jpg", 59.99, "brinquedos", "", 10),
         new Produto(10, "Bolinhas de borracha", "Bolinhas para cães brincarem e exercitarem a mandíbula.", "../../imagens/brinquedos/bolinhasCaes.png", 9.99, "brinquedos", "", 10),
-        new Produto(11, "Arranhador com bolinhas para gatos", "Arranhador com poste e plataforma para gatos.", "../../imagens/brinquedos/brinquedo-c-arranhador-gatos.jpg", 45.90, "brinquedos", "", 10),
+        new Produto(11, "Arranhador com bolinhas", "Arranhador com poste e plataforma para gatos.", "../../imagens/brinquedos/brinquedo-c-arranhador-gatos.jpg", 45.90, "brinquedos", "", 10),
         new Produto(12, "Brinquedo com penas", "penas coloridas para gatos se divertirem.", "../../imagens/brinquedos/brinquedo-gatos-penas.png", 29.99, "brinquedos", "", 10),
         new Produto(13, "Ratinhos", "Ratinho interativo e resistente para seus pets brincarem e aliviarem o estresse.", "../../imagens/brinquedos/brinquedo-gatos-ratinho.png", 12.99, "brinquedos", "", 10),
         new Produto(14, "Hamburguer para morder", "Hamburguinho de borracha para seu cachorro morder sem medo!.", "../../imagens/brinquedos/hamburguer-dog.png", 12.90, "brinquedos", "", 10),
@@ -46,14 +46,14 @@ function initializeProducts() {
         new Produto(17, "Osso de borracha", "Brinquedo durável para cães brincarem.", "../../imagens/brinquedos/osso-dog.jpg", 13.99, "brinquedos", "", 10),
 
         // Categoria: Acessórios
-        new Produto(18, "Casinha com arranhador para gatos", "Casinha e arranhador para seu gatinho brincar", "../../imagens/acessorios/arranhadorCasaCat.jpg", 139.90, "acessorios", "", 10),
+        new Produto(18, "Casinha com arranhador", "Casinha e arranhador para seu gatinho brincar", "../../imagens/acessorios/arranhadorCasaCat.jpg", 139.90, "acessorios", "", 10),
         new Produto(19, "Cama toca para pets", "Caminha estilo toca para deixar seu pet confortável.", "../../imagens/acessorios/cama-toca.png", 79.90, "acessorios", "", 10),
         new Produto(20, "Comedouro para pets", "Acessório incrivel para quando seus pets ficarem sozinhos, serve ocmo comedouro e bebedouro.", "../../imagens/acessorios/comedouro-bebedouro-automatico.jpg", 44.90, "acessorios", "", 10),
-        new Produto(21, "Comedouro para gatos", "Comedouro estilo cat.", "../../imagens/acessorios/comedouro-gatos.jpg", 22.99, "acessorios", "", 10),
+        new Produto(21, "Comedouro", "Comedouro estilo cat.", "../../imagens/acessorios/comedouro-gatos.jpg", 22.99, "acessorios", "", 10),
         new Produto(22, "Comedouro interativo", "Comedouro para seu pet desestressar.", "../../imagens/acessorios/comedouro-interativo.png", 39.99, "acessorios", "", 10),
         new Produto(23, "Guia retrátil", "Guia retrátil para deixar seu pet confortável na hora do passeio.", "../../imagens/acessorios/guia-retratil.png", 25.99, "acessorios", "", 10),
         new Produto(24, "Porta ração", "Mantenha a ração dos seus pets organizada, escolha o tamanho ideal para guardar a ração de maneira prática.", "../../imagens/acessorios/porta-racao-pet.jpg", 45.99, "acessorios", "", 10),
-        new Produto(25, "Casa tunel para gatos", "Casinha confortavél para seu gatinho.", "../../imagens/acessorios/toca-tunel-gato.jpg", 99.90, "acessorios", "", 10),
+        new Produto(25, "Casa tunel", "Casinha confortavél para seu gatinho.", "../../imagens/acessorios/toca-tunel-gato.jpg", 99.90, "acessorios", "", 10),
         new Produto(26, "Cama pets", "Caminha ideal para seu pet, com o conforto que ele merece.", "../../imagens/acessorios/caminha-pet.png", 59.90, "acessorios", "", 10)
     ]
 

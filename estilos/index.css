@@ -511,6 +511,10 @@ header #containerBarraDePesquisa {
     padding: 30px;
 }
 
+#containerTelaIndividualProduto {
+    display: none;
+}
+
 #containerTelaCarrinho {
     display: none;
 }

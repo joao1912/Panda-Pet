@@ -1,0 +1,274 @@
+#conteinerPrincipal {
+
+    display: flex;
+    width: 100%;
+    height: 600px;
+    font-family: "Nunito";
+
+
+}
+
+#imagemProduto img {
+    width: 450px;
+    height: 450px;
+    background-color: black;
+
+}
+
+#conteinerPrincipal>div {
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+#imagemProduto {
+
+    width: 40%;
+    height: 100%;
+    background-color: white
+}
+
+#paginaLadoDireito {
+
+
+    width: 60%;
+    height: 100%;
+    display: flex;
+
+
+}
+
+#descricaoImagem {
+
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white
+}
+
+#conteinerTituloProduto {
+
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+
+#tituloProduto {
+
+    display: flex;
+    font-size: 2em;
+    color: var(--primaryColor);
+    align-items: center;
+    padding-top: 15%;
+    font-family:'GooperBold'
+
+}
+
+#descricaoCodigo {
+
+    font-size: 1em;
+    color: var(--primaryColor);
+    font-family: 'GooperBold';
+}
+
+#TituloCodigo {
+
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primaryColor);
+    font-family: 'GooperBold';
+
+}
+
+#descricaoImagem-2 {
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    background-color: white
+}
+
+#botaoTeste {
+
+    width: 50px;
+    height: 20px;
+
+}
+
+#imagemDescricaoProduto {
+
+    background-color: black;
+    width: 50%;
+    height: 80%;
+
+
+
+}
+
+.descricaoDivs {
+
+    width: 100%;
+    height: 40%;
+
+}
+
+#alteracoesDescricaodivs {
+
+    display: flex;
+    width: 100%;
+    height: 40%;
+    font-size: 2.5em;
+    color: var(--primaryColor);
+
+
+}
+
+#alteracoesDescricaodivs2 {
+
+    display: flex;
+    width: 100%;
+    height: 40%;
+    font-size: 2em;
+    color: var(--primaryColor);
+padding-top: 10px;
+
+}
+
+#descricaoBaixo {
+
+
+    width: 100%;
+    height: 30%;
+    padding-top: 15px;
+
+
+}
+
+#tituloTextoCalcular {
+
+    display: flex;
+    font-size: 1.5em;
+    width: 100%;
+    height: 40%;
+    color: var(--primaryColor);
+
+}
+
+#addProdutos {
+
+    width: 100%;
+    height: 20%;
+
+}
+
+#botaoAdd {
+    display: flex;
+    gap: 5px;
+
+
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+}
+
+#botaoINPT {
+
+    width: 40px;
+    border-radius: 20%;
+    border: 0;
+    text-align: center;
+    outline: none;
+    cursor: default;
+
+
+}
+
+.botoesAdd {
+
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 0;
+    color: var(--primaryColor);
+
+
+}
+
+#botaoFuncoes {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 5px;
+
+
+}
+
+.botaoFuncoestamanho {
+
+
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    font-size: 1.5em;
+    border: 0;
+    background-color: var(--secondColor);
+    color: white;
+
+}
+
+#tituloTextoCep {
+
+    display: flex;
+    width: 50%;
+    height: 40px;
+    border-radius: 15px;
+    border: 0;
+    text-align: center;
+    font-size: 1em;
+    outline: 0;
+    background-color: var(--thirdColor);
+    color:white
+
+}
+
+#btnOk {
+
+    margin-left: 5px;
+    width: 50px;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--secondColor);
+    color: white;
+
+}
+
+#botoesCep {
+
+
+    display: flex;
+
+
+}
+
+#tituloTextoCep::placeholder{
+
+    color: white;
+}

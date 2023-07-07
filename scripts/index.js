@@ -1,11 +1,20 @@
 import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
+import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
+
+for (let user of users) {
+    if (user.lembrarDeMim == false) {
+        user.online = false
+        saveLocalStorage(users)
+    }
+}
+
 export let userID = verifyUserOnline()
 
 function setPerfilOnline() {
-    
+   
     if (users[userID].img) {
         let urlImagem = users[userID].img
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
@@ -24,14 +33,16 @@ function setPerfilOnline() {
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
         users[userID].lembrarDeMim = false
-        if (window.location.pathname != '/index.html') {
+        localStorage.removeItem("welcome")
 
+        if (window.location.pathname == "./index.html") {
+            location.reload()
+        } else {
             window.location.href = "../../index.html"
-
-       }
+        }
+    
         saveLocalStorage(users)
     })
-    
 }
 
 if (userID) {
@@ -98,8 +109,9 @@ const nav = document.querySelector("nav")
 const containerTelaInicial = document.getElementById("containerTelaInicial")
 const containerTelaProdutos = document.getElementById("containerTelaProdutos")
 const containerTelaAgendamento = document.getElementById("containerTelaAgendamento")
+const containerTelaIndividualProd = document.getElementById("containerTelaIndividualProduto")
 
-const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento]
+const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd]
 
 nav.addEventListener("click",function(event){
    
@@ -140,15 +152,12 @@ nav.addEventListener("click",function(event){
                 showProducts("alimentos")
             } else {
                 telas.forEach( tela => {
-                    console.log(tela)
                     tela.style.display = "none"
                 })
 
                 containerTelaProdutos.style.display = "block"
                 showProducts("alimentos")
-
             }
-
             break
 
         case "forBrinquedos":
