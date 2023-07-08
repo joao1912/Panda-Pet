@@ -79,8 +79,6 @@ function trocaFotoPerfil(elementIdImg, inptFileId) {
 
     if (file !== null && fileTrocaFoto !== null) {
 
-        /* ESTA REALIZANDO UM DUPLO CLICK, RESOLVER */
-
         fileTrocaFoto.click();
         fileTrocaFoto.addEventListener("change", readImage, false);
         

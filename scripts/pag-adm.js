@@ -53,30 +53,30 @@ const productDescription = document.getElementById("productDescription")
 const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
-const inptProductCodEdit = document.getElementById("productCodEdit")
+// const inptProductCodEdit = document.getElementById("productCodEdit")
 
-inptProductCodEdit.addEventListener("keyup", function() {
-let productIndex = produtos.findIndex(produto => produto.codigo === Number(inptProductCodEdit.value))
-if(productIndex > -1) {
+// inptProductCodEdit.addEventListener("keyup", function() {
+// let productIndex = produtos.findIndex(produto => produto.codigo === Number(inptProductCodEdit.value))
+// if(productIndex > -1) {
 
-    let inptProductPrice = document.getElementById("productNewPrice")
-    let inptProductNewStock = document.getElementById("productNewStock")
-    let inptNewDescImage = document.getElementById("newDescImage")
-    let inptProductNewDescription = document.getElementById("productNewDescription")
+//     let inptProductPrice = document.getElementById("productNewPrice")
+//     let inptProductNewStock = document.getElementById("productNewStock")
+//     let inptNewDescImage = document.getElementById("newDescImage")
+//     let inptProductNewDescription = document.getElementById("productNewDescription")
 
-    //productPhoto.src = produtos[productIndex].imagem
+//     //productPhoto.src = produtos[productIndex].imagem
 
-    inptProductPrice.value = produtos[productIndex].preco
+//     inptProductPrice.value = produtos[productIndex].preco
 
-    inptProductNewStock.value = produtos[productIndex].estoque
+//     inptProductNewStock.value = produtos[productIndex].estoque
 
-    inptNewDescImage.value = produtos[productIndex].descricaoImagem
+//     inptNewDescImage.value = produtos[productIndex].descricaoImagem
     
-    inptProductNewDescription.value = produtos[productIndex].descricao
+//     inptProductNewDescription.value = produtos[productIndex].descricao
 
 
-}
-})
+// }
+// })
 
 formAddProduct.addEventListener("keyup", function() {
 
@@ -326,14 +326,10 @@ nav.addEventListener("click", function (event) {
             
         case "forSugestoes":
 
-            if (window.location.pathname == '/paginas/produtos.html') {
-
-                showProducts("sugestoes")
-
-            } else {
-                window.location.href = "../../index.html"
-                document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
-            }
+            category = JSON.stringify("sugestoes")
+            localStorage.setItem("category", category)
+            window.location.href = "../../index.html"
+            document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
 
             break  
 
@@ -813,4 +809,26 @@ function photoProductEvents() {
     }
 
 }
+
+const btnEditEscProducts = document.getElementById("btnEscEdit")
+const listaEditProducts = document.getElementById("listProductsEdit")
+const listaRemoveProducts = document.getElementById("listProductsRemove")
+const btnCloseEdit = document.getElementById("btnCloseEdit")
+const btnCloseRemove = document.getElementById("btnCloseRemove")
+const btnRemoveEscProducts = document.getElementById("btnEscRemove")
+
+btnEditEscProducts.addEventListener("click", function(){
+    listaEditProducts.style.display = "flex"
+    btnCloseEdit.addEventListener("click", function(){
+        listaEditProducts.style.display = "none"
+    })    
+})
+
+btnRemoveEscProducts.addEventListener("click", function(){
+    listaRemoveProducts.style.display = "flex"
+    btnCloseRemove.addEventListener("click", function(){
+        listaRemoveProducts.style.display = "none"
+    })    
+})
+
 

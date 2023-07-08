@@ -364,10 +364,30 @@
             <section id="screenEditProduct">
                 <button class="material-symbols-outlined backEditButtons" id="internalEditButton" aria-label="Voltar">arrow_back</button>
 
-                <div class="containerCodProduct">
-                    <label for="productCodEdit">Código</label>
-                    <input type="number" id="productCodEdit">
+                <div class="containerTabela listaProdutos" id="listProductsEdit">
+                    <h2>Lista dos Produtos</h2>
+                    <button class="material-symbols-outlined closeTable" id="btnCloseEdit">close</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Id</th>
+                                <th>Selecionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Um Produto muito legal amigo</td>
+                                <td>R$ 500,00</td>
+                                <td>1</td>
+                                <td><button class="btnDeleteProduct"><i class="material-symbols-outlined">check</i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+                <button class="btnEscProduto" id="btnEscEdit">Escolher Produto</button>
 
                 <button id="btnEditPhoto" aria-label="Editar Foto Do Produto">
                     <div class="material-symbols-outlined" id="containerIconEditPhoto">
@@ -408,10 +428,30 @@
             <section id="screenRemoveProduct">
                 <button class="material-symbols-outlined backEditButtons" id="internalRemoveButton" aria-label="Voltar">arrow_back</button>
 
-                <div class="containerCodProduct">
-                    <label for="productCodRemove">Código</label>
-                    <input type="number" id="productCodRemove">
+                <div class="containerTabela listaProdutos" id="listProductsRemove">
+                    <h2>Lista dos Produtos</h2>
+                    <button class="material-symbols-outlined closeTable" id="btnCloseRemove">close</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Id</th>
+                                <th>Selecionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Um Produto muito legal amigo</td>
+                                <td>R$ 500,00</td>
+                                <td>1</td>
+                                <td><button class="btnSelectProduct"><i class="material-symbols-outlined">check</i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+                <button class="btnEscProduto" id="btnEscRemove">Escolher Produto</button>
 
                 <div id="containerViewProduct">
                     <div id="viewProduct">
