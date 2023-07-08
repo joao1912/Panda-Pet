@@ -7,7 +7,7 @@ const botaoEscolhaGenero = document.getElementById("botaoEscolhaGenero")
 const btnMacho = document.getElementById("btnMacho")
 let btnBeforeGenero 
 
-;[...document.styleSheets[6].cssRules].forEach( styleSheet => {
+;[...document.styleSheets[7].cssRules].forEach( styleSheet => {
   if (styleSheet.selectorText == "#btnMacho::before") {
     btnBeforeGenero = styleSheet
   }
@@ -33,7 +33,7 @@ const botaoEscolha = document.getElementById("botaoEscolha")
 const btnYes = document.getElementById("btnYes")
 let btnBefore 
 
-;[...document.styleSheets[6].cssRules].forEach( styleSheet => {
+;[...document.styleSheets[7].cssRules].forEach( styleSheet => {
   if (styleSheet.selectorText == "#btnYes::before") {
     btnBefore = styleSheet
   }

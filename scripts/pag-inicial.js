@@ -6,7 +6,7 @@ $('#containerCarrossel').slick({
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500
-  });
+});
 
 let nome 
 let dataConta
@@ -43,3 +43,4 @@ function inserirInfo(){
    imgUser.addEventListener(() => {trocaFotoPerfil("imagem", "userImg")})
 
 }
+

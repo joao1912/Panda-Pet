@@ -2,7 +2,6 @@ import { saveLocalStorage } from "./utils/saveLocalStorage.js"
 import { produtos } from "./utils/produtos.js"
 let users = JSON.parse(localStorage.getItem("users"))
 
-//[{nome: userName, senha: passWord, carrinho: [ cod: , quant: ], online: false, img: urlFotoPerfil}]
 let userID
 
 for (let obj of users) {
@@ -65,7 +64,7 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
 }
 
 
-function exibeCarrinho() {
+export function exibeCarrinho() {
     let carrinho = pegaCarrinho()
     let containerCarrinho = document.getElementById("containerCarrinho")
 
@@ -107,7 +106,7 @@ function exibeCarrinho() {
     calcFinalizarCompra()
 }
 
-exibeCarrinho()
+// exibeCarrinho()
 
 //Função criada para puxar o carrinho sempre que necessário
 function pegaCarrinho() {
@@ -206,7 +205,7 @@ function funcConstructorElements(cod, quantity) {
     //div container produto
 
     let divProduto = document.createElement("div")
-    divProduto.classList = "produto"
+    divProduto.classList = "produtoCarrinho"
     divProduto.id = `${produtos[cod].codigo}`;
     divProduto.appendChild(divDescricaoProduto)
 

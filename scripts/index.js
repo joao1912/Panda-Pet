@@ -1,6 +1,7 @@
 import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
+import { exibeCarrinho } from "./pag-carrinho.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
 
@@ -104,14 +105,17 @@ iconeDoPerfil.addEventListener("click",function(){
         tabelaPerfil.style.display = "none"
     }
 })
-
+const header = document.querySelector("header")
 const nav = document.querySelector("nav")
+const footer = document.querySelector("footer")
+
 const containerTelaInicial = document.getElementById("containerTelaInicial")
 const containerTelaProdutos = document.getElementById("containerTelaProdutos")
 const containerTelaAgendamento = document.getElementById("containerTelaAgendamento")
 const containerTelaIndividualProd = document.getElementById("containerTelaIndividualProduto")
+const containerTelaCarrinho = document.getElementById("containerTelaCarrinho")
 
-const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd]
+const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd, containerTelaCarrinho]
 const barra_pesquisa = document.getElementById("barraPesquisa")
 
 nav.addEventListener("click",function(event){
@@ -127,7 +131,7 @@ nav.addEventListener("click",function(event){
 
             containerTelaInicial.style.display = "block"
             location.reload()
-            
+
             break
 
         case "forAcessorios":
@@ -206,6 +210,20 @@ nav.addEventListener("click",function(event){
             barra_pesquisa.value = ""    
             break
     }
+})
+
+const btnCart = document.getElementById("btnShoppingCart")
+btnCart.addEventListener("click", function(){
+    telas.forEach( tela => {
+        tela.style.display = "none"
+    })
+
+    header.style.display = "none"
+    nav.style.display = "none"
+    footer.style.display = "none"
+    containerTelaCarrinho.style.display = "flex"
+    exibeCarrinho()
+    
 })
 
 
