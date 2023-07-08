@@ -112,6 +112,7 @@ const containerTelaAgendamento = document.getElementById("containerTelaAgendamen
 const containerTelaIndividualProd = document.getElementById("containerTelaIndividualProduto")
 
 const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd]
+const barra_pesquisa = document.getElementById("barraPesquisa")
 
 nav.addEventListener("click",function(event){
    
@@ -126,7 +127,7 @@ nav.addEventListener("click",function(event){
 
             containerTelaInicial.style.display = "block"
             location.reload()
-
+            
             break
 
         case "forAcessorios":
@@ -142,7 +143,7 @@ nav.addEventListener("click",function(event){
                 showProducts("acessorios")
 
             }
- 
+            barra_pesquisa.value = ""
            
 
             break
@@ -158,6 +159,7 @@ nav.addEventListener("click",function(event){
                 containerTelaProdutos.style.display = "block"
                 showProducts("alimentos")
             }
+            barra_pesquisa.value = ""
             break
 
         case "forBrinquedos":
@@ -173,7 +175,7 @@ nav.addEventListener("click",function(event){
                 showProducts("brinquedos")
 
             }
-
+            barra_pesquisa.value = ""
             break
 
         case "forSugestoes":
@@ -189,7 +191,7 @@ nav.addEventListener("click",function(event){
                 showProducts("sugestoes")
 
             }
-
+            barra_pesquisa.value = ""
             break  
         
         case "forAgendamento":
@@ -201,12 +203,12 @@ nav.addEventListener("click",function(event){
             })
 
             containerTelaAgendamento.style.display = "block"
-                
+            barra_pesquisa.value = ""    
             break
     }
 })
 
-const barra_pesquisa = document.getElementById("barraPesquisa")
+
 barra_pesquisa.addEventListener("keyup", barraPesquisa)
 
 function barraPesquisa() {

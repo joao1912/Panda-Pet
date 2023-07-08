@@ -1,5 +1,5 @@
-import { bodyCalendar } from "../../pagina-adm/pag-adm.js"
-import { mesAtual } from "../../pagina-adm/pag-adm.js"
+import { bodyCalendar } from "../../pag-adm.js"
+import { mesAtual } from "../../pag-adm.js"
 
 export function setCurrentDay() {
     let data = new Date()

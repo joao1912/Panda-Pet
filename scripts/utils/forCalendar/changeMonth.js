@@ -1,6 +1,6 @@
 import { months } from "./months.js"
 import { setDarkCellCalendar } from "./setDarkCellCalendar.js"
-import { bodyCalendar } from "../../pagina-adm/pag-adm.js"
+import { bodyCalendar } from "../../pag-adm.js"
 import { setMarkersCalendar } from "./setMarkersCalendar.js"
 import { setCurrentDay } from "./setCurrentDay.js"
 

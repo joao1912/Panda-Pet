@@ -7,6 +7,44 @@ import { setMarkersCalendar } from './utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from './utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from './utils/forCalendar/setDayTasks.js'
 
+/* --- TEMPORARIO --- */
+
+
+const agendamentos = []
+agendamentos.push(
+    {
+        id: 1,
+        service: "Hospedagem",
+        dia: 10,
+        mes: 11,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
+    },
+    {
+        id: 2,
+        service: "Hospedagem",
+        dia: 10,
+        mes: 11,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
+    },
+    {
+        id: 3,
+        service: "Hospedagem",
+        dia: 10,
+        mes: 11,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
+    },
+    {
+        id: 4,
+        service: "Hospedagem",
+        dia: 10,
+        mes: 11,//o mes vai de 0 a 11 !!!
+        hora: "15:30"
+    }
+)
+
+localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
+/* ------------------ */
+
 const btnAddPhoto = document.getElementById("btnAddPhoto")
 const productName = document.getElementById("productName")
 const productPrice = document.getElementById("productPrice")
@@ -110,7 +148,11 @@ btnAdicionar.addEventListener("click", function () {
 
     produtos.push(productAdd)
     localStorage.setItem("listaProdutos", JSON.stringify(produtos))
-    alert("produto adicionado!")
+    Swal.fire(
+        'Produto Adicionado!',
+        'Ele ja está disponivel na loja!',
+        'success'
+      )
 
 })
 
@@ -245,60 +287,41 @@ iconeDoPerfil.addEventListener("click", function () {
     }
 })
 
+
 const nav = document.querySelector("nav")
 nav.addEventListener("click", function (event) {
-
+    let category
     switch (event.target.id) {
         case "forHome":
 
-            if (window.location.pathname != '/index.html') {
-
-                window.location.href = "../../index.html"
-
-            }
+            window.location.href = "../../index.html"
 
             break
 
         case "forAcessorios":
 
-            if (window.location.pathname == '/paginas/produtos.html') {
-
-                showProducts("acessorios")
-
-            } else {
-                let category = JSON.stringify("acessorios")
-                localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html"
-            }
-
+            category = JSON.stringify("acessorios")
+            localStorage.setItem("category", category)
+            window.location.href = "../../index.html"
+            document.addEventListener("DOMContentLoaded", showProducts("acessorios"))
             break
 
         case "forAlimentacao":
 
-            if (window.location.pathname == '/paginas/produtos.html') {
-
-                showProducts("alimentos")
-
-            } else {
-                let category = JSON.stringify("alimentos")
-                localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html"
-            }
+            category = JSON.stringify("alimentos")
+            localStorage.setItem("category", category)
+            window.location.href = "../../index.html"
+            document.addEventListener("DOMContentLoaded", showProducts("alimentos"))
 
             break
 
         case "forBrinquedos":
 
-            if (window.location.pathname == '../../paginas/produtos.html') {
-
-                showProducts("brinquedos")
-
-            } else {
-                let category = JSON.stringify("brinquedos")
-                localStorage.setItem("category", category)
-                window.location.href = "../../paginas/produtos.html"
-            }
-
+            category = JSON.stringify("brinquedos")
+            localStorage.setItem("category", category)
+            window.location.href = "../../index.html"
+            document.addEventListener("DOMContentLoaded", showProducts("brinquedos"))
+            
             break
             
         case "forSugestoes":
@@ -308,7 +331,7 @@ nav.addEventListener("click", function (event) {
                 showProducts("sugestoes")
 
             } else {
-                window.location.href = "../../paginas/produtos.html"
+                window.location.href = "../../index.html"
                 document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
             }
 
@@ -322,53 +345,8 @@ nav.addEventListener("click", function (event) {
 })
 
 const barra_pesquisa = document.getElementById("barraPesquisa")
-barra_pesquisa.addEventListener("keyup", barraPesquisa)
 
-function barraPesquisa() {
-
-    let stringSearch = barra_pesquisa.value
-    stringSearch = stringSearch.trim()
-    let searhProdutos = document.querySelectorAll(".produto")
-
-    if (stringSearch == "") {
-        let arrayProdutos = [...searhProdutos]
-        for (let produto of arrayProdutos) {
-            produto.style.display = "flex"
-        }
-    }
-
-    if (searhProdutos.length == 0) return
-
-
-
-        ;[...searhProdutos].forEach(produto => {
-
-            let title = produto.children[0].children[1].children[0].children[0].textContent
-
-            let exist = title.normalize("NFD")
-                .replace(/[^a-zA-Z\s]/g, "")
-                .toLowerCase()
-                .includes(stringSearch.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")
-                    .toLowerCase())
-
-            if (!exist) {
-                produto.style.display = "none"
-            } else {
-                produto.style.display = "flex"
-            }
-        })
-}
-
-const iconTelaAdm = document.getElementById("icon-tela-adm")
-iconTelaAdm.addEventListener("click", function () {
-
-
-    if (!window.location.pathname == '/paginas/administrador.html') {
-        window.location.href = "../../paginas/administrador.html"
-    }
-
-
-})
+/* fazer aqui o evendo do enter funcionar */
 
 const telaAdmUtilities = document.getElementById("containerAdmUtilities")
 const containerCalendar = document.getElementById("viewCalendar")
@@ -526,44 +504,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setMarkersCalendar()
     setCurrentDay()
 })
-
-/* --- TEMPORARIO --- */
-
-
-const agendamentos = []
-agendamentos.push(
-    {
-        id: 1,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 2,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 3,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 4,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    }
-)
-
-localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
-/* ------------------ */
 
 const telaCheckedTasks = document.getElementById("containerCheckedTasks")
 const calendar = document.getElementById("tbody")
