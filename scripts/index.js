@@ -14,6 +14,8 @@ for (let user of users) {
 
 export let userID = verifyUserOnline()
 
+let visibility = false
+
 function setPerfilOnline() {
    
     if (users[userID].img) {
@@ -30,6 +32,23 @@ function setPerfilOnline() {
     const containerUserLogado = document.getElementById("userLogado")
     botaoLogar.style.display = "none"
     containerUserLogado.style.display = "flex"
+
+    const btnMeuPerfil = document.getElementById("btnMeuPerfil")
+    const containerPerfil = document.getElementById("perfilUsuario")
+    const body = document.querySelector("body")
+
+    btnMeuPerfil.addEventListener("click", function() {
+        containerPerfil.style.display = "flex"
+        containerUser.style.display = "none"
+        visibility = false
+        body.style.overflow = "hidden"
+    })
+
+    const btnClosePerfil = document.querySelector("#botaoFechar > button")
+    btnClosePerfil.addEventListener("click", function(){
+        containerPerfil.style.display = "none"
+       body.removeAttribute("style")
+    })
 
     document.getElementById("botaoSair").addEventListener("click",function sair(){
         users[userID].online = false
@@ -83,7 +102,7 @@ function trocaFotoPerfil(elementIdImg, inptFileId) {
 }
 
 const iconeDoPerfil = document.getElementById("perfilIcon")
-let visibility = false
+
 iconeDoPerfil.addEventListener("click",function(){
     const tabelaPerfil = document.getElementById("containerPerfil")
 

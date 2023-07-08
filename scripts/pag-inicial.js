@@ -8,6 +8,23 @@ $('#containerCarrossel').slick({
     autoplaySpeed: 2500
 });
 
+const btnAgendar = document.getElementById("botaoTransparente")
+btnAgendar.addEventListener("click", function() {
+    const containerTelaInicial = document.getElementById("containerTelaInicial")
+    const containerTelaProdutos = document.getElementById("containerTelaProdutos")
+    const containerTelaAgendamento = document.getElementById("containerTelaAgendamento")
+    const containerTelaIndividualProd = document.getElementById("containerTelaIndividualProduto")
+    const containerTelaCarrinho = document.getElementById("containerTelaCarrinho")
+
+    const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd, containerTelaCarrinho]
+
+    telas.forEach( tela => {
+        tela.style.display = "none"
+    })
+
+    containerTelaAgendamento.style.display = "block"
+})
+
 let nome 
 let dataConta
 let img

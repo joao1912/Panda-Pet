@@ -30,7 +30,7 @@ function loadMessage() {
             setTimeout(() => {
                 divWelcomeMessage.style.display = "none"
             }, 2500);
-        }, 1200)
+        }, 600)
 
     }
 
