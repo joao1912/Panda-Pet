@@ -176,7 +176,7 @@
     width: 100%;/*largura*/
     height: 10%;/*altura*/   
     display:flex;
-    justify-content: end;
+    justify-content: space-between;
 
 }
 
@@ -186,12 +186,27 @@
     height: 34px;/*altura*/
     width: 133px;/*largura*/
     border: 0;
-    margin-top: -19px;
     margin-right: 20px;
     color:black;
     font-family:'GooperSemiBold';
     background-color: var(--primaryColor);
     
+}
+
+#petJaCadastrado {
+    height: 30px;
+    font-size: 1.3em;
+    margin-left: 20px;
+    color: white;
+    text-decoration: underline;
+    border: 0;
+    background-color: transparent;
+}
+
+#petJaCadastrado:hover {
+    transform: scale(1.1);
+    transition: all .2s ease-in;
+    color: var(--primaryColor);
 }
 
 .centralizadorAgenadamento{ /*centralizou o quadro da direita para esquerda*/
@@ -276,7 +291,7 @@
     background-color: transparent;
 }
 
-#btnYes::before {
+#btnNo::before {
     content: attr(data-content);
     color: white;
     position: absolute;
@@ -315,6 +330,11 @@
     border-radius: 5px;
     width: 205px;
     max-width: 205px;
+    height: 170px;
+    max-height: 170px;
+    padding: 5px;
+    font-size: 1em;
+    font-family: "Nunito";
 }
 
 

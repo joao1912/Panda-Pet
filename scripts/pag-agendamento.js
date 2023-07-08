@@ -30,27 +30,35 @@ botaoEscolhaGenero.addEventListener("click", function(event){
 })
 
 const botaoEscolha = document.getElementById("botaoEscolha")
-const btnYes = document.getElementById("btnYes")
+const btnNo = document.getElementById("btnNo")
 let btnBefore 
 
+
+
 ;[...document.styleSheets[7].cssRules].forEach( styleSheet => {
-  if (styleSheet.selectorText == "#btnYes::before") {
+  if (styleSheet.selectorText == "#btnNo::before") {
     btnBefore = styleSheet
   }
   
 })
 
+const areaText = document.getElementById("quadro")
+
 botaoEscolha.addEventListener("click", function(event){
     let id = event.target.id
 
     switch(id) {
-        case "btnYes":
-            btnBefore.style.left = "3px"
-            btnYes.dataset.content = "Sim"
-            break
         case "btnNo":
+            btnBefore.style.left = "3px"
+            btnNo.dataset.content = "Não"
+            areaText.setAttribute("disabled", true)
+            areaText.value = ""
+            break
+
+        case "btnYes":
             btnBefore.style.left = "102px"
-            btnYes.dataset.content = "Não"
+            btnNo.dataset.content = "Sim"
+            areaText.removeAttribute("disabled")
             break
     }
 })

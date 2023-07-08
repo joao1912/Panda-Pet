@@ -245,7 +245,7 @@
                     </div>
                 </div>
 
-                <div id="cadastroPet">
+                <div id="cadastroPet" style="display: flex;">
 
                     <div id="divDCima">
                         <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
@@ -276,11 +276,11 @@
                             </div>
                             <label for="botaoEscolhaAlergico" class="labelGeneroAlergico">Alérgico</label>
                             <div id="botaoEscolha">
-                                <button data-content="Sim" class="btnOpt" id="btnYes">Sim</button>
-                                <button class="btnOpt" id="btnNo">Não</button>
+                                <button data-content="Não" class="btnOpt" id="btnNo">Não</button>
+                                <button class="btnOpt" id="btnYes">Sim</button>
                             </div>
 
-                            <textarea id="quadro" cols="30" rows="10">
+                            <textarea id="quadro" cols="30" rows="10" disabled>
 
                             </textarea>
 
@@ -289,6 +289,7 @@
                     </div>
 
                     <div id="divDBaixo">
+                        <button id="petJaCadastrado">Meu pet ja esta cadastrado</button>
                         <button id="botaoProximo">Próximo</button>
                     </div> 
                 </div>
