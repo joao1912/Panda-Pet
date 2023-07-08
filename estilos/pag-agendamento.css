@@ -150,9 +150,9 @@
   width: 50%;
   height: 100%;
   display: flex;
-flex-direction: column;
+    flex-direction: column;
 
-align-items: center;
+    align-items: center;
 }
 .inputs{/*formata os inputs nome*/
     border-radius: 10px;
@@ -161,7 +161,9 @@ align-items: center;
     border: 0;
     display: flex;
     flex-direction: column;
-
+    padding-left: 10px;
+    cursor: auto;
+    font-size: 1.2em;
 }
 #inputPeso{/* diminuiu somente o input peso*/
     width: 100px;/*largura*/ 
