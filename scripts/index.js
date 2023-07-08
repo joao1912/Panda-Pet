@@ -1,7 +1,7 @@
 import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
-import { exibeCarrinho } from "./pag-carrinho.js";
+// import { exibeCarrinho } from "./pag-carrinho.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
 
@@ -222,7 +222,7 @@ btnCart.addEventListener("click", function(){
     nav.style.display = "none"
     footer.style.display = "none"
     containerTelaCarrinho.style.display = "flex"
-    exibeCarrinho()
+    // exibeCarrinho()
     
 })
 
