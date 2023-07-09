@@ -563,6 +563,17 @@ button {
     /* margin-left: -50px; */
 }
 
+.radio:hover {
+    cursor: pointer;
+}
+
+#inputSeuNome {
+    outline: none;
+    padding-left: 10px;
+    font-size: 1.1em;
+    font-family: "Nunito";
+}
+
 #inputServico {
     height: 40px;
     background-color: var(--primaryColor);
