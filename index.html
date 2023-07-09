@@ -245,7 +245,7 @@
                     </div>
                 </div>
 
-                <div id="cadastroPet" style="display: flex;">
+                <div id="cadastroPet" style="display: none;">
 
                     <div id="divDCima">
                         <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
@@ -317,7 +317,7 @@
 
                 </div>
 
-                <div id="cadastroPet3">
+                <div id="cadastroPet3" style="display: flex;">
 
                     <div id="divDCima3">
                         <h1>Tudo Prontinho!</h1>
@@ -334,24 +334,15 @@
 
                         <div id="divPagamento1">
 
-                            <div id="divNomePet">
-                                <label class="labelNomePet" for="inputNomePet">Nome Do Pet</label>
-                                <input id="inputNomePet" class="inputPagamento1">
-                            </div>
-
-                            <div id="divAlergias">
-                                <label class="labelNomePet" for="inputAlergias">Alergias</label>
-                                <input id="inputAlergias" class="inputPagamento1">
-                            </div>
-
-                            <div id="divRaca">
-                                <label class="labelNomePet" for="inputRaça">Raça</label>
-                                <input id="inputRaça" class="inputPagamento1">
-                            </div>
-
                             <div id="divServico">
                                 <label class="labelNomePet" for="inputServico">Serviço</label>
-                                <input id="inputServico" class="inputPagamento1">
+                                <input type="text" id="inputServico" name="servico" class="inputPagamento1" placeholder="Selecione o Serviço" readonly>
+                                <div class="dropDown" id="drop">
+                                    <div class="listDropDown">
+                                        <div class="item" id="item-1">Tosa e Banho</div>
+                                        <div class="item" id="item-2">Serviço</div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

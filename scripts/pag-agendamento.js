@@ -62,3 +62,35 @@ botaoEscolha.addEventListener("click", function(event){
             break
     }
 })
+
+const servicosElement = document.getElementById("inputServico")
+
+servicosElement.addEventListener("focus", () => {dropDown(0)})
+
+servicosElement.addEventListener("blur", () => {dropDown(1)})
+
+function dropDown(p) {
+  let element = document.getElementsByClassName("dropDown")[0]
+  let disp = ["block", "none"]
+
+  element.style.display = disp[p]
+
+  let t = ["0px", "0px, -5px"]
+  setTimeout(function(){
+    element.style.transform = `translate(${t[p]})`
+  }, 0)
+  
+
+}
+
+const itensServices = document.querySelectorAll(".item")
+itensServices.forEach( item => {
+  item.addEventListener("mousedown", function(event){
+
+    let id = event.target.id
+   
+    let text = document.getElementById(`${id}`).textContent
+    servicosElement.value = text
+
+  })
+})
