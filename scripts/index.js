@@ -135,25 +135,31 @@ const containerTelaCarrinho = document.getElementById("containerTelaCarrinho")
 
 const telas = [containerTelaInicial, containerTelaProdutos, containerTelaAgendamento, containerTelaIndividualProd, containerTelaCarrinho]
 
-let showACategory = JSON.parse(localStorage.getItem("category"))
+let newPage = localStorage.getItem("newPage")
 
-if (showACategory != null) {
+if (newPage != null) {
 
-    localStorage.removeItem("category")
+    localStorage.removeItem("newPage")
 
     telas.forEach(tela => {
+
         tela.style.display = "none"
+        
     })
 
 
-    if (showACategory == "agendamento") {
+    if (newPage == "agendamento") {
 
         containerTelaAgendamento.style.display = "block"
+
+    } else if(newPage == "carrinho") {
+
+        containerTelaCarrinho.style.display = "block"
 
     } else {
 
         containerTelaProdutos.style.display = "block"
-        showProducts(showACategory)
+        showProducts(newPage)
         
     }
 

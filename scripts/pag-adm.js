@@ -290,7 +290,7 @@ iconeDoPerfil.addEventListener("click", function () {
 
 const nav = document.querySelector("nav")
 nav.addEventListener("click", function (event) {
-    let category
+    //let category
     switch (event.target.id) {
         case "forHome":
 
@@ -300,39 +300,34 @@ nav.addEventListener("click", function (event) {
 
         case "forAcessorios":
 
-            category = JSON.stringify("acessorios")
-            localStorage.setItem("category", category)
+        localStorage.setItem("newPage", "acessorios")
             window.location.href = "../../index.html"
             break
 
         case "forAlimentacao":
 
-            category = JSON.stringify("alimentos")
-            localStorage.setItem("category", category)
+        localStorage.setItem("newPage", "alimentos")
             window.location.href = "../../index.html"
 
             break
 
         case "forBrinquedos":
 
-            category = JSON.stringify("brinquedos")
-            localStorage.setItem("category", category)
+        localStorage.setItem("newPage", "brinquedos")
             window.location.href = "../../index.html"
             
             break
             
         case "forSugestoes":
 
-            category = JSON.stringify("sugestoes")
-            localStorage.setItem("category", category)
+        localStorage.setItem("newPage", "sugestoes")
             window.location.href = "../../index.html"
 
             break  
 
         case "forAgendamento":
 
-            category = JSON.stringify("agendamento")
-            localStorage.setItem("category", category)
+            localStorage.setItem("newPage", "agendamento")
 
             window.location.href = "../../index.html"
             break
