@@ -1,18 +1,12 @@
 import { saveLocalStorage } from "./utils/saveLocalStorage.js"
 import { produtos } from "./utils/produtos.js"
+import { verifyUserOnline } from "./utils/verifyUserOnline.js";
+
+let btnFinalizar = document.getElementById("btnFinalizar")
+
 let users = JSON.parse(localStorage.getItem("users"))
 
-let userID
-
-for (let obj of users) {
-    if (obj.online) {
-        userID = obj.id
-        break
-    }
-}
-
-const btnFinalizar = document.getElementById("btnFinalizar")
-
+export let userID = verifyUserOnline()
 
 function adicionaProdutoAoCarrinho(codigo) {
     let carrinho = pegaCarrinho()
@@ -75,11 +69,18 @@ export function exibeCarrinho() {
             console.log("Produto nulo no carrinho")
         } else {
             let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
+            if(elementoProduto != null) {
             containerCarrinho.appendChild(elementoProduto)
+            } else {
+                console.log("produto nulo")
+            }
+
         }
     })
 
-    const listaProdutos = document.querySelectorAll('.produto')
+
+
+    const listaProdutos = document.querySelectorAll('.produtoCarrinho')
 
     listaProdutos.forEach((produto) => {
         const id = Number(produto.id)
@@ -106,12 +107,14 @@ export function exibeCarrinho() {
     calcFinalizarCompra()
 }
 
-// exibeCarrinho()
 
 //Função criada para puxar o carrinho sempre que necessário
 function pegaCarrinho() {
     // Verificar se existe o carrinho no usuário atual
+    //let carrinho = users[userID].carrinho
+    users = JSON.parse(localStorage.getItem("users"))
     let carrinho = users[userID].carrinho
+
     if (carrinho == null) {
         //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
         users[userID].carrinho = []
