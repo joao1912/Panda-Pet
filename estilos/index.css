@@ -641,6 +641,14 @@ justify-content: flex-start;
     font-size: 0.8em;
 }
 
+#botaoFechar button:hover {
+    background-color: var(--primaryColor);
+    color: white;
+    transform: scale(1.1);
+    transition: .1s ease-in;
+    cursor: pointer;
+}
+
 #botaoFechar > button > i{
     margin-top: 3px;
 }
