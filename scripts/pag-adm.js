@@ -303,7 +303,6 @@ nav.addEventListener("click", function (event) {
             category = JSON.stringify("acessorios")
             localStorage.setItem("category", category)
             window.location.href = "../../index.html"
-            document.addEventListener("DOMContentLoaded", showProducts("acessorios"))
             break
 
         case "forAlimentacao":
@@ -311,7 +310,6 @@ nav.addEventListener("click", function (event) {
             category = JSON.stringify("alimentos")
             localStorage.setItem("category", category)
             window.location.href = "../../index.html"
-            document.addEventListener("DOMContentLoaded", showProducts("alimentos"))
 
             break
 
@@ -320,7 +318,6 @@ nav.addEventListener("click", function (event) {
             category = JSON.stringify("brinquedos")
             localStorage.setItem("category", category)
             window.location.href = "../../index.html"
-            document.addEventListener("DOMContentLoaded", showProducts("brinquedos"))
             
             break
             
@@ -329,13 +326,15 @@ nav.addEventListener("click", function (event) {
             category = JSON.stringify("sugestoes")
             localStorage.setItem("category", category)
             window.location.href = "../../index.html"
-            document.addEventListener("DOMContentLoaded", showProducts("sugestoes"))
 
             break  
 
         case "forAgendamento":
 
-            window.location.href = "/paginas/agendamentos.html" 
+            category = JSON.stringify("agendamento")
+            localStorage.setItem("category", category)
+
+            window.location.href = "../../index.html"
             break
     }
 })
