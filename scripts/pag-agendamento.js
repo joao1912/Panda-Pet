@@ -94,3 +94,77 @@ itensServices.forEach( item => {
 
   })
 })
+
+const containerBotoesPerfilDoPet = document.getElementById("divDBaixo")
+const containerBotoesServico = document.getElementById("divDBaixo2")
+const containerBotoesPagamento = document.getElementById("divDBaixo3")
+
+containerBotoesPerfilDoPet.addEventListener("click", (event) => { trocarPagina(event) })
+containerBotoesServico.addEventListener("click", (event) => { trocarPagina(event) })
+containerBotoesPagamento.addEventListener("click", (event) => { trocarPagina(event) })
+
+function trocarPagina(event) {
+    let idElement = event.target.id
+    const imgPandaCadastro = document.getElementById("divEBaixo")
+    const cadastroPet1 = document.getElementById("cadastroPet")
+    const cadastroPet2 = document.getElementById("cadastroPet2")
+    const cadastroPet3 = document.getElementById("cadastroPet3")
+    const inptRadioCadastro = document.querySelectorAll(".inptEstilizado")
+    const arrayRadio = [...inptRadioCadastro]
+
+
+    switch(idElement) {
+        case "petJaCadastrado":
+
+
+            break
+        case "botaoProximo":
+            cadastroPet1.style.display = "none"
+            cadastroPet2.style.display = "flex"
+            arrayRadio.forEach( radio => {
+              radio.classList.remove("marked")
+            })
+            inptRadioCadastro[1].classList.add("marked")
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+            imgPandaCadastro.style.marginRight = "20px"
+
+            break
+
+        case "botaoVoltar":
+            cadastroPet1.style.display = "flex"
+            cadastroPet2.style.display = "none"
+            arrayRadio.forEach( radio => {
+              radio.classList.remove("marked")
+            })
+            inptRadioCadastro[0].classList.add("marked")
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
+            imgPandaCadastro.style.marginRight = "5px"
+
+            break
+        case "botaoProximo2":
+            cadastroPet2.style.display = "none"
+            cadastroPet3.style.display = "flex"
+            arrayRadio.forEach( radio => {
+              radio.classList.remove("marked")
+            })
+            inptRadioCadastro[2].classList.add("marked")
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaEpandav.png)"
+            imgPandaCadastro.style.marginRight = "0"
+
+            break
+        case "botaoVoltar3":
+            cadastroPet2.style.display = "flex"
+            cadastroPet3.style.display = "none"
+            arrayRadio.forEach( radio => {
+              radio.classList.remove("marked")
+            })
+            inptRadioCadastro[1].classList.add("marked")
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+            imgPandaCadastro.style.marginRight = "20px"
+
+            break
+        case "botaoFinalizar":
+
+            break
+    }
+}

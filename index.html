@@ -112,9 +112,9 @@
                     </div>
 
                     <div id="excluirEeditar">
-                        <button class="botaoTransparente">Excluir</button>
-                        <button class="botaoTransparente">Editar</button>
-                        <button class="botaoTransparente">Minhas compras</button>
+                        <button class="botaoUser">Excluir</button>
+                        <button class="botaoUser">Editar</button>
+                        <button class="botaoUser">Minhas compras</button>
                     </div>
                 </div>  
 
@@ -245,7 +245,7 @@
                     </div>
                 </div>
 
-                <div id="cadastroPet" style="display: none;">
+                <div id="cadastroPet">
 
                     <div id="divDCima">
                         <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
@@ -307,7 +307,36 @@
                     </div>
                         
                     <div id="containerCalendario">
-                        
+                        <h2>Agendar</h2>
+
+                        <section id="containerFormDay">
+                            <div id="formDay">
+                                <label for="inptDay">Dia</label>
+                                <input type="number" id="inptDay">
+                            </div>
+                            <div id="formMonth">
+                                <label for="inptMonth">Mês</label>
+                                <input type="number" id="inptMonth">
+                            </div>
+                            <div id="formYear">
+                                <label for="inptYear">Ano</label>
+                                <input type="number" id="inptYear">
+                            </div>
+                        </section>
+
+                        <section id="containerFormHour">
+                            <div id="formEntryHour">
+                                <label for="inptHourEntry">Entrada</label>
+                                <input type="number" id="inptHourEntry" placeholder="14:00">
+                            </div>
+                            <div id="titleHour">
+                                <h2>Horário</h2>
+                            </div>
+                            <div id="formExitHour">
+                                <label for="inptHourExit">Saída</label>
+                                <input type="number" id="inptHourExit" placeholder="17:00">
+                            </div>
+                        </section>
                     </div> 
                     
                     <div id="divDBaixo2">
@@ -317,7 +346,7 @@
 
                 </div>
 
-                <div id="cadastroPet3" style="display: flex;">
+                <div id="cadastroPet3">
 
                     <div id="divDCima3">
                         <h1>Tudo Prontinho!</h1>
@@ -335,12 +364,14 @@
                         <div id="divPagamento1">
 
                             <div id="divServico">
-                                <label class="labelNomePet" for="inputServico">Serviço</label>
-                                <input type="text" id="inputServico" name="servico" class="inputPagamento1" placeholder="Selecione o Serviço" readonly>
+                                <label class="labelNomePet" for="inputServico">Carona?</label>
+                                <input type="text" id="inputServico" name="servico" class="inputPagamento1" placeholder="Selecione Uma Opção" readonly>
                                 <div class="dropDown" id="drop">
                                     <div class="listDropDown">
-                                        <div class="item" id="item-1">Tosa e Banho</div>
-                                        <div class="item" id="item-2">Serviço</div>
+                                        <div class="item" id="item-1">Quero Tudo!</div>
+                                        <div class="item" id="item-2">Apenas Buscar</div>
+                                        <div class="item" id="item-3">Apenar Trazer</div>
+                                        <div class="item" id="item-4">Não Quero</div>
                                     </div>
                                 </div>
                             </div>

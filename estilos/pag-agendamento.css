@@ -73,8 +73,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../../imagens/pandaAgendamento.png);
-    margin-right: 20px;
+    background-image: url(../../imagens/pandaPergunta.png);
+    margin-right: 5px;
 
 }
 /*faz as linhas dos imputs*/
@@ -461,9 +461,122 @@ button {
     margin-right: 20px;/*margem direita*/
 }
 
+/* agendamento */
+
 #containerCalendario {
     height: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+#containerCalendario > h2 {
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+#containerCalendario section {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#containerFormDay {
+    border-bottom: 2px solid var(--primaryColor);
+    padding-bottom: 15px;
+}
+
+#containerFormDay label {
+    font-size: 1.3em;
+    font-family: "Nunito";
+}
+
+#containerFormDay input {
+    width: 100px;
+    height: 55px;
+    display: block;
+    border-radius: 10px;
+    border: 2px solid var(--primaryColor);
+    text-align: center;
+    font-size: 2em;
+}
+
+#formDay {
+    position: relative;
+}
+
+#formMonth {
+    position: relative;
+}
+
+#formDay::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: 1px;
+    width: 2px;
+    height: 100px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+    transform: rotate(195deg);
+}
+
+#formMonth::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: 1px;
+    width: 2px;
+    height: 100px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+    transform: rotate(195deg);
+}
+
+#formYear > input {
+    width: 130px;
+}
+
+#containerFormHour input {
+    display: block;
+    width: 90px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid var(--primaryColor);
+    outline: none;
+    text-align: center;
+}
+
+#containerFormHour label, input {
+    font-size: 1.3em;
+    font-family: "Nunito";
+}
+
+#titleHour {
+    padding-bottom: 60px;
+}
+
+#containerFormHour {
+    position: relative;
+}
+
+#containerFormHour::before {
+    content: "";
+    width: 240px;
+    height: 3px;
+    background-color: var(--primaryColor);
+    position: absolute;
+    top: 65px;
+    border-radius: 10px;
+}
+
+
+
+/* ----------- */
 
 #divDBaixo2{
     width: 100%;/*largura*/
@@ -598,11 +711,24 @@ button {
     border-radius: 10px;
     margin-top: 5px;
     border: .5px solid var(--secondColor);
-    height: 90px;
+    height: 135px;
     overflow: hidden;
+    overflow-y: auto;
     display: none;
     transform: translate(0px, -10px);
     transition: .5s;
+}
+
+.dropDown::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+}
+
+.dropDown::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: var(--thirdColor);
+    border-radius: 10px;
 }
 
 .item {

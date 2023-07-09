@@ -93,10 +93,10 @@ function trocaFotoPerfil(elementIdImg, inptFileId) {
 
             fr.addEventListener("load", () => {
                 users[userID].img = fr.result
+                document.getElementById("fotoPerfilOnline").src = fr.result
                 saveLocalStorage(users)
             })
         }
-
     }
 }
 
@@ -328,3 +328,8 @@ if (userID == undefined) {
     containerUser.style.marginLeft = "-43px"
     containerUser.style.top = "115px"
 }
+
+/* crud user */
+
+const imagem = document.getElementById("imagem")
+imagem.addEventListener("click", () => {trocaFotoPerfil("imagem", "userImg")})
