@@ -1,4 +1,4 @@
-import { setProductsElements } from "./setProductsElements.js"
+import { setProductsElements } from "../../pag-produtos.js"
 import { getIndexCategory } from "./getIndexCategory.js"
 
 export function showProducts(categoria) {

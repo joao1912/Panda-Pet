@@ -82,6 +82,13 @@ h1#h1Produtos {
     justify-content: space-evenly; 
 }
 
+.imageProduct:hover {
+    cursor: pointer;
+
+    transform: scale(1.05);
+    transition: .3s ease-in-out;
+}
+
 .produto .titleProd {
     min-width: 160px;
     text-align: left;
@@ -120,6 +127,13 @@ button.btnComprar {
     cursor: pointer;
 }
 
+.btnComprar:hover {
+    transform: scale(1.05);
+    background-color: var(--primaryColor);
+    color: white;
+    transition: .2s ease-in;
+}
+
 button.btnCarrinho {
     width: 25%;
     border: 0;
@@ -130,6 +144,11 @@ button.btnCarrinho {
 
 button.btnCarrinho img {
     width: 30px;
+}
+
+.btnCarrinho:focus {
+    animation: treme forwards 0.3s ease-in-out;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 #footer{

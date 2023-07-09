@@ -89,6 +89,7 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
     //img do produto
 
     let elementImg = document.createElement("img")
+    elementImg.classList = "imageProduct"
     if(imagem.substring(0, 5) != "data:") {
     elementImg.src = `../../imagens/${imagem}`
     } else {

@@ -12,6 +12,83 @@
     src: url(../fonts/Gooper-Bold.ttf);
 }
 
+
+@keyframes treme {
+    0% {
+        transform: rotate(1deg);
+    } 
+
+    5% {
+        transform: rotate(3deg);
+    }
+
+    10% {
+        transform: rotate(5deg);
+    }
+
+    15% {
+        transform: rotate(3deg);
+    }
+
+    30% {
+        transform: rotate(1deg);
+    }
+
+    35% {
+        transform: rotate(0deg);
+    }
+
+    40%{
+        transform: rotate(-1deg);
+    }
+
+    45% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    55% {
+        transform: rotate(-3deg);
+    }
+
+    60% {
+        transform: rotate(-1deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+
+    80%{
+        transform: rotate(1deg);
+    }
+
+    80% {
+        transform: rotate(0deg);
+    }
+    85% {
+        transform: rotate(-1deg);
+    }
+    90% {
+        transform: rotate(-2deg);
+    }
+
+    95% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -623,9 +700,9 @@ border-radius: 50%;
 }
 
 #informacoes{
-display: flex;
-flex-direction: column;
-gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #informacoes label {
@@ -679,12 +756,6 @@ gap: 15px;
     align-items: center;
     position: absolute;
     right: -5px;
-}
-
-.botaoTransparente{
-    width: 100px;
-    height: 50px;
-    background-color: white;
 }
 
 #excluirEeditar{
