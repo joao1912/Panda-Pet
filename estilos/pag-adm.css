@@ -1606,7 +1606,7 @@ input::-webkit-inner-spin-button {
     min-width: 50px;
 }
 
-.listaProdutos .btnSelectProduct {
+.listaProdutos .btnDeleteProduct {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -1618,7 +1618,7 @@ input::-webkit-inner-spin-button {
     background-color: var(--thirdColor);
 }
 
-.listaProdutos .btnSelectProduct:hover {
+.listaProdutos .btnDeleteProduct:hover {
     cursor: pointer;
     background-color: var(--primaryColor);
     color: white;
