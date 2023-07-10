@@ -129,6 +129,27 @@ function limpaCarrinho() {
     //talvez tenha que exibir o carrinho vazio depois
 }
 
+export function getRandomProducts(quantityProducts) {
+    let indexProd = []
+if(quantityProducts > produtos.length) {
+quantityProducts = produtos.length
+}
+
+        while (indexProd.length < quantityProducts) {
+
+            let randomNumber = Math.floor(Math.random() * produtos.length)
+
+            if (indexProd.indexOf(randomNumber) > -1) {
+
+                continue
+
+            }
+
+            indexProd.push(randomNumber)
+        }
+
+return indexProd
+}
 
 
 

@@ -1,7 +1,8 @@
+import { produtos } from "./utils/produtos.js";
 import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
-import { exibeCarrinho } from "./pag-carrinho.js";
+import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
 
 
 let users = JSON.parse(localStorage.getItem("users"))
@@ -270,9 +271,37 @@ btnCart.addEventListener("click", function () {
     header.style.display = "none"
     nav.style.display = "none"
     footer.style.display = "none"
-    containerTelaCarrinho.style.display = "flex"
+
+    const randomProducts = getRandomProducts(3)
+    let sugestoesProdutos = document.querySelectorAll(".sugestaoProduto")
+    let index = 0
+    
+    sugestoesProdutos.forEach((sugestaoProduto) => {
+    
+        let productElement = document.createElement("img")
+
+        productElement.id = produtos[randomProducts[index]].codigo
+
+        if(produtos[randomProducts[index]].imagem.substring(0, 5) != "data:") {
+
+            productElement.src = `../../imagens/${produtos[randomProducts[index]].imagem}`
+
+        } else {
+                productElement.src = produtos[randomProducts[index]].imagem
+
+        }
+
+        productElement.alt = produtos[randomProducts[index]].descricaoImagem
+
+        sugestaoProduto.appendChild(productElement)
+        index++
+    })
+    
     exibeCarrinho()
-    //containerTelaCarrinho.focus()
+
+
+    containerTelaCarrinho.style.display = "flex"
+    containerTelaCarrinho.focus()
 
 
 })
