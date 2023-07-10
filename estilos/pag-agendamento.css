@@ -827,3 +827,12 @@ button {
     
 }
 
+#precoServico {
+    margin-top: 20px;
+    width: 56%;
+    width: 183px;
+}
+
+#precoServico label {
+    font-size: 0.9em;
+}
