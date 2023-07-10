@@ -812,6 +812,43 @@ const btnCloseRemove = document.getElementById("btnCloseRemove")
 const btnRemoveEscProducts = document.getElementById("btnEscRemove")
 
 btnEditEscProducts.addEventListener("click", function(){
+
+    let tableProducts = document.querySelector("#listProductsEdit tbody")
+
+produtos.forEach(function(produto) {
+
+    let newLine = document.createElement("tr")
+
+    let nameProduct = document.createElement("td")
+    nameProduct.textContent = produto.nome
+    newLine.appendChild(nameProduct)
+
+    let priceProduct = document.createElement("td")
+    priceProduct.textContent = `R$ ${produto.preco.toFixed(2)}`
+    newLine.appendChild(priceProduct)
+
+    let idProduct = document.createElement("td")
+    idProduct.textContent = produto.codigo
+    newLine.appendChild(idProduct)
+
+    let selectProduct = document.createElement("td")
+
+    let buttonSelectProduct = document.createElement("button")
+    buttonSelectProduct.className = "btnDeleteProduct"
+
+    let iconSelectProduct = document.createElement("i")
+    iconSelectProduct.className = "material-symbols-outlined"
+    iconSelectProduct.textContent = "check"
+
+    buttonSelectProduct.appendChild(iconSelectProduct)
+    selectProduct.appendChild(buttonSelectProduct)
+    
+    newLine.appendChild(selectProduct)
+
+    tableProducts.appendChild(newLine)
+})
+
+
     listaEditProducts.style.display = "flex"
     btnCloseEdit.addEventListener("click", function(){
         listaEditProducts.style.display = "none"
