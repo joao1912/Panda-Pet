@@ -2,7 +2,7 @@
 
     display: flex;
     width: 100%;
-    height: 600px;
+    height: 670px;
     font-family: "Nunito";
 
 
@@ -56,7 +56,7 @@
 #conteinerTituloProduto {
 
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
 }
 
@@ -66,7 +66,7 @@
     font-size: 2em;
     color: var(--primaryColor);
     align-items: center;
-    padding-top: 15%;
+    margin-top: 80px;
     font-family:'GooperBold'
 
 }
@@ -173,7 +173,7 @@ padding-top: 10px;
 #botaoAdd {
     display: flex;
     gap: 5px;
-
+    margin: 10px 0;
 
 }
 
@@ -271,4 +271,68 @@ input[type=number] {
 #tituloTextoCep::placeholder{
 
     color: white;
+}
+
+#containerPrecoProd {
+    margin-top: -20px;
+}
+
+#sugestoesProdutos {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#sugestoesProdutos h2 {
+    height: 10%;
+    font-size: 2em;
+    font-family: "GooperSemiBold";
+    color: var(--primaryColor);
+    margin-bottom: 20px;
+}
+
+#containerProdutosSugest {
+    width: 100%;
+    height: 90%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--secondColor);
+    overflow-x: scroll;
+    gap:30px;
+}
+
+.sugest {
+    width: 280px;
+    height: 280px;
+    background-color: var(--primaryColor);
+    border-radius: 20px;
+}
+
+.botaoFuncoestamanho:hover {
+    transform: scale(1.05);
+    transition: .2s ease-out;
+    background-color: var(--primaryColor);
+}
+
+#btnOk:hover {
+    transform: scale(1.05);
+    transition: .2s ease-out;
+    background-color: var(--primaryColor);
+}
+
+#containerStars {
+    height: 30px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+#containerStars img {
+    width: 30px;
 }
