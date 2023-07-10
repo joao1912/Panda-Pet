@@ -277,13 +277,13 @@
                         <div id="divDEsquerdoNome" class="containersCadastro">
 
                             <label class="labelCadastro" for="inputNome">Nome</label>
-                            <input type="text" id="inputNome" class="inputs" placeholder="Panda">
+                            <input type="text" id="inputNome" class="inputs" placeholder="Panda" maxlength="16">
                             <label class="labelCadastro" for="inputAniver">Aniversário</label>
-                            <input type="text" id="inputAniver" class="inputs" placeholder="dd/mm/yyyy">
+                            <input type="text" id="inputAniver" class="inputs" placeholder="dd/mm/yyyy" maxlength="10">
                             <label class="labelCadastro" for="inputRaca">Raça</label>
                             <input type="text" id="inputRaca" class="inputs" placeholder="Golden">
                             <label class="labelCadastro" for="inputPeso">Peso</label>
-                            <input type="number" id="inputPeso" class="inputs" placeholder="Kg">
+                            <input type="number" id="inputPeso" class="inputs" placeholder="Kg" min="1" max="70">
 
                         </div>
 
@@ -396,6 +396,11 @@
                                 </div>
                             </div>
 
+                            <div id="precoServico">
+                                <label for="preco">Valor a ser pago</label>
+                                <h2 id="preco">R$ 500,00</h2>
+                            </div>
+
                         </div>
                         
                         <div id="divPagamento2">
@@ -462,7 +467,13 @@
                     </div>
                     <span id="descricaoCodigo">codigo: 00</span>
     
-                    <button id="botaoTeste" onclick=""></button>
+                    <div id="containerStars">
+                        <img src="./imagens/estrela-cheia.png" alt="Estrela Cheia">
+                        <img src="./imagens/estrela-cheia.png" alt="Estrela Cheia">
+                        <img src="./imagens/estrela-cheia.png" alt="Estrela Cheia">
+                        <img src="./imagens/estrela-cheia.png" alt="Estrela Cheia">
+                        <img src="./imagens/estrela-vazia.png" alt="Estrela Cheia">
+                    </div>
     
                     <article>
     
@@ -492,7 +503,7 @@
     
                     </div>
     
-                    <div class="descricaoDivs">
+                    <div class="descricaoDivs" id="containerPrecoProd">
     
                         <h2 id="alteracoesDescricaodivs">R$799,00</h2>
                         <h3 id="alteracoesDescricaodivs2">À vista</h3>
@@ -504,7 +515,7 @@
                         <div id="botaoAdd">
     
                             <button class="material-symbols-outlined botoesAdd">remove</button>
-                            <input type="number" id="botaoINPT" readonly value="0">
+                            <input type="number" id="botaoINPT" readonly value="1">
                             <button class="material-symbols-outlined botoesAdd">add</button>
     
                         </div>
@@ -540,6 +551,25 @@
             </div>
             
         </div>
+
+        <section id="sugestoesProdutos">
+            <h2>Que tal esses?</h2>
+            <div id="containerProdutosSugest">
+                <div class="sugest">
+
+                </div>
+                <div class="sugest">
+
+                </div>
+                <div class="sugest">
+
+                </div>
+                <div class="sugest">
+
+                </div>
+                
+            </div>
+        </section>
     </section>
 
     <section id="containerTelaCarrinho">

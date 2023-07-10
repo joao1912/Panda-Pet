@@ -132,7 +132,13 @@
 
 }
 
-#divDCima h1,h2 {
+#divDCima > h1 {
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
+
+}
+
+#divDCima > h2 {
     font-family:'GooperSemiBold';
     margin-top: 20px;
 
@@ -409,10 +415,15 @@ button {
 
 }
 
-#divDCima2 h1,h2 {/*altera a fonte das frases*/
+#divDCima2 h1 {/*altera a fonte das frases*/
     font-family:'GooperSemiBold';
     margin-top: 20px;
 
+}
+
+#divDCima2 h2 {
+    font-family:'GooperSemiBold';
+    margin-top: 20px;
 }
 #divDMeio2{
     width: 80%;/*largura*/
@@ -827,3 +838,12 @@ button {
     
 }
 
+#precoServico {
+    margin-top: 20px;
+    width: 56%;
+    width: 183px;
+}
+
+#precoServico label {
+    font-size: 0.9em;
+}
