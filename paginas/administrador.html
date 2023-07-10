@@ -394,6 +394,8 @@
                         add_a_photo
                     </div>
                 </button>
+                <!-- Fazer imagem aqui -->
+                <input type="file" id="productChoosePhoto" style="display: none;">
                 <div id="formEditProduct">
                                  
                         <div>
@@ -436,7 +438,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Preço</th>
-                                <th>Id</th>
+                                <th>ID</th>
                                 <th>Selecionar</th>
                             </tr>
                         </thead>
@@ -457,7 +459,7 @@
                     <div id="viewProduct">
                         <img src="../imagens/pet-recomendações.png" alt="Foto Do Produto">
                         <div>
-                            <h2>Nome Do Produto</h2>
+                            <h2 id="productViewName">Nome Do Produto</h2>
                             <span>R$ 0,00</span>
                             <div>
                                 <button id="btnViewBuy">Comprar</button>
