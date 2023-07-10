@@ -256,6 +256,7 @@ if (newPage != null) {
     } else if(newPage == "carrinho") {
 
         containerTelaCarrinho.style.display = "block"
+        exibeCarrinho()
 
     } else {
 
