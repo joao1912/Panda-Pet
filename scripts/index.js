@@ -7,6 +7,24 @@ import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
 
+if (users == null) {
+    users = [{
+        id: 0 ,
+        nome: "Admin",
+        senha: "administrador123", 
+        carrinho: [], 
+        lembrarDeMim: false,
+        online: false, 
+        date: getDate(), 
+        atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        pets: [],
+        img: '../../imagens/perfil-default.jpg'
+    }]
+
+    localStorage.setItem('users', JSON.stringify(users))
+}
+
+
 for (let user of users) {
     if (user.lembrarDeMim == false) {
         user.online = false
