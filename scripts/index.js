@@ -282,14 +282,7 @@ btnCart.addEventListener("click", function () {
 
         productElement.id = produtos[randomProducts[index]].codigo
 
-        if(produtos[randomProducts[index]].imagem.substring(0, 5) != "data:") {
-
-            productElement.src = `../../imagens/${produtos[randomProducts[index]].imagem}`
-
-        } else {
-                productElement.src = produtos[randomProducts[index]].imagem
-
-        }
+        productElement.src = produtos[randomProducts[index]].imagem
 
         productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
@@ -299,10 +292,7 @@ btnCart.addEventListener("click", function () {
     
     exibeCarrinho()
 
-
     containerTelaCarrinho.style.display = "flex"
-    containerTelaCarrinho.focus()
-
 
 })
 
