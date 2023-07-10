@@ -284,8 +284,24 @@ btnCart.addEventListener("click", function () {
 
         productElement.src = produtos[randomProducts[index]].imagem
 
-        productElement.alt = produtos[randomProducts[index]].descricaoImagem
+        //productElement.alt = produtos[randomProducts[index]].descricaoImagem
+        productElement.alt = "Produto"
 
+        productElement.addEventListener("click", function() {
+
+            //Redirecionar usando Number(productElement.id)
+
+            header.style.display = "block"
+            nav.style.display = "none"
+
+            containerTelaCarrinho.style.display = "none"
+            containerTelaIndividualProduto.style.display = "block"
+
+            footer.style.display = "block"
+
+        })
+
+        sugestaoProduto.innerHTML = ""
         sugestaoProduto.appendChild(productElement)
         index++
     })
