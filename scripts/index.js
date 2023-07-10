@@ -3,6 +3,7 @@ import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
+import {getDate} from './utils/getDate.js'
 
 
 let users = JSON.parse(localStorage.getItem("users"))
@@ -62,6 +63,8 @@ function setPerfilOnline() {
         containerUser.style.display = "none"
         visibility = false
         body.style.overflow = "hidden"
+        
+        pegarInfoUser()
     })
 
     const btnClosePerfil = document.querySelector("#botaoFechar > button")
@@ -69,6 +72,40 @@ function setPerfilOnline() {
         containerPerfil.style.display = "none"
         body.removeAttribute("style")
     })
+
+    function  pegarInfoUser(){
+
+        let nome
+        let img
+        let pets=[]
+        let data
+        let contato
+
+        for(let obj of users){
+
+            if (userID == obj.id){
+                nome=obj.nome
+                img=obj.img
+                data=obj.date.text
+               // contato=obj.contato
+                
+            }
+        }
+
+    const inputNome=document.getElementById("nomeUser")
+    const inputData=document.getElementById("contaUser")
+    const inputContato=document.getElementById("contatoUser")
+    const inputImagem=document.getElementById("imagem")
+
+        if (img){
+        inputImagem.src=img
+
+        }
+
+        inputNome.value=nome
+        inputData.value=data
+
+    }
 
     document.getElementById("botaoSair").addEventListener("click", function sair() {
         users[userID].online = false
@@ -84,6 +121,51 @@ function setPerfilOnline() {
         saveLocalStorage(users)
     })
 }
+
+    const btnEditarEexcluir=document.getElementById("btnEditUser")
+
+    btnEditarEexcluir.addEventListener("click", function(event){
+     let textoBotao=event.target.textContent
+     
+     if (textoBotao == "Editar"){
+        const inputNome=document.getElementById("nomeUser")
+        const inputContato=document.getElementById("contatoUser")
+
+        inputNome.removeAttribute("readonly")
+        inputContato.removeAttribute("readonly")
+
+        btnEditarEexcluir.textContent="Salvar"
+
+        
+     }else if (textoBotao=="Salvar"){
+        const inputNome=document.getElementById("nomeUser")
+        const inputContato=document.getElementById("contatoUser")
+
+        inputNome.setAttribute("readonly" , true)
+        inputContato.setAttribute("readonly", true) 
+
+        btnEditarEexcluir.textContent="Editar"
+
+        let nome , contato 
+
+        nome=inputNome.value
+        contato=inputContato.value
+
+        for(let obj of users){
+
+            if (userID == obj.id){
+                
+                obj.nome=nome
+               // obj.contato=contato
+                
+            }
+        }
+        saveLocalStorage(users)
+        
+     }
+    }) 
+ 
+
 
 if (userID) {
     setPerfilOnline()
