@@ -12,12 +12,14 @@ if (users == null) {
     users = [{
         id: 0 ,
         nome: "Admin",
+        realName: null,
         senha: "administrador123", 
         carrinho: [], 
         lembrarDeMim: false,
         online: false, 
         date: getDate(), 
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        contato: null,
         pets: [],
         img: '../../imagens/perfil-default.jpg'
     }]
@@ -39,8 +41,15 @@ let visibility = false
 
 function setPerfilOnline() {
 
-    if (users[userID].img) {
-        let urlImagem = users[userID].img
+    let imgUser
+    for (let user of users) {
+        if (user.id == userID) {
+            imgUser = user.img
+        }
+    }
+
+    if (imgUser) {
+        let urlImagem = imgUser
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
     }
@@ -76,6 +85,7 @@ function setPerfilOnline() {
     function  pegarInfoUser(){
 
         let nome
+        let realName
         let img
         let pets=[]
         let data
@@ -85,10 +95,11 @@ function setPerfilOnline() {
 
             if (userID == obj.id){
                 nome=obj.nome
+                realName = obj.realName
                 img=obj.img
                 data=obj.date.text
-               // contato=obj.contato
-                
+                contato=obj.contato
+                pets = obj.pets
             }
         }
 
@@ -98,18 +109,29 @@ function setPerfilOnline() {
     const inputImagem=document.getElementById("imagem")
 
         if (img){
-        inputImagem.src=img
+            inputImagem.src=img
 
         }
 
-        inputNome.value=nome
+        if (realName == undefined) {
+            inputNome.value=nome
+        } else {
+            inputNome.value=realName
+        }
+        
         inputData.value=data
 
     }
 
     document.getElementById("botaoSair").addEventListener("click", function sair() {
-        users[userID].online = false
-        users[userID].lembrarDeMim = false
+        
+        for (let user of users) {
+            if (user.id == userID) {
+                user.online = false
+                user.lembrarDeMim = false
+            }
+        }
+       
         localStorage.removeItem("welcome")
 
         if (window.location.pathname == "./index.html") {
@@ -145,18 +167,37 @@ function setPerfilOnline() {
         inputContato.setAttribute("readonly", true) 
 
         btnEditarEexcluir.textContent="Editar"
+        let antigoNome
+        for(let obj of users){
 
-        let nome , contato 
+            if (userID == obj.id){ 
+                antigoNome = obj.nome
+                
+            }
+        }
+
+        let nome , contato
+        let verifyName = false
+
 
         nome=inputNome.value
+
+        if (nome == antigoNome) {
+            verifyName = true
+        }
+
         contato=inputContato.value
 
         for(let obj of users){
 
             if (userID == obj.id){
+                if (!verifyName) {
+                    obj.realName = nome
+                } else {
+                    obj.nome=nome
+                }
                 
-                obj.nome=nome
-               // obj.contato=contato
+               obj.contato = contato
                 
             }
         }
@@ -193,7 +234,13 @@ function trocaFotoPerfil(elementIdImg, inptFileId) {
             fr.readAsDataURL(this.files[0]);
 
             fr.addEventListener("load", () => {
-                users[userID].img = fr.result
+
+                for (let user of users) {
+                    if (user.id == userID) {
+                        user.img = fr.result
+                        
+                    }
+                }
                 document.getElementById("fotoPerfilOnline").src = fr.result
                 saveLocalStorage(users)
             })

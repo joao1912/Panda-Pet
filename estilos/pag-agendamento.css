@@ -488,6 +488,10 @@ button {
     margin-top: 40px;
 }
 
+#containerCalendario h2 {
+    font-family: "GooperSemiBold";
+}
+
 #containerCalendario section {
     width: 70%;
     height: 60%;

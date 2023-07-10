@@ -54,7 +54,14 @@ function setButtonsCartsListeners() {
 function saveOrDeleteProduct(produtoId, imgIcon) { 
     
 
-    let carrinho = users[userID].carrinho
+    let carrinho
+    for (let user of users) {
+        if (user.id == userID) {
+            carrinho = user.carrinho
+            break
+        }
+    }
+
     let searchProduto = carrinho.filter( obj => obj.codigo == produtoId)
     
     if (searchProduto.length === 0) {
@@ -67,7 +74,13 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
         }
 
         users = JSON.parse(localStorage.getItem("users"))
-        users[userID].carrinho.push(objProduto)
+
+        for (let user of users) {
+            if (user.id == userID) {
+                user.carrinho.push(objProduto)
+                break
+            }
+        }
 
         saveLocalStorage(users)
 
@@ -77,7 +90,7 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
         
         let index = 0
         
-        for (let obj of users[userID].carrinho) { 
+        for (let obj of carrinho) { 
             
             if (obj.codigo === produtoId) {
                 break
@@ -86,7 +99,13 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
         }
 
         users = JSON.parse(localStorage.getItem("users"))
-        users[userID].carrinho.splice(index, 1)
+        
+        for (let user of users) {
+            if (user.id == userID) {
+                user.carrinho.splice(index, 1)
+                break
+            }
+        }
 
         saveLocalStorage(users)
     }

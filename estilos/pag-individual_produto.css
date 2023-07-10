@@ -62,10 +62,9 @@
 
 #tituloProduto {
 
-    display: flex;
     font-size: 2em;
     color: var(--primaryColor);
-    align-items: center;
+    text-align: left;
     margin-top: 80px;
     font-family:'GooperBold'
 

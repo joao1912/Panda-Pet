@@ -9,19 +9,21 @@ if (users == null) {
     users = [{
         id: 0 ,
         nome: "Admin",
+        realName: null,
         senha: "administrador123", 
         carrinho: [], 
         lembrarDeMim: false,
         online: false, 
         date: getDate(), 
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        contato: null,
         pets: [],
         img: '../../imagens/perfil-default.jpg'
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
 }
-
+localStorage.removeItem("welcome")
 let cont = 1
 const botaoTrocarlado = document.querySelectorAll(".btnTroca")
 const botaoFotoPerfil = document.getElementById("containerFotoPerfil")
@@ -257,12 +259,14 @@ function saveUser(userName, passWord) {
         users.push({
             id: nextId ,
             nome: userName, 
+            realName: null,
             senha: passWord, 
             carrinho: [], 
             lembrarDeMim: false,
             online: true, 
             date: getDate(), 
             atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            contato: null,
             pets: [],
             img: urlFotoPerfil
         })
@@ -273,12 +277,14 @@ function saveUser(userName, passWord) {
         users.push({
             id: nextId ,
             nome: userName, 
+            realName: null,
             senha: passWord, 
             carrinho: [], 
             lembrarDeMim: false,
             online: true, 
             date: getDate(), 
             atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+            contato: null,
             pets: []
         })
         saveLocalStorage(users)

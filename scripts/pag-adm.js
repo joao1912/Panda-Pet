@@ -181,10 +181,24 @@ function verifyUserOnline() {
     return userOnline ?? undefined
 }
 
+for (let user of users) {
+    if (user.lembrarDeMim == false) {
+        user.online = false
+        saveLocalStorage(users)
+    }
+}
+
 function setPerfilOnline() {
 
-    if (users[userID].img) {
-        let urlImagem = users[userID].img
+    let imgUser
+    for (let user of users) {
+        if (user.id == userID) {
+            imgUser = user.img
+        }
+    }
+
+    if (imgUser) {
+        let urlImagem = imgUser
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
     }
@@ -199,7 +213,13 @@ function setPerfilOnline() {
     containerUserLogado.style.display = "flex"
 
     document.getElementById("botaoSair").addEventListener("click", function sair() {
-        users[userID].online = false
+        for (let user of users) {
+            if (user.id == userID) {
+                user.online = false
+                user.lembrarDeMim = false
+            }
+        }
+
         if (window.location.pathname != '/index.html') {
 
             window.location.href = "../../index.html"
@@ -233,7 +253,12 @@ function trocaFotoPerfil() {
         fr.readAsDataURL(this.files[0]);
 
         fr.addEventListener("load", () => {
-            users[userID].img = fr.result
+            for (let user of users) {
+                if (user.id == userID) {
+                    user.img = fr.result
+                    
+                }
+            }
             saveLocalStorage(users)
         })
     }
