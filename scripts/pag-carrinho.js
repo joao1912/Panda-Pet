@@ -8,6 +8,7 @@ let users = JSON.parse(localStorage.getItem("users"))
 
 export let userID = verifyUserOnline()
 
+
 function adicionaProdutoAoCarrinho(codigo) {
     let carrinho = pegaCarrinho()
     //Verificar se o produto já existe e adicionar um amais 
@@ -110,6 +111,7 @@ export function exibeCarrinho() {
 
 //Função criada para puxar o carrinho sempre que necessário
 function pegaCarrinho() {
+    try {
     // Verificar se existe o carrinho no usuário atual
     //let carrinho = users[userID].carrinho
     users = JSON.parse(localStorage.getItem("users"))
@@ -120,6 +122,9 @@ function pegaCarrinho() {
         users[userID].carrinho = []
     }
     return users[userID].carrinho
+} catch{
+    return []
+}
 }
 
 
@@ -237,7 +242,7 @@ function funcConstructorElements(cod, quantity) {
 }
 
 function calcFinalizarCompra() {
-    let carrinho = users[userID].carrinho
+    let carrinho = pegaCarrinho()
     let quantideDeProdutos = 0
     let valorTotal = 0
     const containerTotalValor = document.getElementById("totalValor")

@@ -284,8 +284,7 @@ btnCart.addEventListener("click", function () {
 
         productElement.src = produtos[randomProducts[index]].imagem
 
-        //productElement.alt = produtos[randomProducts[index]].descricaoImagem
-        productElement.alt = "Produto"
+        productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
         productElement.addEventListener("click", function() {
 
