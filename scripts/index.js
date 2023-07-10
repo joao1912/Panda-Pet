@@ -3,6 +3,7 @@ import { showProducts } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
+import {getDate} from './utils/getDate.js'
 
 
 let users = JSON.parse(localStorage.getItem("users"))
