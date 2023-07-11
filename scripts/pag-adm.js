@@ -942,7 +942,7 @@ btnSaveEditProduct.addEventListener("click", function () {
     let productNewDescription = document.getElementById("productNewDescription")
 
     if (Number(productNewPrice.value) == 0 || Number(productNewStock.value) == 0 || newDescImage.value == "" || productNewDescription.value == "") {
-        alert("Todos os campos precisam ser preenchidos!")
+        Swal.fire("Erro", "Todos os campos precisam ser preenchidos para adicionar o produto.", "error")
     } else {
         let IDProductEditing = Number(productIDSelected.value)
 
