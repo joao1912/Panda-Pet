@@ -1575,6 +1575,7 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
     overflow-y: scroll;
     padding-top: 100px;
+    z-index: 6;
 }
 
 .closeTable {
