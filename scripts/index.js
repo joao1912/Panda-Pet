@@ -487,9 +487,12 @@ barra_pesquisa.addEventListener("keydown", function(event) {
     let searchedProducts = searchProducts(stringSearch)
     showSearchResults(searchedProducts)
 
-        containerTelaProdutos.style.display = "block"
-        containerTelaInicial.style.display = "none"
+    telas.forEach(tela => {
+        tela.style.display = "none"
+    })
 
+        containerTelaProdutos.style.display = "block"
+        
     }
 })
 
