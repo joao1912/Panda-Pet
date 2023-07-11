@@ -12,12 +12,14 @@ if (users == null) {
     users = [{
         id: 0 ,
         nome: "Admin",
+        realName: null,
         senha: "administrador123", 
         carrinho: [], 
         lembrarDeMim: false,
         online: false, 
         date: getDate(), 
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        contato: null,
         pets: [],
         img: '../../imagens/perfil-default.jpg'
     }]
@@ -39,8 +41,15 @@ let visibility = false
 
 function setPerfilOnline() {
 
-    if (users[userID].img) {
-        let urlImagem = users[userID].img
+    let imgUser
+    for (let user of users) {
+        if (user.id == userID) {
+            imgUser = user.img
+        }
+    }
+
+    if (imgUser) {
+        let urlImagem = imgUser
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
     }
@@ -63,6 +72,8 @@ function setPerfilOnline() {
         containerUser.style.display = "none"
         visibility = false
         body.style.overflow = "hidden"
+        
+        pegarInfoUser()
     })
 
     const btnClosePerfil = document.querySelector("#botaoFechar > button")
@@ -71,9 +82,56 @@ function setPerfilOnline() {
         body.removeAttribute("style")
     })
 
+    function  pegarInfoUser(){
+
+        let nome
+        let realName
+        let img
+        let pets=[]
+        let data
+        let contato
+
+        for(let obj of users){
+
+            if (userID == obj.id){
+                nome=obj.nome
+                realName = obj.realName
+                img=obj.img
+                data=obj.date.text
+                contato=obj.contato
+                pets = obj.pets
+            }
+        }
+
+    const inputNome=document.getElementById("nomeUser")
+    const inputData=document.getElementById("contaUser")
+    const inputContato=document.getElementById("contatoUser")
+    const inputImagem=document.getElementById("imagem")
+
+        if (img){
+            inputImagem.src=img
+
+        }
+
+        if (realName == undefined) {
+            inputNome.value=nome
+        } else {
+            inputNome.value=realName
+        }
+        
+        inputData.value=data
+
+    }
+
     document.getElementById("botaoSair").addEventListener("click", function sair() {
-        users[userID].online = false
-        users[userID].lembrarDeMim = false
+        
+        for (let user of users) {
+            if (user.id == userID) {
+                user.online = false
+                user.lembrarDeMim = false
+            }
+        }
+       
         localStorage.removeItem("welcome")
 
         if (window.location.pathname == "./index.html") {
@@ -85,6 +143,70 @@ function setPerfilOnline() {
         saveLocalStorage(users)
     })
 }
+
+    const btnEditarEexcluir=document.getElementById("btnEditUser")
+
+    btnEditarEexcluir.addEventListener("click", function(event){
+     let textoBotao=event.target.textContent
+     
+     if (textoBotao == "Editar"){
+        const inputNome=document.getElementById("nomeUser")
+        const inputContato=document.getElementById("contatoUser")
+
+        inputNome.removeAttribute("readonly")
+        inputContato.removeAttribute("readonly")
+
+        btnEditarEexcluir.textContent="Salvar"
+
+        
+     }else if (textoBotao=="Salvar"){
+        const inputNome=document.getElementById("nomeUser")
+        const inputContato=document.getElementById("contatoUser")
+
+        inputNome.setAttribute("readonly" , true)
+        inputContato.setAttribute("readonly", true) 
+
+        btnEditarEexcluir.textContent="Editar"
+        let antigoNome
+        for(let obj of users){
+
+            if (userID == obj.id){ 
+                antigoNome = obj.nome
+                
+            }
+        }
+
+        let nome , contato
+        let verifyName = false
+
+
+        nome=inputNome.value
+
+        if (nome == antigoNome) {
+            verifyName = true
+        }
+
+        contato=inputContato.value
+
+        for(let obj of users){
+
+            if (userID == obj.id){
+                if (!verifyName) {
+                    obj.realName = nome
+                } else {
+                    obj.nome=nome
+                }
+                
+               obj.contato = contato
+                
+            }
+        }   
+        saveLocalStorage(users)
+        
+     }
+    }) 
+ 
+
 
 if (userID) {
     setPerfilOnline()
@@ -112,7 +234,13 @@ function trocaFotoPerfil(elementIdImg, inptFileId) {
             fr.readAsDataURL(this.files[0]);
 
             fr.addEventListener("load", () => {
-                users[userID].img = fr.result
+
+                for (let user of users) {
+                    if (user.id == userID) {
+                        user.img = fr.result
+                        
+                    }
+                }
                 document.getElementById("fotoPerfilOnline").src = fr.result
                 saveLocalStorage(users)
             })
@@ -175,6 +303,7 @@ if (newPage != null) {
     } else if(newPage == "carrinho") {
 
         containerTelaCarrinho.style.display = "block"
+        exibeCarrinho()
 
     } else {
 

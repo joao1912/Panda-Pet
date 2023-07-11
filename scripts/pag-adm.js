@@ -53,32 +53,8 @@ const productDescription = document.getElementById("productDescription")
 const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
-// const inptProductCodEdit = document.getElementById("productCodEdit")
 
-// inptProductCodEdit.addEventListener("keyup", function() {
-// let productIndex = produtos.findIndex(produto => produto.codigo === Number(inptProductCodEdit.value))
-// if(productIndex > -1) {
-
-//     let inptProductPrice = document.getElementById("productNewPrice")
-//     let inptProductNewStock = document.getElementById("productNewStock")
-//     let inptNewDescImage = document.getElementById("newDescImage")
-//     let inptProductNewDescription = document.getElementById("productNewDescription")
-
-//     //productPhoto.src = produtos[productIndex].imagem
-
-//     inptProductPrice.value = produtos[productIndex].preco
-
-//     inptProductNewStock.value = produtos[productIndex].estoque
-
-//     inptNewDescImage.value = produtos[productIndex].descricaoImagem
-    
-//     inptProductNewDescription.value = produtos[productIndex].descricao
-
-
-// }
-// })
-
-formAddProduct.addEventListener("keyup", function() {
+formAddProduct.addEventListener("keyup", function () {
 
     if (photoProductReaded.length > 0 && productName.value.length > 0 && Number(productStock.value) > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0 && imageDescription.value.length > 0) {
 
@@ -152,7 +128,7 @@ btnAdicionar.addEventListener("click", function () {
         'Produto Adicionado!',
         'Ele ja está disponivel na loja!',
         'success'
-      )
+    )
 
 })
 
@@ -205,10 +181,24 @@ function verifyUserOnline() {
     return userOnline ?? undefined
 }
 
+for (let user of users) {
+    if (user.lembrarDeMim == false) {
+        user.online = false
+        saveLocalStorage(users)
+    }
+}
+
 function setPerfilOnline() {
 
-    if (users[userID].img) {
-        let urlImagem = users[userID].img
+    let imgUser
+    for (let user of users) {
+        if (user.id == userID) {
+            imgUser = user.img
+        }
+    }
+
+    if (imgUser) {
+        let urlImagem = imgUser
         const fotoPerfil = document.getElementById("fotoPerfilOnline")
         fotoPerfil.src = urlImagem
     }
@@ -223,7 +213,13 @@ function setPerfilOnline() {
     containerUserLogado.style.display = "flex"
 
     document.getElementById("botaoSair").addEventListener("click", function sair() {
-        users[userID].online = false
+        for (let user of users) {
+            if (user.id == userID) {
+                user.online = false
+                user.lembrarDeMim = false
+            }
+        }
+
         if (window.location.pathname != '/index.html') {
 
             window.location.href = "../../index.html"
@@ -257,7 +253,12 @@ function trocaFotoPerfil() {
         fr.readAsDataURL(this.files[0]);
 
         fr.addEventListener("load", () => {
-            users[userID].img = fr.result
+            for (let user of users) {
+                if (user.id == userID) {
+                    user.img = fr.result
+
+                }
+            }
             saveLocalStorage(users)
         })
     }
@@ -300,30 +301,30 @@ nav.addEventListener("click", function (event) {
 
         case "forAcessorios":
 
-        localStorage.setItem("newPage", "acessorios")
+            localStorage.setItem("newPage", "acessorios")
             window.location.href = "../../index.html"
             break
 
         case "forAlimentacao":
 
-        localStorage.setItem("newPage", "alimentos")
+            localStorage.setItem("newPage", "alimentos")
             window.location.href = "../../index.html"
 
             break
 
         case "forBrinquedos":
 
-        localStorage.setItem("newPage", "brinquedos")
+            localStorage.setItem("newPage", "brinquedos")
             window.location.href = "../../index.html"
-            
+
             break
-            
+
         case "forSugestoes":
 
-        localStorage.setItem("newPage", "sugestoes")
+            localStorage.setItem("newPage", "sugestoes")
             window.location.href = "../../index.html"
 
-            break  
+            break
 
         case "forAgendamento":
 
@@ -761,6 +762,28 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
         button.addEventListener("click", function (event) {
             let id = event.target.id
 
+            let inputs = [...document.querySelectorAll("input")]
+            inputs.forEach(function (element) {
+                element.value = ""
+            })
+
+            inputs = [...document.querySelectorAll("textarea")]
+            inputs.forEach(function (element) {
+                element.value = ""
+            })
+
+            containerPreViewImage.src = ""
+            containerPreViewImage.style.display = "none"
+
+            let productNameView = document.getElementById("productNameView")
+            productNameView.innerHTML = `Nome do produto`
+
+            let productPriceView = document.getElementById("productPriceView")
+            productPriceView.innerHTML = `R$ 0,00`
+
+
+    
+
             switch (id) {
                 case "internalAddButton":
                     screenAddProducts.style.display = "none"
@@ -804,6 +827,32 @@ function photoProductEvents() {
 
 }
 
+const containerPreViewImage = document.getElementById("preViewImage")
+const buttonAddPhotoEdit = document.getElementById("btnEditPhoto")
+containerPreViewImage.addEventListener("click", addPhotoProductEdit)
+buttonAddPhotoEdit.addEventListener("click", addPhotoProductEdit)
+
+function addPhotoProductEdit() {
+    const filePhotoProduct = document.getElementById("productChoosePhoto")
+
+    filePhotoProduct.click();
+    filePhotoProduct.addEventListener("change", readImage, false);
+    const file = document.getElementById("imgPreView")
+
+    function readImage() {
+        let fr = new FileReader();
+        fr.onload = function (event) {
+            file.src = event.target.result
+            photoProductReaded = event.target.result
+            containerPreViewImage.style.display = "flex"
+
+        };
+        fr.readAsDataURL(this.files[0]);
+
+
+    }
+}
+
 const btnEditEscProducts = document.getElementById("btnEscEdit")
 const listaEditProducts = document.getElementById("listProductsEdit")
 const listaRemoveProducts = document.getElementById("listProductsRemove")
@@ -811,55 +860,174 @@ const btnCloseEdit = document.getElementById("btnCloseEdit")
 const btnCloseRemove = document.getElementById("btnCloseRemove")
 const btnRemoveEscProducts = document.getElementById("btnEscRemove")
 
-btnEditEscProducts.addEventListener("click", function(){
+btnEditEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsEdit tbody")
+    tableProducts.innerHTML = ""
 
-produtos.forEach(function(produto) {
+    produtos.forEach(function (productIterable) {
 
-    let newLine = document.createElement("tr")
+        let newLine = document.createElement("tr")
 
-    let nameProduct = document.createElement("td")
-    nameProduct.textContent = produto.nome
-    newLine.appendChild(nameProduct)
+        let nameProduct = document.createElement("td")
+        nameProduct.textContent = productIterable.nome
+        newLine.appendChild(nameProduct)
 
-    let priceProduct = document.createElement("td")
-    priceProduct.textContent = `R$ ${produto.preco.toFixed(2)}`
-    newLine.appendChild(priceProduct)
+        let priceProduct = document.createElement("td")
+        priceProduct.textContent = `R$ ${productIterable.preco.toFixed(2)}`
+        newLine.appendChild(priceProduct)
 
-    let idProduct = document.createElement("td")
-    idProduct.textContent = produto.codigo
-    newLine.appendChild(idProduct)
+        let idProduct = document.createElement("td")
+        idProduct.textContent = productIterable.codigo
+        newLine.appendChild(idProduct)
 
-    let selectProduct = document.createElement("td")
+        let selectProduct = document.createElement("td")
 
-    let buttonSelectProduct = document.createElement("button")
-    buttonSelectProduct.className = "btnDeleteProduct"
+        let buttonSelectProduct = document.createElement("button")
+        buttonSelectProduct.className = "btnDeleteProduct"
 
-    let iconSelectProduct = document.createElement("i")
-    iconSelectProduct.className = "material-symbols-outlined"
-    iconSelectProduct.textContent = "check"
+        let iconSelectProduct = document.createElement("i")
+        iconSelectProduct.className = "material-symbols-outlined"
+        iconSelectProduct.textContent = "check"
 
-    buttonSelectProduct.appendChild(iconSelectProduct)
-    selectProduct.appendChild(buttonSelectProduct)
-    
-    newLine.appendChild(selectProduct)
+        buttonSelectProduct.addEventListener("click", function () {
+            let productIDSelected = document.getElementById("productIDSelected")
+            let productViewName = document.getElementById("productViewName")
+            let productNewPrice = document.getElementById("productNewPrice")
+            let productNewStock = document.getElementById("productNewStock")
+            let imgPreView = document.getElementById("imgPreView")
+            let newDescImage = document.getElementById("newDescImage")
+            let productNewDescription = document.getElementById("productNewDescription")
 
-    tableProducts.appendChild(newLine)
-})
+
+            productIDSelected.value = productIterable.codigo
+            productViewName.value = productIterable.nome
+            productNewPrice.value = productIterable.preco
+            productNewStock.value = productIterable.estoque
+            productNewDescription.value = productIterable.descricao
+            imgPreView.src = productIterable.imagem
+            newDescImage.value = productIterable.descricaoImagem
+
+            containerPreViewImage.style.display = "flex"
+
+
+            btnSaveEditProduct.removeAttribute("disabled")
+            listaEditProducts.style.display = "none"
+
+        })
+        buttonSelectProduct.appendChild(iconSelectProduct)
+        selectProduct.appendChild(buttonSelectProduct)
+
+        newLine.appendChild(selectProduct)
+
+        tableProducts.appendChild(newLine)
+    })
+
 
 
     listaEditProducts.style.display = "flex"
-    btnCloseEdit.addEventListener("click", function(){
+    btnCloseEdit.addEventListener("click", function () {
         listaEditProducts.style.display = "none"
-    })    
+    })
 })
 
-btnRemoveEscProducts.addEventListener("click", function(){
+const btnSaveEditProduct = document.getElementById("btnSaveEditProduct")
+
+btnSaveEditProduct.addEventListener("click", function () {
+
+    let productIDSelected = document.getElementById("productIDSelected")
+    let productNewPrice = document.getElementById("productNewPrice")
+    let productNewStock = document.getElementById("productNewStock")
+    let newDescImage = document.getElementById("newDescImage")
+    let productNewDescription = document.getElementById("productNewDescription")
+
+    if (Number(productNewPrice.value) == 0 || Number(productNewStock.value) == 0 || newDescImage.value == "" || productNewDescription.value == "") {
+        Swal.fire("Erro", "Todos os campos precisam ser preenchidos para adicionar o produto.", "error")
+    } else {
+        let IDProductEditing = Number(productIDSelected.value)
+
+        if (photoProductReaded.length > 0) {
+            produtos[IDProductEditing].imagem = photoProductReaded
+        }
+
+        produtos[IDProductEditing].preco = Number(productNewPrice.value)
+        produtos[IDProductEditing].estoque = Number(productNewStock.value)
+        produtos[IDProductEditing].descricaoImagem = newDescImage.value
+        produtos[IDProductEditing].descricao = productNewDescription.value
+        localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+        const inputs = [...document.querySelectorAll("#screenEditProduct input")]
+        inputs.forEach(function (element) {
+            element.value = ""
+        })
+
+        newDescImage.value = ""
+        productNewDescription.value = ""
+        containerPreViewImage.style.display = "none"
+
+        btnSaveEditProduct.setAttribute("disabled", "true")
+
+        Swal.fire("Produto editado com sucesso.", "O produto foi editado corretamente.", "success")
+
+        //acaba aqui
+    }
+
+
+})
+
+
+
+btnRemoveEscProducts.addEventListener("click", function () {
+
+    let tableProducts = document.querySelector("#listProductsRemove tbody")
+
+    produtos.forEach(function (productIterable) {
+
+        let newLine = document.createElement("tr")
+
+        let nameProduct = document.createElement("td")
+        nameProduct.textContent = productIterable.nome
+        newLine.appendChild(nameProduct)
+
+        let priceProduct = document.createElement("td")
+        priceProduct.textContent = `R$ ${productIterable.preco.toFixed(2)}`
+        newLine.appendChild(priceProduct)
+
+        let idProduct = document.createElement("td")
+        idProduct.textContent = productIterable.codigo
+        newLine.appendChild(idProduct)
+
+        let selectProduct = document.createElement("td")
+
+        let buttonSelectProduct = document.createElement("button")
+        buttonSelectProduct.className = "btnDeleteProduct"
+
+        let iconSelectProduct = document.createElement("i")
+        iconSelectProduct.className = "material-symbols-outlined"
+        iconSelectProduct.textContent = "check"
+
+        buttonSelectProduct.addEventListener("click", function () {
+
+            let indexProduct = produtos.findIndex(produto => produto.codigo == productIterable.codigo)
+            produtos.splice(indexProduct, 1)
+
+            localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+            newLine.remove()
+
+        })
+        buttonSelectProduct.appendChild(iconSelectProduct)
+        selectProduct.appendChild(buttonSelectProduct)
+
+        newLine.appendChild(selectProduct)
+
+        tableProducts.appendChild(newLine)
+    })
+
     listaRemoveProducts.style.display = "flex"
-    btnCloseRemove.addEventListener("click", function(){
+    btnCloseRemove.addEventListener("click", function () {
         listaRemoveProducts.style.display = "none"
-    })    
+    })
 })
 
 

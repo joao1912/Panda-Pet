@@ -115,7 +115,8 @@ function trocarPagina(event) {
 
     switch(idElement) {
         case "petJaCadastrado":
-
+            const containerPets = document.getElementById("containerPetJaCadastrado")
+            containerPets.style.display = "flex"
 
             break
         case "botaoProximo":

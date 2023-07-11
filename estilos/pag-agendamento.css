@@ -484,8 +484,12 @@ button {
 }
 
 #containerCalendario > h2 {
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#containerCalendario h2 {
+    font-family: "GooperSemiBold";
 }
 
 #containerCalendario section {
@@ -497,60 +501,10 @@ button {
 }
 
 #containerFormDay {
-    border-bottom: 2px solid var(--primaryColor);
     padding-bottom: 15px;
 }
 
-#containerFormDay label {
-    font-size: 1.3em;
-    font-family: "Nunito";
-}
 
-#containerFormDay input {
-    width: 100px;
-    height: 55px;
-    display: block;
-    border-radius: 10px;
-    border: 2px solid var(--primaryColor);
-    text-align: center;
-    font-size: 2em;
-}
-
-#formDay {
-    position: relative;
-}
-
-#formMonth {
-    position: relative;
-}
-
-#formDay::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: 1px;
-    width: 2px;
-    height: 100px;
-    background-color: var(--primaryColor);
-    border-radius: 5px;
-    transform: rotate(195deg);
-}
-
-#formMonth::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: 1px;
-    width: 2px;
-    height: 100px;
-    background-color: var(--primaryColor);
-    border-radius: 5px;
-    transform: rotate(195deg);
-}
-
-#formYear > input {
-    width: 130px;
-}
 
 #containerFormHour input {
     display: block;
@@ -568,7 +522,7 @@ button {
 }
 
 #titleHour {
-    padding-bottom: 60px;
+    padding-bottom: 45px;
 }
 
 #containerFormHour {
@@ -581,7 +535,7 @@ button {
     height: 3px;
     background-color: var(--primaryColor);
     position: absolute;
-    top: 65px;
+    top: 58px;
     border-radius: 10px;
 }
 
@@ -846,4 +800,17 @@ button {
 
 #precoServico label {
     font-size: 0.9em;
+}
+
+#containerPetJaCadastrado {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    top: 37%;
+    left: 47%;
+    z-index: 3;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+    display: none;
 }

@@ -28,7 +28,11 @@ function adicionaProdutoAoCarrinho(codigo) {
         produtoExistente.quantidade++ //não necessario
     }
 
-    users[userID].carrinho = carrinho
+    for (let user of users) {
+        if (user.id == userID) {
+            user.carrinho = carrinho
+        }
+    }
     calcFinalizarCompra()
     saveLocalStorage(users)
 }
@@ -53,7 +57,11 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
             carrinho[index].quantidade -= quantidade
         }
     }
-    users[userID].carrinho = carrinho
+    for (let user of users) {
+        if (user.id == userID) {
+            user.carrinho = carrinho
+        }
+    }
     saveLocalStorage(users)
     calcFinalizarCompra()
 }
@@ -113,15 +121,28 @@ export function exibeCarrinho() {
 function pegaCarrinho() {
     try {
     // Verificar se existe o carrinho no usuário atual
-    //let carrinho = users[userID].carrinho
+    
     users = JSON.parse(localStorage.getItem("users"))
-    let carrinho = users[userID].carrinho
+    let carrinhoUser
 
-    if (carrinho == null) {
-        //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
-        users[userID].carrinho = []
+    for (let user of users) {
+        if (user.id == userID) {
+           
+            carrinhoUser = user.carrinho
+            if (carrinhoUser == null) {
+                //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
+                user.carrinho = []
+            }
+            carrinhoUser = user.carrinho
+            break
+        }
     }
-    return users[userID].carrinho
+
+    if (carrinhoUser == undefined) {
+        carrinhoUser = []
+    }
+        
+    return carrinhoUser /* tazes esse trecho de código quebre */
 } catch{
     return []
 }
@@ -129,7 +150,13 @@ function pegaCarrinho() {
 
 
 function limpaCarrinho() {
-    users[userID].carrinho = []
+
+    for (let user of users) {
+        if (user.id == userID) {
+            user.carrinho = []
+            break
+        }
+    }
     localStorage.setItem("users", JSON.stringify(users))
     //talvez tenha que exibir o carrinho vazio depois
 }
@@ -300,14 +327,28 @@ btnFinalizar.addEventListener("click", function(){
             }
         ]
     }
+
+    let carrinhoDoUser
+    for (let user of users) {
+        if (user.id == userID) {
+            carrinhoDoUser = user.carrinho
+            break
+        }
+    }
     
-    for(let obj of users[userID].carrinho) {
+    for(let obj of carrinhoDoUser) {
 
         let productCategory = produtos[obj.codigo].categoria
         let productPrice = produtos[obj.codigo].preco
 
-        users[userID].atividadeNoSite.totalGasto += (productPrice * obj.quantidade)
-        users[userID].atividadeNoSite.produtosComprados.push(obj.codigo)
+        for (let user of users) {
+            if (user.id == userID) {
+                user.atividadeNoSite.totalGasto += (productPrice * obj.quantidade)
+                user.atividadeNoSite.produtosComprados.push(obj.codigo)
+                break
+            }
+        }
+
 
         for(let i = 0; i < categoryTransations.length; i++) {
             if(categoryTransations[i].identificacaoCategoria == productCategory) {
@@ -319,7 +360,12 @@ btnFinalizar.addEventListener("click", function(){
 
     localStorage.setItem("compras", JSON.stringify(categoryTransations))
 
-    users[userID].carrinho = []
+    for (let user of users) {
+        if (user.id == userID) {
+            user.carrinho = []
+            break
+        }
+    }
 
     saveLocalStorage(users)
     
