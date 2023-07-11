@@ -963,6 +963,7 @@ btnSaveEditProduct.addEventListener("click", function () {
 
         newDescImage.value = ""
         productNewDescription.value = ""
+        containerPreViewImage.style.display = "none"
 
         btnSaveEditProduct.setAttribute("disabled", "true")
 
