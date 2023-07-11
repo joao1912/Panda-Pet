@@ -120,6 +120,17 @@ function trocarPagina(event) {
 
             break
         case "botaoProximo":
+
+          let inputNome = document.getElementById("inputNome")
+          let inputAniversario = document.getElementById("inputAniver")   
+          let inputRaca = document.getElementById("inputRaca")
+          let inputPeso = document.getElementById("inputPeso")  
+
+          let inputs = [inputNome,inputAniversario,inputRaca,inputPeso]
+
+          verificaErro(inputs)
+
+
             cadastroPet1.style.display = "none"
             cadastroPet2.style.display = "flex"
             arrayRadio.forEach( radio => {
@@ -168,4 +179,79 @@ function trocarPagina(event) {
 
             break
     }
+}
+
+function verificaErro(useInputs) {
+
+  
+  
+  for (let i = 0 ; i < useInputs.length ; i++) {
+    
+    if (useInputs[i].value.length ==0){
+      
+      switch(i) {
+        case 0:
+            alert('O nome esta incorreto')
+            break
+        case 1:
+            alert('O aniversário esta incorreto')
+            break
+        case 2:
+            alert('A raça esta incorreta')
+            break
+        case 3:
+            alert('O peso esta incorrento')
+            break    
+      }
+    }
+  }
+
+  let btnEscolha = document.getElementById("btnNo")
+  if(btnEscolha.dataset.content == "Sim"){
+  
+    let quadro = document.getElementById("quadro")
+    if(quadro.value.trim().length == 0){
+      alert("erro")
+    }
+    
+  }
+
+   let inputAniver = document.getElementById("inputAniver")
+   let data = inputAniver.value
+   data = data.replaceAll("/","")
+   let dia , mes, ano
+
+  
+   if (data[0] != 0){
+    dia = `${data[0]}${data[1]}`
+   }else{
+      dia=data[1]
+   }
+
+   if (data[2] != 0){
+    mes = `${data[2]}${data[3]}`
+   }else{
+      mes=data[3]
+   }
+
+   ano = `${data[4]}${data[5]}${data[6]}${data[7]}`
+
+   let date = new Date()
+   let anoAtual = date.getFullYear()
+   let expecVida = 25
+
+   dia = Number(dia)
+   ano = Number(ano)
+   mes = Number(mes)
+
+   
+   let anoMinimo = anoAtual - expecVida
+
+
+
+
+
+   
+   
+
 }
