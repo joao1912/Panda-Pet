@@ -7,7 +7,7 @@ function Produto(codigo, nome, descricao, imagem, preco, categoria, descricaoIma
     this.categoria = categoria
     this.descricaoImagem = descricaoImagem
     this.estoque = estoque
-    this.cassificacao = classificacao
+    this.classificacao = classificacao
 }
 
 export function getAllProducts() {
@@ -47,7 +47,7 @@ function initializeProducts() {
         new Produto(17, "Osso de borracha", "Brinquedo durável para cães brincarem.", "../../imagens/brinquedos/osso-dog.jpg", 13.99, "brinquedos", "Osso de borracha de várias cores: verde, rosa e amarelo. Tem superfície texturizada que ajuda a manter os dentes limpos.", 10,5),
 
         // Categoria: Acessórios
-        new Produto(18, "Casinha com arranhador", "Casinha e arranhador para seu gatinho brincar.", "../../imagens/acessorios/arranhadorCasaCat.jpg", 139.90, "acessorios", "Casinha em formato quadrado com textura peludinha na cor zebra, com plataforma vertical com barbante e um ratinho de plastico, ideal para seu gatinho brincar e dormir.", 10,5),
+        new Produto(18, "Casinha com arranhador", "Casinha e arranhador para seu gatinho brincar.", "../../imagens/acessorios/arranhadorCasaCat.jpg", 139.90, "acessorios", "Casinha em formato quadrado com textura peludinha na cor zebra, com plataforma vertical com barbante e um ratinho de plastico, ideal para seu gatinho brincar e dormir.", 10,4),
         new Produto(19, "Cama toca para pets", "Caminha estilo toca para deixar seu pet confortável.", "../../imagens/acessorios/cama-toca.png", 79.90, "acessorios", "Casinha em formato de toca na cor vermelha, por dentro é acolchoada. Confortável e quentinha para seu pet dormir e prática de levar para qualquer lugar, por ser um objeto leve.", 10,5),
         new Produto(20, "Comedouro para pets", "Acessório incrivel para quando seus pets ficarem sozinhos, serve como comedouro e bebedouro.", "../../imagens/acessorios/comedouro-bebedouro-automatico.jpg", 44.90, "acessorios", "Porta ração de 650ml, também serve para porta água, basta girar o reservatório para transformar no item que você preferir. O seu modelo automático permite que a ração ou a água desça gradativamente para a abertura conforme o animal for se alimentando.", 10,5),
         new Produto(21, "Comedouro", "Comedouro estilo cat.", "../../imagens/acessorios/comedouro-gatos.jpg", 22.99, "acessorios", "Comedouro ou potinho para ração do seu gato na cor azul petróleo. O objeto é de plástico com formato de cabeça de gato com orelhinhas.", 10,5),
