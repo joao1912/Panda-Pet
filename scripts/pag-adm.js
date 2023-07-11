@@ -54,7 +54,7 @@ const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
 
-formAddProduct.addEventListener("keyup", function() {
+formAddProduct.addEventListener("keyup", function () {
 
     if (photoProductReaded.length > 0 && productName.value.length > 0 && Number(productStock.value) > 0 && Number(productPrice.value) > 0 && productDescription.value.length > 0 && imageDescription.value.length > 0) {
 
@@ -128,7 +128,7 @@ btnAdicionar.addEventListener("click", function () {
         'Produto Adicionado!',
         'Ele ja está disponivel na loja!',
         'success'
-      )
+    )
 
 })
 
@@ -256,7 +256,7 @@ function trocaFotoPerfil() {
             for (let user of users) {
                 if (user.id == userID) {
                     user.img = fr.result
-                    
+
                 }
             }
             saveLocalStorage(users)
@@ -301,30 +301,30 @@ nav.addEventListener("click", function (event) {
 
         case "forAcessorios":
 
-        localStorage.setItem("newPage", "acessorios")
+            localStorage.setItem("newPage", "acessorios")
             window.location.href = "../../index.html"
             break
 
         case "forAlimentacao":
 
-        localStorage.setItem("newPage", "alimentos")
+            localStorage.setItem("newPage", "alimentos")
             window.location.href = "../../index.html"
 
             break
 
         case "forBrinquedos":
 
-        localStorage.setItem("newPage", "brinquedos")
+            localStorage.setItem("newPage", "brinquedos")
             window.location.href = "../../index.html"
-            
+
             break
-            
+
         case "forSugestoes":
 
-        localStorage.setItem("newPage", "sugestoes")
+            localStorage.setItem("newPage", "sugestoes")
             window.location.href = "../../index.html"
 
-            break  
+            break
 
         case "forAgendamento":
 
@@ -762,6 +762,18 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
         button.addEventListener("click", function (event) {
             let id = event.target.id
 
+            let inputs = [...document.querySelectorAll("input")]
+            inputs.forEach(function (element) {
+                element.value = ""
+            })
+
+            inputs = [...document.querySelectorAll("textarea")]
+            inputs.forEach(function (element) {
+                element.value = ""
+            })
+
+    
+
             switch (id) {
                 case "internalAddButton":
                     screenAddProducts.style.display = "none"
@@ -807,7 +819,7 @@ function photoProductEvents() {
 
 const containerPreViewImage = document.getElementById("preViewImage")
 const buttonAddPhotoEdit = document.getElementById("btnEditPhoto")
-containerPreViewImage.addEventListener("click" , addPhotoProductEdit)
+containerPreViewImage.addEventListener("click", addPhotoProductEdit)
 buttonAddPhotoEdit.addEventListener("click", addPhotoProductEdit)
 
 function addPhotoProductEdit() {
@@ -829,7 +841,7 @@ function addPhotoProductEdit() {
         };
         fr.readAsDataURL(this.files[0]);
 
-        
+
     }
 }
 
@@ -840,141 +852,173 @@ const btnCloseEdit = document.getElementById("btnCloseEdit")
 const btnCloseRemove = document.getElementById("btnCloseRemove")
 const btnRemoveEscProducts = document.getElementById("btnEscRemove")
 
-btnEditEscProducts.addEventListener("click", function(){
+btnEditEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsEdit tbody")
     tableProducts.innerHTML = ""
 
-produtos.forEach(function(productIterable) {
+    produtos.forEach(function (productIterable) {
 
-    let newLine = document.createElement("tr")
+        let newLine = document.createElement("tr")
 
-    let nameProduct = document.createElement("td")
-    nameProduct.textContent = productIterable.nome
-    newLine.appendChild(nameProduct)
+        let nameProduct = document.createElement("td")
+        nameProduct.textContent = productIterable.nome
+        newLine.appendChild(nameProduct)
 
-    let priceProduct = document.createElement("td")
-    priceProduct.textContent = `R$ ${productIterable.preco.toFixed(2)}`
-    newLine.appendChild(priceProduct)
+        let priceProduct = document.createElement("td")
+        priceProduct.textContent = `R$ ${productIterable.preco.toFixed(2)}`
+        newLine.appendChild(priceProduct)
 
-    let idProduct = document.createElement("td")
-    idProduct.textContent = productIterable.codigo
-    newLine.appendChild(idProduct)
+        let idProduct = document.createElement("td")
+        idProduct.textContent = productIterable.codigo
+        newLine.appendChild(idProduct)
 
-    let selectProduct = document.createElement("td")
+        let selectProduct = document.createElement("td")
 
-    let buttonSelectProduct = document.createElement("button")
-    buttonSelectProduct.className = "btnDeleteProduct"
+        let buttonSelectProduct = document.createElement("button")
+        buttonSelectProduct.className = "btnDeleteProduct"
 
-    let iconSelectProduct = document.createElement("i")
-    iconSelectProduct.className = "material-symbols-outlined"
-    iconSelectProduct.textContent = "check"
+        let iconSelectProduct = document.createElement("i")
+        iconSelectProduct.className = "material-symbols-outlined"
+        iconSelectProduct.textContent = "check"
 
-    buttonSelectProduct.addEventListener("click", function() {
-        let productViewName = document.getElementById("productViewName")
-        let productNewPrice = document.getElementById("productNewPrice")
-        let productNewStock = document.getElementById("productNewStock")
-        let newDescImage = document.getElementById("newDescImage")
-        let productNewDescription = document.getElementById("productNewDescription")
-
-        productViewName.value = productIterable.nome
-        productNewPrice.value = productIterable.preco
-        productNewStock.value = productIterable.estoque
-        productNewDescription.value = productIterable.descricao
-        newDescImage.value = productIterable.descricaoImagem
+        buttonSelectProduct.addEventListener("click", function () {
+            let productIDSelected = document.getElementById("productIDSelected")
+            let productViewName = document.getElementById("productViewName")
+            let productNewPrice = document.getElementById("productNewPrice")
+            let productNewStock = document.getElementById("productNewStock")
+            let imgPreView = document.getElementById("imgPreView")
+            let newDescImage = document.getElementById("newDescImage")
+            let productNewDescription = document.getElementById("productNewDescription")
 
 
+            productIDSelected.value = productIterable.codigo
+            productViewName.value = productIterable.nome
+            productNewPrice.value = productIterable.preco
+            productNewStock.value = productIterable.estoque
+            productNewDescription.value = productIterable.descricao
+            imgPreView.src = productIterable.imagem
+            newDescImage.value = productIterable.descricaoImagem
 
-        listaEditProducts.style.display = "none"
-        
+            containerPreViewImage.style.display = "flex"
+
+
+            btnSaveEditProduct.removeAttribute("disabled")
+            listaEditProducts.style.display = "none"
+
+        })
+        buttonSelectProduct.appendChild(iconSelectProduct)
+        selectProduct.appendChild(buttonSelectProduct)
+
+        newLine.appendChild(selectProduct)
+
+        tableProducts.appendChild(newLine)
     })
-    buttonSelectProduct.appendChild(iconSelectProduct)
-    selectProduct.appendChild(buttonSelectProduct)
-    
-    newLine.appendChild(selectProduct)
 
-    tableProducts.appendChild(newLine)
+
+
+    listaEditProducts.style.display = "flex"
+    btnCloseEdit.addEventListener("click", function () {
+        listaEditProducts.style.display = "none"
+    })
 })
 
 const btnSaveEditProduct = document.getElementById("btnSaveEditProduct")
-btnSaveEditProduct.removeAttribute("disabled")
 
-btnSaveEditProduct.addEventListener("click", function() {
+btnSaveEditProduct.addEventListener("click", function () {
 
+    let productIDSelected = document.getElementById("productIDSelected")
     let productNewPrice = document.getElementById("productNewPrice")
     let productNewStock = document.getElementById("productNewStock")
     let newDescImage = document.getElementById("newDescImage")
     let productNewDescription = document.getElementById("productNewDescription")
 
-    if(Number(productNewPrice.value) == 0 ||Number(productNewStock.value) == 0 || newDescImage.value == "" || productNewDescription.value == "") {
+    if (Number(productNewPrice.value) == 0 || Number(productNewStock.value) == 0 || newDescImage.value == "" || productNewDescription.value == "") {
         alert("Todos os campos precisam ser preenchidos!")
     } else {
-        alert("continuar em casa")
+        let IDProductEditing = Number(productIDSelected.value)
+
+        if (photoProductReaded.length > 0) {
+            produtos[IDProductEditing].imagem = photoProductReaded
+        }
+
+        produtos[IDProductEditing].preco = Number(productNewPrice.value)
+        produtos[IDProductEditing].estoque = Number(productNewStock.value)
+        produtos[IDProductEditing].descricaoImagem = newDescImage.value
+        produtos[IDProductEditing].descricao = productNewDescription.value
+        localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+        const inputs = [...document.querySelectorAll("#screenEditProduct input")]
+        inputs.forEach(function (element) {
+            element.value = ""
+        })
+
+        newDescImage.value = ""
+        productNewDescription.value = ""
+
+        btnSaveEditProduct.setAttribute("disabled", "true")
+
+        Swal.fire("Produto editado com sucesso.", "O produto foi editado corretamente.", "success")
+
+        //acaba aqui
     }
 
 
 })
 
 
-    listaEditProducts.style.display = "flex"
-    btnCloseEdit.addEventListener("click", function(){
-        listaEditProducts.style.display = "none"
-    })    
-})
 
-
-
-btnRemoveEscProducts.addEventListener("click", function(){
+btnRemoveEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsRemove tbody")
 
-    produtos.forEach(function(productIterable) {
-    
+    produtos.forEach(function (productIterable) {
+
         let newLine = document.createElement("tr")
-    
+
         let nameProduct = document.createElement("td")
         nameProduct.textContent = productIterable.nome
         newLine.appendChild(nameProduct)
-    
+
         let priceProduct = document.createElement("td")
         priceProduct.textContent = `R$ ${productIterable.preco.toFixed(2)}`
         newLine.appendChild(priceProduct)
-    
+
         let idProduct = document.createElement("td")
         idProduct.textContent = productIterable.codigo
         newLine.appendChild(idProduct)
-    
+
         let selectProduct = document.createElement("td")
-    
+
         let buttonSelectProduct = document.createElement("button")
         buttonSelectProduct.className = "btnDeleteProduct"
-    
+
         let iconSelectProduct = document.createElement("i")
         iconSelectProduct.className = "material-symbols-outlined"
         iconSelectProduct.textContent = "check"
-    
-        buttonSelectProduct.addEventListener("click", function() {
-    
+
+        buttonSelectProduct.addEventListener("click", function () {
+
             let indexProduct = produtos.findIndex(produto => produto.codigo == productIterable.codigo)
             produtos.splice(indexProduct, 1)
-            
+
             localStorage.setItem("listaProdutos", JSON.stringify(produtos))
-    
+
             newLine.remove()
-            
+
         })
         buttonSelectProduct.appendChild(iconSelectProduct)
         selectProduct.appendChild(buttonSelectProduct)
-        
+
         newLine.appendChild(selectProduct)
-    
+
         tableProducts.appendChild(newLine)
     })
-    
+
     listaRemoveProducts.style.display = "flex"
-    btnCloseRemove.addEventListener("click", function(){
+    btnCloseRemove.addEventListener("click", function () {
         listaRemoveProducts.style.display = "none"
-    })    
+    })
 })
 
 
