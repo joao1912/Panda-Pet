@@ -805,6 +805,34 @@ function photoProductEvents() {
 
 }
 
+const containerPreViewImage = document.getElementById("preViewImage")
+const buttonAddPhotoEdit = document.getElementById("btnEditPhoto")
+containerPreViewImage.addEventListener("click" , addPhotoProductEdit)
+buttonAddPhotoEdit.addEventListener("click", addPhotoProductEdit)
+
+function addPhotoProductEdit() {
+    const filePhotoProduct = document.getElementById("productChoosePhoto")
+
+    filePhotoProduct.click();
+    filePhotoProduct.addEventListener("change", readImage, false);
+    const file = document.getElementById("imgPreView")
+
+    function readImage() {
+        let fr = new FileReader();
+        fr.onload = function (event) {
+            file.src = event.target.result
+            photoProductReaded = event.target.result
+            //aqui voce pode salvar a imagem carregada EX:
+            //let variavel = event.target.result
+            containerPreViewImage.style.display = "flex"
+
+        };
+        fr.readAsDataURL(this.files[0]);
+
+        
+    }
+}
+
 const btnEditEscProducts = document.getElementById("btnEscEdit")
 const listaEditProducts = document.getElementById("listProductsEdit")
 const listaRemoveProducts = document.getElementById("listProductsRemove")

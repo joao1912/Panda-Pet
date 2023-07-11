@@ -200,7 +200,7 @@ function setPerfilOnline() {
                obj.contato = contato
                 
             }
-        }
+        }   
         saveLocalStorage(users)
         
      }
