@@ -41,7 +41,7 @@ export function loadInfoProducts(codigoProduto) {
 
 function setStars(classificacao) {
     const containerStars = document.getElementById("containerStars")
-
+    containerStars.innerHTML = ""
     let stars = []
 
     for (let i = 0 ; i < classificacao ; i++) {
