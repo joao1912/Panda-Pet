@@ -772,6 +772,16 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
                 element.value = ""
             })
 
+            containerPreViewImage.src = ""
+            containerPreViewImage.style.display = "none"
+
+            let productNameView = document.getElementById("productNameView")
+            productNameView.innerHTML = `Nome do produto`
+
+            let productPriceView = document.getElementById("productPriceView")
+            productPriceView.innerHTML = `R$ 0,00`
+
+
     
 
             switch (id) {
@@ -834,8 +844,6 @@ function addPhotoProductEdit() {
         fr.onload = function (event) {
             file.src = event.target.result
             photoProductReaded = event.target.result
-            //aqui voce pode salvar a imagem carregada EX:
-            //let variavel = event.target.result
             containerPreViewImage.style.display = "flex"
 
         };
