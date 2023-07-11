@@ -337,7 +337,17 @@ nav.addEventListener("click", function (event) {
 
 const barra_pesquisa = document.getElementById("barraPesquisa")
 
-/* fazer aqui o evendo do enter funcionar */
+barra_pesquisa.addEventListener("keydown", function(event) {
+    if(event.keyCode == 13) {
+
+        let stringSearch = barra_pesquisa.value
+        stringSearch = stringSearch.trim()
+        if(stringSearch == "") return
+
+        localStorage.setItem("pesquisarPor", stringSearch)
+        window.location.href = "../index.html"
+    }
+})
 
 const telaAdmUtilities = document.getElementById("containerAdmUtilities")
 const containerCalendar = document.getElementById("viewCalendar")

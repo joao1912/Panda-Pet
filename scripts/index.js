@@ -460,6 +460,22 @@ btnCart.addEventListener("click", function () {
 
 })
 
+if(localStorage.hasOwnProperty("pesquisarPor")) {
+
+    let stringSearch = localStorage.getItem("pesquisarPor")
+    localStorage.removeItem("pesquisarPor")
+
+    stringSearch = stringSearch.trim()
+    if(stringSearch != "") {
+
+let searchedProducts = searchProducts(stringSearch)
+showSearchResults(searchedProducts)
+
+    containerTelaProdutos.style.display = "block"
+    containerTelaInicial.style.display = "none"
+
+    }
+}
 
 barra_pesquisa.addEventListener("keydown", function(event) {
     if(event.keyCode == 13) {
