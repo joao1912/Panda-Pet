@@ -1,5 +1,6 @@
 import { produtos } from "./utils/produtos.js";
-import { showProducts } from "./utils/forProducts/showProducts.js";
+import { searchProducts } from "./utils/forProducts/searchProducts.js";
+import { showProducts, showSearchResults } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
 import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
@@ -460,7 +461,21 @@ btnCart.addEventListener("click", function () {
 })
 
 
-barra_pesquisa.addEventListener("keyup", barraPesquisa)
+barra_pesquisa.addEventListener("keydown", function(event) {
+    if(event.keyCode == 13) {
+
+        let stringSearch = barra_pesquisa.value
+        stringSearch = stringSearch.trim()
+        if(stringSearch == "") return
+    
+    let searchedProducts = searchProducts(stringSearch)
+    showSearchResults(searchedProducts)
+
+        containerTelaProdutos.style.display = "block"
+        containerTelaInicial.style.display = "none"
+
+    }
+})
 
 function barraPesquisa() {
 

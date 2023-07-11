@@ -13,22 +13,22 @@ export function showProducts(categoria) {
             h1Produtos.textContent = "Acessórios"
             indexProdutos = getIndexCategory("acessorios")
             containerProdutos.innerHTML = ""
-        
+
             setProductsElements(indexProdutos)
 
             break
 
-            case 'sugestoes':
+        case 'sugestoes':
 
             h1Produtos.textContent = "Sugestões"
             indexProdutos = getIndexCategory("sugestoes")
             containerProdutos.innerHTML = ""
-        
+
             setProductsElements(indexProdutos)
 
             break
 
-        case 'alimentos': 
+        case 'alimentos':
             h1Produtos.textContent = "Alimentação"
             indexProdutos = getIndexCategory("alimentacao")
             containerProdutos.innerHTML = ""
@@ -36,7 +36,7 @@ export function showProducts(categoria) {
             setProductsElements(indexProdutos)
 
             break
-        
+
         case 'brinquedos':
 
             h1Produtos.textContent = "Brinquedos"
@@ -47,4 +47,21 @@ export function showProducts(categoria) {
 
             break
     }
-}   
+}
+
+export function showSearchResults(indexProdutos) {
+
+    const h1Produtos = document.getElementById("h1Produtos")
+    const containerProdutos = document.getElementById("containerProdutos")
+    
+    h1Produtos.textContent = "Resultados para sua busca"
+    containerProdutos.innerHTML = ""
+
+    setProductsElements(indexProdutos)
+
+    if(indexProdutos.length == 0) {
+        containerProdutos.innerHTML = "Nenhum resultado encontrado"
+    }
+
+    containerProdutos.style.display = "flex"
+}
