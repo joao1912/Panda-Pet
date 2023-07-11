@@ -439,11 +439,11 @@ btnCart.addEventListener("click", function () {
 
             //Redirecionar usando Number(productElement.id)
 
-            header.style.display = "block"
-            nav.style.display = "none"
+            header.style.display = "flex"
+            nav.style.display = "flex"
 
             containerTelaCarrinho.style.display = "none"
-            containerTelaIndividualProduto.style.display = "block"
+            containerTelaIndividualProd.style.display = "block"
 
             footer.style.display = "block"
 
