@@ -149,7 +149,7 @@ function trocarPagina(event) {
               radio.classList.remove("marked")
             })
             inptRadioCadastro[0].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaEpandav.png)"
             imgPandaCadastro.style.marginRight = "5px"
 
             break
@@ -160,7 +160,7 @@ function trocarPagina(event) {
               radio.classList.remove("marked")
             })
             inptRadioCadastro[2].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaEpandav.png)"
+            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
             imgPandaCadastro.style.marginRight = "0"
 
             break
