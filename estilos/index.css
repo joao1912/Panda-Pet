@@ -823,3 +823,13 @@ border-radius: 50%;
     width: 200px;
 }
 
+.messageNoShopping {
+    position: absolute;
+    font-size: 2em;
+    color: black;
+    font-family: "GooperSemiBold";
+    top: 40%;
+    width: 90%;
+    text-align: center;
+   color: white;
+}

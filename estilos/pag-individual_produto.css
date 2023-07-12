@@ -15,6 +15,10 @@
 
 }
 
+#containerImg {
+    height: 17%;
+}
+
 #conteinerPrincipal>div {
 
 
@@ -105,9 +109,11 @@
 
 #imagemDescricaoProduto {
 
-    width: 50%;
-    height: 80%;
-
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    right: 10px;
+    top: 35%;
 
 
 }
@@ -137,7 +143,7 @@
     height: 40%;
     font-size: 2em;
     color: var(--primaryColor);
-    padding-top: 10px;
+
 
 }
 
@@ -145,8 +151,7 @@
 
 
     width: 100%;
-    height: 30%;
-    padding-top: 15px;
+    height: 40%;
 
 
 }
@@ -156,7 +161,8 @@
     display: flex;
     font-size: 1.5em;
     width: 100%;
-    height: 40%;
+    height: 20%;
+    margin-top: 10px;
     color: var(--primaryColor);
 
 }
@@ -164,7 +170,7 @@
 #addProdutos {
 
     width: 100%;
-    height: 20%;
+    height: 15%;
 
 }
 
@@ -271,7 +277,7 @@ input[type=number] {
 }
 
 #containerPrecoProd {
-    margin-top: -20px;
+    margin-top: -15px;
 }
 
 #sugestoesProdutos {
@@ -298,7 +304,6 @@ input[type=number] {
     align-items: center;
     justify-content: space-around;
     background-color: var(--secondColor);
-    overflow-x: scroll;
     gap: 30px;
 }
 
