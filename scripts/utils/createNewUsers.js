@@ -2,6 +2,26 @@ import { getDate } from "./getDate.js"
 import { saveLocalStorage } from "./saveLocalStorage.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
+
+if (users == null) {
+    users = [{
+        id: 0 ,
+        nome: "Admin",
+        realName: null,
+        senha: "administrador123",
+        carrinho: [],
+        lembrarDeMim: false,
+        online: false,
+        date: getDate(),
+        atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        contato: null,
+        pets: [],
+        img: '../../imagens/perfil-default.jpg'
+    }]
+
+    saveLocalStorage(users)
+}
+
 let maiorId = 0
 let todosId = []
 function User(quantidade,nome, realName, senha, carrinho, lembrarDeMim, online, contato, pets, img) {
