@@ -7,9 +7,6 @@ import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
 import {getDate} from './utils/getDate.js'
 
-import {createNewUsers} from "./utils/createNewUsers.js"
-
-
 let users = JSON.parse(localStorage.getItem("users"))
 
 if (users == null) {
@@ -40,11 +37,6 @@ for (let user of users) {
 }
 
 export let userID = verifyUserOnline()
-
-
-if (users.length < 10) {
-    createNewUsers(10)   
-}
 
 let visibility = false
 
