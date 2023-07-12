@@ -308,8 +308,10 @@ function disabledButton() {
 }
 
 
+if (btnFinalizar) {
+    btnFinalizar.addEventListener("click", finalizarCompra)
+}
 
-btnFinalizar.addEventListener("click", finalizarCompra)
 
 function finalizarCompra() {
 
