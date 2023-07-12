@@ -97,4 +97,83 @@ export function Error(erro) {
             containerErro.style.marginLeft = "-215px"
 
     }
+
+    //erro agendamento
+    
+
+    if (typeof erro != "object" || erro.length == 0) return
+
+    do {
+        const containerErroNome = document.getElementById("erroInptNome")
+        const containerErroNiver = document.getElementById("erroInptAniversario")
+        const containerErroRaca = document.getElementById("erroInptRaca")
+        const containerErroPeso = document.getElementById("erroInptPeso")
+        const containerErroAlergico= document.getElementById("erroBtnEscolha")
+
+        const inptNome = document.getElementById("inputNome")
+        const inptNiver = document.getElementById("inputAniver")
+        const inptRaca = document.getElementById("inputRaca")
+        const inptPeso = document.getElementById("inputPeso")
+        const textAlergico = document.getElementById("quadro")
+
+        switch (erro[0]) {
+            case "#nome-vazio#":
+                
+                containerErroNome.style.display = "block"
+                containerErroNome.textContent = "Este Campo é Obrigatório!"
+                inptNome.addEventListener("keydown", () => {ocutarErro(containerErroNome)} )
+
+                break
+            case "#niver-vazio#":
+                
+                containerErroNiver.style.display = "block"
+                containerErroNiver.textContent = "Este Campo é Obrigatório!"
+                inptNiver.addEventListener("keydown", () => {ocutarErro(containerErroNiver)} )
+
+                break
+            case "#raca-vazio#":
+                
+                containerErroRaca.style.display = "block"
+                containerErroRaca.textContent = "Este Campo é Obrigatório!"
+                inptRaca.addEventListener("keydown", () => {ocutarErro(containerErroRaca)} )
+
+                break
+            case "#peso-vazio#":
+                
+                containerErroPeso.style.display = "block"
+                containerErroPeso.textContent = "Este Campo é Obrigatório!"
+                inptPeso.addEventListener("keydown", () => {ocutarErro(containerErroPeso)} )
+
+                break
+            case "#alergico-vazio#":
+               
+                containerErroAlergico.style.display = "block"
+                containerErroAlergico.textContent = "Este Campo é Obrigatório!"
+                textAlergico.addEventListener("keydown", () => {ocutarErro(containerErroAlergico)} )
+
+                break
+            case "#niver-invalido#":
+        
+                containerErroNiver.style.display = "block"
+                containerErroNiver.textContent = "Data inválida!"
+                inptNiver.addEventListener("keydown", () => {ocutarErro(containerErroNiver)} )
+
+                break
+            case "#peso-invalido#":
+                containerErroPeso.style.display = "block"
+                containerErroPeso.textContent = "Peso inválido!"
+                inptPeso.addEventListener("keydown", () => {ocutarErro(containerErroPeso)} )
+                break
+        }
+
+        erro.splice(0,1)
+
+    } while (erro.length)
+    
+    
+}
+
+function ocutarErro(elemento) {
+    elemento.style.display = "none"
+    elemento.textContent = ""
 }

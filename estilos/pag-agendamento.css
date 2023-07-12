@@ -814,3 +814,12 @@ button {
     box-shadow: 0px 0px 8px var(--shadowColor3);
     display: none;
 }
+
+.containerErrosAgendamento {
+    font-size: 0.9em;
+    font-family: "Nunito";
+    width: 200px;
+    height: 18px;
+    padding-left: 10px;
+    color: rgb(167, 15, 15);
+}

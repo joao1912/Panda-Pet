@@ -1,4 +1,5 @@
 import { verifyUserOnline } from './utils/verifyUserOnline.js'
+import { Error } from './utils/erros.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -111,6 +112,29 @@ function trocarPagina(event) {
     const cadastroPet3 = document.getElementById("cadastroPet3")
     const inptRadioCadastro = document.querySelectorAll(".inptEstilizado")
     const arrayRadio = [...inptRadioCadastro]
+    let erroOuNao
+
+    let agendamento = {
+      id: 1,
+      service: "Hospedagem",
+      dia: 10,
+      mes: 11, //o mes vai de 0 a 11 !!!
+      hora: "15:30",
+      pet: {
+        nome: undefined,
+        idPET: undefined
+      }
+  }
+
+    let cadastroPet = {
+      idPET: undefined,
+      nome: undefined,
+      raca: undefined,
+      aniversario: undefined,
+      alergias: undefined,
+      sexo: undefined,
+      peso: undefined
+    }
 
 
     switch(idElement) {
@@ -128,18 +152,19 @@ function trocarPagina(event) {
 
           let inputs = [inputNome,inputAniversario,inputRaca,inputPeso]
 
-          verificaErro(inputs)
+          erroOuNao = verificaErro(inputs)
 
+          if (!erroOuNao) {
+              cadastroPet1.style.display = "none"
+              cadastroPet2.style.display = "flex"
+              arrayRadio.forEach( radio => {
+                radio.classList.remove("marked")
+              })
+              inptRadioCadastro[1].classList.add("marked")
+              imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+              imgPandaCadastro.style.marginRight = "20px"
 
-            cadastroPet1.style.display = "none"
-            cadastroPet2.style.display = "flex"
-            arrayRadio.forEach( radio => {
-              radio.classList.remove("marked")
-            })
-            inptRadioCadastro[1].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
-            imgPandaCadastro.style.marginRight = "20px"
-
+          } 
             break
 
         case "botaoVoltar":
@@ -183,7 +208,7 @@ function trocarPagina(event) {
 
 function verificaErro(useInputs) {
 
-  
+  let erros = []
   
   for (let i = 0 ; i < useInputs.length ; i++) {
     
@@ -191,16 +216,16 @@ function verificaErro(useInputs) {
       
       switch(i) {
         case 0:
-            alert('O nome esta incorreto')
+            erros.push("#nome-vazio#")
             break
         case 1:
-            alert('O aniversário esta incorreto')
+            erros.push("#niver-vazio#")
             break
         case 2:
-            alert('A raça esta incorreta')
+            erros.push("#raca-vazio#")
             break
         case 3:
-            alert('O peso esta incorrento')
+            erros.push("#peso-vazio#")
             break    
       }
     }
@@ -211,7 +236,7 @@ function verificaErro(useInputs) {
   
     let quadro = document.getElementById("quadro")
     if(quadro.value.trim().length == 0){
-      alert("erro")
+      erros.push("#alergico-vazio#")
     }
     
   }
@@ -252,6 +277,10 @@ function verificaErro(useInputs) {
 
 
    
-   
-
+  if (erros.length != 0) {
+      Error(erros)
+      return true
+  } else {
+      return false
+  }
 }
