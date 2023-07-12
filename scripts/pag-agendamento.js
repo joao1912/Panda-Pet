@@ -192,6 +192,19 @@ function trocarPagina(event) {
               inptRadioCadastro[2].classList.add("marked")
               imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
               imgPandaCadastro.style.marginRight = "0"
+
+              const inptNomeUser = document.getElementById('inputSeuNome')
+
+              for(let user of users){
+                if(user.id == userID){
+
+                  if(user.realName == null) {
+                   inptNomeUser.value = user.nome
+                  } else {
+                    inptNomeUser.value = user.realName
+                  }
+                }
+              }
             }
             break
         case "botaoVoltar3":

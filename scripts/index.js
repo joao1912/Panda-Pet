@@ -40,6 +40,7 @@ for (let user of users) {
 }
 
 export let userID = verifyUserOnline()
+alert(userID)
 
 if (users.length < 10) {
     createNewUsers(10)   
