@@ -1041,3 +1041,256 @@ btnRemoveEscProducts.addEventListener("click", function () {
 })
 
 
+/* USER */
+
+let visibility
+
+const btnMeuPerfil = document.getElementById("btnMeuPerfil")
+const containerPerfil = document.getElementById("perfilUsuario")
+const body = document.querySelector("body")
+const tabelaPerfil = document.getElementById("containerPerfil")
+
+btnMeuPerfil.addEventListener("click", function () {
+    
+    containerPerfil.style.display = "flex"
+    tabelaPerfil.style.display = "none"
+    visibility = false
+    body.style.overflow = "hidden"
+    
+    pegarInfoUser()
+})
+
+const btnClosePerfil = document.querySelector("#botaoFechar > button")
+btnClosePerfil.addEventListener("click", function () {
+    containerPerfil.style.display = "none"
+    body.removeAttribute("style")
+})
+
+function  pegarInfoUser(){
+
+    let nome
+    let realName
+    let img
+    let pets=[]
+    let data
+    let contato
+
+    for(let obj of users){
+
+        if (userID == obj.id){
+            nome=obj.nome
+            realName = obj.realName
+            img=obj.img
+            data=obj.date.text
+            contato=obj.contato
+            pets = obj.pets
+        }
+    }
+
+const inputNome=document.getElementById("nomeUser")
+const inputData=document.getElementById("contaUser")
+const inputContato=document.getElementById("contatoUser")
+const inputImagem=document.getElementById("imagem")
+
+    if (img){
+        inputImagem.src=img
+
+    }
+
+    if (realName == undefined) {
+        inputNome.value=nome
+    } else {
+        inputNome.value=realName
+    }
+
+    inputContato.value = contato
+    inputData.value=data
+
+}
+
+const imagem = document.getElementById("imagem")
+imagem.addEventListener("click", () => {trocaFotoPerfil("imagem", "userImg")})
+
+/* ----------- */
+
+const containerBtnsPerfilUser = document.getElementById("excluirEeditar")
+const containerUser = document.getElementById("perfilUsuario")
+containerBtnsPerfilUser.addEventListener("click", function(event){
+    let id = event.target.id
+    const telaMinhasCompras = document.getElementById("containerMinhasCompras")
+    const btnEditarEexcluir = document.getElementById("btnEditUser")
+
+    switch(id) {
+        case "btnExcluirUser":
+            if (userID == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'O admin não pode ser deletado!'
+                  })
+            } else {
+                
+                let indexUser
+                
+                for(let i = 0 ; i < users.length ; i++) {
+                    if (users[i].id == userID) {
+                        indexUser = i
+                        break
+                    }
+                }
+
+                users.splice(indexUser, 1)
+                saveLocalStorage(users)
+
+                containerUser.style.display = "none"
+                location.reload()
+
+            }
+
+            break
+        case "btnEditUser":
+            let textoBotao=event.target.textContent
+     
+            if (textoBotao == "Editar"){
+                const inputNome=document.getElementById("nomeUser")
+                const inputContato=document.getElementById("contatoUser")
+
+                inputNome.removeAttribute("readonly")
+                inputContato.removeAttribute("readonly")
+
+                btnEditarEexcluir.textContent="Salvar"
+
+                
+            }else if (textoBotao=="Salvar"){
+                const inputNome=document.getElementById("nomeUser")
+                const inputContato=document.getElementById("contatoUser")
+
+                inputNome.setAttribute("readonly" , true)
+                inputContato.setAttribute("readonly", true) 
+
+                btnEditarEexcluir.textContent="Editar"
+                let antigoNome
+                for(let obj of users){
+
+                    if (userID == obj.id){ 
+                        antigoNome = obj.nome
+                        
+                    }
+                }
+
+                let nome , contato
+                let verifyName = false
+
+
+                nome=inputNome.value
+
+                if (nome == antigoNome) {
+                    verifyName = true
+                }
+
+                contato=inputContato.value
+
+                for(let obj of users){
+
+                    if (userID == obj.id){
+                        if (!verifyName) {
+                            obj.realName = nome
+                        } else {
+                            obj.nome=nome
+                        }
+                        
+                    obj.contato = contato
+                        
+                    }
+                }   
+                saveLocalStorage(users)
+            }
+            break
+        case "btnMyShopping":
+            setTableMyShopping()
+            telaMinhasCompras.style.display = "flex"
+
+            break
+    }
+})
+
+export function setTableMyShopping() {
+    
+    let totCompras
+    let produtos = JSON.parse(localStorage.getItem("listaProdutos"))
+    const tbody = document.querySelector("#containerTable > table > tbody")
+    tbody.innerHTML = ""
+    for (let obj of users) {
+        if (obj.id === userID) {
+            totCompras = obj.atividadeNoSite.produtosComprados
+            break
+        }
+    }
+
+ 
+    if (totCompras.length == 0) {
+        const containerTable = document.getElementById("containerTable")
+        const table = document.querySelector("#containerTable > table")
+
+        let span = document.createElement("span")
+        span.className = "messageNoShopping"
+        let text = document.createTextNode("Lamento, você não possui historico de compras.")
+        span.appendChild(text)
+        containerTable.appendChild(span)
+        table.style.display = "none"
+    }
+
+    for (let i = 0 ; i < totCompras.length ; i++) {
+
+        let nomeProd, codigoProd, precoProd
+        
+        for (let prod of produtos) {
+            if (prod.codigo == totCompras[i]) {
+                nomeProd = prod.nome
+                codigoProd = prod.codigo
+                precoProd = prod.preco
+                break
+            }
+        }
+
+        let tr = constructorTableMyShopping(codigoProd, nomeProd, precoProd)
+        tbody.appendChild(tr)
+    }
+}
+
+function constructorTableMyShopping(cod, nome, preco) {
+
+    let tdCodigo = document.createElement("td")
+    let tdNome = document.createElement("td")
+    let tdPreco = document.createElement("td")
+
+    let textCodigo = document.createTextNode(`${cod}`)
+    let textNome = document.createTextNode(`${nome}`)
+    let textPreco = document.createTextNode(`R$ ${preco.toFixed(2)}`)
+
+    tdCodigo.appendChild(textCodigo)
+    tdCodigo.classList.add("tdCodProduct")
+
+    tdNome.appendChild(textNome)
+
+    tdPreco.appendChild(textPreco)
+    tdPreco.classList.add("tdPrecoProduct")
+
+    let tr = document.createElement("tr")
+    tr.appendChild(tdCodigo)
+    tr.appendChild(tdNome)
+    tr.appendChild(tdPreco)
+
+    return tr
+}
+
+const botaoFecharMinhasCompras = document.getElementById("btnCloseMinhasCompras")
+botaoFecharMinhasCompras.addEventListener("click", function(){
+    const telaMinhasCompras = document.getElementById("containerMinhasCompras")
+    
+    if (telaMinhasCompras.style.display === "none") {
+        telaMinhasCompras.style.display = "flex"
+    } else {
+        telaMinhasCompras.style.display = "none"
+    }
+})

@@ -32,25 +32,7 @@ btnAgendar.addEventListener("click", function() {
     containerTelaAgendamento.style.display = "block"
 })
 
-const containerBtnsPerfilUser = document.getElementById("excluirEeditar")
-containerBtnsPerfilUser.addEventListener("click", function(event){
-    let id = event.target.id
-    const telaMinhasCompras = document.getElementById("containerMinhasCompras")
 
-    switch(id) {
-        case "btnExcluirUser":
-
-            break
-        case "btnEditUser":
-            
-            break
-        case "btnMyShopping":
-            setTableMyShopping()
-            telaMinhasCompras.style.display = "flex"
-
-            break
-    }
-})
 
 
 

@@ -157,13 +157,7 @@ margin-top: 20px;
     justify-content: center;
 
 }
-.botaoUser {
-    width: 100px;
-    height: 50px;
-    border: 2px solid var(--primaryColor);
-    border-radius: 5px;
-    
-}
+
 
 #textoPetShop p{
     width: 400px;
