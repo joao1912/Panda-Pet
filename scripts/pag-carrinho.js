@@ -33,8 +33,8 @@ function adicionaProdutoAoCarrinho(codigo) {
             user.carrinho = carrinho
         }
     }
-    calcFinalizarCompra()
     saveLocalStorage(users)
+    calcFinalizarCompra()
 }
 
 
@@ -129,7 +129,7 @@ export function exibeCarrinho() {
 
 
 //Função criada para puxar o carrinho sempre que necessário
-function pegaCarrinho() {
+export function pegaCarrinho() {
     try {
     // Verificar se existe o carrinho no usuário atual
     
@@ -313,7 +313,7 @@ if (btnFinalizar) {
 }
 
 
-function finalizarCompra() {
+export function finalizarCompra() {
 
     let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
@@ -383,7 +383,6 @@ function finalizarCompra() {
 
     saveLocalStorage(users)
     
-    btnFinalizar.disabled = true
 
     Swal.fire({icon: 'success',
     title: 'Compra Realizada!',
