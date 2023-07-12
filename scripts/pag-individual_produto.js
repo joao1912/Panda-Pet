@@ -1,6 +1,7 @@
 import { verifyUserOnline } from "./utils/verifyUserOnline.js"
 import { saveLocalStorage } from "./utils/saveLocalStorage.js"
 import { produtos } from "./utils/produtos.js"
+import { getRandomProducts} from "./pag-carrinho.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
 const userID = verifyUserOnline()
@@ -74,6 +75,32 @@ export function loadInfoProducts(codigoProduto) {
         }
 
     }
+
+
+    const randomProducts = getRandomProducts(4)
+    let sugestoesProdutos = document.querySelectorAll(".sugest")
+    index = 0
+    
+    sugestoesProdutos.forEach((sugestaoProduto) => {
+    
+        let productElement = document.createElement("img")
+
+        productElement.id = produtos[randomProducts[index]].codigo
+
+        productElement.src = produtos[randomProducts[index]].imagem
+
+        productElement.alt = produtos[randomProducts[index]].descricaoImagem
+
+        productElement.addEventListener("click", function() {
+
+            loadInfoProducts(Number(productElement.id))
+
+        })
+
+        sugestaoProduto.innerHTML = ""
+        sugestaoProduto.appendChild(productElement)
+        index++
+    })
 
 }
 

@@ -1,4 +1,5 @@
 import { produtos } from "./utils/produtos.js";
+import { loadInfoProducts } from "./pag-individual_produto.js";
 import { searchProducts } from "./utils/forProducts/searchProducts.js";
 import { showProducts, showSearchResults } from "./utils/forProducts/showProducts.js";
 import { verifyUserOnline } from "./utils/verifyUserOnline.js";
@@ -374,7 +375,7 @@ btnCart.addEventListener("click", function () {
 
         productElement.addEventListener("click", function() {
 
-            //Redirecionar usando Number(productElement.id)
+            loadInfoProducts(Number(productElement.id))
 
             header.style.display = "flex"
             nav.style.display = "flex"
