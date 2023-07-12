@@ -833,3 +833,11 @@ border-radius: 50%;
     text-align: center;
    color: white;
 }
+
+.botaoUser {
+    width: 100px;
+    height: 50px;
+    border: 2px solid var(--primaryColor);
+    border-radius: 5px;
+    
+}

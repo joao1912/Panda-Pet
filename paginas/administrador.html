@@ -65,6 +65,75 @@
         </span>
 
     </nav>
+    <section id="perfilUsuario">
+        <div id="dentroPerfil">
+            <div id="imagemDefault">
+                <img id="imagem" src="../imagens/perfil-default.jpg">
+                <input type="file" id="userImg">
+            </div>
+
+            <div id="botaoFechar">
+                <button><i class="material-symbols-outlined">close</i></button>
+            </div>
+
+            <div id="infoUser">
+                <section id="containerMinhasCompras">
+                    <div id="btnFecharMinhasCompras">
+                        <button class="material-symbols-outlined" id="btnCloseMinhasCompras">close</button>
+                    </div>
+                    <section id="containerTable">
+                       <table>
+                            <thead>
+                                <tr>
+                                    <th id="thCodigo">Código</th>
+                                    <th id="thNome">Nome</th>
+                                    <th id="thPreco">Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              
+                            </tbody>
+                        </table> 
+                    </section>
+                    
+                </section>
+                <div id="botoes">
+
+                    <div id="informacoes">
+                        
+                        <div id="nome">
+                            <label class="textoInputs">Nome:</label>
+                            <input id="nomeUser" type="text" class="inputsUser" readonly>
+                        </div>
+
+                        <div id="conta">
+                            <label class="textoInputs">Data de criação da conta:</label>
+                            <input id="contaUser" type="text" class="inputsUser" readonly>
+                        </div>
+
+                        <div id="contato">
+                            <label class="textoInputs">Contato:</label>
+                            <input  id="contatoUser" type="number" class="inputsUser" placeholder="00 00000 0000" maxlength="14" readonly>
+                        </div>
+
+                    </div>
+
+                    <div id="excluirEeditar">
+                        <button class="botaoUser" id="btnExcluirUser">Excluir</button>
+                        <button class="botaoUser" id="btnEditUser">Editar</button>
+                        <button class="botaoUser" id="btnMyShopping">Minhas compras</button>
+                    </div>
+                </div>  
+
+                <div id="direita">
+                    <label class="petsz">Pets</label>
+                    <div id="quadradoPets"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
     <div class="centralizador">
         <section id="containerAdmUtilities">
             
