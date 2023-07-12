@@ -152,7 +152,7 @@ function trocarPagina(event) {
 
           let inputs = [inputNome,inputAniversario,inputRaca,inputPeso]
 
-          erroOuNao = verificaErro(inputs)
+          erroOuNao = verificaErroForm1(inputs)
 
           if (!erroOuNao) {
               cadastroPet1.style.display = "none"
@@ -179,15 +179,20 @@ function trocarPagina(event) {
 
             break
         case "botaoProximo2":
-            cadastroPet2.style.display = "none"
-            cadastroPet3.style.display = "flex"
-            arrayRadio.forEach( radio => {
-              radio.classList.remove("marked")
-            })
-            inptRadioCadastro[2].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
-            imgPandaCadastro.style.marginRight = "0"
 
+            erroOuNao = verificaErroForm2()
+
+            if (!erroOuNao) {
+
+              cadastroPet2.style.display = "none"
+              cadastroPet3.style.display = "flex"
+              arrayRadio.forEach( radio => {
+                radio.classList.remove("marked")
+              })
+              inptRadioCadastro[2].classList.add("marked")
+              imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
+              imgPandaCadastro.style.marginRight = "0"
+            }
             break
         case "botaoVoltar3":
             cadastroPet2.style.display = "flex"
@@ -206,7 +211,25 @@ function trocarPagina(event) {
     }
 }
 
-function verificaErro(useInputs) {
+const containerBotoesHospedagemETosa = document.getElementById('divDMeio2')
+containerBotoesHospedagemETosa.addEventListener("click", function(event){
+
+  let botao = event.target.id
+  const elementoHorarioSaida = document.getElementById('inptHourExit')
+
+  if(botao == 'botaoHospedar') {
+
+    elementoHorarioSaida.removeAttribute("readonly")
+
+  }else if (botao == 'botaoBanho'){
+    elementoHorarioSaida.setAttribute('readonly', true)
+    elementoHorarioSaida.value = ""
+
+  }
+
+})
+
+function verificaErroForm1(useInputs) {
 
   let erros = []
   
@@ -272,10 +295,36 @@ function verificaErro(useInputs) {
    
    let anoMinimo = anoAtual - expecVida
 
+   if(ano < anoMinimo){
+     erros.push("#niver-invalido#")
+   }
 
+   if(dia < 1 && dia <31){
+    erros.push("#niver-invalido#")
+   }
 
+   if(mes < 1 && mes >12){
+    erros.push("#niver-invalido#")
+   }
 
-
+   switch(mes){
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+    
+      if(dia > 30){
+        erros.push("#niver-invalido#")
+      }  
+      break
+    
+    case 2:
+      if(dia > 28){
+        erros.push("#niver-invalido#")
+      }  
+      break
+      
+   }
    
   if (erros.length != 0) {
       Error(erros)
@@ -284,3 +333,45 @@ function verificaErro(useInputs) {
       return false
   }
 }
+
+function verificaErroForm2(){
+  let erros =[]
+
+  const elementoHorarioEntrada = document.getElementById('inptHourEntry')
+  const elementoHorarioSaida = document.getElementById('inptHourExit')
+
+  let horarioEntrada = elementoHorarioEntrada.value
+  let horarioSaida = elementoHorarioSaida.value
+
+  horarioEntrada = Number(horarioEntrada)
+  horarioSaida = Number(horarioSaida)
+
+  let data = document.getElementById("inptAgendamento")
+  data = data.value
+
+  let ano = `${data[0]}${data[1]}${data[2]}${data[3]}`
+  ano = Number(ano)
+
+  let date = new Date()
+  let anoAtual = date.getFullYear()
+
+  if(ano < anoAtual){
+    erros.push("#agendamento-invalido#")
+  }
+
+ if(horarioEntrada < 7 || horarioSaida > 22){
+  erros.push("#hora-entrada-invalida#")
+ }
+
+ 
+
+
+ if (erros.length != 0) {
+    Error(erros)
+  return true
+} else {
+  return false
+}
+
+}
+
