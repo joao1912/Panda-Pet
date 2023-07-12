@@ -73,6 +73,17 @@ export function exibeCarrinho() {
 
     containerCarrinho.innerHTML = ""
 
+    if (carrinho.length == 0) {
+        let span =  document.createElement("span")
+        span.classList.add("spanCarrinhoVazio")
+        let text = document.createTextNode("Opss.. O carrinho está vazio!")
+        span.appendChild(text)
+        containerCarrinho.style.display = "flex"
+        containerCarrinho.style.justifyContent = "center"
+        containerCarrinho.style.alignItems = "center"
+        containerCarrinho.appendChild(span)
+    }
+
     carrinho.forEach((produto) => {
         if (produto == null) {
             console.log("Produto nulo no carrinho")
