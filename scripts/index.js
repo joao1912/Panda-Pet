@@ -146,70 +146,6 @@ function setPerfilOnline() {
     })
 }
 
-    const btnEditarEexcluir=document.getElementById("btnEditUser")
-
-    btnEditarEexcluir.addEventListener("click", function(event){
-     let textoBotao=event.target.textContent
-     
-     if (textoBotao == "Editar"){
-        const inputNome=document.getElementById("nomeUser")
-        const inputContato=document.getElementById("contatoUser")
-
-        inputNome.removeAttribute("readonly")
-        inputContato.removeAttribute("readonly")
-
-        btnEditarEexcluir.textContent="Salvar"
-
-        
-     }else if (textoBotao=="Salvar"){
-        const inputNome=document.getElementById("nomeUser")
-        const inputContato=document.getElementById("contatoUser")
-
-        inputNome.setAttribute("readonly" , true)
-        inputContato.setAttribute("readonly", true) 
-
-        btnEditarEexcluir.textContent="Editar"
-        let antigoNome
-        for(let obj of users){
-
-            if (userID == obj.id){ 
-                antigoNome = obj.nome
-                
-            }
-        }
-
-        let nome , contato
-        let verifyName = false
-
-
-        nome=inputNome.value
-
-        if (nome == antigoNome) {
-            verifyName = true
-        }
-
-        contato=inputContato.value
-
-        for(let obj of users){
-
-            if (userID == obj.id){
-                if (!verifyName) {
-                    obj.realName = nome
-                } else {
-                    obj.nome=nome
-                }
-                
-               obj.contato = contato
-                
-            }
-        }   
-        saveLocalStorage(users)
-        
-     }
-    }) 
- 
-
-
 if (userID) {
     setPerfilOnline()
 
@@ -558,6 +494,106 @@ const imagem = document.getElementById("imagem")
 imagem.addEventListener("click", () => {trocaFotoPerfil("imagem", "userImg")})
 
 /* ----------- */
+
+const containerBtnsPerfilUser = document.getElementById("excluirEeditar")
+containerBtnsPerfilUser.addEventListener("click", function(event){
+    let id = event.target.id
+    const telaMinhasCompras = document.getElementById("containerMinhasCompras")
+    const btnEditarEexcluir = document.getElementById("btnEditUser")
+
+    switch(id) {
+        case "btnExcluirUser":
+            if (userID == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'O admin não pode ser deletado!'
+                  })
+            } else {
+                
+                let indexUser
+                
+                for(let i = 0 ; i < users.length ; i++) {
+                    if (users[i].id == userID) {
+                        indexUser = i
+                        break
+                    }
+                }
+
+                users.splice(indexUser, 1)
+                saveLocalStorage(users)
+
+                containerUser.style.display = "none"
+                location.reload()
+
+            }
+
+            break
+        case "btnEditUser":
+            let textoBotao=event.target.textContent
+     
+            if (textoBotao == "Editar"){
+                const inputNome=document.getElementById("nomeUser")
+                const inputContato=document.getElementById("contatoUser")
+
+                inputNome.removeAttribute("readonly")
+                inputContato.removeAttribute("readonly")
+
+                btnEditarEexcluir.textContent="Salvar"
+
+                
+            }else if (textoBotao=="Salvar"){
+                const inputNome=document.getElementById("nomeUser")
+                const inputContato=document.getElementById("contatoUser")
+
+                inputNome.setAttribute("readonly" , true)
+                inputContato.setAttribute("readonly", true) 
+
+                btnEditarEexcluir.textContent="Editar"
+                let antigoNome
+                for(let obj of users){
+
+                    if (userID == obj.id){ 
+                        antigoNome = obj.nome
+                        
+                    }
+                }
+
+                let nome , contato
+                let verifyName = false
+
+
+                nome=inputNome.value
+
+                if (nome == antigoNome) {
+                    verifyName = true
+                }
+
+                contato=inputContato.value
+
+                for(let obj of users){
+
+                    if (userID == obj.id){
+                        if (!verifyName) {
+                            obj.realName = nome
+                        } else {
+                            obj.nome=nome
+                        }
+                        
+                    obj.contato = contato
+                        
+                    }
+                }   
+                saveLocalStorage(users)
+            }
+            break
+        case "btnMyShopping":
+            setTableMyShopping()
+            telaMinhasCompras.style.display = "flex"
+
+            break
+    }
+})
 
 export function setTableMyShopping() {
     
