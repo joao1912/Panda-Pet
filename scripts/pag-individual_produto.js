@@ -1,32 +1,24 @@
-import {verifyUserOnline} from "./utils/verifyUserOnline.js"
-import {saveLocalStorage} from "./utils/saveLocalStorage.js"
-let nome,descricao,imagem,descricaoImagem,preco,classificacao
+import { verifyUserOnline } from "./utils/verifyUserOnline.js"
+import { saveLocalStorage } from "./utils/saveLocalStorage.js"
+import { produtos } from "./utils/produtos.js"
 
-const btnCarrinho = document.getElementById("btnCarrinhoProdIndividual")
+let users = JSON.parse(localStorage.getItem("users"))
 const userID = verifyUserOnline()
-
-let carrinho
+const btnCarrinho = document.getElementById("btnCarrinhoProdIndividual")
 
 
 export function loadInfoProducts(codigoProduto) {
-
-    let listaProdutos = JSON.parse(localStorage.getItem("listaProdutos")) 
-    let users = JSON.parse(localStorage.getItem("users"))
 
     if (userID == undefined) {
         window.location.href = "../paginas/cadastro-login.html"
     }
 
-    for (let user of users) {
-        if (user.id == userID) {
-            carrinho = user.carrinho
-    
-        }
-    }
-    
-    for (let obj of listaProdutos){
 
-        if (obj.codigo == codigoProduto){
+    let nome, preco, descricao, imagem, descricaoImagem, classificacao
+
+    for (let obj of produtos) {
+
+        if (obj.codigo == codigoProduto) {
 
             nome = obj.nome
             descricao = obj.descricao
@@ -40,7 +32,11 @@ export function loadInfoProducts(codigoProduto) {
         }
 
     }
-    
+
+    if (nome == "") {
+        return
+    }
+
     const tituloProduto = document.getElementById("tituloProduto")
     const codigoElemento = document.getElementById("descricaoCodigo")
     const descricaoProduto = document.getElementById("informacoesProduto")
@@ -48,7 +44,7 @@ export function loadInfoProducts(codigoProduto) {
     const imgProduto = document.getElementById("imagemProdutoIndividual")
 
     tituloProduto.textContent = nome
-    codigoElemento.textContent = `Código: ${codigoProduto}`
+    codigoElemento.textContent = `SKU ${codigoProduto}`
     descricaoProduto.textContent = descricao
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
     imgProduto.src = imagem
@@ -56,22 +52,28 @@ export function loadInfoProducts(codigoProduto) {
 
     setStars(classificacao)
 
-    btnCarrinho.textContent = "Adicionar no Carrinho"
+    let index = users[userID].carrinho.findIndex(produto => produto.codigo == codigoProduto)
+    if (index > -1) {
+        btnCarrinho.textContent = "Remover item do carrinho"
+    }
 
-    if (carrinho.length > 0) {
-        for (let prod of carrinho) {
-            if (prod.codigo == codigoProduto) {
-                btnCarrinho.textContent = "Remover do Carrinho"
-            }
+    btnCarrinho.onclick = function () {
+
+        index = users[userID].carrinho.findIndex(produto => produto.codigo == codigoProduto)
+
+        if (index > -1) {
+
+            removerItemCarrinho(codigoProduto)
+            btnCarrinho.textContent = "Adicionar ao Carrinho"
+
+        } else {
+
+            addItemCarrinho(codigoProduto)
+            btnCarrinho.textContent = "Remover item do carrinho"
+
         }
-    }
 
-    if (btnCarrinho.textContent == "Remover do Carrinho") {
-        btnCarrinho.addEventListener("click", () => {removerItemCarrinho(codigoProduto)})
-    } else if ("Adicionar no Carrinho") {
-        btnCarrinho.addEventListener("click", () => {addItemCarrinho(codigoProduto)})
     }
-
 
 }
 
@@ -81,14 +83,14 @@ function setStars(classificacao) {
     containerStars.innerHTML = ""
     let stars = []
 
-    for (let i = 0 ; i < classificacao ; i++) {
+    for (let i = 0; i < classificacao; i++) {
         stars.push("./imagens/estrela-cheia.png")
     }
 
     while (stars.length != 5) {
         stars.push("./imagens/estrela-vazia.png")
     }
-    
+
     for (let star of stars) {
         let img = document.createElement("img")
         img.src = star
@@ -103,41 +105,27 @@ function setStars(classificacao) {
 }
 
 function removerItemCarrinho(cod) {
-    let users = JSON.parse(localStorage.getItem("users"))
 
-    for (let i = 0 ; i < carrinho.length ; i++) {
-        if (carrinho[i].codigo == cod) {
-            carrinho.splice(i, 1)
-            break
-        }
+    let index = users[userID].carrinho.findIndex(produto => produto.codigo == cod)
+
+    if (index > -1) {
+
+        btnCarrinho.textContent = "Adicionar no Carrinho"
+
+        users[userID].carrinho.splice(index, 1)
+        saveLocalStorage(users)
     }
 
-    for (let user of users) {
-        if (user.id == userID) {
-            user.carrinho = carrinho
-            
-        }
-    }
-    saveLocalStorage(users)
-
-    btnCarrinho.textContent = "Adicionar no Carrinho"
-    
 }
 
 function addItemCarrinho(cod) {
-    let users = JSON.parse(localStorage.getItem("users"))
 
     let produtoAdd = {
         codigo: Number(cod),
         quantidade: 1
     }
 
-    for (let user of users) {
-        if (user.id == userID) {
-            user.carrinho.push(produtoAdd)
-            
-        }
-    }
+    users[userID].carrinho.push(produtoAdd)
 
     saveLocalStorage(users)
 

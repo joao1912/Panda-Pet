@@ -282,6 +282,7 @@ function calcFinalizarCompra() {
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
     containerTotalValor.innerHTML = `Total: R$ ${valorTotal.toFixed(2)}`
+    disabledButton()
 }
 
 function disabledButton() {
@@ -295,11 +296,11 @@ function disabledButton() {
     
 }
 
-document.addEventListener("DOMContentLoaded", disabledButton())
 
 
+btnFinalizar.addEventListener("click", finalizarCompra)
 
-btnFinalizar.addEventListener("click", function(){
+function finalizarCompra() {
 
     let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
@@ -379,4 +380,4 @@ btnFinalizar.addEventListener("click", function(){
     .then(() => {
         window.location.href = "../../index.html"
     })
-})
+}

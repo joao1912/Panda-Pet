@@ -156,7 +156,7 @@ function setRedirectorProduct(alvo, event) {
     }
 
     if (codProduct !== undefined ) {
-            loadInfoProducts(codProduct)
+            loadInfoProducts(Number(codProduct))
     }
 
 }
