@@ -29,6 +29,12 @@
 
 }
 
+#valorFrete {
+    padding-left: 15px;
+    color: var(--primaryColor);
+    font-size: 1.1em;
+}
+
 #imagemProduto {
 
     width: 40%;
