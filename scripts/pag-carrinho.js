@@ -14,13 +14,13 @@ function adicionaProdutoAoCarrinho(codigo) {
     //Verificar se o produto já existe e adicionar um amais 
     let produtoExistente = carrinho.find(produto => produto.codigo === codigo)
     if (produtoExistente == undefined || produtoExistente == null) {
-        let produto = produtos.find(produto => produto.codigo === codigo)
-        if (produto == undefined || produto == null) {
+        let produtoBuscado = produtos.find(produto => produto.codigo === codigo)
+        if (produtoBuscado == undefined || produtoBuscado == null) {
             console.log(`Produto com o código ${codigo} não encontrado.`)
             return
         }
         let produtoAdd = {
-            codigo: produto.codigo,
+            codigo: produtoBuscado.codigo,
             quantidade: 1
         }
         carrinho.push(produtoAdd)
@@ -41,7 +41,7 @@ function adicionaProdutoAoCarrinho(codigo) {
 function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = false) {
     let carrinho = pegaCarrinho()
     // Obter o índice do produto no carrinho (-1 se não encontrar)
-    let index = carrinho.findIndex(produto => produto.codigo === codigoProduto)
+    let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
 
     if (index == -1) {
         console.log(`Produto com o código ${codigoProduto} não encontrado no carrinho.`)
@@ -273,7 +273,7 @@ function funcConstructorElements(cod, quantity) {
 
     let divProduto = document.createElement("div")
     divProduto.classList = "produtoCarrinho"
-    divProduto.id = `${produtos[cod].codigo}`;
+    divProduto.id = `${produtos[cod].codigo}`
     divProduto.appendChild(divDescricaoProduto)
 
     return divProduto

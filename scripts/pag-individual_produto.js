@@ -17,7 +17,7 @@ export function loadInfoProducts(codigoProduto) {
         window.location.href = "../paginas/cadastro-login.html"
     }
 
-    let users = JSON.parse(localStorage.getItem("users"))
+
 
     let nome, preco, descricao, imagem, descricaoImagem, classificacao
 
@@ -57,10 +57,11 @@ export function loadInfoProducts(codigoProduto) {
 
     setStars(classificacao)
 
-    let index = users[userID].carrinho.findIndex(produto => produto.codigo == codigoProduto)
+    let carrinho = pegaCarrinho()
+    let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
     if (index > -1) {
 
-        inputQuantidade.value = users[userID].carrinho[index].quantidade
+        inputQuantidade.value = carrinho[index].quantidade
 
         btnCarrinho.textContent = "Remover item do carrinho"
         btnAdd.removeAttribute("disabled")
@@ -70,8 +71,9 @@ export function loadInfoProducts(codigoProduto) {
 
     btnCarrinho.onclick = function () {
 
-        index = users[userID].carrinho.findIndex(produto => produto.codigo == codigoProduto)
-
+        let carrinho = pegaCarrinho()
+        let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
+    
         if (index > -1) {
 
             removeProdutoDoCarrinho(codigoProduto, 1, true)
