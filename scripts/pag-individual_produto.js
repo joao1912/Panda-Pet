@@ -4,7 +4,7 @@ import { produtos } from "./utils/produtos.js"
 import { getRandomProducts, pegaCarrinho, finalizarCompra } from "./pag-carrinho.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
-const userID = verifyUserOnline()
+export let userID = verifyUserOnline()
 const btnCarrinho = document.getElementById("btnCarrinhoProdIndividual")
 const btnRemove = document.getElementById("removeToCartButtonIndividual")
 const inputQuantidade = document.getElementById("botaoINPTIndividual");
@@ -17,6 +17,7 @@ export function loadInfoProducts(codigoProduto) {
         window.location.href = "../paginas/cadastro-login.html"
     }
 
+    let users = JSON.parse(localStorage.getItem("users"))
 
     let nome, preco, descricao, imagem, descricaoImagem, classificacao
 
