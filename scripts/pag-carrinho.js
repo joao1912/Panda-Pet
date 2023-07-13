@@ -87,15 +87,25 @@ export function exibeCarrinho() {
     carrinho.forEach((produto) => {
         if (produto == null) {
             console.log("Produto nulo no carrinho")
+
         } else {
-            let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
+
+            let index = produtos.findIndex(produtoBuscado => produtoBuscado.codigo == produto.codigo)
+
+            let elementoProduto = funcConstructorElements(index, produto.quantidade)
+
             if(elementoProduto != null) {
+
             containerCarrinho.appendChild(elementoProduto)
+
             } else {
+
                 console.log("produto nulo")
+
             }
 
         }
+
     })
 
 
@@ -144,7 +154,6 @@ export function pegaCarrinho() {
                 //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
                 user.carrinho = []
             }
-            carrinhoUser = user.carrinho
             break
         }
     }
@@ -287,8 +296,11 @@ function calcFinalizarCompra() {
     const containerQuantProdutos = document.getElementById("quantProdutos")
 
     carrinho.forEach((obj) => {
+
+        let index = produtos.findIndex(produto => produto.codigo == obj.codigo)
+
         quantideDeProdutos++
-        valorTotal += obj.quantidade*produtos[obj.codigo].preco
+        valorTotal += obj.quantidade*produtos[index].preco
     });
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
