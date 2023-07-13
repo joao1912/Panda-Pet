@@ -250,7 +250,7 @@ containerBotoesHospedagemETosa.addEventListener("click", function(event){
 
     botaoEscolhido.style.transform = "scale(1.2)"
     botaoEscolhido.style.color = "white"
-    document.getElementById("labelSaida").style.textDecoration = "none"
+    labelSaida.style.textDecoration = "none"
 
     elementoHorarioSaida.removeAttribute("readonly")
 
@@ -265,7 +265,7 @@ containerBotoesHospedagemETosa.addEventListener("click", function(event){
     botaoEscolhido.style.transform = "scale(1.2)"
     botaoEscolhido.style.color = "white"
 
-    document.getElementById("labelSaida").style.textDecoration = "line-through"
+    labelSaida.style.textDecoration = "line-through"
 
     elementoHorarioSaida.style.cursor = "default"
     elementoHorarioSaida.setAttribute('readonly', true)
