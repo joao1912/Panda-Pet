@@ -7,44 +7,6 @@ import { setMarkersCalendar } from './utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from './utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from './utils/forCalendar/setDayTasks.js'
 
-/* --- TEMPORARIO --- */
-
-
-const agendamentos = []
-agendamentos.push(
-    {
-        id: 1,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 2,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 3,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 4,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    }
-)
-
-localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
-/* ------------------ */
-
 const btnAddPhoto = document.getElementById("btnAddPhoto")
 const productName = document.getElementById("productName")
 const productPrice = document.getElementById("productPrice")

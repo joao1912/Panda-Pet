@@ -1,5 +1,6 @@
 import { verifyUserOnline } from './utils/verifyUserOnline.js'
 import { Error } from './utils/erros.js'
+import { showSearchResults } from './utils/forProducts/showProducts.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -14,6 +15,8 @@ let btnBeforeGenero
   }
   
 })
+
+let petExist = false
 
 botaoEscolhaGenero.addEventListener("click", function(event){
     let id = event.target.id
@@ -162,6 +165,7 @@ function trocarPagina(event) {
           erroOuNao = verificaErroForm1(inputs)
 
           if (!erroOuNao) {
+              petExist = true
               cadastroPet1.style.display = "none"
               cadastroPet2.style.display = "flex"
               arrayRadio.forEach( radio => {
@@ -228,6 +232,87 @@ function trocarPagina(event) {
             break
         case "botaoFinalizar":
 
+            const inputServico = document.getElementById("inputServico")
+            let pets = JSON.parse(localStorage.getItem("pets"))
+            let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+            
+            if (inputServico.value == "") {
+              Error("#insira-carona#")
+            
+            } else {
+              let petEscolhido = localStorage.getItem("petEscolhido")
+              if (cadastroPet.idPET == undefined) {
+                
+                //pegar o ID pet que foi escolhido
+                
+
+                for (let pet of pets) {
+                  if (pet.idPET == petEscolhido){
+                    agendamento.pet.idPET = petEscolhido
+                    agendamento.pet.nome = pet.nome
+                    break
+                  }
+                }
+            
+              } else {
+
+
+                if (pets == null) {
+                  pets = [cadastroPet]
+                  localStorage.setItem("pets", JSON.stringify(pets))
+                  
+                } else {
+
+                  pets.push(JSON.stringify(cadastroPet))
+
+                }
+
+                for (let pet of pets) {
+                  if (pet.idPET == cadastroPet.idPET){
+                    agendamento.pet.idPET = cadastroPet.idPET
+                    agendamento.pet.nome = pet.nome
+                    break
+                  }
+                }
+                
+              }
+
+              for (let user of users) {
+                if (user.online == true) {
+                  agendamento.id = user.id
+                  break
+                }
+              }
+              
+              
+              
+
+              if (agendamentos == null) {
+                agendamento = [agendamento]
+                localStorage.setItem("agendamentos", JSON.stringify(agendamento))
+              } else {
+
+                agendamentos.push(agendamento)
+                localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
+              }
+
+              
+
+
+              localStorage.setItem("pets", JSON.stringify(pets))
+
+              Swal.fire({
+                title: 'Agendado com Sucesso!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1200
+            })
+
+            setTimeout(function(){
+              location.reload()
+            }, 1400)
+            
+            }
             break
     }
 }
@@ -653,6 +738,7 @@ function saveForm2(horarioEntrada, horarioSaida) {
     agendamento.dia = Number(dia1)
     agendamento.mes = Number((mes1) - 1)
     agendamento.ano = Number(ano1)
+
 }
 
 const inptHoraEntrada = document.getElementById("inptHourEntry")
