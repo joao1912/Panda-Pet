@@ -53,6 +53,9 @@ const productDescription = document.getElementById("productDescription")
 const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
+const productUniqueID = document.getElementById("productUniqueID")
+const productViewPhoto = document.getElementById("productViewPhoto")
+const productViewPrice = document.getElementById("productViewPrice")
 
 formAddProduct.addEventListener("keyup", function () {
 
@@ -990,6 +993,7 @@ btnSaveEditProduct.addEventListener("click", function () {
 btnRemoveEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsRemove tbody")
+    tableProducts.innerHTML = ""
 
     produtos.forEach(function (productIterable) {
 
@@ -1018,14 +1022,21 @@ btnRemoveEscProducts.addEventListener("click", function () {
 
         buttonSelectProduct.addEventListener("click", function () {
 
-            let indexProduct = produtos.findIndex(produto => produto.codigo == productIterable.codigo)
-            produtos.splice(indexProduct, 1)
+            listaRemoveProducts.style.display = "none"
 
-            localStorage.setItem("listaProdutos", JSON.stringify(produtos))
 
-            newLine.remove()
+            productUniqueID.value = productIterable.codigo
 
-        })
+            productViewPhoto.src = productIterable.src
+            productViewPhoto.alt = productIterable.descricaoImagem
+
+            productViewName.innerHTML = productIterable.nome
+
+            productViewPrice.innerHTML = `R$ ${productIterable.preco.toFixed(2)}`
+
+            btnRemoveProduct.removeAttribute("disabled")
+
+})
         buttonSelectProduct.appendChild(iconSelectProduct)
         selectProduct.appendChild(buttonSelectProduct)
 
@@ -1035,6 +1046,7 @@ btnRemoveEscProducts.addEventListener("click", function () {
     })
 
     listaRemoveProducts.style.display = "flex"
+
     btnCloseRemove.addEventListener("click", function () {
         listaRemoveProducts.style.display = "none"
     })
@@ -1294,3 +1306,67 @@ botaoFecharMinhasCompras.addEventListener("click", function(){
         telaMinhasCompras.style.display = "none"
     }
 })
+
+const btnRemoveProduct = document.getElementById("btnRemoveProduct")
+btnRemoveProduct.addEventListener("click", deleteProduct)
+
+async function deleteProduct() {
+  const ask = await askForDeletion("Deletar produto", "Tem certeza que deseja deletar este produto? Esta ação não poderá ser desfeita.")
+
+  if (ask == 1) {
+
+    let index = produtos.findIndex(produto => produto.codigo == Number(productUniqueID.value))
+    if(index < 0){
+        return
+    }
+    
+    produtos.splice(index, 1)
+    localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+    productViewPhoto.src = ""
+    productViewPhoto.alt = ""
+    productViewPrice.textContent = "R$ 0,00"
+    productViewName.textContent = "Nome do produto"
+    btnRemoveProduct.setAttribute("disabled", "true")
+  }
+}
+
+let showMessageOrNot = true
+
+async function askForDeletion(Title, Text) {
+  let action = -1
+
+  if (showMessageOrNot) {
+    await Swal.fire({
+      title: Title,
+      icon: 'warning',
+      text: Text,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Deletar',
+      denyButtonText: `Sim, não me avise de novo`,
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed || result.isDenied) {
+        action = 1 // Deletar
+
+        if (result.isDenied) {
+          showMessageOrNot = false
+        }
+      }
+    })
+
+    if (action == 1 && !showMessageOrNot) {
+      Swal.fire({
+        title: 'Deletado!',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1200
+      })
+    }
+  } else {
+    action = 1 // Deletar sem confirmação, definida previamente
+  }
+
+  return action
+}
