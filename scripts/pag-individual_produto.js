@@ -70,6 +70,8 @@ export function loadInfoProducts(codigoProduto) {
 
     btnCarrinho.onclick = function () {
 
+        users = JSON.parse(localStorage.getItem("users"))
+        
         index = users[userID].carrinho.findIndex(produto => produto.codigo == codigoProduto)
 
         if (index > -1) {

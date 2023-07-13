@@ -144,7 +144,6 @@ export function pegaCarrinho() {
                 //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
                 user.carrinho = []
             }
-            carrinhoUser = user.carrinho
             break
         }
     }
