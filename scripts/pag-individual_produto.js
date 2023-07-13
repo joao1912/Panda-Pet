@@ -2,7 +2,7 @@ import { verifyUserOnline } from "./utils/verifyUserOnline.js"
 import { saveLocalStorage } from "./utils/saveLocalStorage.js"
 import { produtos } from "./utils/produtos.js"
 import { getRandomProducts, pegaCarrinho, finalizarCompra } from "./pag-carrinho.js"
-import {calcularFrete } from "./utils/checkCep.js"
+import { validaCep, calcularFrete } from "./utils/checkCep.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -18,7 +18,7 @@ export function loadInfoProducts(codigoProduto) {
         window.location.href = "../paginas/cadastro-login.html"
     }
 
-    calcularFrete(88032184)
+    //validaCep(88032184)
 
     let nome, preco, descricao, imagem, descricaoImagem, classificacao
 

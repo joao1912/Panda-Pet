@@ -5,11 +5,12 @@ function enviar() {
     validaCep(input)
 }
 
-async function validaCep(cep) {
+export async function validaCep(cep) {
 
     await fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then(response => response.json())
     .then(json => obj_cep = json)
+    console.log(obj_cep)
 
      if(obj_cep.code) {
         Swal.fire({icon: 'error',
