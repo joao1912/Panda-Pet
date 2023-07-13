@@ -660,6 +660,7 @@ var ctx = document.getElementById("chart")
 let valueAllTransations = 0
 
 for (let obj of categoryTransations) {
+    obj.valorVendido = Number(obj.valorVendido.toFixed(2))
     valueAllTransations += obj.valorVendido
 
     let id = document.getElementById(`${obj.identificacaoCategoria}-text`)

@@ -21,3 +21,11 @@ async function validaCep(cep) {
     
 
 }
+
+export async function calcularFrete(cep) {
+   await fetch(`https://www.cepcerto.com/ws/json-frete/88032005/${cep}/1000`)
+   .then(response => response.json())
+       .then(json => obj_cep = json) 
+         console.log(obj_cep)
+   
+}
