@@ -227,14 +227,47 @@ function trocarPagina(event) {
 const containerBotoesHospedagemETosa = document.getElementById('divDMeio2')
 containerBotoesHospedagemETosa.addEventListener("click", function(event){
 
-  let botao = event.target.id
+  const labelSaida = document.getElementById("labelSaida")
+  const labelEntrada = document.getElementById("labelEntrada")
   const elementoHorarioSaida = document.getElementById('inptHourExit')
+  const elementoHorarioEntrada = document.getElementById("inptHourEntry")
+
+  labelEntrada.style.textDecoration = "none"
+  labelSaida.style.textDecoration = "none"
+  elementoHorarioSaida.style.cursor = "text"
+  elementoHorarioEntrada.style.cursor = "text"
+  elementoHorarioEntrada.removeAttribute("readonly")
+
+  let botao = event.target.id
+
+  let botaoEscolhido, outroBotao
 
   if(botao == 'botaoHospedar') {
+    botaoEscolhido = document.getElementById("botaoHospedar") 
+    outroBotao = document.getElementById("botaoBanho") 
+
+    outroBotao.removeAttribute("style")
+
+    botaoEscolhido.style.transform = "scale(1.2)"
+    botaoEscolhido.style.color = "white"
+    document.getElementById("labelSaida").style.textDecoration = "none"
 
     elementoHorarioSaida.removeAttribute("readonly")
 
+
   }else if (botao == 'botaoBanho'){
+
+    botaoEscolhido = document.getElementById("botaoBanho") 
+    outroBotao = document.getElementById("botaoHospedar") 
+
+    outroBotao.removeAttribute("style")
+
+    botaoEscolhido.style.transform = "scale(1.2)"
+    botaoEscolhido.style.color = "white"
+
+    document.getElementById("labelSaida").style.textDecoration = "line-through"
+
+    elementoHorarioSaida.style.cursor = "default"
     elementoHorarioSaida.setAttribute('readonly', true)
     elementoHorarioSaida.value = ""
 
@@ -276,7 +309,7 @@ function verificaErroForm1(useInputs) {
     }
     
   }
-
+   let inputPeso = document.getElementById("inputPeso")  
    let inputAniver = document.getElementById("inputAniver")
    let data = inputAniver.value
    data = data.replaceAll("/","")
@@ -308,16 +341,20 @@ function verificaErroForm1(useInputs) {
    
    let anoMinimo = anoAtual - expecVida
 
-   if(ano < anoMinimo){
+   if(ano < anoMinimo || ano > (anoAtual + 1)){
      erros.push("#niver-invalido#")
    }
 
-   if(dia < 1 && dia <31){
+   if(dia < 1 || dia > 31){
     erros.push("#niver-invalido#")
    }
 
-   if(mes < 1 && mes >12){
+   if(mes < 1 || mes > 12){
     erros.push("#niver-invalido#")
+   }
+
+   if (Number(inputPeso.value) > 50) {
+    erros.push("#peso-invalido#")
    }
 
    switch(mes){
@@ -338,7 +375,7 @@ function verificaErroForm1(useInputs) {
       break
       
    }
-   
+
   if (erros.length != 0) {
       Error(erros)
       return true

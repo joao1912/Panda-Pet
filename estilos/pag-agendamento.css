@@ -823,3 +823,23 @@ button {
     padding-left: 10px;
     color: rgb(167, 15, 15);
 }
+
+.btnServico {
+    transition: all .2s ease-in;
+}
+
+#labelEntrada {
+    text-decoration: line-through;
+}
+
+#labelSaida {
+    text-decoration: line-through;
+}
+
+#inptHourEntry {
+    cursor: default;
+}
+
+#inptHourExit {
+    cursor: default;
+}
