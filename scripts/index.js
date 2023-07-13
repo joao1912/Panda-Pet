@@ -7,6 +7,12 @@ import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
 import {getDate} from './utils/getDate.js'
 
+const imgLogo = document.querySelector("header > img")
+if (imgLogo) {
+    imgLogo.style.cursor = "pointer"
+    imgLogo.addEventListener("click", function(){location.reload()})
+}
+
 let users = JSON.parse(localStorage.getItem("users"))
 
 if (users == null) {
