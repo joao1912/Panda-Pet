@@ -18,7 +18,6 @@ export function loadInfoProducts(codigoProduto) {
         window.location.href = "../paginas/cadastro-login.html"
     }
 
-    //validaCep(88032184)
 
     let nome, preco, descricao, imagem, descricaoImagem, classificacao
 
@@ -226,3 +225,9 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
 }
 
 
+const btnOk = document.getElementById("btnOk")
+btnOk.addEventListener("click", function() {
+    
+    let tituloTextoCep = document.getElementById("tituloTextoCep")
+    let result = calcularFrete(tituloTextoCep)
+})
