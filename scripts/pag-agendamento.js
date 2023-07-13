@@ -235,7 +235,7 @@ function trocarPagina(event) {
             const inputServico = document.getElementById("inputServico")
             let pets = JSON.parse(localStorage.getItem("pets"))
             let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
-            
+
             if (inputServico.value == "") {
               Error("#insira-carona#")
             
@@ -263,7 +263,7 @@ function trocarPagina(event) {
                   
                 } else {
 
-                  pets.push(JSON.stringify(cadastroPet))
+                  pets.push(cadastroPet)
 
                 }
 
