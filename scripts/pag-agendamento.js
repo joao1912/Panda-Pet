@@ -96,6 +96,33 @@ itensServices.forEach( item => {
   })
 })
 
+let agendamento = {
+  id: 1,
+  service: "Hospedagem",
+  dia: 10,
+  mes: 11, //o mes vai de 0 a 11 !!!
+  ano: null,
+  diaSaida: null,
+  mesSaida: null,
+  anoSaida: null,
+  horaEntrada: "15:30",
+  horarioSaida: null,
+  pet: {
+    nome: undefined,
+    idPET: undefined
+  }
+}
+
+let cadastroPet = {
+  idPET: undefined,
+  nome: undefined,
+  raca: undefined,
+  aniversario: undefined,
+  alergias: undefined,
+  sexo: undefined,
+  peso: undefined
+}
+
 const containerBotoesPerfilDoPet = document.getElementById("divDBaixo")
 const containerBotoesServico = document.getElementById("divDBaixo2")
 const containerBotoesPagamento = document.getElementById("divDBaixo3")
@@ -114,27 +141,7 @@ function trocarPagina(event) {
     const arrayRadio = [...inptRadioCadastro]
     let erroOuNao
 
-    let agendamento = {
-      id: 1,
-      service: "Hospedagem",
-      dia: 10,
-      mes: 11, //o mes vai de 0 a 11 !!!
-      hora: "15:30",
-      pet: {
-        nome: undefined,
-        idPET: undefined
-      }
-  }
-
-    let cadastroPet = {
-      idPET: undefined,
-      nome: undefined,
-      raca: undefined,
-      aniversario: undefined,
-      alergias: undefined,
-      sexo: undefined,
-      peso: undefined
-    }
+    
 
 
     switch(idElement) {
@@ -183,6 +190,7 @@ function trocarPagina(event) {
             erroOuNao = verificaErroForm2()
 
             if (!erroOuNao) {
+              setPrice()
 
               cadastroPet2.style.display = "none"
               cadastroPet3.style.display = "flex"
@@ -232,6 +240,9 @@ containerBotoesHospedagemETosa.addEventListener("click", function(event){
   const elementoHorarioSaida = document.getElementById('inptHourExit')
   const elementoHorarioEntrada = document.getElementById("inptHourEntry")
 
+  const containerCheckOut = document.getElementById("containerCheckOut")
+  const labelCheckIn = document.getElementById("labelCheckIn")
+
   labelEntrada.style.textDecoration = "none"
   labelSaida.style.textDecoration = "none"
   elementoHorarioSaida.style.cursor = "text"
@@ -252,6 +263,9 @@ containerBotoesHospedagemETosa.addEventListener("click", function(event){
     botaoEscolhido.style.color = "white"
     labelSaida.style.textDecoration = "none"
 
+    containerCheckOut.style.display = "flex"
+    labelCheckIn.style.display = "inline-block"
+
     elementoHorarioSaida.removeAttribute("readonly")
 
 
@@ -266,6 +280,9 @@ containerBotoesHospedagemETosa.addEventListener("click", function(event){
     botaoEscolhido.style.color = "white"
 
     labelSaida.style.textDecoration = "line-through"
+
+    containerCheckOut.style.display = "none"
+    labelCheckIn.style.display = "none"
 
     elementoHorarioSaida.style.cursor = "default"
     elementoHorarioSaida.setAttribute('readonly', true)
@@ -380,6 +397,35 @@ function verificaErroForm1(useInputs) {
       Error(erros)
       return true
   } else {
+
+    let nomePet = document.getElementById("inputNome")
+    nomePet = nomePet.value
+
+    let niverPet = document.getElementById("inputAniver")
+    niverPet = niverPet.value
+
+    let racaPet = document.getElementById("inputRaca")
+    racaPet = racaPet.value
+
+    let pesoPet = document.getElementById("inputPeso")
+    pesoPet = pesoPet.value
+
+    let btnGenero = document.getElementById("btnMacho")
+    btnGenero = btnGenero.dataset.content
+
+    let btnAlergico = document.getElementById("btnNo")
+    btnAlergico = btnAlergico.dataset.content
+    
+    if (btnAlergico == "Não") {
+      btnAlergico = false
+    } else {
+
+      let textAlergias = document.getElementById("quadro")
+      btnAlergico = textAlergias.value
+    }
+
+      saveForm1(nomePet, niverPet,racaPet,pesoPet,btnGenero, btnAlergico)
+
       return false
   }
 }
@@ -393,24 +439,84 @@ function verificaErroForm2(){
   let horarioEntrada = elementoHorarioEntrada.value
   let horarioSaida = elementoHorarioSaida.value
 
-  horarioEntrada = Number(horarioEntrada)
-  horarioSaida = Number(horarioSaida)
+  let data1 = document.getElementById("inptAgendamento")
+  let data2 = document.getElementById("inptSaida")
+  data1 = data1.value
+  data2 = data1.value
 
-  let data = document.getElementById("inptAgendamento")
-  data = data.value
+  let ano1 = `${data1[0]}${data1[1]}${data1[2]}${data1[3]}`
+  let ano2
+  ano1 = Number(ano1)
+  
 
-  let ano = `${data[0]}${data[1]}${data[2]}${data[3]}`
-  ano = Number(ano)
+  if (data2) {
+    ano2 = `${data2[0]}${data2[1]}${data2[2]}${data2[3]}`
+    ano2 = Number(ano2)
+  }
 
   let date = new Date()
   let anoAtual = date.getFullYear()
 
-  if(ano < anoAtual){
+  if(ano1 < anoAtual){
     erros.push("#agendamento-invalido#")
   }
 
- if(horarioEntrada < 7 || horarioSaida > 22){
-  erros.push("#hora-entrada-invalida#")
+
+  let btnServicoHospedagem = document.getElementById("botaoHospedar")
+
+
+  if (btnServicoHospedagem.getAttribute("style")) {
+      if(ano2 < anoAtual){
+          erros.push("#agendamento-invalido#")
+      }
+  }
+
+  
+
+ if (horarioEntrada.length == 5) {
+    let minutos = `${horarioEntrada[3]}${horarioEntrada[4]}`
+
+    if (Number(minutos) > 60 || Number(minutos) < 0) {
+      erros.push("#hora-entrada-invalida#")
+    }
+
+    let hora = `${horarioEntrada[0]}${horarioEntrada[1]}`
+    hora = Number(hora)
+
+    if (hora > 22 || hora < 7) {
+      erros.push("#hora-entrada-invalida#")
+    }
+ } else if (horarioEntrada.length == 2 || horarioEntrada.length == 1) {
+    if (Number(horarioEntrada) > 22 || Number(horarioEntrada) < 7) {
+      erros.push("#hora-entrada-invalida#")
+    }
+ } 
+
+ /* hora de saida */
+
+ if (btnServicoHospedagem.getAttribute("style")) {
+
+    if (horarioSaida.length == 5) {
+        let minutos = `${horarioSaida[3]}${horarioSaida[4]}`
+
+        if (Number(minutos) > 60 || Number(minutos) < 0) {
+          erros.push("#hora-saida-invalida#")
+        }
+
+        let hora = `${horarioSaida[0]}${horarioSaida[1]}`
+        hora = Number(hora)
+
+        if (hora > 22 || hora < 7) {
+          erros.push("#hora-saida-invalida#")
+        }
+    } else if (horarioSaida.length == 2 || horarioSaida.length == 1) {
+        if (Number(horarioSaida) > 22 || Number(horarioSaida) < 7) {
+          erros.push("#hora-saida-invalida#")
+        }
+    } else if ( Number(horarioEntrada) <= Number(horarioSaida) ) {
+        erros.push("#horarios-invalidos#") //lembrar em
+    } 
+
  }
 
  
@@ -420,8 +526,273 @@ function verificaErroForm2(){
     Error(erros)
   return true
 } else {
+
+  saveForm2(horarioEntrada, horarioSaida)
+
   return false
 }
 
 }
 
+function saveForm1(nomePet, niver, raca, peso, genero, alergico) {
+
+    let pets = JSON.parse(localStorage.getItem("pets")) 
+    let nextPetID
+    let maiorId = 0
+
+    if (pets == null) {
+      pets = []
+    }
+
+    if (pets.length != 0) {
+      nextPetID = `PET-${1}`
+    } else {
+      
+      for (let pet of pets) {
+        let petId = pet.idPET
+        let numberId = petId.slice(4)
+
+          if (numberId > maiorId) {
+            maiorId = numberId
+          }
+        
+      }
+
+      nextPetID = `PET-${maiorId + 1}`
+
+    }
+
+    cadastroPet.idPET = nextPetID
+    cadastroPet.nome = nomePet
+    cadastroPet.aniversario = niver
+    cadastroPet.raca = raca
+    cadastroPet.peso = peso
+    cadastroPet.sexo = genero
+    cadastroPet.alergias = alergico
+}
+
+function saveForm2(horarioEntrada, horarioSaida) {
+    if (horarioEntrada.length == 5) {
+
+      agendamento.horaEntrada = horarioEntrada
+
+    } else if (horarioEntrada.length == 2) {
+
+      agendamento.horaEntrada = `${horarioEntrada}:00`
+
+    }if (horarioEntrada.length == 1) {
+
+      agendamento.horaEntrada = `0${horarioEntrada}:00`
+
+    }
+
+    if (horarioSaida.length == 5) {
+
+      agendamento.horarioSaida = horarioSaida
+
+    } else if (horarioSaida.length == 2) {
+
+      agendamento.horarioSaida = `${horarioSaida}:00`
+
+    }if (horarioSaida.length == 1) {
+
+      agendamento.horarioSaida = `0${horarioSaida}:00`
+
+    }
+
+
+    let btnServicoBanho = document.getElementById("botaoBanho")
+    if (btnServicoBanho.getAttribute("style")) {
+
+      agendamento.service = "Tosa e Banho"
+
+    } else {
+
+      agendamento.service = "Hospedagem"
+
+    }
+
+    const btnServicoHospedagem = document.getElementById("botaoHospedar")
+
+    let data1 = document.getElementById("inptAgendamento")
+    let data2 = document.getElementById("inptSaida")
+    data1 = data1.value
+    data2 = data2.value
+    let dia1, dia2, mes1, mes2, ano1, ano2
+    
+    if (btnServicoHospedagem.getAttribute("style")) {
+      dia2 = `${data2[8]}${data2[9]}` 
+      mes2 = `${data2[5]}${data2[6]}` 
+      ano2 = `${data2[0]}${data2[1]}${data2[2]}${data2[3]}` 
+
+      if (dia2.indexOf(0) == 0) {
+        dia2 = dia2[1]
+      }
+
+      if (mes2.indexOf(0) == 0) {
+        mes2 = mes2[1]
+      }
+
+      agendamento.diaSaida = Number(dia2) 
+      agendamento.mesSaida = Number((mes2) - 1)
+      agendamento.anoSaida = Number(ano2) 
+    }
+
+    dia1 = `${data1[8]}${data1[9]}` 
+    mes1 = `${data1[5]}${data1[6]}` 
+    ano1 = `${data1[0]}${data1[1]}${data1[2]}${data1[3]}` 
+
+    if (dia1.indexOf(0) == 0) {
+      dia1 = dia1[1]
+    }
+
+    if (mes1.indexOf(0) == 0) {
+      mes1 = mes1[1]
+    }
+
+    agendamento.dia = Number(dia1)
+    agendamento.mes = Number((mes1) - 1)
+    agendamento.ano = Number(ano1)
+}
+
+const inptHoraEntrada = document.getElementById("inptHourEntry")
+const inptHoraSaida = document.getElementById("inptHourExit")
+
+inptHoraEntrada.addEventListener("keyup", (event) => {insertTwoPoints(event)})
+inptHoraSaida.addEventListener("keyup", (event) => {insertTwoPoints(event)})
+
+function insertTwoPoints(event) {
+
+  let id = event.target.id
+
+  if (id == "inptHourEntry") {
+
+    if (inptHoraEntrada.value.length == 2) {
+      inptHoraEntrada.value += ":"
+    }
+
+  } else if( id == "inptHourExit") {
+    if (inptHoraSaida.value.length == 2) {
+      inptHoraSaida.value += ":"
+    }
+  }
+
+}
+
+function setPrice() {
+  let servico = agendamento.service
+  let price
+  let mesEntrada = (agendamento.mes) + 1
+  let mesSaida = (agendamento.mesSaida) + 1
+  let diaInicio = agendamento.dia
+  let diaFinal = agendamento.diaSaida
+  let totDias = 0
+  let dias31 = 31
+  let dias29 = 29
+  let dias32 = 32
+  let diaStart = diaInicio
+  let flag = true
+
+  let precoDiaria = 20
+  let priceTosaEBanho = 80
+
+  if (servico == "Hospedagem") {
+
+    for (let m = mesEntrada ; m <= mesSaida ; m++) {
+
+      switch(m){
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+
+          for (let contDia = diaStart ; contDia < dias31 ; contDia++) {
+
+            if (m == mesSaida) {
+              
+              if (flag) {
+                dias31 = diaFinal
+                flag = false
+              }
+              totDias++
+
+            } else {
+              totDias++
+            }
+            
+          }
+
+          if (diaStart == diaInicio) {
+            diaStart = 1
+          }
+          
+          break
+        
+        case 2:
+          
+          for (let contDia = diaStart ; contDia < dias29 ; contDia++) {
+
+            if (m == mesSaida) {
+              
+              if (flag) {
+                dias31 = diaFinal
+                flag = false
+              }
+              totDias++
+
+            } else {
+              totDias++
+            }
+            
+          }
+
+          if (diaStart == diaInicio) {
+            diaStart = 1
+          }  
+          break
+         
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+
+            for (let contDia = diaStart ; contDia < dias32 ; contDia++) {
+
+              if (m == mesSaida) {
+                
+                if (flag) {
+                  dias32 = diaFinal
+                  flag = false
+                }
+                totDias++
+
+              } else {
+                totDias++
+              }
+              
+            }
+
+            if (diaStart == diaInicio) {
+              diaStart = 1
+            }  
+            break
+       }
+        
+    }
+
+    totDias++
+
+    price = precoDiaria * totDias
+
+  } else {
+    price = priceTosaEBanho 
+  }
+
+  
+  const elementPrice = document.getElementById("preco")
+  elementPrice.textContent = `R$ ${price.toFixed(2)}`
+
+}

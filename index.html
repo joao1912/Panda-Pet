@@ -344,20 +344,27 @@
                         <h2>Agendar</h2>
 
                         <section id="containerFormDay">
-                            <input type="date" name="" id="inptAgendamento">
+                            <div class="containerCheckInAndOut">
+                                <label for="inptAgendamento" id="labelCheckIn">Check-In</label>
+                                <input type="date" id="inptAgendamento">
+                            </div>
+                            <div id="containerCheckOut" class="containerCheckInAndOut">
+                                <label for="inptSaida" >Check-Out</label>
+                                <input type="date" id="inptSaida">
+                            </div>
                         </section>
 
                         <section id="containerFormHour">
                             <div id="formEntryHour">
                                 <label for="inptHourEntry" id="labelEntrada">Entrada</label>
-                                <input type="number" id="inptHourEntry" placeholder="14:00" readonly>
+                                <input type="text" id="inptHourEntry" placeholder="14:00" maxlength="5" readonly>
                             </div>
                             <div id="titleHour">
                                 <h2>Horário</h2>
                             </div>
                             <div id="formExitHour">
                                 <label for="inptHourExit" id="labelSaida">Saída</label>
-                                <input type="number" id="inptHourExit" placeholder="17:00" readonly>
+                                <input type="text" id="inptHourExit" placeholder="17:00" maxlength="5" readonly>
                             </div>
                         </section>
                     </div> 
@@ -401,7 +408,7 @@
 
                             <div id="precoServico">
                                 <label for="preco">Valor a ser pago</label>
-                                <h2 id="preco">R$ 500,00</h2>
+                                <h2 id="preco"></h2>
                             </div>
 
                         </div>

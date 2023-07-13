@@ -824,6 +824,25 @@ button {
     color: rgb(167, 15, 15);
 }
 
+.containerCheckInAndOut {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#containerFormDay div > label {
+    font-size: 1.3em;
+    font-family: "Nunito";
+}
+
+#containerCheckOut {
+    display: none;
+}
+
+#labelCheckIn {
+    display: none;
+}
+
 .btnServico {
     transition: all .2s ease-in;
 }
