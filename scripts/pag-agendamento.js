@@ -1,6 +1,7 @@
 import { verifyUserOnline } from './utils/verifyUserOnline.js'
 import { Error } from './utils/erros.js'
 import { showSearchResults } from './utils/forProducts/showProducts.js'
+import { loadInfoProducts } from './pag-individual_produto.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -151,6 +152,20 @@ function trocarPagina(event) {
         case "petJaCadastrado":
             const containerPets = document.getElementById("containerPetJaCadastrado")
             containerPets.style.display = "flex"
+            let petsArray = JSON.parse(localStorage.getItem("pets"))
+            let petsUser 
+
+            if (petsArray == null || petsArray.length == 0) {
+              for (let user of users) {
+                  if (user.id == userID) {
+                    petsUser = user.pets
+                    break
+                  }
+              }
+            }
+
+            loadTablePets()
+            
 
             break
         case "botaoProximo":
@@ -882,3 +897,13 @@ function setPrice() {
   elementPrice.textContent = `R$ ${price.toFixed(2)}`
 
 }
+
+function loadTablePets(petsUser) {
+  
+}
+
+const btnClosePets = document.getElementById("btnClosePetCadastrado")
+btnClosePets.addEventListener("click", function(){
+  const telaPets = document.getElementById("containerPetJaCadastrado")
+  telaPets.style.display = "none"
+})
