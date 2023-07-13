@@ -693,7 +693,7 @@ function setPrice() {
   let diaStart = diaInicio
   let flag = true
 
-  let precoDiaria = 20
+  let precoDiaria = 60
   let priceTosaEBanho = 80
 
   if (servico == "Hospedagem") {
