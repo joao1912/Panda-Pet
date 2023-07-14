@@ -14,13 +14,13 @@ function adicionaProdutoAoCarrinho(codigo) {
     //Verificar se o produto já existe e adicionar um amais 
     let produtoExistente = carrinho.find(produto => produto.codigo === codigo)
     if (produtoExistente == undefined || produtoExistente == null) {
-        let produto = produtos.find(produto => produto.codigo === codigo)
-        if (produto == undefined || produto == null) {
+        let produtoBuscado = produtos.find(produto => produto.codigo === codigo)
+        if (produtoBuscado == undefined || produtoBuscado == null) {
             console.log(`Produto com o código ${codigo} não encontrado.`)
             return
         }
         let produtoAdd = {
-            codigo: produto.codigo,
+            codigo: produtoBuscado.codigo,
             quantidade: 1
         }
         carrinho.push(produtoAdd)
@@ -33,15 +33,15 @@ function adicionaProdutoAoCarrinho(codigo) {
             user.carrinho = carrinho
         }
     }
-    calcFinalizarCompra()
     saveLocalStorage(users)
+    calcFinalizarCompra()
 }
 
 
 function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = false) {
     let carrinho = pegaCarrinho()
     // Obter o índice do produto no carrinho (-1 se não encontrar)
-    let index = carrinho.findIndex(produto => produto.codigo === codigoProduto)
+    let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
 
     if (index == -1) {
         console.log(`Produto com o código ${codigoProduto} não encontrado no carrinho.`)
@@ -87,15 +87,25 @@ export function exibeCarrinho() {
     carrinho.forEach((produto) => {
         if (produto == null) {
             console.log("Produto nulo no carrinho")
+
         } else {
-            let elementoProduto = funcConstructorElements(produto.codigo, produto.quantidade)
+
+            let index = produtos.findIndex(produtoBuscado => produtoBuscado.codigo == produto.codigo)
+
+            let elementoProduto = funcConstructorElements(index, produto.quantidade)
+
             if(elementoProduto != null) {
+
             containerCarrinho.appendChild(elementoProduto)
+
             } else {
+
                 console.log("produto nulo")
+
             }
 
         }
+
     })
 
 
@@ -129,7 +139,7 @@ export function exibeCarrinho() {
 
 
 //Função criada para puxar o carrinho sempre que necessário
-function pegaCarrinho() {
+export function pegaCarrinho() {
     try {
     // Verificar se existe o carrinho no usuário atual
     
@@ -144,7 +154,6 @@ function pegaCarrinho() {
                 //Carrinho vazio ou algum bug, criando um array sem elementos para retorno
                 user.carrinho = []
             }
-            carrinhoUser = user.carrinho
             break
         }
     }
@@ -273,7 +282,7 @@ function funcConstructorElements(cod, quantity) {
 
     let divProduto = document.createElement("div")
     divProduto.classList = "produtoCarrinho"
-    divProduto.id = `${produtos[cod].codigo}`;
+    divProduto.id = `${produtos[cod].codigo}`
     divProduto.appendChild(divDescricaoProduto)
 
     return divProduto
@@ -287,8 +296,11 @@ function calcFinalizarCompra() {
     const containerQuantProdutos = document.getElementById("quantProdutos")
 
     carrinho.forEach((obj) => {
+
+        let index = produtos.findIndex(produto => produto.codigo == obj.codigo)
+
         quantideDeProdutos++
-        valorTotal += obj.quantidade*produtos[obj.codigo].preco
+        valorTotal += obj.quantidade*produtos[index].preco
     });
 
     containerQuantProdutos.innerHTML = `${quantideDeProdutos} Produto(s)`
@@ -313,7 +325,7 @@ if (btnFinalizar) {
 }
 
 
-function finalizarCompra() {
+export function finalizarCompra() {
 
     let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
@@ -383,7 +395,6 @@ function finalizarCompra() {
 
     saveLocalStorage(users)
     
-    btnFinalizar.disabled = true
 
     Swal.fire({icon: 'success',
     title: 'Compra Realizada!',

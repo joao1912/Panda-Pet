@@ -29,6 +29,12 @@
 
 }
 
+#valorFrete {
+    padding-left: 15px;
+    color: var(--primaryColor);
+    font-size: 1.1em;
+}
+
 #imagemProduto {
 
     width: 40%;
@@ -176,9 +182,18 @@
 
 #botaoAdd {
     display: flex;
-    gap: 5px;
+    gap: 13px;
     margin: 10px 0;
 
+}
+
+#botaoINPTIndividual {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid var(--primaryColor);
+    font-family: "Nunito";
 }
 
 input[type=number]::-webkit-inner-spin-button {

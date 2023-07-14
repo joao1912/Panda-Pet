@@ -7,8 +7,11 @@ import { saveLocalStorage } from "./utils/saveLocalStorage.js";
 import { exibeCarrinho, getRandomProducts } from "./pag-carrinho.js";
 import {getDate} from './utils/getDate.js'
 
-import {createNewUsers} from "./utils/createNewUsers.js"
-
+const imgLogo = document.querySelector("header > img")
+if (imgLogo) {
+    imgLogo.style.cursor = "pointer"
+    imgLogo.addEventListener("click", function(){location.reload()})
+}
 
 let users = JSON.parse(localStorage.getItem("users"))
 
@@ -40,10 +43,6 @@ for (let user of users) {
 }
 
 export let userID = verifyUserOnline()
-
-if (users.length < 10) {
-    createNewUsers(10)   
-}
 
 let visibility = false
 
@@ -95,7 +94,7 @@ function setPerfilOnline() {
         let nome
         let realName
         let img
-        let pets=[]
+        let pets=[] //pendente
         let data
         let contato
 
@@ -344,6 +343,10 @@ nav.addEventListener("click", function (event) {
         case "forAgendamento":
 
             if (containerTelaAgendamento.style.display == "block") return
+
+            if (userID == undefined) {
+                window.location.href = "../paginas/cadastro-login.html"
+            }
 
             telas.forEach(tela => {
                 tela.style.display = "none"

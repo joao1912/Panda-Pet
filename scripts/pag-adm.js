@@ -7,44 +7,6 @@ import { setMarkersCalendar } from './utils/forCalendar/setMarkersCalendar.js'
 import { setCurrentDay } from './utils/forCalendar/setCurrentDay.js'
 import { setDayTasks } from './utils/forCalendar/setDayTasks.js'
 
-/* --- TEMPORARIO --- */
-
-
-const agendamentos = []
-agendamentos.push(
-    {
-        id: 1,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 2,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 3,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    },
-    {
-        id: 4,
-        service: "Hospedagem",
-        dia: 10,
-        mes: 11,//o mes vai de 0 a 11 !!!
-        hora: "15:30"
-    }
-)
-
-localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
-/* ------------------ */
-
 const btnAddPhoto = document.getElementById("btnAddPhoto")
 const productName = document.getElementById("productName")
 const productPrice = document.getElementById("productPrice")
@@ -53,6 +15,9 @@ const productDescription = document.getElementById("productDescription")
 const imageDescription = document.getElementById("imageDescription")
 const btnAdicionar = document.getElementById("btnAdicionar")
 const formAddProduct = document.getElementById("formAddProduct")
+const productUniqueID = document.getElementById("productUniqueID")
+const productViewPhoto = document.getElementById("productViewPhoto")
+const productViewPrice = document.getElementById("productViewPrice")
 
 formAddProduct.addEventListener("keyup", function () {
 
@@ -90,47 +55,6 @@ productPrice.addEventListener("keyup", function () {
 })
 
 
-btnAdicionar.addEventListener("click", function () {
-
-    const category1 = document.getElementById("brinquedo")
-    const category2 = document.getElementById("alimento")
-    const category3 = document.getElementById("acessorio")
-    let categoryName
-
-    if (category1.checked) {
-
-        categoryName = "brinquedos"
-
-    } else if (category2.checked) {
-
-        categoryName = "alimentacao"
-
-    } else {
-
-        categoryName = "acessorios"
-
-    }
-
-    const productAdd = {
-        codigo: (produtos[produtos.length - 1].codigo) + 1,
-        nome: productName.value,
-        descricao: productDescription.value,
-        imagem: photoProductReaded,
-        preco: Number(productPrice.value),
-        categoria: categoryName,
-        descricaoImagem: imageDescription.value,
-        estoque: parseInt(productStock.value)
-    }
-
-    produtos.push(productAdd)
-    localStorage.setItem("listaProdutos", JSON.stringify(produtos))
-    Swal.fire(
-        'Produto Adicionado!',
-        'Ele ja está disponivel na loja!',
-        'success'
-    )
-
-})
 
 let categoryTransations = JSON.parse(localStorage.getItem("compras"))
 
@@ -337,12 +261,12 @@ nav.addEventListener("click", function (event) {
 
 const barra_pesquisa = document.getElementById("barraPesquisa")
 
-barra_pesquisa.addEventListener("keydown", function(event) {
-    if(event.keyCode == 13) {
+barra_pesquisa.addEventListener("keydown", function (event) {
+    if (event.keyCode == 13) {
 
         let stringSearch = barra_pesquisa.value
         stringSearch = stringSearch.trim()
-        if(stringSearch == "") return
+        if (stringSearch == "") return
 
         localStorage.setItem("pesquisarPor", stringSearch)
         window.location.href = "../index.html"
@@ -698,6 +622,7 @@ var ctx = document.getElementById("chart")
 let valueAllTransations = 0
 
 for (let obj of categoryTransations) {
+    obj.valorVendido = Number(obj.valorVendido.toFixed(2))
     valueAllTransations += obj.valorVendido
 
     let id = document.getElementById(`${obj.identificacaoCategoria}-text`)
@@ -772,27 +697,7 @@ const buttonInternos = document.querySelectorAll(".backEditButtons")
         button.addEventListener("click", function (event) {
             let id = event.target.id
 
-            let inputs = [...document.querySelectorAll("input")]
-            inputs.forEach(function (element) {
-                element.value = ""
-            })
-
-            inputs = [...document.querySelectorAll("textarea")]
-            inputs.forEach(function (element) {
-                element.value = ""
-            })
-
-            containerPreViewImage.src = ""
-            containerPreViewImage.style.display = "none"
-
-            let productNameView = document.getElementById("productNameView")
-            productNameView.innerHTML = `Nome do produto`
-
-            let productPriceView = document.getElementById("productPriceView")
-            productPriceView.innerHTML = `R$ 0,00`
-
-
-    
+            clearInputs()
 
             switch (id) {
                 case "internalAddButton":
@@ -990,6 +895,7 @@ btnSaveEditProduct.addEventListener("click", function () {
 btnRemoveEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsRemove tbody")
+    tableProducts.innerHTML = ""
 
     produtos.forEach(function (productIterable) {
 
@@ -1018,12 +924,19 @@ btnRemoveEscProducts.addEventListener("click", function () {
 
         buttonSelectProduct.addEventListener("click", function () {
 
-            let indexProduct = produtos.findIndex(produto => produto.codigo == productIterable.codigo)
-            produtos.splice(indexProduct, 1)
+            listaRemoveProducts.style.display = "none"
 
-            localStorage.setItem("listaProdutos", JSON.stringify(produtos))
 
-            newLine.remove()
+            productUniqueID.value = productIterable.codigo
+
+            productViewPhoto.src = productIterable.imagem
+            productViewPhoto.alt = productIterable.descricaoImagem
+
+            productViewName.innerHTML = productIterable.nome
+
+            productViewPrice.innerHTML = `R$ ${productIterable.preco.toFixed(2)}`
+
+            btnRemoveProduct.removeAttribute("disabled")
 
         })
         buttonSelectProduct.appendChild(iconSelectProduct)
@@ -1035,6 +948,7 @@ btnRemoveEscProducts.addEventListener("click", function () {
     })
 
     listaRemoveProducts.style.display = "flex"
+
     btnCloseRemove.addEventListener("click", function () {
         listaRemoveProducts.style.display = "none"
     })
@@ -1051,12 +965,12 @@ const body = document.querySelector("body")
 const tabelaPerfil = document.getElementById("containerPerfil")
 
 btnMeuPerfil.addEventListener("click", function () {
-    
+
     containerPerfil.style.display = "flex"
     tabelaPerfil.style.display = "none"
     visibility = false
     body.style.overflow = "hidden"
-    
+
     pegarInfoUser()
 })
 
@@ -1066,73 +980,73 @@ btnClosePerfil.addEventListener("click", function () {
     body.removeAttribute("style")
 })
 
-function  pegarInfoUser(){
+function pegarInfoUser() {
 
     let nome
     let realName
     let img
-    let pets=[]
+    let pets = []
     let data
     let contato
 
-    for(let obj of users){
+    for (let obj of users) {
 
-        if (userID == obj.id){
-            nome=obj.nome
+        if (userID == obj.id) {
+            nome = obj.nome
             realName = obj.realName
-            img=obj.img
-            data=obj.date.text
-            contato=obj.contato
+            img = obj.img
+            data = obj.date.text
+            contato = obj.contato
             pets = obj.pets
         }
     }
 
-const inputNome=document.getElementById("nomeUser")
-const inputData=document.getElementById("contaUser")
-const inputContato=document.getElementById("contatoUser")
-const inputImagem=document.getElementById("imagem")
+    const inputNome = document.getElementById("nomeUser")
+    const inputData = document.getElementById("contaUser")
+    const inputContato = document.getElementById("contatoUser")
+    const inputImagem = document.getElementById("imagem")
 
-    if (img){
-        inputImagem.src=img
+    if (img) {
+        inputImagem.src = img
 
     }
 
     if (realName == undefined) {
-        inputNome.value=nome
+        inputNome.value = nome
     } else {
-        inputNome.value=realName
+        inputNome.value = realName
     }
 
     inputContato.value = contato
-    inputData.value=data
+    inputData.value = data
 
 }
 
 const imagem = document.getElementById("imagem")
-imagem.addEventListener("click", () => {trocaFotoPerfil("imagem", "userImg")})
+imagem.addEventListener("click", () => { trocaFotoPerfil("imagem", "userImg") })
 
 /* ----------- */
 
 const containerBtnsPerfilUser = document.getElementById("excluirEeditar")
 const containerUser = document.getElementById("perfilUsuario")
-containerBtnsPerfilUser.addEventListener("click", function(event){
+containerBtnsPerfilUser.addEventListener("click", function (event) {
     let id = event.target.id
     const telaMinhasCompras = document.getElementById("containerMinhasCompras")
     const btnEditarEexcluir = document.getElementById("btnEditUser")
 
-    switch(id) {
+    switch (id) {
         case "btnExcluirUser":
             if (userID == 0) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'O admin não pode ser deletado!'
-                  })
+                })
             } else {
-                
+
                 let indexUser
-                
-                for(let i = 0 ; i < users.length ; i++) {
+
+                for (let i = 0; i < users.length; i++) {
                     if (users[i].id == userID) {
                         indexUser = i
                         break
@@ -1149,60 +1063,60 @@ containerBtnsPerfilUser.addEventListener("click", function(event){
 
             break
         case "btnEditUser":
-            let textoBotao=event.target.textContent
-     
-            if (textoBotao == "Editar"){
-                const inputNome=document.getElementById("nomeUser")
-                const inputContato=document.getElementById("contatoUser")
+            let textoBotao = event.target.textContent
+
+            if (textoBotao == "Editar") {
+                const inputNome = document.getElementById("nomeUser")
+                const inputContato = document.getElementById("contatoUser")
 
                 inputNome.removeAttribute("readonly")
                 inputContato.removeAttribute("readonly")
 
-                btnEditarEexcluir.textContent="Salvar"
+                btnEditarEexcluir.textContent = "Salvar"
 
-                
-            }else if (textoBotao=="Salvar"){
-                const inputNome=document.getElementById("nomeUser")
-                const inputContato=document.getElementById("contatoUser")
 
-                inputNome.setAttribute("readonly" , true)
-                inputContato.setAttribute("readonly", true) 
+            } else if (textoBotao == "Salvar") {
+                const inputNome = document.getElementById("nomeUser")
+                const inputContato = document.getElementById("contatoUser")
 
-                btnEditarEexcluir.textContent="Editar"
+                inputNome.setAttribute("readonly", true)
+                inputContato.setAttribute("readonly", true)
+
+                btnEditarEexcluir.textContent = "Editar"
                 let antigoNome
-                for(let obj of users){
+                for (let obj of users) {
 
-                    if (userID == obj.id){ 
+                    if (userID == obj.id) {
                         antigoNome = obj.nome
-                        
+
                     }
                 }
 
-                let nome , contato
+                let nome, contato
                 let verifyName = false
 
 
-                nome=inputNome.value
+                nome = inputNome.value
 
                 if (nome == antigoNome) {
                     verifyName = true
                 }
 
-                contato=inputContato.value
+                contato = inputContato.value
 
-                for(let obj of users){
+                for (let obj of users) {
 
-                    if (userID == obj.id){
+                    if (userID == obj.id) {
                         if (!verifyName) {
                             obj.realName = nome
                         } else {
-                            obj.nome=nome
+                            obj.nome = nome
                         }
-                        
-                    obj.contato = contato
-                        
+
+                        obj.contato = contato
+
                     }
-                }   
+                }
                 saveLocalStorage(users)
             }
             break
@@ -1215,7 +1129,7 @@ containerBtnsPerfilUser.addEventListener("click", function(event){
 })
 
 export function setTableMyShopping() {
-    
+
     let totCompras
     let produtos = JSON.parse(localStorage.getItem("listaProdutos"))
     const tbody = document.querySelector("#containerTable > table > tbody")
@@ -1227,7 +1141,7 @@ export function setTableMyShopping() {
         }
     }
 
- 
+
     if (totCompras.length == 0) {
         const containerTable = document.getElementById("containerTable")
         const table = document.querySelector("#containerTable > table")
@@ -1240,10 +1154,10 @@ export function setTableMyShopping() {
         table.style.display = "none"
     }
 
-    for (let i = 0 ; i < totCompras.length ; i++) {
+    for (let i = 0; i < totCompras.length; i++) {
 
         let nomeProd, codigoProd, precoProd
-        
+
         for (let prod of produtos) {
             if (prod.codigo == totCompras[i]) {
                 nomeProd = prod.nome
@@ -1285,12 +1199,157 @@ function constructorTableMyShopping(cod, nome, preco) {
 }
 
 const botaoFecharMinhasCompras = document.getElementById("btnCloseMinhasCompras")
-botaoFecharMinhasCompras.addEventListener("click", function(){
+botaoFecharMinhasCompras.addEventListener("click", function () {
     const telaMinhasCompras = document.getElementById("containerMinhasCompras")
-    
+
     if (telaMinhasCompras.style.display === "none") {
         telaMinhasCompras.style.display = "flex"
     } else {
         telaMinhasCompras.style.display = "none"
     }
 })
+
+const btnRemoveProduct = document.getElementById("btnRemoveProduct")
+btnRemoveProduct.addEventListener("click", deleteProduct)
+
+async function deleteProduct() {
+    const ask = await askForDeletion("Deletar produto", "Tem certeza que deseja deletar este produto? Esta ação não poderá ser desfeita.")
+
+    if (ask == 1) {
+
+        let index = produtos.findIndex(produto => produto.codigo == Number(productUniqueID.value))
+        if (index < 0) {
+            return
+        }
+
+        produtos.splice(index, 1)
+        localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+        productViewPhoto.src = "../imagens/pet-recomendações.png"
+        productViewPhoto.alt = "Foto do produto"
+        productViewPrice.textContent = "R$ 0,00"
+        productViewName.textContent = "Nome do produto"
+        btnRemoveProduct.setAttribute("disabled", "true")
+    }
+}
+
+let showMessageOrNot = true
+
+async function askForDeletion(Title, Text) {
+    let action = -1
+
+    if (showMessageOrNot) {
+        await Swal.fire({
+            title: Title,
+            icon: 'warning',
+            text: Text,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Deletar',
+            denyButtonText: `Sim, não me avise de novo`,
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed || result.isDenied) {
+                action = 1 // Deletar
+
+                if (result.isDenied) {
+                    showMessageOrNot = false
+                }
+            }
+        })
+
+        if (action == 1 && !showMessageOrNot) {
+            Swal.fire({
+                title: 'Deletado!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1200
+            })
+        }
+    } else {
+        action = 1 // Deletar sem confirmação, definida previamente
+    }
+
+    return action
+}
+
+
+btnAdicionar.addEventListener("click", function () {
+
+    const category1 = document.getElementById("brinquedo")
+    const category2 = document.getElementById("alimento")
+    const category3 = document.getElementById("acessorio")
+    let categoryName
+
+    if (category1.checked) {
+
+        categoryName = "brinquedos"
+
+    } else if (category2.checked) {
+
+        categoryName = "alimentacao"
+
+    } else {
+
+        categoryName = "acessorios"
+
+    }
+
+    const productAdd = {
+        codigo: (produtos[produtos.length - 1].codigo) + 1,
+        nome: productName.value,
+        descricao: productDescription.value,
+        imagem: photoProductReaded,
+        preco: Number(productPrice.value),
+        categoria: categoryName,
+        descricaoImagem: imageDescription.value,
+        estoque: parseInt(productStock.value)
+    }
+
+    produtos.push(productAdd)
+    localStorage.setItem("listaProdutos", JSON.stringify(produtos))
+
+    clearInputs()
+    btnAdicionar.setAttribute("disabled", "true")
+
+    Swal.fire(
+        'Produto Adicionado!',
+        'Ele já está disponível na loja!',
+        'success'
+    )
+
+})
+
+
+function clearInputs() {
+
+    let inputs = [...document.querySelectorAll("input")]
+    inputs.forEach(function (element) {
+        element.value = ""
+    })
+
+    inputs = [...document.querySelectorAll("textarea")]
+    inputs.forEach(function (element) {
+        element.value = ""
+    })
+
+    containerPreViewImage.style.display = "none"
+
+
+    let productNameView = document.getElementById("productNameView")
+    productNameView.innerHTML = `Nome do produto`
+
+    let productPriceView = document.getElementById("productPriceView")
+    productPriceView.innerHTML = `R$ 0,00`
+
+    let imgProduct = document.getElementById("imgProduct")
+    imgProduct.src = "../imagens/pet-recomendações.png"
+    imgProduct.alt = "Foto do produto"
+
+    let imgPreview = document.getElementById("imgPreView")
+    imgPreview.src = ""
+    imgPreview.alt = ""
+
+    photoProductReaded = ""
+    
+}

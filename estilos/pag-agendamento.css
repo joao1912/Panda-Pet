@@ -7,6 +7,7 @@
    background-color: blue;
    border-radius: 10px;
    overflow: hidden;
+   position: relative;
 }
 
 #servico{     /*parte da esquerda primeira pagina,separando o lado esquerdo P direito*/   
@@ -804,15 +805,32 @@ button {
 
 #containerPetJaCadastrado {
     position: absolute;
-    width: 400px;
-    height: 500px;
+    height: 440px;
     background-color: white;
-    top: 37%;
-    left: 47%;
+    top: 50%;
+    left: 50%;
     z-index: 3;
     border-radius: 20px;
     box-shadow: 0px 0px 8px var(--shadowColor3);
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    padding: 10px;
+    width: 600px;
     display: none;
+    transform: translate(-50%,-50%);
+}
+
+#containerPetJaCadastrado::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--thirdColor);
+    border-radius: 10px;
+}
+
+#containerPetJaCadastrado::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
 }
 
 .containerErrosAgendamento {
@@ -822,4 +840,106 @@ button {
     height: 18px;
     padding-left: 10px;
     color: rgb(167, 15, 15);
+}
+
+.containerCheckInAndOut {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#containerFormDay div > label {
+    font-size: 1.3em;
+    font-family: "Nunito";
+}
+
+#containerCheckOut {
+    display: none;
+}
+
+#labelCheckIn {
+    display: none;
+}
+
+.btnServico {
+    transition: all .2s ease-in;
+}
+
+#labelEntrada {
+    text-decoration: line-through;
+}
+
+#labelSaida {
+    text-decoration: line-through;
+}
+
+#inptHourEntry {
+    cursor: default;
+}
+
+#inptHourExit {
+    cursor: default;
+}
+
+#containerPetJaCadastrado table {
+    width: 99%;
+    font-size: .9em;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#containerPetJaCadastrado > h2 {
+    font-family: "GooperSemiBold";
+    color: var(--primaryColor);
+    text-decoration: underline;
+}
+
+#containerPetJaCadastrado th {
+    background-color: var(--primaryColor);
+}
+
+#containerPetJaCadastrado td {
+    padding: 0;
+    padding: 10px 0;
+}
+
+.selectPet {
+    border-radius: 50%;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    color: white;
+    background-color: var(--primaryColor);
+}
+
+.selectPet:hover {
+    transform: scale(1.1);
+}
+
+.select {
+    width: 100px;
+}
+
+.idPet {
+    width: 80px;
+}
+
+.nomePet {
+    min-width: 100px;
+}
+
+#btnClosePetCadastrado {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 10px;
+    border-radius: 50%;
+    background-color: var(--primaryColor);
+    color: white;
+    border: 0;
+    transition: .1s ease-in;
+}
+
+#btnClosePetCadastrado:hover {
+    transform: scale(1.1);
 }

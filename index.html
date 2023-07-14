@@ -264,11 +264,25 @@
 
                     </div>
                 </div>
-
-                <div id="cadastroPet">
                     <div id="containerPetJaCadastrado">
-
+                        <button class="material-symbols-outlined" id="btnClosePetCadastrado">close</button>
+                        <h2>Pets Já Cadastrados</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PET-ID</th>
+                                    <th>Nome</th>
+                                    <th>Raça</th>
+                                    <th>Selecionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                            </tbody>
+                        </table>
                     </div>
+                <div id="cadastroPet">
+                    
                     <div id="divDCima">
                         <h1>Nós vamos cuidar muito bem do seu animalzinho!</h1>
                         <h2>Nos fale um pouco dele:</h2>
@@ -336,28 +350,35 @@
                     </div>
 
                     <div id="divDMeio2">
-                        <button id="botaoBanho">Banho e Tosa</button>
-                        <button id="botaoHospedar">Hospedar</button>
+                        <button id="botaoBanho" class="btnServico">Banho e Tosa</button>
+                        <button id="botaoHospedar" class="btnServico">Hospedar</button>
                     </div>
                         
                     <div id="containerCalendario">
                         <h2>Agendar</h2>
 
                         <section id="containerFormDay">
-                            <input type="date" name="" id="inptAgendamento">
+                            <div class="containerCheckInAndOut">
+                                <label for="inptAgendamento" id="labelCheckIn">Check-In</label>
+                                <input type="date" id="inptAgendamento">
+                            </div>
+                            <div id="containerCheckOut" class="containerCheckInAndOut">
+                                <label for="inptSaida" >Check-Out</label>
+                                <input type="date" id="inptSaida">
+                            </div>
                         </section>
 
                         <section id="containerFormHour">
                             <div id="formEntryHour">
-                                <label for="inptHourEntry">Entrada</label>
-                                <input type="number" id="inptHourEntry" placeholder="14:00">
+                                <label for="inptHourEntry" id="labelEntrada">Entrada</label>
+                                <input type="text" id="inptHourEntry" placeholder="14:00" maxlength="5" readonly>
                             </div>
                             <div id="titleHour">
                                 <h2>Horário</h2>
                             </div>
                             <div id="formExitHour">
-                                <label for="inptHourExit">Saída</label>
-                                <input type="number" id="inptHourExit" placeholder="17:00" readonly>
+                                <label for="inptHourExit" id="labelSaida">Saída</label>
+                                <input type="text" id="inptHourExit" placeholder="17:00" maxlength="5" readonly>
                             </div>
                         </section>
                     </div> 
@@ -401,7 +422,7 @@
 
                             <div id="precoServico">
                                 <label for="preco">Valor a ser pago</label>
-                                <h2 id="preco">R$ 500,00</h2>
+                                <h2 id="preco"></h2>
                             </div>
 
                         </div>
@@ -503,9 +524,9 @@
     
                         <div id="botaoAdd">
     
-                            <button class="material-symbols-outlined botoesAdd">remove</button>
-                            <input type="number" id="botaoINPT" readonly value="1">
-                            <button class="material-symbols-outlined botoesAdd">add</button>
+                            <button class="material-symbols-outlined botoesAdd" id="removeToCartButtonIndividual" disabled>remove</button>
+                            <input type="number" id="botaoINPTIndividual" readonly value="1">
+                            <button class="material-symbols-outlined botoesAdd" id="addToCartButtonIndividual" disabled>add</button>
     
                         </div>
     
@@ -516,7 +537,7 @@
                         <div id="botaoFuncoes">
     
                             <button class="botaoFuncoestamanho" id="btnCarrinhoProdIndividual">Adicionar ao Carrinho</button>
-                            <button class="botaoFuncoestamanho">Finalizar Compra</button>
+                            <button class="botaoFuncoestamanho" id="btnCheckoutIndividual">Finalizar Compra</button>
     
                         </div>
     
@@ -532,6 +553,7 @@
                             <button id="btnOk">Ok</button>
     
                         </div>
+                        <div id="valorFrete"></div>
     
                     </div>
     

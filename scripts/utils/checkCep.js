@@ -5,7 +5,7 @@ function enviar() {
     validaCep(input)
 }
 
-async function validaCep(cep) {
+export async function validaCep(cep) {
 
     await fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then(response => response.json())
@@ -20,4 +20,15 @@ async function validaCep(cep) {
      }
     
 
+}
+
+export async function calcularFrete(cep) {
+   try {
+   await fetch(`https://www.cepcerto.com/ws/json-frete/88032005/${cep}/1000`)
+   .then(response => response.json())
+       .then(json => obj_cep = json) 
+         return obj_cep
+   } catch {
+      return null
+   }
 }

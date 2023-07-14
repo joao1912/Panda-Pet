@@ -3,7 +3,16 @@ import { saveLocalStorage } from "./utils/saveLocalStorage.js"
 import { getDate } from './utils/getDate.js'
 
 let users = []
+let maiorID = 0
 users = JSON.parse(localStorage.getItem("users"))
+
+for (let user of users) {
+    if (user.id > maiorID) {
+        maiorID = user.id
+    }
+}
+
+let nextID = maiorID + 1
 
 if (users == null) {
     users = [{
@@ -240,15 +249,7 @@ function detecNumbersAndCaracters(password) {
 }
 
 function saveUser(userName, passWord) {
-    let nextId = 0
-
-    for (let obj of users) {
-        if (obj.id >= nextId) {
-            nextId = obj.id
-        }
-    }
-    nextId++
-
+    
     for (let user of users) {
         user.online = false
         user.lembrarDeMim = false
@@ -257,7 +258,7 @@ function saveUser(userName, passWord) {
     if (urlFotoPerfil != undefined) {
 
         users.push({
-            id: nextId ,
+            id: nextID ,
             nome: userName, 
             realName: null,
             senha: passWord, 
@@ -271,11 +272,11 @@ function saveUser(userName, passWord) {
             img: urlFotoPerfil
         })
         saveLocalStorage(users)
-
+        
     } else {
 
         users.push({
-            id: nextId ,
+            id: nextID ,
             nome: userName, 
             realName: null,
             senha: passWord, 
@@ -419,4 +420,86 @@ function verificationRememberMe() {
 
     return checkbox.checked
     
+}
+
+if (users == null) {
+    users = [{
+        id: 0 ,
+        nome: "Admin",
+        realName: null,
+        senha: "administrador123",
+        carrinho: [],
+        lembrarDeMim: false,
+        online: false,
+        date: getDate(),
+        atividadeNoSite: {totalGasto: 0, produtosComprados: []},
+        contato: null,
+        pets: [],
+        img: '../../imagens/perfil-default.jpg'
+    }]
+
+    saveLocalStorage(users)
+}
+
+if (users.length < 10) {
+    createNewUsers(10)
+}
+
+
+function User(nome, realName, senha, carrinho, lembrarDeMim, online, contato, pets, img) {
+
+    this.id = nextID
+    nextID++
+    this.nome = nome
+    this.realName = realName
+    this.senha = senha
+    this.carrinho = carrinho
+    this.lembrarDeMim = lembrarDeMim
+    this.online = online
+    this.date = getDate()
+    this.atividadeNoSite = {totalGasto: 0, produtosComprados: []}
+    this.contato = contato
+    this.pets = pets
+    this.img = img
+
+}
+
+function createNewUsers(quant) {
+
+    for (let i = 0 ; i < quant ; i++) {
+        let randomName = getRamdomName()
+        let newUser = new User(randomName, null, "senhaBoa123", [], false, false, null, [], '../../imagens/perfil-default.jpg')
+        users.push(newUser)
+    }
+
+    saveLocalStorage(users)
+}
+
+function getRamdomName() {
+    let nomes = [
+        "Nina",
+        "Malafaia",
+        "Brum",
+        "Abílio",
+        "Ramalho",
+        "Jeremias",
+        "Belo",
+        "Élton",
+        "Aleixo",
+        "Polina",
+        "Veiga",
+        "Lidiana",
+        "Carrasqueira",
+        "Aliya",
+        "Franqueira",
+        "Elielson",
+        "Pegado",
+        "Elielson",
+        "Pegado",
+        "Mariama",
+        "Condorcet"
+    ]
+
+    let randomNumer = (Math.floor(Math.random() * 20) + 1)
+    return nomes[randomNumer]
 }
