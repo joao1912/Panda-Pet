@@ -18,8 +18,6 @@ let btnBeforeGenero
   
 })
 
-let petExist = false
-
 botaoEscolhaGenero.addEventListener("click", function(event){
     let id = event.target.id
 
@@ -172,8 +170,20 @@ function trocarPagina(event) {
             ;[...botoesSelect].forEach(botao => {
               botao.addEventListener("click", function(event){
                 let idPet = event.target.value
+                const containerPets = document.querySelector("#containerPetJaCadastrado")
+                idPet = `PET-${idPet}`
+                localStorage.setItem("petEscolhido", JSON.stringify(idPet))
+                
 
-                //prosseguir
+                containerPets.style.display = "none"
+                cadastroPet1.style.display = "none"
+                cadastroPet2.style.display = "flex"
+                arrayRadio.forEach( radio => {
+                  radio.classList.remove("marked")
+                })
+                inptRadioCadastro[1].classList.add("marked")
+                imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+                imgPandaCadastro.style.marginRight = "20px"
               })
             })
           
@@ -190,7 +200,7 @@ function trocarPagina(event) {
           erroOuNao = verificaErroForm1(inputs)
 
           if (!erroOuNao) {
-              petExist = true
+
               cadastroPet1.style.display = "none"
               cadastroPet2.style.display = "flex"
               arrayRadio.forEach( radio => {
@@ -265,12 +275,10 @@ function trocarPagina(event) {
               Error("#insira-carona#")
             
             } else {
-              let petEscolhido = localStorage.getItem("petEscolhido")
+              let petEscolhido = JSON.parse(localStorage.getItem("petEscolhido"))
+              localStorage.removeItem("petEscolhido")
               if (cadastroPet.idPET == undefined) {
-                
-                //pegar o ID pet que foi escolhido
-                
-
+                    
                 for (let pet of pets) {
                   if (pet.idPET == petEscolhido){
                     agendamento.pet.idPET = petEscolhido
