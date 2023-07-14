@@ -1000,3 +1000,10 @@ button {
     position: absolute;
     display: none;
 }
+
+#preco {
+    width: 200px;
+}
+.caronaPreco {
+    font-size: 0.8em;
+}

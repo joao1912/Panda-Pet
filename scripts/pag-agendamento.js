@@ -87,13 +87,58 @@ function dropDown(p) {
 
 }
 
+let preco = undefined
+
 const itensServices = document.querySelectorAll(".item")
 itensServices.forEach( item => {
   item.addEventListener("mousedown", function(event){
-
+    const containerPreco = document.getElementById("preco")
     let id = event.target.id
-   
     let text = document.getElementById(`${id}`).textContent
+
+    let span = document.createElement("span")
+    span.classList.add("caronaPreco")
+
+    if (preco == undefined) {
+      preco = containerPreco.textContent
+    }
+
+    let precoTudo = 60
+    let precoApenasBuscar = 30
+    let apenasTrazer = 30
+
+    console.log(text)
+
+    switch (text) {
+      case "Quero Tudo!":
+        
+        span.appendChild(document.createTextNode(` + R$ ${precoTudo}`))
+
+        break
+      case "Apenas Buscar":
+    
+        span.appendChild(document.createTextNode(` + R$ ${precoApenasBuscar}`))
+
+        break
+      case "Apenar Trazer":
+
+        span.appendChild(document.createTextNode(` + R$ ${apenasTrazer}`))
+      
+
+        break
+      case "Não Quero":
+
+      span.appendChild(document.createTextNode(``))
+
+        break
+    }
+
+    containerPreco.innerHTML = ""
+    containerPreco.innerHTML = preco 
+    containerPreco.appendChild(span)
+   
+   
+    
     servicosElement.value = text
 
   })
@@ -278,6 +323,7 @@ function trocarPagina(event) {
 
             const inputServico = document.getElementById("inputServico")
             const inptNome = document.getElementById("inputSeuNome")
+            
             let pets = JSON.parse(localStorage.getItem("pets"))
             let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
 
@@ -287,6 +333,8 @@ function trocarPagina(event) {
             } else if (inptNome.value == "") {
               Error(["#nome-vazio#"])
             } else {
+
+              
                         
               //entrou para salvar
               let petEscolhido = JSON.parse(localStorage.getItem("petEscolhido"))
