@@ -107,8 +107,6 @@ itensServices.forEach( item => {
     let precoApenasBuscar = 30
     let apenasTrazer = 30
 
-    console.log(text)
-
     switch (text) {
       case "Quero Tudo!":
         
@@ -666,7 +664,7 @@ function verificaErroForm2(){
 
 
   if (btnServicoHospedagem.getAttribute("style")) {
-      console.log(`Ano1: ${ano1} | Ano2: ${ano2}`)
+     
       if(ano2 < anoAtual){
           errosForm2.push("#agendamento-invalido#")
           
@@ -1052,7 +1050,7 @@ function loadTablePets(petsUser) {
 
   const tbody = document.querySelector("#containerPetJaCadastrado tbody")
   tbody.innerHTML = ""
-  console.log(petsUser)
+
   for (let pet of petsUser) {
 
     let element = createTablePet(pet.idPET, pet.nome, pet.raca)
