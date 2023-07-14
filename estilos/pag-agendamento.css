@@ -621,6 +621,7 @@ button {
     align-items: center;
     gap: 10px;
     padding-bottom: 18px;
+    margin-top: 10px;
 }
 
 
@@ -781,12 +782,14 @@ button {
 }
 #divSeuNome{
     margin-top: -75px;
+    position: relative;
  
 }
 #divAlinhar{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 10px;
 }
 .labelNomePet{
     padding-left: 10px;
@@ -990,5 +993,10 @@ button {
     padding-left: 0;
     width: 100%;
     text-align: center;
+    display: none;
+}
+
+#erroNomeVazio {
+    position: absolute;
     display: none;
 }

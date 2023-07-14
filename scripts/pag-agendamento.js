@@ -277,13 +277,17 @@ function trocarPagina(event) {
         case "botaoFinalizar":
 
             const inputServico = document.getElementById("inputServico")
+            const inptNome = document.getElementById("inputSeuNome")
             let pets = JSON.parse(localStorage.getItem("pets"))
             let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
 
             if (inputServico.value == "") {
-              Error("#insira-carona#")
+              Error(["#insira-carona#"])
             
+            } else if (inptNome.value == "") {
+              Error(["#nome-vazio#"])
             } else {
+                        
               //entrou para salvar
               let petEscolhido = JSON.parse(localStorage.getItem("petEscolhido"))
               localStorage.removeItem("petEscolhido")

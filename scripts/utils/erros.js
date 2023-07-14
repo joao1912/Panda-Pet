@@ -2,7 +2,7 @@ export function Error(erro) {
     let containerErro
     let containerIcones
     let icon
-
+   
     //erro no cadastro
 
     switch(erro) {
@@ -115,6 +115,7 @@ export function Error(erro) {
         const containerErroHoraEntrada = document.getElementById("erroHoraEntrada")
         const containerErroHoraSaida = document.getElementById("erroHoraSaida")
         const containerErroHorarios = document.getElementById("erroHorarios")
+        const containerErroNomeUser = document.getElementById("erroNomeVazio")
 
         const inptNome = document.getElementById("inputNome")
         const inptNiver = document.getElementById("inputAniver")
@@ -126,6 +127,10 @@ export function Error(erro) {
         const inptDates = document.querySelectorAll(".inptDateAgendamento")
         const inptHoraEntrada = document.getElementById("inptHourEntry")
         const inptHoraSaida = document.getElementById("inptHourExit")
+
+        const inptNomeUser = document.getElementById("inputSeuNome")
+
+        const inptCarona = document.getElementById("inputServico")
 
         switch (erro[0]) {
             case "#nome-vazio#":
@@ -227,8 +232,22 @@ export function Error(erro) {
                 inptDates.forEach( inpt => {
                     inpt.addEventListener("click", () => {ocutarErro(containerErroAgendamento)} )
                 })
+            case "#insira-carona#":
+                
+                inptCarona.classList.add("tremerSelect")
+                setTimeout(function(){
+                    inptCarona.classList.remove("tremerSelect")
+                }, 400)
+                break
         }
-
+        
+        if (erro == "#nome-vazio#") {
+            containerErroNomeUser.style.display = "block"
+            containerErroNomeUser.textContent = "Este Campo é Obrigatório!"
+            inptNomeUser.addEventListener("keydown", () => {ocutarErro(containerErroNomeUser)} )
+     
+        }
+     
         erro.splice(0,1)
 
     } while (erro.length)
