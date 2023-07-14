@@ -352,6 +352,7 @@
                     <div id="divDMeio2">
                         <button id="botaoBanho" class="btnServico">Banho e Tosa</button>
                         <button id="botaoHospedar" class="btnServico">Hospedar</button>
+                        <div class="containerErrosAgendamento" id="erroServico">Serviço Obrigatório!</div>
                     </div>
                         
                     <div id="containerCalendario">
@@ -360,12 +361,13 @@
                         <section id="containerFormDay">
                             <div class="containerCheckInAndOut">
                                 <label for="inptAgendamento" id="labelCheckIn">Check-In</label>
-                                <input type="date" id="inptAgendamento">
+                                <input type="date" id="inptAgendamento" class="inptDateAgendamento">
                             </div>
                             <div id="containerCheckOut" class="containerCheckInAndOut">
                                 <label for="inptSaida" >Check-Out</label>
-                                <input type="date" id="inptSaida">
+                                <input type="date" id="inptSaida" class="inptDateAgendamento">
                             </div>
+                            <div class="containerErrosAgendamento" id="erroAgendamento">Agendamento Obrigatório!</div>
                         </section>
 
                         <section id="containerFormHour">
@@ -380,6 +382,9 @@
                                 <label for="inptHourExit" id="labelSaida">Saída</label>
                                 <input type="text" id="inptHourExit" placeholder="17:00" maxlength="5" readonly>
                             </div>
+                            <div class="containerErrosAgendamento" id="erroHoraEntrada">Horário Inválido!</div>
+                            <div class="containerErrosAgendamento" id="erroHorarios">Horários Inválidos!</div>
+                            <div class="containerErrosAgendamento" id="erroHoraSaida">Horário Inválido!</div>
                         </section>
                     </div> 
                     

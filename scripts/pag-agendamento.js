@@ -565,7 +565,7 @@ function verificaErroForm1(useInputs) {
 }
 
 function verificaErroForm2(){
-  let erros =[]
+  let errosForm2 =[]
 
   const elementoHorarioEntrada = document.getElementById('inptHourEntry')
   const elementoHorarioSaida = document.getElementById('inptHourExit')
@@ -576,88 +576,132 @@ function verificaErroForm2(){
   let data1 = document.getElementById("inptAgendamento")
   let data2 = document.getElementById("inptSaida")
   data1 = data1.value
-  data2 = data1.value
+  data2 = data2.value
 
   let ano1 = `${data1[0]}${data1[1]}${data1[2]}${data1[3]}`
   let ano2
   ano1 = Number(ano1)
   
-
-  if (data2) {
-    ano2 = `${data2[0]}${data2[1]}${data2[2]}${data2[3]}`
-    ano2 = Number(ano2)
+  if (isNaN(ano1)) {
+    errosForm2.push("#agendamento-invalido#")
   }
+
+  
+  ano2 = `${data2[0]}${data2[1]}${data2[2]}${data2[3]}`
+  ano2 = Number(ano2)
+
+  let dia1 = `${data1[8]}${data1[9]}`
+  let dia2 = `${data2[8]}${data2[9]}`
+  let mes1 = `${data1[5]}${data1[6]}`
+  let mes2 = `${data2[5]}${data2[6]}`
+ 
 
   let date = new Date()
   let anoAtual = date.getFullYear()
 
   if(ano1 < anoAtual){
-    erros.push("#agendamento-invalido#")
+    errosForm2.push("#agendamento-invalido#")
   }
 
 
   let btnServicoHospedagem = document.getElementById("botaoHospedar")
+  let btnServicoBanho = document.getElementById("botaoBanho")
+
+  if (!btnServicoHospedagem.getAttribute("style") && !btnServicoBanho.getAttribute("style")) {
+    errosForm2.push("#servico-obrigatorio#")
+  
+  }
 
 
   if (btnServicoHospedagem.getAttribute("style")) {
+      console.log(`Ano1: ${ano1} | Ano2: ${ano2}`)
       if(ano2 < anoAtual){
-          erros.push("#agendamento-invalido#")
+          errosForm2.push("#agendamento-invalido#")
+          
+      }
+
+      if (ano2 < ano1) {
+        errosForm2.push("#agendamento-invalido#")
+        
+      }
+
+      if (mes1 > mes2) {
+        errosForm2.push("#agendamento-invalido#")
+      } else {
+        if (dia1 > dia2 && mes1 == mes2) {
+          errosForm2.push("#agendamento-invalido#")
+        }
+      }
+
+      if (mes1 == mes2 && dia1 == dia2) {
+        errosForm2.push("#agendamento-invalido#")
+      }
+
+      
+
+      if (isNaN(ano2) && btnServicoHospedagem.getAttribute("style")) {
+        errosForm2.push("#agendamento-invalido#")
+        
       }
   }
 
   
+  if (horarioEntrada.length == 0) {
+    errosForm2.push("#horario-entrada-vazio#") 
+  }  
 
  if (horarioEntrada.length == 5) {
     let minutos = `${horarioEntrada[3]}${horarioEntrada[4]}`
 
     if (Number(minutos) > 60 || Number(minutos) < 0) {
-      erros.push("#hora-entrada-invalida#")
+      errosForm2.push("#hora-entrada-invalida#")
     }
 
     let hora = `${horarioEntrada[0]}${horarioEntrada[1]}`
     hora = Number(hora)
 
     if (hora > 22 || hora < 7) {
-      erros.push("#hora-entrada-invalida#")
+      errosForm2.push("#hora-entrada-invalida#")
     }
  } else if (horarioEntrada.length == 2 || horarioEntrada.length == 1) {
     if (Number(horarioEntrada) > 22 || Number(horarioEntrada) < 7) {
-      erros.push("#hora-entrada-invalida#")
+      errosForm2.push("#hora-entrada-invalida#")
     }
  } 
 
  /* hora de saida */
 
- if (btnServicoHospedagem.getAttribute("style")) {
 
+
+ if (btnServicoHospedagem.getAttribute("style")) {
+    if (horarioSaida.length == 0) {
+      errosForm2.push("#horario-saida-vazio#") //fazer
+    }  
     if (horarioSaida.length == 5) {
         let minutos = `${horarioSaida[3]}${horarioSaida[4]}`
 
         if (Number(minutos) > 60 || Number(minutos) < 0) {
-          erros.push("#hora-saida-invalida#")
+          errosForm2.push("#hora-saida-invalida#")
         }
 
         let hora = `${horarioSaida[0]}${horarioSaida[1]}`
         hora = Number(hora)
 
         if (hora > 22 || hora < 7) {
-          erros.push("#hora-saida-invalida#")
+          errosForm2.push("#hora-saida-invalida#")
         }
     } else if (horarioSaida.length == 2 || horarioSaida.length == 1) {
         if (Number(horarioSaida) > 22 || Number(horarioSaida) < 7) {
-          erros.push("#hora-saida-invalida#")
+          errosForm2.push("#hora-saida-invalida#")
         }
     } else if ( Number(horarioEntrada) <= Number(horarioSaida) ) {
-        erros.push("#horarios-invalidos#") //lembrar em
+        errosForm2.push("#horarios-invalidos#")
     } 
 
  }
-
  
-
-
- if (erros.length != 0) {
-    Error(erros)
+ if (errosForm2.length != 0) {
+    Error(errosForm2)
   return true
 } else {
 
@@ -937,6 +981,7 @@ function loadTablePets(petsUser) {
 
   const tbody = document.querySelector("#containerPetJaCadastrado tbody")
   tbody.innerHTML = ""
+  console.log(petsUser)
   for (let pet of petsUser) {
 
     let element = createTablePet(pet.idPET, pet.nome, pet.raca)

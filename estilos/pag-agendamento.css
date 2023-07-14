@@ -435,7 +435,7 @@ button {
     justify-content: center;
     gap: 40px;
     border-bottom: 3px solid var(--primaryColor);
-    
+    position: relative;
  
 }
 #botaoTosa{
@@ -503,6 +503,7 @@ button {
 
 #containerFormDay {
     padding-bottom: 15px;
+    position: relative;
 }
 
 
@@ -942,4 +943,52 @@ button {
 
 #btnClosePetCadastrado:hover {
     transform: scale(1.1);
+}
+
+
+#erroServico {
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    display: none;
+}
+
+#erroAgendamento {
+    position: absolute;
+    top:85%;
+    padding-left: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+#erroHoraEntrada {
+    position: absolute;
+    top:95%;
+    padding-left: 0;
+    width: 97%;
+    text-align: left;
+    display: none;
+
+}
+
+#erroHoraSaida {
+    position: absolute;
+    top:95%;
+    padding-left: 0;
+    width: 97%;
+    text-align: right;
+    display: none;
+   
+}
+
+#erroHorarios {
+    position: absolute;
+    top:95%;
+    padding-left: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
 }

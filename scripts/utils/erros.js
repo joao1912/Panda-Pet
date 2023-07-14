@@ -102,7 +102,7 @@ export function Error(erro) {
     
 
     if (typeof erro != "object" || erro.length == 0) return
-
+    
     do {
         const containerErroNome = document.getElementById("erroInptNome")
         const containerErroNiver = document.getElementById("erroInptAniversario")
@@ -110,11 +110,22 @@ export function Error(erro) {
         const containerErroPeso = document.getElementById("erroInptPeso")
         const containerErroAlergico= document.getElementById("erroBtnEscolha")
 
+        const containerErroServico = document.getElementById("erroServico")
+        const containerErroAgendamento = document.getElementById("erroAgendamento")
+        const containerErroHoraEntrada = document.getElementById("erroHoraEntrada")
+        const containerErroHoraSaida = document.getElementById("erroHoraSaida")
+        const containerErroHorarios = document.getElementById("erroHorarios")
+
         const inptNome = document.getElementById("inputNome")
         const inptNiver = document.getElementById("inputAniver")
         const inptRaca = document.getElementById("inputRaca")
         const inptPeso = document.getElementById("inputPeso")
         const textAlergico = document.getElementById("quadro")
+
+        const btnsServico = document.querySelectorAll(".btnServico")
+        const inptDates = document.querySelectorAll(".inptDateAgendamento")
+        const inptHoraEntrada = document.getElementById("inptHourEntry")
+        const inptHoraSaida = document.getElementById("inptHourExit")
 
         switch (erro[0]) {
             case "#nome-vazio#":
@@ -163,6 +174,50 @@ export function Error(erro) {
                 containerErroPeso.style.display = "block"
                 containerErroPeso.textContent = "Peso inválido!"
                 inptPeso.addEventListener("keydown", () => {ocutarErro(containerErroPeso)} )
+                break
+            case "#agendamento-invalido#":
+                containerErroAgendamento.style.display = "block"
+                containerErroAgendamento.textContent = "Agendamento Inválido!"
+                inptDates.forEach( inpt => {
+                    inpt.addEventListener("click", () => {ocutarErro(containerErroAgendamento)} )
+                })
+
+                break
+            case "#servico-obrigatorio#":
+                containerErroServico.style.display = "block"
+                containerErroServico.textContent = "Selecione o Serviço!"
+                btnsServico.forEach( btn => {
+                    btn.addEventListener("click", () => {ocutarErro(containerErroServico)} )
+                })
+
+                break
+            case "#horario-entrada-vazio#":
+                containerErroHoraEntrada.style.display = "block"
+                containerErroHoraEntrada.textContent = "Este Campo é obrigatório!"
+                inptHoraEntrada.addEventListener("keydown", () => {ocutarErro(containerErroHoraEntrada)})
+
+                break
+            case "#hora-entrada-invalida#":
+                containerErroHoraEntrada.style.display = "block"
+                containerErroHoraEntrada.textContent = "Horário Inválido!"
+                inptHoraEntrada.addEventListener("keydown", () => {ocutarErro(containerErroHoraEntrada)})
+                break
+            case "#horario-saida-vazio#":
+                containerErroHoraSaida.style.display = "block"
+                containerErroHoraSaida.textContent = "Este Campo é obrigatório!"
+                inptHoraSaida.addEventListener("keydown", () => {ocutarErro(containerErroHoraSaida)})
+
+                break
+            case "#hora-saida-invalida#":
+                containerErroHoraSaida.style.display = "block"
+                containerErroHoraSaida.textContent = "Horário Inválido!"
+                inptHoraSaida.addEventListener("keydown", () => {ocutarErro(containerErroHoraSaida)})
+                break
+            case "#horarios-invalidos#":
+                containerErroHorarios.style.display = "block"
+                containerErroHorarios.textContent = "Horários Inválidos!"
+                inptHoraEntrada.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
+                inptHoraSaida.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
                 break
         }
 
