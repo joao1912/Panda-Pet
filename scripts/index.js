@@ -94,7 +94,7 @@ function setPerfilOnline() {
         let nome
         let realName
         let img
-        let pets=[]
+        let pets=[] //pendente
         let data
         let contato
 

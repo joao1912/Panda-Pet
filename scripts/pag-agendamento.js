@@ -173,6 +173,7 @@ function trocarPagina(event) {
             ;[...botoesSelect].forEach(botao => {
 
               if (!botao.getAttribute("active")) {
+                botao.setAttribute("active",true)
                 botao.addEventListener("click", function(event){
                 let idPet = event.target.value
                 const containerPets = document.querySelector("#containerPetJaCadastrado")
@@ -337,10 +338,11 @@ function trocarPagina(event) {
               }
               
               if (agendamentos == null) {
+                agendamento.id = userID
                 agendamento = [agendamento]
                 localStorage.setItem("agendamentos", JSON.stringify(agendamento))
               } else {
-
+                agendamento.id = userID
                 agendamentos.push(agendamento)
                 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
               }
@@ -934,7 +936,7 @@ function setPrice() {
 function loadTablePets(petsUser) {
 
   const tbody = document.querySelector("#containerPetJaCadastrado tbody")
-  
+  tbody.innerHTML = ""
   for (let pet of petsUser) {
 
     let element = createTablePet(pet.idPET, pet.nome, pet.raca)
@@ -954,7 +956,7 @@ function createTablePet(id, nome, raca) {
   let textIcon = document.createTextNode("check")
   btnSelect.appendChild(textIcon)
   btnSelect.value = numberId
-  btnSelect.setAttribute("active", true)
+
 
 
   let tdSelect = document.createElement("td")
