@@ -344,6 +344,10 @@ nav.addEventListener("click", function (event) {
 
             if (containerTelaAgendamento.style.display == "block") return
 
+            if (userID == undefined) {
+                window.location.href = "../paginas/cadastro-login.html"
+            }
+
             telas.forEach(tela => {
                 tela.style.display = "none"
             })

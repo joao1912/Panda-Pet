@@ -167,8 +167,13 @@ function trocarPagina(event) {
 
             loadTablePets(petsUser)
             const botoesSelect = document.querySelectorAll(".selectPet")
+
+
+
             ;[...botoesSelect].forEach(botao => {
-              botao.addEventListener("click", function(event){
+
+              if (!botao.getAttribute("active")) {
+                botao.addEventListener("click", function(event){
                 let idPet = event.target.value
                 const containerPets = document.querySelector("#containerPetJaCadastrado")
                 idPet = `PET-${idPet}`
@@ -185,7 +190,10 @@ function trocarPagina(event) {
                 imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
                 imgPandaCadastro.style.marginRight = "20px"
               })
+              }
+
             })
+
           
             break
         case "botaoProximo":
@@ -275,10 +283,12 @@ function trocarPagina(event) {
               Error("#insira-carona#")
             
             } else {
+              //entrou para salvar
               let petEscolhido = JSON.parse(localStorage.getItem("petEscolhido"))
               localStorage.removeItem("petEscolhido")
+
               if (cadastroPet.idPET == undefined) {
-                    
+                //se um pet ja escolhido for selecionado vai vir aqui   
                 for (let pet of pets) {
                   if (pet.idPET == petEscolhido){
                     agendamento.pet.idPET = petEscolhido
@@ -289,13 +299,16 @@ function trocarPagina(event) {
             
               } else {
 
+                //se o pet foi cadastrado
 
                 if (pets == null) {
+                  //primeiro pet a ser cadastrado
                   pets = [cadastroPet]
                   localStorage.setItem("pets", JSON.stringify(pets))
                   
                 } else {
 
+                  //não é o primeiro a ser cadastrado
                   pets.push(cadastroPet)
 
                 }
@@ -304,6 +317,19 @@ function trocarPagina(event) {
                   if (pet.idPET == cadastroPet.idPET){
                     agendamento.pet.idPET = cadastroPet.idPET
                     agendamento.pet.nome = pet.nome
+                    break
+                  }
+                }
+
+                for (let user of users) {
+                  if (user.id == userID) {
+                    agendamento.id = userID
+                    let objPet = {
+                      nome: cadastroPet.nome,
+                      idPET: cadastroPet.idPET,
+                      raca: cadastroPet.raca
+                    }
+                    user.pets.push(objPet)
                     break
                   }
                 }
@@ -317,19 +343,6 @@ function trocarPagina(event) {
 
                 agendamentos.push(agendamento)
                 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
-              }
-
-              for (let user of users) {
-                if (user.online == true) {
-                  agendamento.id = user.id
-                  let objPet = {
-                    nome: cadastroPet.nome,
-                    idPET: cadastroPet.idPET,
-                    raca: cadastroPet.raca
-                  }
-                  user.pets.push(objPet)
-                  break
-                }
               }
 
               saveLocalStorage(users)
@@ -933,7 +946,6 @@ function loadTablePets(petsUser) {
 
 function createTablePet(id, nome, raca) {
 
-  
   let numberId = Number(id.slice(4))
 
   let btnSelect = document.createElement("button")
@@ -942,6 +954,8 @@ function createTablePet(id, nome, raca) {
   let textIcon = document.createTextNode("check")
   btnSelect.appendChild(textIcon)
   btnSelect.value = numberId
+  btnSelect.setAttribute("active", true)
+
 
   let tdSelect = document.createElement("td")
   tdSelect.classList.add("select")
