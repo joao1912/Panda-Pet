@@ -219,6 +219,14 @@ export function Error(erro) {
                 inptHoraEntrada.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
                 inptHoraSaida.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
                 break
+            case "#horario-ocupado#":
+                containerErroHorarios.style.display = "block"
+                containerErroHorarios.textContent = "Horário Já Ocupado!"
+                inptHoraEntrada.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
+                inptHoraSaida.addEventListener("keydown", () => {ocutarErro(containerErroHorarios)})
+                inptDates.forEach( inpt => {
+                    inpt.addEventListener("click", () => {ocutarErro(containerErroAgendamento)} )
+                })
         }
 
         erro.splice(0,1)

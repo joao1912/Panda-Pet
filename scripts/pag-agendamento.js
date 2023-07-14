@@ -643,6 +643,7 @@ function verificaErroForm2(){
         errosForm2.push("#agendamento-invalido#")
         
       }
+
   }
 
   
@@ -667,7 +668,25 @@ function verificaErroForm2(){
     if (Number(horarioEntrada) > 22 || Number(horarioEntrada) < 7) {
       errosForm2.push("#hora-entrada-invalida#")
     }
- } 
+ }
+ 
+  if (errosForm2.length == 0) {
+    let agendamentosJson = JSON.parse(localStorage.getItem("agendamentos"))
+
+    if (agendamentosJson) {
+      for (let agendamento of agendamentosJson) {
+        let dia = agendamento.dia
+        let mes = agendamento.mes
+        let horaEntrada = agendamento.horaEntrada
+
+        if (dia == dia1 && (mes + 1) == mes1 && btnServicoBanho.getAttribute("style")) {
+          if (horaEntrada == horarioEntrada) {
+            errosForm2.push("#horario-ocupado#")
+          }
+        }
+      }
+    }
+  }
 
  /* hora de saida */
 
