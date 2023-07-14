@@ -2,6 +2,7 @@ import { verifyUserOnline } from './utils/verifyUserOnline.js'
 import { Error } from './utils/erros.js'
 import { showSearchResults } from './utils/forProducts/showProducts.js'
 import { loadInfoProducts } from './pag-individual_produto.js'
+import { saveLocalStorage } from './utils/saveLocalStorage.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
@@ -154,8 +155,9 @@ function trocarPagina(event) {
             containerPets.style.display = "flex"
             let petsArray = JSON.parse(localStorage.getItem("pets"))
             let petsUser 
-
-            if (petsArray == null || petsArray.length == 0) {
+           
+            if (petsArray != null && petsArray.length != 0) {
+             
               for (let user of users) {
                   if (user.id == userID) {
                     petsUser = user.pets
@@ -164,9 +166,17 @@ function trocarPagina(event) {
               }
             }
 
-            loadTablePets()
-            
 
+            loadTablePets(petsUser)
+            const botoesSelect = document.querySelectorAll(".selectPet")
+            ;[...botoesSelect].forEach(botao => {
+              botao.addEventListener("click", function(event){
+                let idPet = event.target.value
+
+                //prosseguir
+              })
+            })
+          
             break
         case "botaoProximo":
 
@@ -291,17 +301,7 @@ function trocarPagina(event) {
                 }
                 
               }
-
-              for (let user of users) {
-                if (user.online == true) {
-                  agendamento.id = user.id
-                  break
-                }
-              }
               
-              
-              
-
               if (agendamentos == null) {
                 agendamento = [agendamento]
                 localStorage.setItem("agendamentos", JSON.stringify(agendamento))
@@ -311,9 +311,20 @@ function trocarPagina(event) {
                 localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
               }
 
-              
+              for (let user of users) {
+                if (user.online == true) {
+                  agendamento.id = user.id
+                  let objPet = {
+                    nome: cadastroPet.nome,
+                    idPET: cadastroPet.idPET,
+                    raca: cadastroPet.raca
+                  }
+                  user.pets.push(objPet)
+                  break
+                }
+              }
 
-
+              saveLocalStorage(users)
               localStorage.setItem("pets", JSON.stringify(pets))
 
               Swal.fire({
@@ -644,13 +655,14 @@ function saveForm1(nomePet, niver, raca, peso, genero, alergico) {
       pets = []
     }
 
-    if (pets.length != 0) {
+    if (pets.length == 0) {
       nextPetID = `PET-${1}`
     } else {
       
       for (let pet of pets) {
         let petId = pet.idPET
         let numberId = petId.slice(4)
+        numberId = Number(numberId)
 
           if (numberId > maiorId) {
             maiorId = numberId
@@ -899,7 +911,56 @@ function setPrice() {
 }
 
 function loadTablePets(petsUser) {
+
+  const tbody = document.querySelector("#containerPetJaCadastrado tbody")
   
+  for (let pet of petsUser) {
+
+    let element = createTablePet(pet.idPET, pet.nome, pet.raca)
+
+    tbody.appendChild(element)
+  }
+
+}
+
+function createTablePet(id, nome, raca) {
+
+  
+  let numberId = Number(id.slice(4))
+
+  let btnSelect = document.createElement("button")
+  btnSelect.classList.add("material-symbols-outlined")
+  btnSelect.classList.add("selectPet")
+  let textIcon = document.createTextNode("check")
+  btnSelect.appendChild(textIcon)
+  btnSelect.value = numberId
+
+  let tdSelect = document.createElement("td")
+  tdSelect.classList.add("select")
+  tdSelect.appendChild(btnSelect)
+
+  let tdRaca = document.createElement("td")
+  let textRaca = document.createTextNode(raca)
+  tdRaca.appendChild(textRaca)
+
+  let tdNome = document.createElement("td")
+  tdNome.classList.add("nomePet")
+  let textNome = document.createTextNode(nome)
+  tdNome.appendChild(textNome)
+
+  let tdId = document.createElement("td")
+  tdId.classList.add("idPet")
+  let textId = document.createTextNode(id)
+  tdId.appendChild(textId)
+
+  let tr = document.createElement("tr")
+
+  tr.appendChild(tdId)
+  tr.appendChild(tdNome)
+  tr.appendChild(tdRaca)
+  tr.appendChild(tdSelect)
+
+  return tr
 }
 
 const btnClosePets = document.getElementById("btnClosePetCadastrado")
@@ -907,3 +968,4 @@ btnClosePets.addEventListener("click", function(){
   const telaPets = document.getElementById("containerPetJaCadastrado")
   telaPets.style.display = "none"
 })
+
