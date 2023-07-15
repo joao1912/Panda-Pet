@@ -87,8 +87,7 @@ let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
 if (userID != 0) {
-    // window.location.href = "../../index.html" 
-    //descomentar quando a pagina do adm estiver totalmente pronta
+    window.location.href = "../../index.html" 
 }
 
 function verifyUserOnline() {
@@ -521,11 +520,6 @@ loadProfiles()
 function loadProfiles() {
     let elementos = containerProfiles.childNodes
 
-    for (let i = 7; i < elementos.length; i++) {
-
-        elementos[i].remove()
-    }
-
     let users = JSON.parse(localStorage.getItem("users"))
 
     if (users.length == 1 || users.length == 0) {
@@ -557,6 +551,8 @@ function loadProfiles() {
 }
 
 function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
+
+    
 
     // paragrafos
 
@@ -590,6 +586,14 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
     article.appendChild(paragrafoUserDate)
     article.appendChild(paragrafoUserSpending)
 
+    //btn excluir
+
+    let btnExcluir = document.createElement("button")
+    btnExcluir.classList.add("btnDeleteUser")
+    let textDelete = document.createTextNode("Excluir")
+    btnExcluir.appendChild(textDelete)
+    btnExcluir.value = id
+
     //imagem user
 
     let img = document.createElement("img")
@@ -602,6 +606,8 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 
     img.alt = "Foto De Perfil"
 
+    
+
     //div container user
 
     let divContainer = document.createElement("div")
@@ -609,6 +615,7 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
 
     divContainer.appendChild(img)
     divContainer.appendChild(article)
+    divContainer.appendChild(btnExcluir)
 
     return divContainer
 }
@@ -1352,3 +1359,23 @@ function clearInputs() {
     photoProductReaded = ""
     
 }
+
+const btnsDeleteUser = document.querySelectorAll(".btnDeleteUser")
+;[...btnsDeleteUser].forEach( btn => {
+    btn.addEventListener("click", function(event){
+        
+        let id = event.target.value
+
+        users = JSON.parse(localStorage.getItem("users"))
+
+        for (let i = 0 ; i <  users.length ; i++) {
+            if (users[i].id == id) {
+                users.splice(i, 1)
+                break
+            }
+        }
+
+        localStorage.setItem("users", JSON.stringify(users))
+        loadProfiles()
+    })
+})
