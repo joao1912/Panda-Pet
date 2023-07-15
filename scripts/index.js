@@ -94,7 +94,7 @@ function setPerfilOnline() {
         let nome
         let realName
         let img
-        let pets=[] //pendente
+        let pets=[] 
         let data
         let contato
 
@@ -114,10 +114,107 @@ function setPerfilOnline() {
     const inputData=document.getElementById("contaUser")
     const inputContato=document.getElementById("contatoUser")
     const inputImagem=document.getElementById("imagem")
+    const containerPets = document.querySelectorAll(".containerPet")
+
 
         if (img){
             inputImagem.src=img
 
+        }
+
+        setPetsUser()
+
+        function setPetsUser() {
+
+            if (pets.length != 0) {
+                for (let i = 0 ; i < containerPets.length ; i++) {
+                    containerPets[i].innerHTML = ""
+                }
+
+                for (let i = 0 ; i < pets.length ; i++) {
+                    let btnDelete = document.createElement("button")
+                    btnDelete.classList.add("material-symbols-outlined")
+                    btnDelete.classList.add("btnDeletePet")
+                    let textDelete = document.createTextNode("delete")
+                    btnDelete.appendChild(textDelete)
+
+                    containerPets[i].innerHTML = pets[i].nome
+                    btnDelete.value = pets[i].idPET
+                    containerPets[i].appendChild(btnDelete)
+                }
+
+                const btnsDeletePets = document.querySelectorAll(".btnDeletePet")
+                ;[...btnsDeletePets].forEach( btn => {
+                    btn.addEventListener("click", (event) => {deletePet(event)})
+                })
+
+                function deletePet(e) {
+
+                    let id = e.target.value
+                    
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: 'warning',
+                        text: "Não poderá ser desfeito!",
+                        showCancelButton: true,
+                        confirmButtonText: 'Deletar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        let flagDelete = false
+                        if (result.isConfirmed) {
+
+                            for (let user of users) {
+                                if (user.id == userID) {
+                                    let pets = user.pets
+
+                                    for (let i = 0 ; i < pets.length ; i++) {
+                                        console.log(pets[i].idPET)
+                                        if (pets[i].idPET == id) {
+                                            
+                                            pets.splice(i, 1)
+                                            flagDelete = true
+                                            break
+                                        }
+
+                                        if (flagDelete) {
+                                            break
+                                        }
+                                    
+                                    }
+                                    user.pets = pets
+                                }
+                            }
+
+                            let everyPets = JSON.parse(localStorage.getItem("pets"))
+
+                            for (let i = 0 ; i < everyPets.length ; i++) {
+                                if (everyPets[i].idPET == id) {
+                                    everyPets.splice(i, 1)
+                                    break
+                                }
+                            } 
+
+                            localStorage.setItem("pets", JSON.stringify(everyPets))
+                            saveLocalStorage(users)
+
+                            Swal.fire({
+                                title: 'Pet Removido.',
+                                icon: 'success',
+                                width: 500,
+                                showConfirmButton: false,
+                                timer: 1200
+                            })
+                            
+                            ;[...btnsDeletePets].forEach( btn => {
+                                btn.removeEventListener("click", deletePet)
+                            })
+                            setPetsUser()
+                        }
+                    })
+                }
+            } else {
+                containerPets[0].innerHTML = ""
+            }
         }
 
         if (realName == undefined) {
@@ -128,6 +225,7 @@ function setPerfilOnline() {
 
         inputContato.value = contato
         inputData.value=data
+
 
     }
 

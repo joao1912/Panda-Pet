@@ -762,9 +762,12 @@ border-radius: 50%;
     background-color:white;
     border-radius: 5%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     position: absolute;
     right: -5px;
+    padding-top: 50px;
+    overflow: hidden;
 }
 
 #excluirEeditar{
@@ -846,4 +849,32 @@ border-radius: 50%;
     transform: scale(1.1);
     animation: treme forwards 0.3s ease-in-out;
     animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.containerPet {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    font-family: "Nunito";
+    position: relative;
+}
+
+.btnDeletePet {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: var(--primaryColor);
+    color: white;
+    position: absolute;
+    right: 10px;
+}
+
+.btnDeletePet:hover {
+    transform: scale(1.1);
+    transition: transform .2s ease-in;
+    cursor: pointer;
 }
