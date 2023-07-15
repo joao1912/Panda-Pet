@@ -155,7 +155,7 @@ function setPerfilOnline() {
                     Swal.fire({
                         title: "Tem certeza?",
                         icon: 'warning',
-                        text: "Não poderá ser desfeito!",
+                        text: `Não poderá ser desfeito! Os agendamentos deste pet também serão cancelados!`,
                         showCancelButton: true,
                         confirmButtonText: 'Deletar',
                         cancelButtonText: 'Cancelar'
