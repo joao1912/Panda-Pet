@@ -168,7 +168,7 @@ function setPerfilOnline() {
                                     let pets = user.pets
 
                                     for (let i = 0 ; i < pets.length ; i++) {
-                                        console.log(pets[i].idPET)
+                                       
                                         if (pets[i].idPET == id) {
                                             
                                             pets.splice(i, 1)
@@ -186,23 +186,24 @@ function setPerfilOnline() {
                             }
 
                             let everyPets = JSON.parse(localStorage.getItem("pets"))
+                            if (everyPets != null) {
 
-                            for (let i = 0 ; i < everyPets.length ; i++) {
-                                if (everyPets[i].idPET == id) {
-                                    everyPets.splice(i, 1)
-                                    break
-                                }
-                            } 
-
-                            let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
-                            for (let i = 0 ; i < agendamentos.length ; i++) {
-                                if (agendamentos[i].pet.idPET == id) {
-                                    agendamentos.splice(i, 1)
-                                    break
-                                }
+                                for (let i = 0 ; i < everyPets.length ; i++) {
+                                    if (everyPets[i].idPET == id) {
+                                        everyPets.splice(i, 1)
+                                        break
+                                    }
+                                } 
                             }
 
-                            localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
+                            let novoAgendamento
+                            let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+                            if (agendamentos != null) {
+
+                                novoAgendamento = agendamentos.filter( agend => agend.pet.idPET != id)
+
+                            }
+                            localStorage.setItem("agendamentos", JSON.stringify(novoAgendamento))
                             localStorage.setItem("pets", JSON.stringify(everyPets))
                             saveLocalStorage(users)
 

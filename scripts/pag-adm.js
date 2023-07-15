@@ -1,5 +1,4 @@
 import { produtos } from "./utils/produtos.js"
-import { showProducts } from './utils/forProducts/showProducts.js'
 import { saveLocalStorage } from './utils/saveLocalStorage.js'
 import { changeMonth } from './utils/forCalendar/changeMonth.js'
 import { setDarkCellCalendar } from './utils/forCalendar/setDarkCellCalendar.js'

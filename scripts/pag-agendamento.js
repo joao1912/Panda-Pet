@@ -251,6 +251,24 @@ function trocarPagina(event) {
 
           erroOuNao = verificaErroForm1(inputs)
 
+          users = JSON.parse(localStorage.getItem("users"))
+
+          for (let user of users) {
+            if (user.id == userID) {
+              let userPets = user.pets
+              if (userPets.length == 5) {
+                erroOuNao = true
+                Swal.fire({
+                  icon: "error",
+                  title: 'Oops...',
+                  text: 'Você já tem o nûmero maximo de pets cadastrados.',
+                  showConfirmButton: true,
+                })
+                break
+              }
+            }
+          }
+
           if (!erroOuNao) {
 
               cadastroPet1.style.display = "none"
