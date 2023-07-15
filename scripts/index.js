@@ -194,6 +194,15 @@ function setPerfilOnline() {
                                 }
                             } 
 
+                            let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+                            for (let i = 0 ; i < agendamentos.length ; i++) {
+                                if (agendamentos[i].pet.idPET == id) {
+                                    agendamentos.splice(i, 1)
+                                    break
+                                }
+                            }
+
+                            localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
                             localStorage.setItem("pets", JSON.stringify(everyPets))
                             saveLocalStorage(users)
 
