@@ -53,6 +53,13 @@ export function loadInfoProducts(codigoProduto) {
     descricaoProduto.textContent = descricao
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
     imgProduto.src = imagem
+
+    if(imgProduto.src.substring(0, 5) != "data:") {
+
+        imgProduto.src = `./imagens/${imgProduto.src}`
+
+    }
+    
     imgProduto.alt = descricaoImagem
 
     setStars(classificacao)
