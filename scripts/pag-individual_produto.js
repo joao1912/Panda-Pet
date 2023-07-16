@@ -113,6 +113,8 @@ export function loadInfoProducts(codigoProduto) {
     if(productElement.substring(0, 5) != "data:") {
     productElement.src = `./imagens/${productElement.src}`
 
+    }
+    
         productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
         productElement.addEventListener("click", function () {
