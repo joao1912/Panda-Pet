@@ -307,7 +307,8 @@ iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
     function redirecionarCadastro() {
-        window.location.href = "./paginas/cadastro-login.html"
+        window.location.href = "paginas/cadastro-login.html"
+        alert(location.pathname())
     }
 
     if (!visibility) {
