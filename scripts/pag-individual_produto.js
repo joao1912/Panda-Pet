@@ -15,7 +15,9 @@ const btnCheckoutIndividual = document.getElementById("btnCheckoutIndividual")
 export function loadInfoProducts(codigoProduto) {
 
     if (userID == undefined) {
+        alert("oi " +window.location.pathname)
         window.location.href = "paginas/cadastro-login.html"
+        return
     }
 
 
@@ -106,8 +108,10 @@ export function loadInfoProducts(codigoProduto) {
 
         productElement.id = produtos[randomProducts[index]].codigo
 
-        let imgProduct = produtos[randomProducts[index]].imagem
         productElement.src = imgProduto
+
+    if(productElement.substring(0, 5) != "data:") {
+    productElement.src = `./imagens/${productElement.src}`
 
         productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
