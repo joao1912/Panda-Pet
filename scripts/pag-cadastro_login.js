@@ -464,37 +464,107 @@ function User(nome, realName, senha, carrinho, lembrarDeMim, online, contato, pe
 
 }
 
+
+
 function createNewUsers(quant) {
+    createNewPets()
+    let newPets = JSON.parse(localStorage.getItem("newPets"))
+    localStorage.removeItem("newPets")
 
     for (let i = 0 ; i < quant ; i++) {
         let randomName = getRamdomName()
         let newUser = new User(randomName, null, "senhaBoa123", [], false, false, null, [], '../../imagens/perfil-default.jpg')
-        createNewAgendamento(newUser.id)
+        createNewAgendamento(newUser.id, newPets[i])
+        newUser.pets = newPets[i]
         users.push(newUser)
     }
 
-    function createNewAgendamento(id) {
+    function createNewPets() {
+
+       
+        function ramdomNumber() {
+            return Math.floor(Math.random() *  9)
+        }
+        let ids = []
+        
+        let petNames = [
+            "Cleitin",
+            "Junin",
+            "Pandora",
+            "Panda",
+            "Juli",
+            "Zeus",
+            "Caramelo",
+            "Zangado",
+            "Neno",
+            "Tutu"
+        ]
+
+        let pets = JSON.parse(localStorage.getItem("pets"))
+        
+
+        if (pets == null) {
+            pets = []
+            for (let i = 0 ; i < 10 ; i++) {
+                ids.push(`PET-${i + 1}`) 
+            }
+        } else {
+            let maiorIdPet = 0
+            for (let pet of pets) {
+                if (pet.idPET > maiorIdPet) {
+                    maiorIdPet = pet.idPET
+                }
+            }
+            for (let i = maiorIdPet ; i <  maiorIdPet + 10; i++) {
+                ids.push(`PET-${i + 1}`) 
+            }
+        }
+        let petsForNewUsers = []
+        for (let i = 0 ; i < ids.length ; i++) {
+            let obj = {
+                alergias: false,
+                aniversario: 19122004,
+                idPET: ids[i],
+                nome: petNames[ramdomNumber()],
+                peso: "20",
+                raca: "Golden",
+                sexo:"Fêmea"
+            }
+            let objForNewUsers = {
+                idPET: ids[i],
+                nome: obj.nome
+            }
+          
+            petsForNewUsers.push(objForNewUsers)
+            pets.push(obj)
+        }
+        localStorage.setItem("newPets", JSON.stringify(petsForNewUsers))
+        localStorage.setItem("pets", JSON.stringify(pets))
+    }
+
+
+    function createNewAgendamento(id, petUser) {
 
         let randomDay1, randomMonth1
         let randomDay2, randomMonth2
-        let ramdomPet, mesAtual
+        let mesAtual
 
         let data = new Date()
         mesAtual = data.getFullYear()
         do {
             randomDay1 = Math.floor(Math.random() * 30)
             randomDay2 = Math.floor(Math.random() * 30)
-
+           
             
-        } while(randomDay2 < randomDay1 )
+        } while(randomDay2 < randomDay1 || randomDay1 == 0 || randomDay2 == 0)
        
         do {
             randomMonth1 = Math.floor(Math.random() * 11)
             randomMonth2 = Math.floor(Math.random() * 11)
-        } while(randomMonth2 < randomDay1 ) //ta pirando aqui
-        
-        //fazer uma função que cria pets
 
+        } while(randomMonth2 < randomMonth1 ) 
+        
+       
         let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
 
         if (agendamentos == null) {
@@ -509,7 +579,7 @@ function createNewUsers(quant) {
                     id: id,
                     mes: randomMonth1,
                     mesSaida: randomMonth2,
-                    pet: [], //pendente
+                    pet: petUser,
                     service: "Hospedagem"
                 }
             ]
@@ -525,7 +595,7 @@ function createNewUsers(quant) {
                 id: id,
                 mes: randomMonth1,
                 mesSaida: randomMonth2,
-                pet: [], //pendente
+                pet: petUser,
                 service: "Hospedagem"
             }
 
