@@ -9,12 +9,12 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
     btnCarrinho.classList = "btnCarrinho"
     let imgCarrinho = document.createElement("img")
     imgCarrinho.classList = 'imgCart'
-    imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+    imgCarrinho.src = "./imagens/icons/carrinho_add.svg"
     btnCarrinho.value = id
     let iconeCarrinho = document.createElement("i")
    
     if (userID === undefined) {
-        imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+        imgCarrinho.src = "./imagens/icons/carrinho_add.svg"
     } else {
         let carrinho
         for (let user of users) {
@@ -24,7 +24,7 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
         }
         
         if (carrinho.length === 0) {
-            imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+            imgCarrinho.src = "./imagens/icons/carrinho_add.svg"
            
         } else {
 
@@ -35,9 +35,9 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
                 }
 
                 if (flag) {
-                    imgCarrinho.src = "../../imagens/icons/remove_shopping_cart.svg"
+                    imgCarrinho.src = "./imagens/icons/remove_shopping_cart.svg"
                 } else {
-                    imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
+                    imgCarrinho.src = "./imagens/icons/carrinho_add.svg"
                 }
 
             }
@@ -96,7 +96,7 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
     let elementImg = document.createElement("img")
     elementImg.classList = "imageProduct"
     if(imagem.substring(0, 5) != "data:") {
-    elementImg.src = `../../imagens/${imagem}`
+    elementImg.src = `./imagens/${imagem}`
     } else {
         elementImg.src = imagem
     }

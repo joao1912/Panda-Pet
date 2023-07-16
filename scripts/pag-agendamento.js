@@ -1,7 +1,5 @@
 import { verifyUserOnline } from './utils/verifyUserOnline.js'
 import { Error } from './utils/erros.js'
-import { showSearchResults } from './utils/forProducts/showProducts.js'
-import { loadInfoProducts } from './pag-individual_produto.js'
 import { saveLocalStorage } from './utils/saveLocalStorage.js'
 
 let users = JSON.parse(localStorage.getItem("users"))
@@ -231,7 +229,7 @@ function trocarPagina(event) {
                   radio.classList.remove("marked")
                 })
                 inptRadioCadastro[1].classList.add("marked")
-                imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+                imgPandaCadastro.style.backgroundImage = "url(./imagens/pandaAgendamento.png)"
                 imgPandaCadastro.style.marginRight = "20px"
               })
               }
@@ -277,7 +275,7 @@ function trocarPagina(event) {
                 radio.classList.remove("marked")
               })
               inptRadioCadastro[1].classList.add("marked")
-              imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+              imgPandaCadastro.style.backgroundImage = "url(./imagens/pandaAgendamento.png)"
               imgPandaCadastro.style.marginRight = "20px"
 
           } 
@@ -290,7 +288,7 @@ function trocarPagina(event) {
               radio.classList.remove("marked")
             })
             inptRadioCadastro[0].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaEpandav.png)"
+            imgPandaCadastro.style.backgroundImage = "url(./imagens/pandaEpandav.png)"
             imgPandaCadastro.style.marginRight = "5px"
 
             break
@@ -307,7 +305,7 @@ function trocarPagina(event) {
                 radio.classList.remove("marked")
               })
               inptRadioCadastro[2].classList.add("marked")
-              imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaPergunta.png)"
+              imgPandaCadastro.style.backgroundImage = "url(./imagens/pandaPergunta.png)"
               imgPandaCadastro.style.marginRight = "0"
 
               const inptNomeUser = document.getElementById('inputSeuNome')
@@ -331,7 +329,7 @@ function trocarPagina(event) {
               radio.classList.remove("marked")
             })
             inptRadioCadastro[1].classList.add("marked")
-            imgPandaCadastro.style.backgroundImage = "url(../../imagens/pandaAgendamento.png)"
+            imgPandaCadastro.style.backgroundImage = "url(./imagens/pandaAgendamento.png)"
             imgPandaCadastro.style.marginRight = "20px"
 
             break
@@ -762,7 +760,7 @@ function verificaErroForm2(){
 
  if (btnServicoHospedagem.getAttribute("style")) {
     if (horarioSaida.length == 0) {
-      errosForm2.push("#horario-saida-vazio#") //fazer
+      errosForm2.push("#horario-saida-vazio#") 
     }  
     if (horarioSaida.length == 5) {
         let minutos = `${horarioSaida[3]}${horarioSaida[4]}`

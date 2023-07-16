@@ -46,7 +46,7 @@ h1#h1Produtos {
     width: 300px;
     height: 450px;
     background-color: var(--thirdColor);
-    background-image: url(../../imagens/patinhas-semfundo.png);
+    background-image: url(../imagens/patinhas-semfundo.png);
     background-size: 270px;
     border-radius: 20px;
     padding: 10px;

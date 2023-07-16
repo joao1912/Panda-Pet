@@ -34,7 +34,7 @@ function setButtonsCartsListeners() {
         botao.addEventListener("click",function(event){
 
             if (userID === undefined) {
-                window.location.href = "../../paginas/cadastro-login.html" 
+                window.location.href = "../paginas/cadastro-login.html" 
             } else {
                 let elemento = event.target
                 let produtoId = Number(botao.value)
@@ -66,7 +66,7 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
     
     if (searchProduto.length === 0) {
 
-        imgIcon.src = "../../imagens/icons/remove_shopping_cart.svg" 
+        imgIcon.src = "./imagens/icons/remove_shopping_cart.svg" 
       
         let objProduto = {
             codigo: produtoId,
@@ -86,7 +86,7 @@ function saveOrDeleteProduct(produtoId, imgIcon) {
 
     } else {
      
-        imgIcon.src = "../../imagens/icons/carrinho_add.svg" 
+        imgIcon.src = "./imagens/icons/carrinho_add.svg" 
         
         let index = 0
         

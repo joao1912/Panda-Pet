@@ -1,5 +1,4 @@
 import {verifyUserOnline} from "./utils/verifyUserOnline.js"
-import { setTableMyShopping } from "./index.js";
 
 let users = JSON.parse(localStorage.getItem("users"))
 

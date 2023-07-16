@@ -87,7 +87,7 @@ let users = JSON.parse(localStorage.getItem("users"))
 export let userID = verifyUserOnline()
 
 if (userID != 0) {
-    window.location.href = "../../index.html" 
+    window.location.href = "../index.html" 
 }
 
 function verifyUserOnline() {
@@ -144,7 +144,7 @@ function setPerfilOnline() {
 
         if (window.location.pathname != '/index.html') {
 
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
 
         }
         saveLocalStorage(users)
@@ -192,7 +192,7 @@ iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
     function redirecionarCadastro() {
-        window.location.href = "../../paginas/cadastro-login.html"
+        window.location.href = "../paginas/cadastro-login.html"
     }
 
     if (!telaPerfilVisibleOrNot) {
@@ -217,34 +217,34 @@ nav.addEventListener("click", function (event) {
     switch (event.target.id) {
         case "forHome":
 
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
 
             break
 
         case "forAcessorios":
 
             localStorage.setItem("newPage", "acessorios")
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
             break
 
         case "forAlimentacao":
 
             localStorage.setItem("newPage", "alimentos")
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
 
             break
 
         case "forBrinquedos":
 
             localStorage.setItem("newPage", "brinquedos")
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
 
             break
 
         case "forSugestoes":
 
             localStorage.setItem("newPage", "sugestoes")
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
 
             break
 
@@ -252,7 +252,7 @@ nav.addEventListener("click", function (event) {
 
             localStorage.setItem("newPage", "agendamento")
 
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
             break
     }
 })
@@ -603,7 +603,7 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
     let img = document.createElement("img")
 
     if (imagem == null) {
-        img.src = "../../imagens/perfil-default.jpg"
+        img.src = "../imagens/perfil-default.jpg"
     } else {
         img.src = imagem
     }
@@ -785,6 +785,14 @@ const btnCloseEdit = document.getElementById("btnCloseEdit")
 const btnCloseRemove = document.getElementById("btnCloseRemove")
 const btnRemoveEscProducts = document.getElementById("btnEscRemove")
 
+const productIDSelected = document.getElementById("productIDSelected")
+const productViewName = document.getElementById("productViewName")
+const productNewPrice = document.getElementById("productNewPrice")
+const productNewStock = document.getElementById("productNewStock")
+const imgPreView = document.getElementById("imgPreView")
+const newDescImage = document.getElementById("newDescImage")
+const productNewDescription = document.getElementById("productNewDescription")
+
 btnEditEscProducts.addEventListener("click", function () {
 
     let tableProducts = document.querySelector("#listProductsEdit tbody")
@@ -815,16 +823,9 @@ btnEditEscProducts.addEventListener("click", function () {
         iconSelectProduct.className = "material-symbols-outlined"
         iconSelectProduct.textContent = "check"
 
+
         buttonSelectProduct.addEventListener("click", function () {
-            let productIDSelected = document.getElementById("productIDSelected")
-            let productViewName = document.getElementById("productViewName")
-            let productNewPrice = document.getElementById("productNewPrice")
-            let productNewStock = document.getElementById("productNewStock")
-            let imgPreView = document.getElementById("imgPreView")
-            let newDescImage = document.getElementById("newDescImage")
-            let productNewDescription = document.getElementById("productNewDescription")
-
-
+            
             productIDSelected.value = productIterable.codigo
             productViewName.value = productIterable.nome
             productNewPrice.value = productIterable.preco
@@ -857,7 +858,6 @@ btnEditEscProducts.addEventListener("click", function () {
 })
 
 const btnSaveEditProduct = document.getElementById("btnSaveEditProduct")
-
 btnSaveEditProduct.addEventListener("click", function () {
 
     let productIDSelected = document.getElementById("productIDSelected")
@@ -899,8 +899,6 @@ btnSaveEditProduct.addEventListener("click", function () {
 
 
 })
-
-
 
 btnRemoveEscProducts.addEventListener("click", function () {
 

@@ -20,7 +20,7 @@ if (users == null) {
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
         contato: null,
         pets: [],
-        img: '../../imagens/pandaCoroaRedondo.png'
+        img: './imagens/pandaCoroaRedondo.png'
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
@@ -399,7 +399,7 @@ function login(passWord) {
             users[index].online = true
             checkedPassWord = true
             saveLocalStorage(users)
-            window.location.href = "../../index.html"
+            window.location.href = "../index.html"
             break
         } 
 
@@ -435,7 +435,7 @@ if (users == null) {
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
         contato: null,
         pets: [],
-        img: '../../imagens/perfil-default.jpg'
+        img: './imagens/perfil-default.jpg'
     }]
 
     saveLocalStorage(users)
@@ -473,7 +473,7 @@ function createNewUsers(quant) {
 
     for (let i = 0 ; i < quant ; i++) {
         let randomName = getRamdomName()
-        let newUser = new User(randomName, null, "senhaBoa123", [], false, false, null, [], '../../imagens/perfil-default.jpg')
+        let newUser = new User(randomName, null, "senhaBoa123", [], false, false, null, [], './imagens/perfil-default.jpg')
         createNewAgendamento(newUser.id, newPets[i])
         newUser.pets = newPets[i]
         users.push(newUser)

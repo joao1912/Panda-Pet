@@ -28,7 +28,7 @@ if (users == null) {
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
         contato: null,
         pets: [],
-        img: '../../imagens/pandaCoroaRedondo.png'
+        img: './imagens/pandaCoroaRedondo.png'
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
@@ -254,7 +254,7 @@ function setPerfilOnline() {
         if (window.location.pathname == "./index.html") {
             location.reload()
         } else {
-            window.location.href = "../../index.html"
+            window.location.href = "./index.html"
         }
 
         saveLocalStorage(users)
@@ -307,7 +307,7 @@ iconeDoPerfil.addEventListener("click", function () {
     const tabelaPerfil = document.getElementById("containerPerfil")
 
     function redirecionarCadastro() {
-        window.location.href = "./paginas/cadastro-login.html"
+        window.location.href = "../paginas/cadastro-login.html"
     }
 
     if (!visibility) {

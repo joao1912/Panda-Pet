@@ -25,7 +25,7 @@ function adicionaProdutoAoCarrinho(codigo) {
         }
         carrinho.push(produtoAdd)
     } else {
-        produtoExistente.quantidade++ //não necessario
+        produtoExistente.quantidade++
     }
 
     for (let user of users) {
@@ -267,7 +267,7 @@ function funcConstructorElements(cod, quantity) {
     //imagem do produto
 
     let imgProduto = document.createElement("img")
-    imgProduto.src = `../imagens/${produtos[cod].imagem}`
+    imgProduto.src = `./imagens/${produtos[cod].imagem}`
     imgProduto.alt = `${produtos[cod].descricaoImagem}`
 
     //div descrição do produto
@@ -402,6 +402,6 @@ export function finalizarCompra() {
     color: '#645CBB',
     text: 'Agradecemos por comprar conosco!'})
     .then(() => {
-        window.location.href = "../../index.html"
+        window.location.href = "../index.html"
     })
 }
