@@ -46,7 +46,6 @@ export function setMarkersCalendar() {
 
                     function calc() {
                         if (day.textContent > 20) {
-                            
                             return mesAtual - 1
                             
                         } else {
@@ -60,12 +59,11 @@ export function setMarkersCalendar() {
                         if (agendamentoEscuro.mes == calc()) {
                             
                             if (agendamentoEscuro.dia == day.textContent) {
-
-                                for (let day of weeks) {       
-                                    if (!day.classList.contains("mark")) {
-                                        day.classList = "mark"
-                                    }
+ 
+                                if (!day.classList.contains("mark")) {
+                                    day.classList = "mark"
                                 }
+                               
                             }
                         }
                     }
@@ -108,12 +106,10 @@ export function setMarkersCalendar() {
                         
                         if (agendamentoEscuro.mesSaida == calc()) {
                             
-                            for (let day of weeks) {
-
-                                if (day.textContent == agendamentoEscuro.diaSaida) {
-                                    
+                            if (day.textContent == agendamentoEscuro.diaSaida) {
+                                if (day.getAttribute("escurecer")) {
                                     if (!day.classList.contains("mark")) {
-                                        day.classList = "mark"
+                                       day.classList = "mark"
                                     }
                                 }
                             }
