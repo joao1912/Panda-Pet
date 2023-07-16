@@ -11,10 +11,14 @@ document.addEventListener("DOMContentLoaded", loadMessage)
 function loadMessage() {
     
     if (userID != undefined && newUser != 1) {
-
+        let imgUser
         newUser = localStorage.setItem("welcome", 1)
-        let imgUser = users[userID].img
-
+        for (let user of users) {
+            if (user.id == userID) {
+                imgUser = user.img
+            }
+        }
+        
         if (imgUser) {
             containerFotoBemVindo.src = imgUser
         }

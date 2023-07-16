@@ -511,7 +511,7 @@ div#swal2-html-container{
     padding-bottom: 80px;
     gap: 30px;
     margin-bottom: 40px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #viewProfiles > h1 {
@@ -1774,4 +1774,15 @@ input::-webkit-inner-spin-button {
     transition: transform .3s ease-in;
     cursor: pointer;
     color: rgb(146, 14, 14);
+}
+
+#containerUsers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+
+    width: 100%;
+    height: 90%;
+    gap: 40px;
 }

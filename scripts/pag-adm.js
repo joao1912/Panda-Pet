@@ -518,36 +518,33 @@ btnClose.addEventListener("click", function () {
 
 loadProfiles()
 function loadProfiles() {
-    let elementos = containerProfiles.childNodes
+
+    const containerUsers = document.getElementById("containerUsers")
+
+    containerUsers.innerHTML = ""
 
     let users = JSON.parse(localStorage.getItem("users"))
 
-    if (users.length == 1 || users.length == 0) {
+    for (let user of users) {
 
-        //por imagem
+        let id = user.id
+        let nome = user.nome
+        let dataObj = user.date
+        let totalGasto = user.atividadeNoSite.totalGasto
+        let imagem = user.img
 
-    } else {
-
-        for (let user of users) {
-
-            let id = user.id
-            let nome = user.nome
-            let dataObj = user.date
-            let totalGasto = user.atividadeNoSite.totalGasto
-            let imagem = user.img
-
-            if (!imagem) {
-                imagem = null
-            }
-
-            if (id == 0) continue
-
-            let containerUser = constructorProfiles(id, nome, dataObj, totalGasto, imagem)
-
-            containerProfiles.appendChild(containerUser)
+        if (!imagem) {
+            imagem = null
         }
 
+        if (id == 0) continue
+
+        let containerUser = constructorProfiles(id, nome, dataObj, totalGasto, imagem)
+
+        containerUsers.appendChild(containerUser)
     }
+
+    
 }
 
 function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {

@@ -16,7 +16,12 @@ export function constructorProductsElements(id, nome, preco, imagem, descricaoIm
     if (userID === undefined) {
         imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
     } else {
-        let carrinho  = users[userID].carrinho
+        let carrinho
+        for (let user of users) {
+            if (user.id == userID) {
+                carrinho = user.carrinho
+            }
+        }
         
         if (carrinho.length === 0) {
             imgCarrinho.src = "../../imagens/icons/carrinho_add.svg"
