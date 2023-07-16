@@ -106,15 +106,17 @@ export function loadInfoProducts(codigoProduto) {
 
         productElement.id = produtos[randomProducts[index]].codigo
 
-        productElement.src = produtos[randomProducts[index]].imagem
+        let imgProduct = produtos[randomProducts[index]].imagem
 
-        if(productElement.src.substring(0, 5) != "data:") {
+        if(imgProduct.substring(0, 5) != "data:") {
 
-            productElement.src = `./imagens/${productElement.src}`
-            
+            imgProduct = `./imagens/${imgProduct}`
+
     }
 
-        productElement.alt = produtos[randomProducts[index]].descricaoImagem
+    productElement.src = imgProduct
+    
+productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
         productElement.addEventListener("click", function () {
 
