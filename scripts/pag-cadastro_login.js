@@ -5,13 +5,6 @@ import { getDate } from './utils/getDate.js'
 let users = []
 let maiorID = 0
 users = JSON.parse(localStorage.getItem("users"))
-
-for (let user of users) {
-    if (user.id > maiorID) {
-        maiorID = user.id
-    }
-}
-
 let nextID = maiorID + 1
 
 if (users == null) {
@@ -27,11 +20,18 @@ if (users == null) {
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
         contato: null,
         pets: [],
-        img: '../../imagens/perfil-default.jpg'
+        img: '../../imagens/pandaCoroaRedondo.png'
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
 }
+for (let user of users) {
+    if (user.id > maiorID) {
+        maiorID = user.id
+    }
+}
+
+
 localStorage.removeItem("welcome")
 let cont = 1
 const botaoTrocarlado = document.querySelectorAll(".btnTroca")
