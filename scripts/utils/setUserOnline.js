@@ -1,4 +1,4 @@
-import { saveLocalStorage } from "./saveLocalStorage"
+import { saveLocalStorage } from "./saveLocalStorage.js"
 
 let users = JSON.parse(localStorage.getItem("users"))
 
