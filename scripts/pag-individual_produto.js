@@ -27,6 +27,7 @@ export function loadInfoProducts(codigoProduto) {
 
             nome = obj.nome
             descricao = obj.descricao
+            console.log(obj.imagem)
             imagem = obj.imagem
             descricaoImagem = obj.descricaoImagem
             preco = obj.preco
@@ -54,7 +55,7 @@ export function loadInfoProducts(codigoProduto) {
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
     imgProduto.src = imagem
 
-   console.log(imgProduto.src)
+    alert(imgProduto.src)
 
     if(imgProduto.src.substring(0, 5) != "data:") {
 
