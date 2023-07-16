@@ -34,7 +34,7 @@ function setButtonsCartsListeners() {
         botao.addEventListener("click",function(event){
 
             if (userID === undefined) {
-                window.location.href = "../paginas/cadastro-login.html" 
+                window.location.href = "paginas/cadastro-login.html" 
             } else {
                 let elemento = event.target
                 let produtoId = Number(botao.value)
