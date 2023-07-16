@@ -27,7 +27,6 @@ export function loadInfoProducts(codigoProduto) {
 
             nome = obj.nome
             descricao = obj.descricao
-            console.log(obj.imagem)
             imagem = obj.imagem
             descricaoImagem = obj.descricaoImagem
             preco = obj.preco
@@ -55,7 +54,6 @@ export function loadInfoProducts(codigoProduto) {
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
     imgProduto.src = imagem
 
-    alert(imgProduto.src)
 
     if(imgProduto.src.substring(0, 5) != "data:") {
 
@@ -67,6 +65,7 @@ export function loadInfoProducts(codigoProduto) {
 
     setStars(classificacao)
 
+    console.log(produtos)
     let carrinho = pegaCarrinho()
     let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
     if (index > -1) {
