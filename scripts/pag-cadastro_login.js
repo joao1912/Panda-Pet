@@ -469,7 +469,70 @@ function createNewUsers(quant) {
     for (let i = 0 ; i < quant ; i++) {
         let randomName = getRamdomName()
         let newUser = new User(randomName, null, "senhaBoa123", [], false, false, null, [], '../../imagens/perfil-default.jpg')
+        createNewAgendamento(newUser.id)
         users.push(newUser)
+    }
+
+    function createNewAgendamento(id) {
+
+        let randomDay1, randomMonth1
+        let randomDay2, randomMonth2
+        let ramdomPet, mesAtual
+
+        let data = new Date()
+        mesAtual = data.getFullYear()
+        do {
+            randomDay1 = Math.floor(Math.random() * 30)
+            randomDay2 = Math.floor(Math.random() * 30)
+
+            
+        } while(randomDay2 < randomDay1 )
+       
+        do {
+            randomMonth1 = Math.floor(Math.random() * 11)
+            randomMonth2 = Math.floor(Math.random() * 11)
+        } while(randomMonth2 < randomDay1 ) //ta pirando aqui
+        
+        //fazer uma função que cria pets
+
+        let agendamentos = JSON.parse(localStorage.getItem("agendamentos"))
+
+        if (agendamentos == null) {
+            agendamentos = [
+                {
+                    ano: mesAtual,
+                    anoSaida: mesAtual,
+                    dia: randomDay1,
+                    diaSaida: randomDay2,
+                    horaEntrada: "14:00",
+                    horarioSaida: "16:00",
+                    id: id,
+                    mes: randomMonth1,
+                    mesSaida: randomMonth2,
+                    pet: [], //pendente
+                    service: "Hospedagem"
+                }
+            ]
+        } else {
+
+            let obj = {
+                ano: mesAtual,
+                anoSaida: mesAtual,
+                dia: randomDay1,
+                diaSaida: randomDay2,
+                horaEntrada: "14:00",
+                horarioSaida: "16:00",
+                id: id,
+                mes: randomMonth1,
+                mesSaida: randomMonth2,
+                pet: [], //pendente
+                service: "Hospedagem"
+            }
+
+            agendamentos.push(obj)
+        }
+        localStorage.setItem("agendamentos", JSON.stringify(agendamentos))
+
     }
 
     saveLocalStorage(users)
