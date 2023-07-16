@@ -251,10 +251,10 @@ function setPerfilOnline() {
        
         localStorage.removeItem("welcome")
 
-        if (window.location.pathname == "./index.html") {
+        if (window.location.pathname == "index.html") {
             location.reload()
         } else {
-            window.location.href = "./index.html"
+            window.location.href = "index.html"
         }
 
         saveLocalStorage(users)
@@ -455,7 +455,7 @@ nav.addEventListener("click", function (event) {
             if (containerTelaAgendamento.style.display == "block") return
 
             if (userID == undefined) {
-                window.location.href = "../paginas/cadastro-login.html"
+                window.location.href = "paginas/cadastro-login.html"
             }
 
             telas.forEach(tela => {
@@ -594,7 +594,7 @@ const containerUser = document.getElementById("containerPerfil")
 if (userID == 0) {
     iconAdmUtils.style.display = "inline-flex"
     iconAdmUtils.addEventListener("click", function () {
-        window.location.href = "./paginas/administrador.html"
+        window.location.href = "paginas/administrador.html"
     })
 
     setPerfilOnline()
