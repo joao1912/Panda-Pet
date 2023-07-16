@@ -21,11 +21,11 @@ export function setMarkersCalendar() {
 
     for (let agendamento of agendamentos) {
         
-        if (agendamento.mes == mesAtual || agendamento.mesSaida == mesAtual) {
+        if (agendamento.mes == mesAtual) {
             
             for (let day of weeks) {
                 
-                if (day.textContent == agendamento.dia || day.textContent == agendamento.diaSaida) {
+                if (day.textContent == agendamento.dia) {
                     let verifyClass = false
 
                     if (day.classList.contains("mark")) {
@@ -43,14 +43,75 @@ export function setMarkersCalendar() {
                 }
                 
                 if (day.getAttribute("escurecer")) {
+
+                    function calc() {
+                        if (day.textContent > 20) {
+                            
+                            return mesAtual - 1
+                            
+                        } else {
+                            return mesAtual + 1
+                        }
+                    }
+                    
                 
                     for (let agendamentoEscuro of agendamentos) {
                         
-                        if (agendamentoEscuro.mes == (mesAtual - 1) || agendamentoEscuro.mesSaida == (mesAtual - 1)) {
+                        if (agendamentoEscuro.mes == calc()) {
+                            
+                            if (agendamentoEscuro.dia == day.textContent) {
+
+                                for (let day of weeks) {       
+                                    if (!day.classList.contains("mark")) {
+                                        day.classList = "mark"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (agendamento.mesSaida == mesAtual) {
+            
+            for (let day of weeks) {
+                
+                if (day.textContent == agendamento.diaSaida) {
+                    let verifyClass = false
+
+                    if (day.classList.contains("mark")) {
+                        verifyClass = true
+                    }
+
+                    if (day.getAttribute("escurecer")) {
+                        verifyClass = true
+                    }
+                    
+                    if (!verifyClass) {
+                        day.classList = "mark"
+                    }
+
+                }
+                
+                if (day.getAttribute("escurecer")) {
+               
+                    for (let agendamentoEscuro of agendamentos) {
+
+                        function calc() {
+                            if (day.textContent > 20) {
+                                return mesAtual - 1
+                            } else {
+                                return mesAtual + 1
+                            }
+                        }
+                        
+                        if (agendamentoEscuro.mesSaida == calc()) {
                             
                             for (let day of weeks) {
-                                
-                                if (day.textContent == agendamentoEscuro.dia && day.getAttribute("escurecer")) {
+
+                                if (day.textContent == agendamentoEscuro.diaSaida) {
+                                    
                                     if (!day.classList.contains("mark")) {
                                         day.classList = "mark"
                                     }
