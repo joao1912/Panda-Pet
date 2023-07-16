@@ -603,7 +603,7 @@ function constructorProfiles(id, nome, dataObj, totalGasto, imagem = null) {
     let img = document.createElement("img")
 
     if (imagem == null) {
-        img.src = "../imagens/perfil-default.jpg"
+        img.src = "./imagens/perfil-default.jpg"
     } else {
         img.src = imagem
     }
