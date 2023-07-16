@@ -21,11 +21,11 @@ export function setMarkersCalendar() {
 
     for (let agendamento of agendamentos) {
         
-        if (agendamento.mes == mesAtual) {
+        if (agendamento.mes == mesAtual || agendamento.mesSaida == mesAtual) {
             
             for (let day of weeks) {
                 
-                if (day.textContent == agendamento.dia) {
+                if (day.textContent == agendamento.dia || day.textContent == agendamento.diaSaida) {
                     let verifyClass = false
 
                     if (day.classList.contains("mark")) {
@@ -46,7 +46,7 @@ export function setMarkersCalendar() {
                 
                     for (let agendamentoEscuro of agendamentos) {
                         
-                        if (agendamentoEscuro.mes == (mesAtual - 1)) {
+                        if (agendamentoEscuro.mes == (mesAtual - 1) || agendamentoEscuro.mesSaida == (mesAtual - 1)) {
                             
                             for (let day of weeks) {
                                 

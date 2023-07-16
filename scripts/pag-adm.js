@@ -477,8 +477,15 @@ calendar.addEventListener("click", function (event) {
 
         let diaMarcado = obj.dia
         let mesMarcado = obj.mes
+        let diaMarcadoSaida = obj.diaSaida
+        let mesMarcadoSaida = obj.mesSaida
+
 
         if (mesMarcado == mesAtual && diaMarcado == day) {
+            flagEmptyDayTasks = false
+        }
+
+        if (mesMarcadoSaida == mesAtual && diaMarcadoSaida == day) {
             flagEmptyDayTasks = false
         }
 

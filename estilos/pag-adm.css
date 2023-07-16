@@ -303,6 +303,7 @@ a{
     left: 50%;
     overflow: hidden;
     overflow-y: scroll;
+    z-index: 4;
     transform: translate(-50%,-50%);
 }
 

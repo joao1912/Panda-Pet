@@ -17,10 +17,27 @@ export function setDayTasks(diaSelecionado) {
         let nome = users[id].nome
         let servico = obj.service
         let day = obj.dia
+        let exitDay = obj.diaSaida
         let mes = obj.mes
-        let hora = obj.hora
+        let mesSaida = obj.mesSaida
+        let hora = obj.horaEntrada
+        let horaSaida = obj.horarioSaida
+
+       
+        if (mesSaida == mesAtual && exitDay == diaSelecionado) {
+            
+            servico = `${servico} \n(Check-Out)`
+            let task = constructorTasks(id, nome, horaSaida, servico)
+
+            containerTasks.appendChild(task) 
+
+        }
 
         if (mesAtual == mes && day == diaSelecionado) {
+
+            if (servico == "Hospedagem") {
+                servico = `${servico} \n(Check-In)`
+            }
 
             let task = constructorTasks(id, nome, hora, servico)
 
