@@ -32,7 +32,7 @@ function initializeProducts() {
         new Produto(4, "Ossinhos", "Ossinhos orgânicos e livre de conservantes para cães.", "alimentacao/ossinhoDog.jpg", 14.99, "alimentacao", "Ossinhos comestivéis para cachorros, com essencia de sabor carne, contém em torno de 200 gramas.", 10,5),
         new Produto(5, "Peticos para gatos", "Peticos saudavéis sem conservantes.", "alimentacao/peticosCat.png", 19.99, "alimentacao", "Peticos para gatos adultos, sabor carne, contém 85 gramas.", 10,5),
         new Produto(6, "Ração para gatos", "Ração para seu gatinho que auxilia na sua saúde.", "alimentacao/racaoCat.png", 89.90, "alimentacao", "Ração para gatos adultos, sabor frango, contém 10 quilos", 10,4),
-        new Produto(7, "Ração para gatos fihotes", "Ração formulada para gatinhos que acabaram de sair do leite.", "alimentacao/racaoFilhoteCat.jpg", 79.99, "alimentacao", "Ração para gatos filhotes, sabor carne, contém 500 gramas, ideal para gatinhos que acabaram de sair do leite.", 10,3),
+        new Produto(7, "Ração para gatos fihotes", "Ração formulada para gatinhos que acabaram de sair do leite.", "alimentacao/racaofilhoteCat.jpg", 79.99, "alimentacao", "Ração para gatos filhotes, sabor carne, contém 500 gramas, ideal para gatinhos que acabaram de sair do leite.", 10,3),
         new Produto(8, "Ração para cachorro porte grande", "Ração com ingredientes selecionados, como frango e arroz, oferecendo uma nutrição completa e equilibrada para cães adultos.", "alimentacao/soft-dog-caes.png", 59.99, "alimentacao", "Ração para cachorros de porte grande, sabor frango, contém 10 quilos.", 10,5),
 
         // Categoria: Brinquedos
