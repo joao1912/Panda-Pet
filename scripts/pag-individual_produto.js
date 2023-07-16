@@ -15,7 +15,7 @@ const btnCheckoutIndividual = document.getElementById("btnCheckoutIndividual")
 export function loadInfoProducts(codigoProduto) {
 
     if (userID == undefined) {
-        window.location.href = "../paginas/cadastro-login.html"
+        window.location.href = "paginas/cadastro-login.html"
     }
 
 
