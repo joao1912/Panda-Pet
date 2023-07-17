@@ -41,11 +41,12 @@ export async function calcularFrete(cep) {
 
    let headers = new Headers();
 
-   headers.append('Content-Type', 'application/json');
+   //headers.append('Content-Type', 'application/json');
    headers.append('Accept', 'application/json');
+   headers.append("user-agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
 
-   headers.append('Access-Control-Allow-Origin', 'https://joao1912.github.io/Panda-Pet');
-   headers.append('GET', 'POST', 'OPTIONS');
+   //headers.append('Access-Control-Allow-Origin', 'https://joao1912.github.io/Panda-Pet');
+   //headers.append('GET', 'POST', 'OPTIONS');
 
 
    fetch(`https://www.cepcerto.com/ws/json-frete/88032005/${cep.value}/1000`, {
