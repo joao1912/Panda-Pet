@@ -878,3 +878,9 @@ border-radius: 50%;
     transition: transform .2s ease-in;
     cursor: pointer;
 }
+
+#NoResults {
+    font-size: 2em;
+    font-family: "GooperSemibold";
+    color: var(--secondColor);
+}

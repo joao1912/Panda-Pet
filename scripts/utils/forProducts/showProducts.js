@@ -53,6 +53,7 @@ export function showSearchResults(indexProdutos) {
 
     const h1Produtos = document.getElementById("h1Produtos")
     const containerProdutos = document.getElementById("containerProdutos")
+    const containerTelaProdutos = document.getElementById("containerTelaProdutos")
     
     h1Produtos.textContent = "Resultados para sua busca"
     containerProdutos.innerHTML = ""
@@ -60,7 +61,8 @@ export function showSearchResults(indexProdutos) {
     setProductsElements(indexProdutos)
 
     if(indexProdutos.length == 0) {
-        containerProdutos.innerHTML = "Nenhum resultado encontrado"
+        containerProdutos.innerHTML = "<p id='NoResults'>Nenhum resultado encontrado</p>"
+        containerTelaProdutos.style.height = "70%"
     }
 
     containerProdutos.style.display = "flex"
