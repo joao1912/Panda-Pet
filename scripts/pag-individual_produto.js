@@ -53,7 +53,7 @@ export function loadInfoProducts(codigoProduto) {
     descricaoProduto.textContent = descricao
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
 
-    let imgProduct = produtos[randomProducts[index]].imagem
+    let imgProduct = imagem
 
     if(imgProduct.substring(0, 5) != "data:") {
 
