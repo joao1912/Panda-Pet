@@ -454,7 +454,7 @@ function trocarPagina(event) {
                 icon: 'success',
                 showConfirmButton: false,
                 timer: 1200
-            })
+              })
 
             setTimeout(function(){
               location.reload()

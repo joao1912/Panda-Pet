@@ -264,7 +264,7 @@ function saveUser(userName, passWord) {
             senha: passWord, 
             carrinho: [], 
             lembrarDeMim: false,
-            online: true, 
+            online: false, 
             date: getDate(), 
             atividadeNoSite: {totalGasto: 0, produtosComprados: []},
             contato: null,
@@ -282,7 +282,7 @@ function saveUser(userName, passWord) {
             senha: passWord, 
             carrinho: [], 
             lembrarDeMim: false,
-            online: true, 
+            online: false, 
             date: getDate(), 
             atividadeNoSite: {totalGasto: 0, produtosComprados: []},
             contato: null,
@@ -292,7 +292,15 @@ function saveUser(userName, passWord) {
 
     }
 
-    window.location.href = "../index.html"
+    Swal.fire({
+        title: 'Cadastrado com Sucesso!',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1200
+    })
+    setTimeout(function(){
+        location.reload()
+    }, 1400)
 }
 
 const iconsVisibility = document.querySelectorAll(".visibility")
