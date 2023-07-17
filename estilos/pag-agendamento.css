@@ -1008,3 +1008,11 @@ button {
     font-size: 0.8em;
     display: block;
 }
+
+#noPets {
+    font-size: 1.5em;
+    color: var(--primaryColor);
+    font-family: "GooperSEmibold";
+    position: absolute;
+    top: 45%;
+}

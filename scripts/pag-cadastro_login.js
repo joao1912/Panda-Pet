@@ -249,6 +249,7 @@ function detecNumbersAndCaracters(password) {
 }
 
 function saveUser(userName, passWord) {
+   
     
     for (let user of users) {
         user.online = false
@@ -258,7 +259,7 @@ function saveUser(userName, passWord) {
     if (urlFotoPerfil != undefined) {
 
         users.push({
-            id: nextID ,
+            id: nextID,
             nome: userName, 
             realName: null,
             senha: passWord, 

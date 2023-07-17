@@ -196,10 +196,13 @@ function trocarPagina(event) {
         case "petJaCadastrado":
             const containerPets = document.getElementById("containerPetJaCadastrado")
             containerPets.style.display = "flex"
+            const tbody = document.querySelector("#containerPetJaCadastrado tbody")
             let petsArray = JSON.parse(localStorage.getItem("pets"))
             let petsUser 
-           
-            if (petsArray != null && petsArray.length != 0) {
+            tbody.innerHTML = ""
+            if (petsArray != null || petsArray.length != 0) {
+             
+       
              
               for (let user of users) {
                   if (user.id == userID) {
@@ -208,6 +211,7 @@ function trocarPagina(event) {
                   }
               }
             }
+
 
 
             loadTablePets(petsUser)
@@ -239,6 +243,15 @@ function trocarPagina(event) {
               }
 
             })
+
+            const btnClosePets = document.getElementById("btnClosePetCadastrado")
+            btnClosePets.addEventListener("click", closeScreen)
+
+            function closeScreen() {
+              const telaPets = document.getElementById("containerPetJaCadastrado")
+              telaPets.style.display = "none"
+              btnClosePets.removeEventListener("click", closeScreen)
+            }
 
           
             break
@@ -1100,9 +1113,9 @@ function loadTablePets(petsUser) {
 
   const tbody = document.querySelector("#containerPetJaCadastrado tbody")
   tbody.innerHTML = ""
-
+  
   for (let pet of petsUser) {
-
+    
     let element = createTablePet(pet.idPET, pet.nome, pet.raca)
 
     tbody.appendChild(element)
@@ -1150,10 +1163,4 @@ function createTablePet(id, nome, raca) {
 
   return tr
 }
-
-const btnClosePets = document.getElementById("btnClosePetCadastrado")
-btnClosePets.addEventListener("click", function(){
-  const telaPets = document.getElementById("containerPetJaCadastrado")
-  telaPets.style.display = "none"
-})
 
