@@ -50,6 +50,7 @@ export async function calcularFrete(cep) {
 
 
    fetch(`https://www.cepcerto.com/ws/json-frete/88032005/${cep.value}/1000`, {
+      mode: 'no-cors',
       method: 'GET',
       headers: headers
    })
