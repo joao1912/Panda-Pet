@@ -40,6 +40,7 @@ export async function calcularFrete(cep) {
       return json
    } catch (error) {
       console.error(error);
+      alert(`erro: ${error}`)
       return null
    }
 }
