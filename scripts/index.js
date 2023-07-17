@@ -743,7 +743,7 @@ export function setTableMyShopping() {
 
         let span = document.createElement("span")
         span.className = "messageNoShopping"
-        let text = document.createTextNode("Lamento, você não possui historico de compras.")
+        let text = document.createTextNode("Você não possui historico de compras.")
         span.appendChild(text)
         containerTable.appendChild(span)
         table.style.display = "none"
