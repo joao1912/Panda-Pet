@@ -249,4 +249,5 @@ btnOk.addEventListener("click", function() {
     let cep = document.getElementById("tituloTextoCep")
     let result = calcularFrete(cep.value)
     console.log(result)
+    alert(result.cepDestino)
 })
