@@ -1,6 +1,6 @@
 
 
-export function constructorTasks(id, nome, hora, servico) {
+export function constructorTasks(id, nome, hora, servico, idPET, nomePet) {
     //botao delete
 
     let deleteButton = document.createElement("button")
@@ -33,6 +33,7 @@ export function constructorTasks(id, nome, hora, servico) {
 
     let tdUserName = document.createElement("td")
     let textName = document.createTextNode(nome)
+    tdUserName.classList.add("tdUSER")
     tdUserName.appendChild(textName)
 
     // td userId
@@ -41,12 +42,27 @@ export function constructorTasks(id, nome, hora, servico) {
     let textId = document.createTextNode(id)
     tdUserId.classList.add("idCell")
     tdUserId.appendChild(textId)
+    tdUserId.classList.add("tdUSER")
+
+    //td nome do pet
+
+    let tdPetName = document.createElement("td")
+    let textNomePet = document.createTextNode(nomePet)
+    tdPetName.appendChild(textNomePet)
+
+    //td id pet
+    
+    let tdPetID = document.createElement("td")
+    let textIDPet = document.createTextNode(idPET)
+    tdPetID.appendChild(textIDPet)
 
     // tr
 
     let tr = document.createElement("tr")
     tr.appendChild(tdUserId)
     tr.appendChild(tdUserName)
+    tr.appendChild(tdPetID)
+    tr.appendChild(tdPetName)
     tr.appendChild(tdHora)
     tr.appendChild(tdServico)
     tr.appendChild(tdDeleteButton)

@@ -517,6 +517,8 @@ btnClose.addEventListener("click", function () {
     const container = document.getElementById("tasks")
     telaCheckedTasks.style.display = "none"
     container.style.display = "none"
+    const containerCalendar = document.getElementById("containerCheckedTasks")
+    containerCalendar.removeAttribute("style")
     localStorage.removeItem("deleteWarning")
 })
 

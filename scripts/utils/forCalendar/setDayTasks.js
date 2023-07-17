@@ -22,24 +22,30 @@ export function setDayTasks(diaSelecionado) {
         let mesSaida = obj.mesSaida
         let hora = obj.horaEntrada
         let horaSaida = obj.horarioSaida
+        let nomePet = obj.pet.nome
+        let idPET = obj.pet.idPET
 
        
         if (mesSaida == mesAtual && exitDay == diaSelecionado) {
+            const container = document.getElementById("containerCheckedTasks")
+            container.style.width = "950px"
             
             servico = `${servico} \n(Check-Out)`
-            let task = constructorTasks(id, nome, horaSaida, servico)
+            let task = constructorTasks(id, nome, horaSaida, servico, idPET, nomePet)
 
             containerTasks.appendChild(task) 
 
         }
 
         if (mesAtual == mes && day == diaSelecionado) {
+            const container = document.getElementById("containerCheckedTasks")
+            container.style.width = "950px"
 
             if (servico == "Hospedagem") {
                 servico = `${servico} \n(Check-In)`
             }
 
-            let task = constructorTasks(id, nome, hora, servico)
+            let task = constructorTasks(id, nome, hora, servico, idPET, nomePet)
 
             containerTasks.appendChild(task) 
         }
