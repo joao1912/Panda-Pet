@@ -46,21 +46,24 @@ export function loadInfoProducts(codigoProduto) {
     const codigoElemento = document.getElementById("descricaoCodigo")
     const descricaoProduto = document.getElementById("informacoesProduto")
     const precoProduto = document.getElementById("alteracoesDescricaodivs")
-    const imgProduto = document.getElementById("imagemProdutoIndividual")
+    const imagemProdutoIndividual = document.getElementById("imagemProdutoIndividual")
 
     tituloProduto.textContent = nome
     codigoElemento.textContent = `SKU ${codigoProduto}`
     descricaoProduto.textContent = descricao
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
-    imgProduto.src = imagem
 
-    if(imgProduto.src.substring(0, 5) != "data:") {
+    let imgProduct = produtos[randomProducts[index]].imagem
 
-        imgProduto.src = imgProduto.src.replace("Panda-Pet/", "Panda-Pet/imagens/")
+    if(imgProduct.substring(0, 5) != "data:") {
 
+        imgProduct = `imagens/${imgProduct}`
+        
     }
-    
-    imgProduto.alt = descricaoImagem
+
+    imagemProdutoIndividual.src = imgProduct
+
+    imagemProdutoIndividual.alt = descricaoImagem
 
     setStars(classificacao)
 
