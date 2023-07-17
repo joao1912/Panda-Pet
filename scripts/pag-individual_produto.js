@@ -244,10 +244,8 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
 
 
 const btnOk = document.getElementById("btnOk")
-btnOk.addEventListener("click", function() {
+btnOk.addEventListener("click", () => {
     
     let cep = document.getElementById("tituloTextoCep")
-    let result = calcularFrete(cep.value)
-    console.log(result)
-    alert(result.cepDestino)
+    calcularFrete(cep)
 })
