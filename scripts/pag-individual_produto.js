@@ -54,7 +54,6 @@ export function loadInfoProducts(codigoProduto) {
     precoProduto.textContent = `R$ ${preco.toFixed(2)}`
     imgProduto.src = imagem
 
-
     if(imgProduto.src.substring(0, 5) != "data:") {
 
         imgProduto.src = imgProduto.src.replace("Panda-Pet/", "Panda-Pet/imagens/")

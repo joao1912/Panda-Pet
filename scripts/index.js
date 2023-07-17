@@ -488,7 +488,15 @@ btnCart.addEventListener("click", function () {
 
         productElement.id = produtos[randomProducts[index]].codigo
 
-        productElement.src = produtos[randomProducts[index]].imagem
+        let imgProduct = produtos[randomProducts[index]].imagem
+
+        if(imgProduct.substring(0, 5) != "data:") {
+
+            imgProduct = `imagens/${imgProduct}`
+            
+        }
+
+        productElement.src = imgProduct
 
         productElement.alt = produtos[randomProducts[index]].descricaoImagem
 
