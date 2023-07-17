@@ -30,6 +30,7 @@ export async function calcularFrete(cep) {
          console.log(obj_cep)
          alert("encontrado")
    } catch {
+      alert("erro ao carregar cep")
       return null
    }
 }
