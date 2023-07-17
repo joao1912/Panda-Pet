@@ -402,6 +402,6 @@ export function finalizarCompra() {
     color: '#645CBB',
     text: 'Agradecemos por comprar conosco!'})
     .then(() => {
-        window.location.href = "../index.html"
+        window.location.href = "index.html"
     })
 }
