@@ -57,7 +57,7 @@ export function loadInfoProducts(codigoProduto) {
 
     if(imgProduto.src.substring(0, 5) != "data:") {
 
-        imgProduto.src = `./imagens/${imgProduto.src}`
+        imgProduto.src = imgProduto.src.replace("Panda-Pet/", "Panda-Pet/imagens/")
 
     }
     
@@ -65,7 +65,6 @@ export function loadInfoProducts(codigoProduto) {
 
     setStars(classificacao)
 
-    console.log(produtos)
     let carrinho = pegaCarrinho()
     let index = carrinho.findIndex(produto => produto.codigo == codigoProduto)
     if (index > -1) {
