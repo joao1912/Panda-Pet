@@ -109,22 +109,26 @@ itensServices.forEach( item => {
       case "Quero Tudo!":
         
         span.appendChild(document.createTextNode(` + R$ ${precoTudo}`))
+        localStorage.setItem("precoCarona", JSON.stringify(precoTudo))
 
         break
       case "Apenas Buscar":
     
         span.appendChild(document.createTextNode(` + R$ ${precoApenasBuscar}`))
+        localStorage.setItem("precoCarona", JSON.stringify(precoApenasBuscar))
 
         break
       case "Apenar Trazer":
 
         span.appendChild(document.createTextNode(` + R$ ${apenasTrazer}`))
+        localStorage.setItem("precoCarona", JSON.stringify(apenasTrazer))
       
 
         break
       case "Não Quero":
 
       span.appendChild(document.createTextNode(``))
+      localStorage.setItem("precoCarona", JSON.stringify(0))
 
         break
     }
@@ -299,6 +303,7 @@ function trocarPagina(event) {
             if (!erroOuNao) {
               setPrice()
 
+
               cadastroPet2.style.display = "none"
               cadastroPet3.style.display = "flex"
               arrayRadio.forEach( radio => {
@@ -415,6 +420,34 @@ function trocarPagina(event) {
 
               saveLocalStorage(users)
               localStorage.setItem("pets", JSON.stringify(pets))
+
+              
+
+              let precoServico = JSON.parse(localStorage.getItem("precoServico"))
+              let precoCarona = JSON.parse(localStorage.getItem("precoCarona"))
+              localStorage.removeItem("precoServico")
+              localStorage.removeItem("precoCarona")
+
+              let compras = JSON.parse(localStorage.getItem("compras"))
+              let servico = agendamento.service
+            
+              if (servico == "Hospedagem") {
+                  for (let obj of compras) {
+                    if (obj.identificacaoCategoria == "hospedagem") {
+                      obj.valorVendido += (precoServico + precoCarona) //prov
+                      break
+                    }
+                  }
+              } else {
+                for (let obj of compras) {
+                  if (obj.identificacaoCategoria == "banhoETosa") {
+                    obj.valorVendido += (precoServico + precoCarona) //prov
+                    break
+                  }
+                }
+              }
+
+              localStorage.setItem("compras", JSON.stringify(compras))
 
               Swal.fire({
                 title: 'Agendado com Sucesso!',
@@ -1056,6 +1089,7 @@ function setPrice() {
     price = priceTosaEBanho 
   }
 
+  localStorage.setItem("precoServico", JSON.stringify(price))
   
   const elementPrice = document.getElementById("preco")
   elementPrice.textContent = `R$ ${price.toFixed(2)}`
