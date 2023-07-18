@@ -245,24 +245,31 @@ function removeProdutoDoCarrinho(codigoProduto, quantidade = 1, deletaItem = fal
 
 const btnOk = document.getElementById("btnOk")
 btnOk.addEventListener("click", async () => {
+
+    const divFrete = document.getElementById("tipoFrete")
+    const erroFrete = document.getElementById("erroFrete")
     
     let cep = document.getElementById("tituloTextoCep")
     let result = await calcularFrete(cep)
 
     if(result== null || result.cepdestino == undefined || result.prazopac == 0) {
 
-        alert("Erro. Cep não encontrado")
+        erroFrete.style.display = "block"
         return
 
     }
+
+    erroFrete.removeAttribute("style")
+
+    divFrete.style.display = "flex"
 
     const typePac = document.querySelector("#containerTypePac label")
     const typeSedex = document.querySelector("#containerTypeSedex label")
     
     let days = Number(result.prazopac)
-    typePac.innerHTML = `Correios<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorpac}`
+    typePac.innerHTML = `Correios - ${days} ${days == 1? "dia": "dias"}<br>R$ ${result.valorpac}`
 
     days = Number(result.prazosedex)
-    typeSedex.innerHTML = `Sedex<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorsedex}`
+    typeSedex.innerHTML = `Sedex - ${days} ${days == 1? "dia": "dias"}<br>R$ ${result.valorsedex}`
 
 })

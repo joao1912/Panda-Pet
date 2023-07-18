@@ -369,11 +369,11 @@ input[type=number] {
 #tipoFrete {
     background-color: var(--secondColor);
     width: 67%;
-    height: 100px;
+    height: 150px;
     border-radius: 10px;
     margin-top: 5px;
     box-shadow: 0px 0px 8px var(--shadowColor3);
-    display: flex;
+    display: none; /*flex*/
     flex-direction: column;
 }
 
@@ -394,4 +394,10 @@ input[type=number] {
 .radio {
     width: 20px;
     height: 20px;
+}
+
+#erroFrete {
+    padding-left: 10px;
+    color: red;
+    display: none;
 }
