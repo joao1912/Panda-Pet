@@ -365,3 +365,33 @@ input[type=number] {
 #containerStars img {
     width: 30px;
 }
+
+#tipoFrete {
+    background-color: var(--secondColor);
+    width: 67%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 8px var(--shadowColor3);
+    display: flex;
+    flex-direction: column;
+}
+
+#tipoFrete div {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 6px;
+    font-size: 1.2em;
+}
+
+#tipoFrete div > label {
+    cursor: pointer;
+}
+
+.radio {
+    width: 20px;
+    height: 20px;
+}
