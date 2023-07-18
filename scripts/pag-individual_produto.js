@@ -247,5 +247,5 @@ const btnOk = document.getElementById("btnOk")
 btnOk.addEventListener("click", () => {
     
     let cep = document.getElementById("tituloTextoCep")
-    calcularFrete(cep)
+    let result = await calcularFrete(cep)
 })
