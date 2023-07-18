@@ -25,22 +25,15 @@ export async function validaCep(cep) {
 }
 
 export async function calcularFrete(cep) {
-   const url = `https://www.cepcerto.com/ws/json-frete/88032005/${cep.value}/1000`;
    try {
-      const response = await fetch(url, {
-         headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:7.0.1) Gecko/20100101 Firefox/7.0.1',
-            'Accept-Language': 'pt-BR;q=0.8,en-US;q=0.6,en;q=0.4'
-         }
-      })
-
-      const json = await response.json()
-      console.log(json)
-      alert("encontrado")
-      return json
-   } catch (error) {
-      console.error(error);
-      alert(`erro: ${error}`)
+      await fetch(`https://cors.iamnd.eu.org/?url=https://www.cepcerto.com/ws/json-frete/88032005/${cep.value}/1000`)
+         .then(response => response.json())
+         .then(json => obj_cep = json)
+      alert("boa!")
+      console.log(obj_cep)
+      return obj_cep
+   } catch {
+      alert("erro no cep!")
       return null
    }
 }
