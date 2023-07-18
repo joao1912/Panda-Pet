@@ -249,13 +249,20 @@ btnOk.addEventListener("click", async () => {
     let cep = document.getElementById("tituloTextoCep")
     let result = await calcularFrete(cep)
 
+    if(result== null || result.cepdestino == undefined || result.prazopac == 0) {
+
+        alert("Erro. Cep não encontrado")
+        return
+
+    }
+
     const typePac = document.querySelector("#containerTypePac label")
     const typeSedex = document.querySelector("#containerTypeSedex label")
     
     let days = Number(result.prazopac)
-    typePac.textContent = `Correios<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorpac}`
+    typePac.innerHTML = `Correios<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorpac}`
 
     days = Number(result.prazosedex)
-    typeSedex.textContent = `Sedex<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorsedex}`
+    typeSedex.innerHTML = `Sedex<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorsedex}`
 
 })
