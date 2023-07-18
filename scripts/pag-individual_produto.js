@@ -253,9 +253,9 @@ btnOk.addEventListener("click", async () => {
     const typeSedex = document.querySelector("#containerTypeSedex label")
     
     let days = Number(result.prazopac)
-    typePac.textContent = `Correios<br>${dias} ${dias == 1? "dia": "dias"}<br>${result.valorpac}`
+    typePac.textContent = `Correios<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorpac}`
 
     days = Number(result.prazosedex)
-    typeSedex.textContent = `Sedex<br>${dias} ${dias == 1? "dia": "dias"}<br>${result.valorsedex}`
+    typeSedex.textContent = `Sedex<br>${days} ${days == 1? "dia": "dias"}<br>${result.valorsedex}`
 
 })
