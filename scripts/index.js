@@ -28,7 +28,7 @@ if (users == null) {
         atividadeNoSite: {totalGasto: 0, produtosComprados: []},
         contato: null,
         pets: [],
-        img: './imagens/pandaCoroaRedondo.png'
+        img: 'imagens/pandaCoroaRedondo.png'
     }]
 
     localStorage.setItem('users', JSON.stringify(users))
