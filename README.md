@@ -32,3 +32,5 @@ Para utilizar o Panda Pet sem enviá-lo a um servidor, siga as etapas abaixo:
 
 - Usuário padrão: Admin
 - Senha: administrador123
+- Site para o site: https://joao1912.github.io/Panda-Pet/
+- Style-guide: https://joao1912.github.io/Panda-Pet/style-guide/styleguide.html
