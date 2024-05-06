@@ -834,7 +834,7 @@ btnEditEscProducts.addEventListener("click", function () {
             productNewPrice.value = productIterable.preco
             productNewStock.value = productIterable.estoque
             productNewDescription.value = productIterable.descricao
-            imgPreView.src = productIterable.imagem
+            imgPreView.src = `./imagens/${productIterable.imagem}`
             newDescImage.value = productIterable.descricaoImagem
 
             containerPreViewImage.style.display = "flex"
@@ -940,7 +940,7 @@ btnRemoveEscProducts.addEventListener("click", function () {
 
             productUniqueID.value = productIterable.codigo
 
-            productViewPhoto.src = productIterable.imagem
+            productViewPhoto.src = `./imagens/${productIterable.imagem}`
             productViewPhoto.alt = productIterable.descricaoImagem
 
             productViewName.innerHTML = productIterable.nome
