@@ -115,8 +115,7 @@ function setPerfilOnline() {
     let imgUser
     for (let user of users) {
         if (user.id == userID) {
-            imgUser = "." + user.img
-            console.log(imgUser)
+            imgUser = "../." + user.img
         }
     }
 
