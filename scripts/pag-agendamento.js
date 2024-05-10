@@ -442,6 +442,13 @@ function trocarPagina(event) {
               localStorage.removeItem("precoCarona")
 
               let compras = JSON.parse(localStorage.getItem("compras"))
+
+              if (!compras) {
+
+                compras = []
+
+              }
+
               let servico = agendamento.service
             
               if (servico == "Hospedagem") {
